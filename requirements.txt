@@ -1,0 +1,29 @@
+# AI Friend - 二次元桌面助手
+# Python 3.10+
+
+# GUI 框架
+PySide6>=6.6.0
+
+# Live2D 渲染
+PyOpenGL>=3.1.7
+
+# LLM
+litellm>=1.0.0
+
+# 定时任务
+apscheduler>=3.10.4
+
+# 数据验证
+pydantic>=2.5.0
+
+# HTTP 请求
+requests>=2.31.0
+
+# 系统信息
+psutil>=5.9.6
+
+# 剪贴板
+pyperclip>=1.8.2
+
+# 环境变量
+python-dotenv>=1.0.0
