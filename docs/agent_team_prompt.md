@@ -154,7 +154,7 @@ aiFriend/
 
 1. 主窗口整合 (Live2D + 对话)
 2. 实现完整的设置窗口 (5 个标签页)
-3. Live2D 渲染完善 (或 WebEngineView 备选方案)
+3. Live2D 渲染完善
 4. 测试完整流程
 5. 错误处理与日志完善
 6. 编写 README

@@ -1,7 +1,7 @@
 # Weather Tool
 import requests
 from typing import Dict, Any, Optional
-from .. import get_logger
+from utils import get_logger
 
 logger = get_logger()
 

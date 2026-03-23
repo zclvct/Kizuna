@@ -33,7 +33,7 @@ class LLMConfig:
 @dataclass
 class Live2DConfig:
     """Live2D 配置"""
-    model_path: str = "assets/live2d/default"
+    model_path: str = "assets/live2d/biaoqiang"
     scale: float = 1.0
     default_motion: str = "idle_01"
 

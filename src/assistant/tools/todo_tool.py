@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 import json
 
-from ...utils import TODO_FILE, get_logger
+from utils import TODO_FILE, get_logger
 
 logger = get_logger()
 

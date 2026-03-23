@@ -89,6 +89,7 @@ DEFAULT_MOTIONS_CONFIG = {
     "settings": {
         "enable_mood_motion": True,
         "enable_idle_motion": True,
+        "enable_chat_motion": True,
         "idle_interval_seconds": 30
     }
 }

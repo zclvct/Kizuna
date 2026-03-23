@@ -61,11 +61,46 @@ class LLMClient:
 
         mood_info = f"\n\n你当前的心情是：{state.current_mood}"
 
+        # 第一次启动的特殊指令
+        if persona.is_first_run():
+            first_run_instruction = """
+
+【第一次启动引导】
+你是第一次与用户见面，还没有名字和设定。请按照以下流程引导用户：
+
+1. 首先询问用户的姓名（使用随机的问候语）
+2. 询问用户希望如何称呼你（给你起个名字）
+3. 询问用户想让你当什么角色（朋友、助手、姐姐等）
+4. 收集到信息后，使用 edit_persona 工具保存这些信息
+5. 友好地结束引导对话
+
+请自然地用对话方式完成这个引导过程，不要太正式。
+"""
+            tool_instruction = """
+
+你可以使用以下工具：
+1. play_motion - 播放 Live2D 动作来表达情绪
+2. edit_persona - 保存用户的姓名和设定
+
+请在收集到关键信息后，使用 edit_persona 工具保存：
+- name: 你的名字
+- second_person: 对用户的称呼（例如：主人、哥哥、朋友等）
+- relationship: 与用户的关系
+
+重要：必须使用 edit_persona 工具保存信息！
+"""
+            return base + mood_info + first_run_instruction + tool_instruction
+
+        # 正常对话的指令
         tool_instruction = """
 
 你可以使用以下工具来帮助用户：
 1. play_motion - 播放 Live2D 动作来表达情绪
 2. edit_persona - 修改你的设定、记忆等（重要修改前先确认）
+
+你可以在对话中学习用户的信息，并使用 edit_persona 工具记录：
+- add_fact: 记录关于用户的事实（如喜好、作息等）
+- add_memory: 添加重要记忆事件
 
 请在回复文字前先调用合适的工具。
 """

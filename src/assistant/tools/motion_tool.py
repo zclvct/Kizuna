@@ -1,7 +1,7 @@
 # Motion Tool
 from typing import Optional
 
-from ...utils import get_logger, trigger_motion
+from utils import get_logger, trigger_motion
 
 logger = get_logger()
 

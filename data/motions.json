@@ -1,0 +1,64 @@
+{
+  "model_id": "default",
+  "mood_motions": {
+    "happy": [
+      "happy_01",
+      "happy_02"
+    ],
+    "excited": [
+      "excited_01"
+    ],
+    "normal": [
+      "idle_01",
+      "idle_02"
+    ],
+    "shy": [
+      "shy_01"
+    ],
+    "sad": [
+      "sad_01"
+    ],
+    "angry": [
+      "angry_01"
+    ],
+    "surprised": [
+      "surprised_01"
+    ],
+    "thinking": [
+      "thinking_01"
+    ]
+  },
+  "intent_motions": {
+    "greeting": [
+      "wave",
+      "smile"
+    ],
+    "agree": [
+      "nod",
+      "smile"
+    ],
+    "disagree": [
+      "shake_head"
+    ],
+    "thinking": [
+      "thinking_01"
+    ],
+    "apologize": [
+      "apologize_01"
+    ],
+    "thank": [
+      "thank_01"
+    ]
+  },
+  "idle_motions": [
+    "idle_01",
+    "idle_02"
+  ],
+  "default_motion": "idle_01",
+  "settings": {
+    "enable_mood_motion": true,
+    "enable_idle_motion": true,
+    "enable_chat_motion": true,
+    "idle_interval_seconds": 30
+  }
+}

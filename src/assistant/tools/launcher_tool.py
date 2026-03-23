@@ -5,7 +5,7 @@ import os
 from typing import Dict, Any
 from pathlib import Path
 
-from ...utils import get_logger
+from utils import get_logger
 
 logger = get_logger()
 

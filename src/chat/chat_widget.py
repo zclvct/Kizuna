@@ -22,6 +22,8 @@ logger = get_logger()
 
 class ChatWidget(QFrame):
     """对话窗口"""
+    
+    response_received = Signal()  # 收到模型回复时发出
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -31,6 +33,7 @@ class ChatWidget(QFrame):
         self._is_generating = False
         self._setup_ui()
         self._load_history()
+        self._check_first_run()
 
     def _setup_ui(self):
         """设置 UI"""
@@ -116,6 +119,14 @@ class ChatWidget(QFrame):
         for msg in messages:
             self._add_message_bubble(msg.content, msg.role == "user")
 
+    def _check_first_run(self):
+        """检查是否是第一次运行，显示引导对话"""
+        if self.character_manager.persona.is_first_run():
+            # 第一次运行，显示引导对话
+            greeting = self.character_manager.get_random_greeting()
+            self._add_message_bubble(greeting, is_user=False)
+            logger.info("第一次启动，显示引导对话")
+
     def _add_message_bubble(self, text: str, is_user: bool = False):
         """添加消息气泡"""
         bubble = MessageBubble(text, is_user)
@@ -199,6 +210,8 @@ class ChatWidget(QFrame):
         self.send_btn.setEnabled(True)
         self.send_btn.setText("发送")
 
+        # 发出收到回复的信号
+        self.response_received.emit()
         logger.info("回复生成完成")
 
     def _on_response_error(self, error: str):

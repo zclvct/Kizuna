@@ -12,6 +12,7 @@ from apscheduler.triggers.cron import CronTrigger
 
 from scheduler.task import ScheduledTask, CREATE_SCHEDULED_TASK_TOOL
 from scheduler.storage import get_task_storage
+from scheduler.task_history import get_task_history_manager
 from utils import get_logger
 
 logger = get_logger()
@@ -111,16 +112,46 @@ class TaskManager:
 
         logger.info(f"执行定时任务: {task.task_name}")
 
+        # 获取历史管理器
+        history_manager = get_task_history_manager()
+
+        # 记录开始时间
+        import time
+        start_time = time.time()
+
         # 更新最后运行时间
         task.last_run = datetime.utcnow()
         self.storage.update(task)
 
-        # 调用回调
-        if self._on_task_execute:
-            try:
+        # 执行任务
+        success = True
+        result = None
+        error = None
+
+        try:
+            # 调用回调
+            if self._on_task_execute:
                 await self._on_task_execute(task)
-            except Exception as e:
-                logger.error(f"任务执行回调失败: {e}")
+                result = "执行成功"
+            else:
+                result = "未设置执行回调"
+        except Exception as e:
+            success = False
+            error = str(e)
+            logger.error(f"任务执行失败: {e}")
+
+        # 计算执行时长
+        duration = time.time() - start_time
+
+        # 记录执行历史
+        history_manager.add_record(
+            task_id=task.id,
+            task_name=task.task_name,
+            success=success,
+            result=result,
+            error=error,
+            duration_seconds=duration
+        )
 
     def list_tasks(self, only_enabled: bool = False) -> List[ScheduledTask]:
         """列出任务"""
@@ -166,6 +197,10 @@ class TaskManager:
     def get_tools(self) -> list:
         """获取工具定义"""
         return [CREATE_SCHEDULED_TASK_TOOL]
+
+    def get_history_manager(self):
+        """获取历史管理器"""
+        return get_task_history_manager()
 
 
 # 全局管理器实例

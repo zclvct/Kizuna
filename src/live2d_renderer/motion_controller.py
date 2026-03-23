@@ -46,6 +46,17 @@ class MotionController:
         except Exception as e:
             logger.error(f"保存默认动作配置失败: {e}")
 
+    def _save_config(self):
+        """保存配置"""
+        try:
+            self.config_path.write_text(
+                json.dumps(self.config, indent=2, ensure_ascii=False),
+                encoding="utf-8"
+            )
+            logger.info(f"动作配置已保存: {self.config_path}")
+        except Exception as e:
+            logger.error(f"保存动作配置失败: {e}")
+
     def get_motion_for_mood(self, mood: str) -> Optional[str]:
         """根据心情获取动作"""
         motions = self.config.get("mood_motions", {}).get(mood, [])

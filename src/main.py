@@ -56,76 +56,98 @@ def main():
     logger.info("AI Friend - 二次元桌面助手")
     logger.info("=" * 50)
 
-    # 加载配置
-    config = utils.get_config()
-    logger.info(f"LLM Provider: {config.llm.provider}")
-    logger.info(f"LLM Model: {config.llm.model}")
+    try:
+        # 加载配置
+        config = utils.get_config()
+        logger.info(f"LLM Provider: {config.llm.provider}")
+        logger.info(f"LLM Model: {config.llm.model}")
 
-    # 加载角色设定
-    char_manager = utils.get_character_manager()
-    is_first_run = char_manager.persona.is_first_run()
-    logger.info(f"First run: {is_first_run}")
+        # 加载角色设定
+        char_manager = utils.get_character_manager()
+        is_first_run = char_manager.persona.is_first_run()
+        logger.info(f"First run: {is_first_run}")
 
-    # 初始化助手工具
-    tool_registry = assistant.get_tool_registry()
-    logger.info(f"已注册 {len(tool_registry.tools)} 个工具")
+        # 初始化助手工具
+        tool_registry = assistant.get_tool_registry()
+        logger.info(f"已注册 {len(tool_registry.tools)} 个工具")
 
-    # 创建应用
-    qt_app = QApplication(sys.argv)
-    qt_app.setApplicationName("AI Friend")
-    qt_app.setQuitOnLastWindowClosed(False)
+        # 创建应用
+        qt_app = QApplication(sys.argv)
+        qt_app.setApplicationName("AI Friend")
+        qt_app.setQuitOnLastWindowClosed(False)
 
-    # 创建主窗口
-    window = app.MainWindow()
-    window.show()
-    logger.info("主窗口已显示")
+        # 创建主窗口
+        window = app.MainWindow()
+        window.show()
+        logger.info("主窗口已显示")
 
-    # 创建系统托盘
-    tray = app.TrayIcon()
-    tray.show()
-
-    # 连接托盘信号
-    tray.toggle_window.connect(window.setVisible)
-    tray.open_settings.connect(window._open_settings)
-    tray.quit_app.connect(qt_app.quit)
-
-    # 启动任务管理器（异步）
-    task_manager = scheduler.get_task_manager()
-
-    # 使用 QTimer 延迟启动异步任务
-    def start_async_tasks():
-        """启动异步任务"""
+        # 创建系统托盘
         try:
-            loop = asyncio.get_event_loop()
-        except RuntimeError:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
+            tray = app.TrayIcon()
+            tray.show()
 
-        if loop.is_running():
-            asyncio.create_task(task_manager.start())
-        else:
-            # 在单独线程中运行事件循环
-            import threading
-            def run_loop():
-                loop.run_forever()
+            # 连接托盘信号
+            tray.toggle_window.connect(window.setVisible)
+            tray.open_settings.connect(window._open_settings)
+            tray.quit_app.connect(qt_app.quit)
+            logger.info("系统托盘已创建")
+        except Exception as e:
+            logger.warning(f"系统托盘创建失败: {e}，继续运行")
 
-            thread = threading.Thread(target=run_loop, daemon=True)
-            thread.start()
-            asyncio.run_coroutine_threadsafe(task_manager.start(), loop)
+        # 启动任务管理器（异步）
+        task_manager = scheduler.get_task_manager()
 
-        setup_task_callbacks(window, task_manager)
-        logger.info("任务管理器已启动")
+        # 使用 QTimer 延迟启动异步任务
+        def start_async_tasks():
+            """启动异步任务"""
+            try:
+                try:
+                    loop = asyncio.get_event_loop()
+                except RuntimeError:
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
 
-    QTimer.singleShot(500, start_async_tasks)
+                if loop.is_running():
+                    asyncio.create_task(task_manager.start())
+                else:
+                    # 在单独线程中运行事件循环
+                    import threading
+                    def run_loop():
+                        loop.run_forever()
 
-    if is_first_run:
-        logger.info("第一次运行，显示问候")
-        # 第一次运行时自动打开对话窗口
-        QTimer.singleShot(1000, window._toggle_chat)
+                    thread = threading.Thread(target=run_loop, daemon=True)
+                    thread.start()
+                    asyncio.run_coroutine_threadsafe(task_manager.start(), loop)
 
-    logger.info("应用启动完成")
+                setup_task_callbacks(window, task_manager)
+                logger.info("任务管理器已启动")
+            except Exception as e:
+                logger.error(f"任务管理器启动失败: {e}")
 
-    return qt_app.exec()
+        QTimer.singleShot(500, start_async_tasks)
+
+        if is_first_run:
+            logger.info("第一次运行，显示问候")
+            # 第一次运行时自动打开对话窗口
+            QTimer.singleShot(1000, window._toggle_chat)
+
+        logger.info("应用启动完成")
+
+        return qt_app.exec()
+
+    except Exception as e:
+        logger.error(f"应用启动失败: {e}", exc_info=True)
+        # 尝试显示错误对话框
+        try:
+            from PySide6.QtWidgets import QMessageBox
+            QMessageBox.critical(
+                None,
+                "启动失败",
+                f"应用启动失败:\n\n{str(e)}\n\n请检查日志文件了解详情。"
+            )
+        except:
+            pass
+        return 1
 
 
 if __name__ == "__main__":

@@ -57,6 +57,7 @@ class TasksWindow(QDialog):
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.table.customContextMenuRequested.connect(self._show_context_menu)
+        self.table.doubleClicked.connect(self._on_double_click)
         layout.addWidget(self.table, 1)
 
         # 按钮区
@@ -148,6 +149,8 @@ class TasksWindow(QDialog):
             btn_widget = TaskActionButtons(task, self)
             btn_widget.enable_task.connect(self._on_enable_task)
             btn_widget.disable_task.connect(self._on_disable_task)
+            btn_widget.edit_task.connect(self._on_edit_task)
+            btn_widget.run_now.connect(self._on_run_now)
             btn_widget.delete_task.connect(self._on_delete_task)
             self.table.setCellWidget(row, 5, btn_widget)
 
@@ -165,12 +168,27 @@ class TasksWindow(QDialog):
 
         menu = QMenu(self)
 
+        detail_action = menu.addAction("查看详情")
+        detail_action.triggered.connect(lambda: self._on_show_detail(task_id))
+
+        menu.addSeparator()
+
+        edit_action = menu.addAction("编辑")
+        edit_action.triggered.connect(lambda: self._on_edit_task(task_id))
+
+        menu.addSeparator()
+
         if task.enabled:
             disable_action = menu.addAction("禁用")
             disable_action.triggered.connect(lambda: self._on_disable_task(task_id))
         else:
             enable_action = menu.addAction("启用")
             enable_action.triggered.connect(lambda: self._on_enable_task(task_id))
+
+        menu.addSeparator()
+
+        run_now_action = menu.addAction("立即执行")
+        run_now_action.triggered.connect(lambda: self._on_run_now(task_id))
 
         menu.addSeparator()
         delete_action = menu.addAction("删除")
@@ -202,6 +220,60 @@ class TasksWindow(QDialog):
             self._load_tasks()
             logger.info(f"已删除任务: {task_id}")
 
+    def _on_double_click(self, index):
+        """双击事件"""
+        row = index.row()
+        task_id = self.table.item(row, 0).data(Qt.ItemDataRole.UserRole)
+        self._on_show_detail(task_id)
+
+    def _on_show_detail(self, task_id: str):
+        """查看任务详情"""
+        from task_detail_dialog import TaskDetailDialog
+
+        task = self.task_manager.storage.get(task_id)
+        if not task:
+            return
+
+        dialog = TaskDetailDialog(task, self)
+        dialog.task_edited.connect(self._load_tasks)
+        dialog.exec()
+
+    def _on_edit_task(self, task_id: str):
+        """编辑任务"""
+        from task_edit_dialog import TaskEditDialog
+
+        task = self.task_manager.storage.get(task_id)
+        if not task:
+            return
+
+        dialog = TaskEditDialog(task, self)
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            # 更新任务
+            self.task_manager.storage.update(task)
+            # 如果任务启用,重新调度
+            if task.enabled:
+                self.task_manager._add_job(task)
+            self._load_tasks()
+            logger.info(f"已编辑任务: {task.task_name}")
+
+    def _on_run_now(self, task_id: str):
+        """立即执行任务"""
+        task = self.task_manager.storage.get(task_id)
+        if not task:
+            return
+
+        reply = QMessageBox.question(
+            self, "确认执行",
+            f"确定要立即执行任务「{task.task_name}」吗？",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        )
+        if reply == QMessageBox.StandardButton.Yes:
+            # 触发任务执行
+            import asyncio
+            asyncio.create_task(self.task_manager._execute_task(task_id))
+            logger.info(f"已手动触发任务: {task.task_name}")
+            QMessageBox.information(self, "执行中", "任务已在后台开始执行")
+
 
 from PySide6.QtWidgets import QWidget, QPushButton, QHBoxLayout
 
@@ -212,6 +284,8 @@ class TaskActionButtons(QWidget):
     enable_task = Signal(str)
     disable_task = Signal(str)
     delete_task = Signal(str)
+    edit_task = Signal(str)
+    run_now = Signal(str)
 
     def __init__(self, task, parent=None):
         super().__init__(parent)
@@ -221,20 +295,21 @@ class TaskActionButtons(QWidget):
 
     def _setup_ui(self):
         layout = QHBoxLayout(self)
-        layout.setContentsMargins(4, 4, 4, 4)
-        layout.setSpacing(4)
+        layout.setContentsMargins(2, 2, 2, 2)
+        layout.setSpacing(3)
 
         # 启用/禁用按钮
         if self._task.enabled:
-            self.toggle_btn = QPushButton("禁用")
+            self.toggle_btn = QPushButton("停")
+            self.toggle_btn.setMaximumWidth(30)
             self.toggle_btn.setStyleSheet("""
                 QPushButton {
                     background-color: #FF9500;
                     color: white;
                     border: none;
-                    border-radius: 4px;
-                    padding: 4px 8px;
-                    font-size: 11px;
+                    border-radius: 3px;
+                    padding: 2px 4px;
+                    font-size: 10px;
                 }
                 QPushButton:hover {
                     background-color: #E08500;
@@ -242,15 +317,16 @@ class TaskActionButtons(QWidget):
             """)
             self.toggle_btn.clicked.connect(lambda: self.disable_task.emit(self.task_id))
         else:
-            self.toggle_btn = QPushButton("启用")
+            self.toggle_btn = QPushButton("启")
+            self.toggle_btn.setMaximumWidth(30)
             self.toggle_btn.setStyleSheet("""
                 QPushButton {
                     background-color: #34C759;
                     color: white;
                     border: none;
-                    border-radius: 4px;
-                    padding: 4px 8px;
-                    font-size: 11px;
+                    border-radius: 3px;
+                    padding: 2px 4px;
+                    font-size: 10px;
                 }
                 QPushButton:hover {
                     background-color: #28A745;
@@ -260,16 +336,55 @@ class TaskActionButtons(QWidget):
 
         layout.addWidget(self.toggle_btn)
 
+        # 编辑按钮
+        edit_btn = QPushButton("编辑")
+        edit_btn.setMaximumWidth(40)
+        edit_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #007AFF;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                padding: 2px 4px;
+                font-size: 10px;
+            }
+            QPushButton:hover {
+                background-color: #0056CC;
+            }
+        """)
+        edit_btn.clicked.connect(lambda: self.edit_task.emit(self.task_id))
+        layout.addWidget(edit_btn)
+
+        # 立即执行按钮
+        run_btn = QPushButton("运行")
+        run_btn.setMaximumWidth(40)
+        run_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #5856D6;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                padding: 2px 4px;
+                font-size: 10px;
+            }
+            QPushButton:hover {
+                background-color: #4A48B5;
+            }
+        """)
+        run_btn.clicked.connect(lambda: self.run_now.emit(self.task_id))
+        layout.addWidget(run_btn)
+
         # 删除按钮
         delete_btn = QPushButton("删除")
+        delete_btn.setMaximumWidth(40)
         delete_btn.setStyleSheet("""
             QPushButton {
                 background-color: #FF3B30;
                 color: white;
                 border: none;
-                border-radius: 4px;
-                padding: 4px 8px;
-                font-size: 11px;
+                border-radius: 3px;
+                padding: 2px 4px;
+                font-size: 10px;
             }
             QPushButton:hover {
                 background-color: #E0352B;

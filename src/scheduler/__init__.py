@@ -8,6 +8,7 @@ from scheduler.task import ScheduledTask, CREATE_SCHEDULED_TASK_TOOL
 from scheduler.storage import TaskStorage, get_task_storage
 from scheduler.manager import TaskManager, get_task_manager
 from scheduler.parser import TaskParser
+from scheduler.task_history import TaskHistoryManager, get_task_history_manager, TaskExecutionRecord
 
 __all__ = [
     "ScheduledTask",
@@ -17,4 +18,7 @@ __all__ = [
     "TaskManager",
     "get_task_manager",
     "TaskParser",
+    "TaskHistoryManager",
+    "get_task_history_manager",
+    "TaskExecutionRecord",
 ]

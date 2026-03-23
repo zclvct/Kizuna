@@ -1,0 +1,27 @@
+{
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-4",
+    "api_key": null,
+    "base_url": null
+  },
+  "live2d": {
+    "model_path": "assets/live2d/biaoqiang",
+    "scale": 1.0,
+    "default_motion": "idle_01"
+  },
+  "weather": {
+    "default_city": "北京"
+  },
+  "general": {
+    "auto_start": false,
+    "always_on_top": true,
+    "sound_enabled": true,
+    "log_level": "INFO"
+  },
+  "motion": {
+    "enable_mood_motion": true,
+    "enable_idle_motion": true,
+    "idle_interval_seconds": 30
+  }
+}

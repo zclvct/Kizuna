@@ -18,7 +18,7 @@ from assistant.tools import (
     edit_persona, PERSONA_TOOL,
     play_motion, MOTION_TOOL,
 )
-from utils import get_logger
+from utils import get_logger, get_skills_manager
 
 logger = get_logger()
 
@@ -112,25 +112,42 @@ class ToolRegistry:
         self._tools[tool.name] = tool
         logger.debug(f"Tool registered: {tool.name}")
 
+    @property
+    def tools(self) -> Dict[str, Tool]:
+        """获取所有工具"""
+        return self._tools
+
     def get_tool(self, name: str) -> Optional[Tool]:
         """获取工具"""
         return self._tools.get(name)
 
     def to_openai_tools(self) -> List[Dict]:
-        """转换为 OpenAI tools 格式"""
-        tools = []
+        """转换为 OpenAI tools 格式（仅返回启用的工具）"""
+        skills_manager = get_skills_manager()
+        enabled_tools = skills_manager.get_enabled_tools()
 
-        # 时间工具
-        tools.append(TIME_TOOL)
-        tools.append(WEATHER_TOOL)
-        tools.extend(TODO_TOOLS)
-        tools.extend(CLIPBOARD_TOOLS)
-        tools.append(SYSTEM_TOOL)
-        tools.append(LAUNCHER_TOOL)
-        tools.append(PERSONA_TOOL)
-        tools.append(MOTION_TOOL)
+        all_tools = [
+            TIME_TOOL,
+            WEATHER_TOOL,
+            *TODO_TOOLS,
+            *CLIPBOARD_TOOLS,
+            SYSTEM_TOOL,
+            LAUNCHER_TOOL,
+            PERSONA_TOOL,
+            MOTION_TOOL
+        ]
 
-        return tools
+        # 过滤出启用的工具
+        filtered_tools = []
+        for tool_def in all_tools:
+            tool_name = tool_def["function"]["name"]
+            if tool_name in enabled_tools:
+                filtered_tools.append(tool_def)
+            else:
+                logger.debug(f"Tool disabled by skill setting: {tool_name}")
+
+        logger.info(f"返回 {len(filtered_tools)} 个启用的工具")
+        return filtered_tools
 
     async def execute(self, name: str, arguments: Dict) -> Any:
         """执行工具"""
