@@ -439,3 +439,11 @@ class Live2DWidget(QFrame):
         motion = motion_controller.get_motion_for_mood(mood)
         if motion:
             self.play_motion(motion)
+    
+    def set_scale(self, scale: float):
+        """设置模型缩放"""
+        self.live2d_widget.set_scale(scale)
+        # 更新配置
+        config = get_config()
+        config.live2d.scale = scale
+        config.general.model_scale = scale

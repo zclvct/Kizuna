@@ -27,6 +27,9 @@ class SettingsWindow(QDialog):
     """设置窗口"""
 
     model_changed = Signal(str)  # 模型路径变更信号
+    scale_changed = Signal(float)  # 模型缩放变更信号
+    always_on_top_changed = Signal(bool)  # 窗口置顶变更信号
+    draggable_changed = Signal(bool)  # 拖动状态变更信号
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -62,6 +65,11 @@ class SettingsWindow(QDialog):
         
         # 连接 Live2D 模型变更信号
         self.live2d_page.model_changed.connect(self._on_model_changed)
+        
+        # 连接通用设置页面的实时信号
+        self.general_page.scale_changed.connect(self.scale_changed.emit)
+        self.general_page.always_on_top_changed.connect(self.always_on_top_changed.emit)
+        self.general_page.draggable_changed.connect(self.draggable_changed.emit)
 
         self.tabs.addTab(self.llm_page, "🤖 LLM")
         self.tabs.addTab(self.live2d_page, "🎭 Live2D")

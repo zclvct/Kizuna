@@ -53,6 +53,13 @@ class GeneralConfig:
     always_on_top: bool = True
     sound_enabled: bool = True
     log_level: str = "INFO"
+    # 窗口位置
+    window_x: int = 100
+    window_y: int = 100
+    # 可拖动开关
+    draggable: bool = True
+    # 模型缩放 (0.5 - 2.0)
+    model_scale: float = 1.0
 
 
 @dataclass

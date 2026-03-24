@@ -115,6 +115,7 @@ class MainWindow(QMainWindow):
         self._setup_ui()
         self._setup_context_menu()
         self._setup_task_manager()
+        self._restore_window_position()
 
         # 第一次启动时自动显示对话窗口
         if self.character_manager.persona.is_first_run():
@@ -127,12 +128,41 @@ class MainWindow(QMainWindow):
 
     def _setup_window_flags(self):
         """设置窗口标志"""
-        self.setWindowFlags(
+        flags = (
             Qt.WindowType.FramelessWindowHint |
-            Qt.WindowType.WindowStaysOnTopHint |
             Qt.WindowType.Tool
         )
+        # 根据配置设置是否置顶
+        if self.config.general.always_on_top:
+            flags |= Qt.WindowType.WindowStaysOnTopHint
+        self.setWindowFlags(flags)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+    
+    def _restore_window_position(self):
+        """恢复窗口位置"""
+        x = self.config.general.window_x
+        y = self.config.general.window_y
+        
+        # 检查位置是否在屏幕范围内
+        screen = QApplication.screenAt(QPoint(x, y))
+        if screen is None:
+            screen = QApplication.primaryScreen()
+        
+        screen_rect = screen.availableGeometry()
+        
+        # 确保窗口在屏幕可见范围内
+        x = max(screen_rect.left(), min(x, screen_rect.right() - self.width()))
+        y = max(screen_rect.top(), min(y, screen_rect.bottom() - self.height()))
+        
+        self.move(x, y)
+        logger.info(f"窗口位置恢复至: ({x}, {y})")
+    
+    def _save_window_position(self):
+        """保存窗口位置"""
+        pos = self.pos()
+        self.config.general.window_x = pos.x()
+        self.config.general.window_y = pos.y()
+        logger.info(f"窗口位置已保存: ({pos.x()}, {pos.y()})")
 
     def _setup_ui(self):
         """设置 UI"""
@@ -162,6 +192,10 @@ class MainWindow(QMainWindow):
 
     def _on_drag_started(self, global_pos: QPoint):
         """模型区域开始拖拽"""
+        # 检查是否允许拖动
+        if not self.config.general.draggable:
+            logger.debug("拖动已禁用")
+            return
         self._drag_position = global_pos - self.frameGeometry().topLeft()
         self._dragging = True
         self.grabMouse()
@@ -344,7 +378,48 @@ class MainWindow(QMainWindow):
         dialog = SettingsWindow(self)
         # 连接模型变更信号，延迟刷新模型避免 OpenGL 上下文冲突
         dialog.model_changed.connect(self._delayed_model_reload)
+        # 连接缩放变更信号
+        dialog.scale_changed.connect(self._on_scale_changed)
+        # 连接窗口置顶变更信号
+        dialog.always_on_top_changed.connect(self._on_always_on_top_changed)
+        # 连接拖动状态变更信号
+        dialog.draggable_changed.connect(self._on_draggable_changed)
         dialog.exec()
+    
+    def _on_scale_changed(self, scale: float):
+        """模型缩放变化"""
+        self.live2d_widget.set_scale(scale)
+        logger.info(f"模型缩放更新: {scale}")
+    
+    def _on_always_on_top_changed(self, always_on_top: bool):
+        """窗口置顶状态变化"""
+        # 保存当前窗口位置
+        pos = self.pos()
+        
+        # 重新设置窗口标志
+        flags = (
+            Qt.WindowType.FramelessWindowHint |
+            Qt.WindowType.Tool
+        )
+        if always_on_top:
+            flags |= Qt.WindowType.WindowStaysOnTopHint
+        
+        self.setWindowFlags(flags)
+        self.show()
+        self.move(pos)
+        
+        # 更新聊天气泡位置
+        if self._chat_visible:
+            self._update_bubble_position()
+        
+        logger.info(f"窗口置顶状态更新: {always_on_top}")
+    
+    def _on_draggable_changed(self, draggable: bool):
+        """拖动状态变化"""
+        if not draggable and self._dragging:
+            self.releaseMouse()
+            self._dragging = False
+        logger.info(f"拖动状态更新: {draggable}")
 
     def _delayed_model_reload(self, model_path: str):
         """延迟重新加载模型"""
@@ -394,6 +469,10 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):
         """关闭窗口"""
+        # 保存窗口位置
+        self._save_window_position()
+        self.config.save()
+        
         self.chat_bubble.close()
         self.emoji_bubble.close()
         import asyncio
