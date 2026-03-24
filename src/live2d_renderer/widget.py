@@ -4,7 +4,7 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
 
-from PySide6.QtWidgets import QFrame, QVBoxLayout, QLabel
+from PySide6.QtWidgets import QFrame, QVBoxLayout
 from PySide6.QtCore import Qt, Signal, QTimer, QPoint
 from PySide6.QtGui import QSurfaceFormat
 from PySide6.QtOpenGLWidgets import QOpenGLWidget
@@ -29,11 +29,20 @@ class Live2DGLWidget(QOpenGLWidget):
         self._initialized = False
         self._model_loaded = False
         self._pending_model_path = None
+        self._motion_map = {}  # 动态动作映射: {motion_name: index}
+        self._model_config = None  # 模型配置数据
         
         # 拖拽相关
         self._press_pos = None  # 按下时的位置
         self._is_dragging = False
         self._drag_threshold = 5  # 拖拽阈值（像素）
+        
+        # 眼睛追踪
+        self._eye_target_x = 0.0  # 目标眼球X位置 (-1 到 1)
+        self._eye_target_y = 0.0  # 目标眼球Y位置 (-1 到 1)
+        self._eye_current_x = 0.0  # 当前眼球X位置
+        self._eye_current_y = 0.0  # 当前眼球Y位置
+        self._eye_smoothing = 0.15  # 眼球移动平滑度
         
         logger.info("创建 Live2D OpenGL 控件")
 
@@ -47,7 +56,7 @@ class Live2DGLWidget(QOpenGLWidget):
 
         # 动画定时器 (~60 FPS)
         self._animation_timer = QTimer()
-        self._animation_timer.timeout.connect(self.update)
+        self._animation_timer.timeout.connect(self._on_animation_tick)
         self._animation_timer.start(16)
         
         # 设置鼠标追踪
@@ -59,6 +68,10 @@ class Live2DGLWidget(QOpenGLWidget):
         try:
             live2d.init()
             live2d.glInit()
+
+            # 禁用 Live2D SDK 的 INFO 日志，只显示 WARNING 和 ERROR
+            live2d.setLogLevel(live2d.Live2DLogLevels.LV_WARN)
+
             self._initialized = True
             logger.info("OpenGL 和 Live2D 初始化成功")
 
@@ -78,10 +91,56 @@ class Live2DGLWidget(QOpenGLWidget):
 
         try:
             live2d.clearBuffer()
+            # 更新眼球追踪
+            self._update_eye_tracking()
             self.model.Update()
             self.model.Draw()
         except Exception as e:
             logger.error(f"绘制失败: {e}", exc_info=True)
+
+    def _on_animation_tick(self):
+        """动画帧更新"""
+        self._update_global_eye_target()
+        self.update()
+
+    def _update_global_eye_target(self):
+        """根据全局鼠标位置更新眼睛目标"""
+        from PySide6.QtWidgets import QApplication
+        cursor_pos = QApplication.instance().keyboardModifiers()  # 检查应用状态
+        global_pos = self.mapToGlobal(self.rect().center())
+        
+        # 获取全局鼠标位置
+        mouse_pos = self.cursor().pos()
+        
+        # 计算相对于控件中心的位置
+        center_x = global_pos.x()
+        center_y = global_pos.y()
+        
+        # 计算偏移量并归一化 (-1 到 1)
+        max_distance = 300  # 最大追踪距离
+        dx = (mouse_pos.x() - center_x) / max_distance
+        dy = -(mouse_pos.y() - center_y) / max_distance  # Y轴翻转
+        
+        # 限制范围
+        self._eye_target_x = max(-1.0, min(1.0, dx))
+        self._eye_target_y = max(-1.0, min(1.0, dy))
+
+    def _update_eye_tracking(self):
+        """更新眼球追踪 - 平滑移动"""
+        if not self.model:
+            return
+            
+        # 平滑插值
+        self._eye_current_x += (self._eye_target_x - self._eye_current_x) * self._eye_smoothing
+        self._eye_current_y += (self._eye_target_y - self._eye_current_y) * self._eye_smoothing
+        
+        try:
+            # 设置眼球参数
+            self.model.SetParameterValue("ParamEyeBallX", self._eye_current_x, 1.0)
+            self.model.SetParameterValue("ParamEyeBallY", self._eye_current_y, 1.0)
+        except Exception:
+            # 某些模型可能不支持这些参数
+            pass
 
     def resizeGL(self, w, h):
         """窗口大小改变"""
@@ -99,7 +158,9 @@ class Live2DGLWidget(QOpenGLWidget):
     def _load_model_internal(self, model_path: str):
         """内部加载模型方法"""
         try:
+            import json
             logger.info(f"开始加载模型: {model_path}")
+
 
             model_path_obj = Path(model_path)
             if not model_path_obj.exists():
@@ -111,6 +172,9 @@ class Live2DGLWidget(QOpenGLWidget):
 
             model_json_path = model3_files[0]
             logger.info(f"找到模型文件: {model_json_path}")
+
+            # 读取模型配置文件，解析 motions
+            self._parse_model_motions(model_json_path)
 
             self.model = live2d.LAppModel()
             self.model.LoadModelJson(str(model_json_path.absolute()))
@@ -129,12 +193,45 @@ class Live2DGLWidget(QOpenGLWidget):
                 QTimer.singleShot(50, self._resize_model)
 
             self._model_loaded = True
-            logger.info("模型加载完成")
+            logger.info(f"模型加载完成，可用动作: {list(self._motion_map.keys())}")
             return True
 
         except Exception as e:
             logger.error(f"加载模型失败: {e}", exc_info=True)
             return False
+
+    def _parse_model_motions(self, model_json_path: Path):
+        """从模型配置文件解析动作映射"""
+        import json
+        try:
+            with open(model_json_path, 'r', encoding='utf-8') as f:
+                self._model_config = json.load(f)
+            
+            motions = self._model_config.get("FileReferences", {}).get("Motions", {})
+            self._motion_map = {}
+            
+            # 遍历所有动作组（通常主组是空字符串 ""）
+            for group_name, motion_list in motions.items():
+                for index, motion_entry in enumerate(motion_list):
+                    file_path = motion_entry.get("File", "")
+                    # 从文件路径提取动作名称: motions/idle.motion3.json -> idle
+                    if file_path:
+                        motion_name = Path(file_path).stem  # 去掉目录和扩展名
+                        # 去掉 .motion3 后缀（如果有）
+                        if motion_name.endswith(".motion3"):
+                            motion_name = motion_name[:-8]
+                        self._motion_map[motion_name] = index
+                        logger.debug(f"解析动作: {motion_name} -> 索引 {index} (组: '{group_name}')")
+            
+            logger.info(f"从模型解析到 {len(self._motion_map)} 个动作: {list(self._motion_map.keys())}")
+            
+        except Exception as e:
+            logger.error(f"解析模型动作失败: {e}", exc_info=True)
+            self._motion_map = {"idle": 0}  # 默认备用
+
+    def get_available_motions(self) -> list:
+        """获取模型支持的所有动作名称列表"""
+        return list(self._motion_map.keys())
 
     def _resize_model(self):
         """调整模型画布大小"""
@@ -154,13 +251,19 @@ class Live2DGLWidget(QOpenGLWidget):
         if self.model:
             try:
                 logger.info(f"播放动作: {motion_name}")
-                motion_map = {
-                    'complete': 0, 'home': 1, 'idle': 2, 'login': 3, 'mail': 4,
-                    'main_1': 5, 'main_2': 6, 'main_3': 7, 'mission_complete': 8,
-                    'mission': 9, 'touch_body': 10, 'touch_head': 11,
-                    'touch_special': 12, 'wedding': 13,
-                }
-                motion_no = motion_map.get(motion_name, 2)
+                
+                if not self._motion_map:
+                    logger.warning("动作映射表为空，无法播放动作")
+                    return
+                
+                motion_no = self._motion_map.get(motion_name)
+                if motion_no is None:
+                    # 尝试模糊匹配
+                    available = list(self._motion_map.keys())
+                    logger.warning(f"动作 '{motion_name}' 不在映射表中，可用动作: {available}")
+                    # 默认使用第一个动作或 idle
+                    motion_no = self._motion_map.get("idle", 0)
+                
                 self.model.StartMotion("", motion_no, 3)
             except Exception as e:
                 logger.error(f"播放动作失败: {e}", exc_info=True)
@@ -246,21 +349,6 @@ class Live2DWidget(QFrame):
         layout.addWidget(self.live2d_widget, 1)
         logger.info("使用 Live2D OpenGL 渲染")
 
-        # 名称标签 - 小巧美观
-        self.name_label = QLabel()
-        self.name_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.name_label.setStyleSheet("""
-            QLabel {
-                font-size: 12px;
-                font-weight: bold;
-                color: #333;
-                background-color: rgba(255, 255, 255, 180);
-                border-radius: 8px;
-                padding: 3px 12px;
-            }
-        """)
-        layout.addWidget(self.name_label, 0, Qt.AlignmentFlag.AlignCenter)
-
         # 透明背景，无边框
         self.setStyleSheet("""
             QFrame {
@@ -268,8 +356,6 @@ class Live2DWidget(QFrame):
             }
         """)
         self.setFixedSize(300, 430)
-
-        self._update_info_display()
 
     def _load_model(self):
         """加载模型"""
@@ -286,10 +372,7 @@ class Live2DWidget(QFrame):
         try:
             config = get_config()
             model_path = config.live2d.model_path
-            success = self.live2d_widget.load_model(model_path)
-            if success:
-                persona = self.character_manager.persona
-                self.name_label.setText(persona.name)
+            self.live2d_widget.load_model(model_path)
         except Exception as e:
             logger.error(f"加载模型时出错: {e}", exc_info=True)
 
@@ -307,11 +390,6 @@ class Live2DWidget(QFrame):
         if enable_idle:
             self._idle_timer.start(interval)
             logger.info(f"空闲动作已启用，间隔 {interval/1000} 秒")
-
-    def _update_info_display(self):
-        """更新信息显示"""
-        persona = self.character_manager.persona
-        self.name_label.setText(persona.name)
 
     def _on_idle(self):
         """空闲动作"""
@@ -335,6 +413,11 @@ class Live2DWidget(QFrame):
         motion_controller = MotionController()
         settings = motion_controller.config.get("settings", {})
         enable_chat_motion = settings.get("enable_chat_motion", True)
+
+        # 防御性检查：motion_id 为 None 时跳过
+        if motion_id is None:
+            logger.warning("motion_id is None, skipping motion playback")
+            return
 
         if motion_id.startswith("idle") and not enable_chat_motion:
             return

@@ -14,7 +14,7 @@ from utils.character import (
 from utils.logger import setup_logger, get_logger
 from utils.constants import *
 from utils.motion_callback import set_motion_callback, get_motion_callback, trigger_motion
-from utils.skills_manager import SkillsManager, get_skills_manager
+from agent.tools.tools_config import get_tools_config
 
 __all__ = [
     "Config",
@@ -28,6 +28,5 @@ __all__ = [
     "set_motion_callback",
     "get_motion_callback",
     "trigger_motion",
-    "SkillsManager",
-    "get_skills_manager",
+    "get_tools_config",
 ]

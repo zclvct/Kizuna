@@ -1,5 +1,6 @@
 # Chat Widget
 import sys
+import asyncio
 from pathlib import Path
 src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
@@ -13,8 +14,8 @@ from PySide6.QtCore import Qt, Signal, QThread, QEventLoop
 from PySide6.QtGui import QFont
 
 from chat.message_bubble import MessageBubble
-from chat.llm_client import get_llm_client
 from chat.conversation_manager import get_conversation_manager
+from agent import get_core, get_langchain_memory
 from utils import get_character_manager, get_logger
 
 logger = get_logger()
@@ -27,9 +28,12 @@ class ChatWidget(QFrame):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.llm_client = get_llm_client()
+        # 使用新的 LangChain Agent
+        self.core = get_core()
         self.conversation_manager = get_conversation_manager()
         self.character_manager = get_character_manager()
+        self.memory = get_langchain_memory()
+        
         self._is_generating = False
         self._setup_ui()
         self._load_history()
@@ -120,12 +124,26 @@ class ChatWidget(QFrame):
             self._add_message_bubble(msg.content, msg.role == "user")
 
     def _check_first_run(self):
-        """检查是否是第一次运行，显示引导对话"""
-        if self.character_manager.persona.is_first_run():
-            # 第一次运行，显示引导对话
-            greeting = self.character_manager.get_random_greeting()
-            self._add_message_bubble(greeting, is_user=False)
+        """检查是否是第一次运行，显示引导对话或开场白"""
+        persona = self.character_manager.persona
+        
+        # 如果有对话历史，不显示开场白
+        if self.conversation_manager.messages:
+            return
+        
+        # 获取问候语并处理模板变量
+        greeting = self.character_manager.get_random_greeting()
+        
+        # 替换模板变量
+        greeting = greeting.replace("{name}", persona.user_nickname or "你")
+        greeting = greeting.replace("{user_nickname}", persona.user_nickname or "你")
+        
+        self._add_message_bubble(greeting, is_user=False)
+        
+        if persona.is_first_run():
             logger.info("第一次启动，显示引导对话")
+        else:
+            logger.info("显示开场白")
 
     def _add_message_bubble(self, text: str, is_user: bool = False):
         """添加消息气泡"""
@@ -169,42 +187,39 @@ class ChatWidget(QFrame):
         insert_pos = self.messages_layout.count() - 1
         self.messages_layout.insertWidget(insert_pos, self._stream_bubble)
 
-        # 启动后台线程生成
-        self._worker = GenerateWorker(
-            user_text,
-            self.llm_client,
-            self.conversation_manager
-        )
+        # 启动后台线程生成 - 使用新的 LangChain Agent
+        self._worker = GenerateWorker(user_text, self.core)
         self._worker.stream_update.connect(self._on_stream_update)
         self._worker.finished.connect(self._on_response_finished)
         self._worker.error.connect(self._on_response_error)
-        self._worker.tool_calls.connect(self._on_tool_calls)
         self._worker.start()
 
     def _on_stream_update(self, text: str):
         """流式更新（打字机效果）"""
-        if hasattr(self, '_stream_bubble'):
+        # logger.info(f"_on_stream_update: {text[:50] if text else '空'}...")
+        if hasattr(self, '_stream_bubble') and self._stream_bubble:
             # 更新流式气泡内容
             self._stream_bubble.update_text(text)
-
-    def _on_tool_calls(self, tool_calls_info: str):
-        """工具调用信息显示"""
-        # 显示工具调用信息
-        info_bubble = MessageBubble(f"🔧 {tool_calls_info}", is_user=False)
-        insert_pos = self.messages_layout.count() - 1
-        self.messages_layout.insertWidget(insert_pos, info_bubble)
-        self._scroll_to_bottom()
+            self._scroll_to_bottom()
 
     def _on_response_finished(self, result: dict):
         """回复生成完成"""
+        logger.info(f"_on_response_finished 收到结果: {result}")
+        
         # 移除流式气泡（如果有）
         if hasattr(self, '_stream_bubble'):
             self._stream_bubble.deleteLater()
+            del self._stream_bubble
 
         final_text = result.get("final_text", "")
+        logger.info(f"final_text: '{final_text}'")
+        
         if final_text:
             self._add_message_bubble(final_text, is_user=False)
             self.conversation_manager.add_assistant_message(final_text)
+            logger.info(f"已添加消息气泡: {final_text[:50]}...")
+        else:
+            logger.warning("final_text 为空!")
 
         self._is_generating = False
         self.send_btn.setEnabled(True)
@@ -231,104 +246,51 @@ class ChatWidget(QFrame):
 
 
 class GenerateWorker(QThread):
-    """生成回复的后台线程 - 支持流式输出和 Function Calling"""
+    """生成回复的后台线程 - 使用 LangChain Agent"""
 
     stream_update = Signal(str)
     finished = Signal(dict)
     error = Signal(str)
-    tool_calls = Signal(str)
 
-    def __init__(self, user_text: str, llm_client, conversation_manager):
+    # 类级别的事件循环，保持持久运行
+    _event_loop = None
+
+    def __init__(self, user_text: str, core):
         super().__init__()
         self.user_text = user_text
-        self.llm_client = llm_client
-        self.conversation_manager = conversation_manager
+        self.core = core  # AIFriendCore 实例
+
+    @classmethod
+    def _get_event_loop(cls):
+        """获取或创建持久的事件循环"""
+        if cls._event_loop is None or cls._event_loop.is_closed():
+            cls._event_loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(cls._event_loop)
+        return cls._event_loop
 
     def run(self):
         """执行"""
         try:
-            import asyncio
-            from assistant.function_calling import get_function_handler
+            # 使用持久的事件循环，不关闭
+            loop = self._get_event_loop()
 
-            # 创建新的事件循环
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-
-            try:
-                # 运行异步生成流程
-                result = loop.run_until_complete(
-                    self._generate_with_function_calling()
-                )
-                self.finished.emit(result)
-            finally:
-                loop.close()
+            # 运行异步生成流程
+            result = loop.run_until_complete(
+                self._generate_with_agent()
+            )
+            self.finished.emit(result)
 
         except Exception as e:
-            logger.error(f"生成回复失败: {e}")
+            logger.error(f"生成回复失败: {e}", exc_info=True)
             self.error.emit(str(e))
 
-    async def _generate_with_function_calling(self):
-        """使用 Function Calling 生成回复"""
-        from assistant.function_calling import get_function_handler
-
-        handler = get_function_handler()
-
-        # 第一轮：调用 LLM，检测是否需要调用工具
-        messages = self.conversation_manager.get_recent_messages()
-
-        response = await self.llm_client.chat(
-            messages,
-            tools=handler.get_tools(),
-            stream=False  # 非流式，方便检测 tool_calls
-        )
-
-        if not hasattr(response, 'choices') or not response.choices:
-            return {"final_text": "抱歉，我没有理解。"}
-
-        message = response.choices[0].message
-
-        # 检查是否有 tool_calls
-        if hasattr(message, 'tool_calls') and message.tool_calls:
-            # 处理工具调用
-            needs_confirm, tool_results = await handler.process_tool_calls(message)
-
-            # 显示工具调用信息
-            tool_calls_info = []
-            for tc in message.tool_calls:
-                tool_calls_info.append(f"调用: {tc.function.name}")
-            self.tool_calls.emit("\n".join(tool_calls_info))
-
-            # 如果需要确认
-            if needs_confirm:
-                return {"final_text": needs_confirm}
-
-            # 第二轮：使用流式输出，传递工具结果
-            messages.append({
-                "role": "assistant",
-                "content": message.content or ""
-            })
-            messages.extend(tool_results)
-
-            # 流式输出最终回复
-            full_text = ""
-            async for chunk in await self.llm_client.chat(
-                messages,
-                tools=handler.get_tools(),
-                stream=True
-            ):
-                full_text += chunk
+    async def _generate_with_agent(self):
+        """使用 LangChain Agent 生成回复"""
+        full_text = ""
+        
+        async for response in self.core.chat(self.user_text, stream=True):
+            if response.content:
+                full_text += response.content
                 self.stream_update.emit(full_text)
-
-            return {"final_text": full_text}
-        else:
-            # 没有工具调用，直接流式输出回复
-            full_text = ""
-            async for chunk in await self.llm_client.chat(
-                messages,
-                tools=handler.get_tools(),
-                stream=True
-            ):
-                full_text += chunk
-                self.stream_update.emit(full_text)
-
-            return {"final_text": full_text}
+        
+        return {"final_text": full_text}

@@ -1,0 +1,36 @@
+{
+  "skills": [
+    {
+      "id": "morning_briefing",
+      "name": "晨间简报",
+      "description": "播报时间、天气和今日待办",
+      "enabled": true,
+      "triggers": ["早上好", "早安", "起床了", "早上"],
+      "tools": ["get_current_time", "get_weather", "list_todos"],
+      "template": "现在是{time}。{weather_info}。今日待办：{todos_info}",
+      "auto_run": false
+    },
+    {
+      "id": "weather_check",
+      "name": "天气查询",
+      "description": "查询天气并给出穿衣建议",
+      "enabled": true,
+      "triggers": ["天气怎么样", "今天天气", "明天天气", "穿什么"],
+      "tools": ["get_weather"],
+      "template": null,
+      "auto_run": false
+    },
+    {
+      "id": "system_status",
+      "name": "系统状态",
+      "description": "查看系统状态并给出建议",
+      "enabled": true,
+      "triggers": ["系统状态", "电脑状态", "电量", "内存"],
+      "tools": ["get_system_info"],
+      "template": null,
+      "auto_run": false
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-23T00:00:00"
+}

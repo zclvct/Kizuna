@@ -1,0 +1,20 @@
+{
+  "moods": [
+    {
+      "id": "c38ac747",
+      "mood": "happy",
+      "category": "mood",
+      "file_path": "assets/emojis/0748faae_happy.gif",
+      "description": "开心",
+      "duration": 3000
+    },
+    {
+      "id": "34b2a87b",
+      "mood": "greeting",
+      "category": "action",
+      "file_path": "assets/emojis/801b9b99_greeting.gif",
+      "description": "",
+      "duration": 3000
+    }
+  ]
+}

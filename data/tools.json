@@ -1,0 +1,64 @@
+{
+  "tools": [
+    {
+      "id": "time",
+      "name": "时间工具",
+      "description": "查询时间、日期、星期",
+      "enabled": true
+    },
+    {
+      "id": "weather",
+      "name": "天气工具",
+      "description": "查询天气预报",
+      "enabled": true
+    },
+    {
+      "id": "todo",
+      "name": "待办事项",
+      "description": "管理待办任务",
+      "enabled": true
+    },
+    {
+      "id": "clipboard",
+      "name": "剪贴板助手",
+      "description": "操作剪贴板内容",
+      "enabled": true
+    },
+    {
+      "id": "system",
+      "name": "系统信息",
+      "description": "查看电脑状态",
+      "enabled": true
+    },
+    {
+      "id": "launcher",
+      "name": "应用启动",
+      "description": "打开应用和文件",
+      "enabled": true
+    },
+    {
+      "id": "scheduler",
+      "name": "定时任务",
+      "description": "创建定时提醒",
+      "enabled": true
+    },
+    {
+      "id": "persona_edit",
+      "name": "角色设定编辑",
+      "description": "学习和修改设定",
+      "enabled": true
+    },
+    {
+      "id": "motion_control",
+      "name": "动作控制",
+      "description": "控制 Live2D 模型动作（需指定动作ID）",
+      "enabled": true
+    },
+    {
+      "id": "mood_emoji",
+      "name": "心情表情包",
+      "description": "显示心情或动作表情包气泡",
+      "enabled": true
+    }
+  ]
+}

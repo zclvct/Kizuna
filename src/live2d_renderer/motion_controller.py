@@ -8,7 +8,7 @@ from typing import Optional, List, Callable
 import json
 import random
 
-from utils import MOTIONS_FILE, DEFAULT_MOTIONS_CONFIG, get_logger
+from utils import MOTIONS_FILE, DEFAULT_MOTIONS_CONFIG, get_config, get_logger
 
 logger = get_logger()
 
@@ -22,6 +22,7 @@ class MotionController:
         self.config = self._load_config()
         self.current_mood = "normal"
         self._motion_callbacks: List[Callable] = []
+        self._model_motions_cache = None  # 缓存模型动作列表
 
     def _load_config(self) -> dict:
         """加载配置"""
@@ -136,7 +137,23 @@ class MotionController:
         return self.play_motion(motion_id=motion)
 
     def get_available_motions(self) -> List[str]:
-        """获取所有可用动作"""
+        """获取所有可用动作
+        
+        优先级:
+        1. 从模型配置文件动态读取（最准确）
+        2. 从配置文件的 available_motions 字段读取
+        3. 从心情/意图动作中收集
+        """
+        # 优先从模型文件读取
+        model_motions = self._get_model_motions()
+        if model_motions:
+            return model_motions
+        
+        # 使用配置中明确定义的动作列表
+        if "available_motions" in self.config:
+            return self.config["available_motions"]
+        
+        # 兼容旧配置：从各处收集
         all_motions = set()
 
         # 从心情动作中收集
@@ -150,7 +167,55 @@ class MotionController:
         # 从空闲动作中收集
         all_motions.update(self.config.get("idle_motions", []))
 
-        return sorted(list(all_motions))
+        return sorted(list(all_motions)) if all_motions else ["idle"]
+
+    def _get_model_motions(self) -> Optional[List[str]]:
+        """从模型配置文件读取动作列表"""
+        if self._model_motions_cache is not None:
+            return self._model_motions_cache
+        
+        try:
+            config = get_config()
+            model_path = Path(config.live2d.model_path)
+            
+            if not model_path.exists():
+                logger.warning(f"模型路径不存在: {model_path}")
+                return None
+            
+            # 查找 .model3.json 文件
+            model3_files = list(model_path.glob("*.model3.json"))
+            if not model3_files:
+                logger.warning(f"未找到模型配置文件: {model_path}")
+                return None
+            
+            model_json_path = model3_files[0]
+            
+            with open(model_json_path, 'r', encoding='utf-8') as f:
+                model_config = json.load(f)
+            
+            motions_config = model_config.get("FileReferences", {}).get("Motions", {})
+            motion_names = []
+            
+            for group_name, motion_list in motions_config.items():
+                for motion_entry in motion_list:
+                    file_path = motion_entry.get("File", "")
+                    if file_path:
+                        motion_name = Path(file_path).stem
+                        if motion_name.endswith(".motion3"):
+                            motion_name = motion_name[:-8]
+                        motion_names.append(motion_name)
+            
+            self._model_motions_cache = motion_names
+            logger.info(f"从模型读取到 {len(motion_names)} 个动作: {motion_names}")
+            return motion_names
+            
+        except Exception as e:
+            logger.error(f"读取模型动作失败: {e}", exc_info=True)
+            return None
+
+    def clear_motions_cache(self):
+        """清除动作缓存（切换模型时调用）"""
+        self._model_motions_cache = None
 
     def get_available_moods(self) -> List[str]:
         """获取所有可用心情"""

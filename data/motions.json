@@ -1,60 +1,42 @@
 {
   "model_id": "default",
+  "description": "Live2D 模型动作配置。动作 ID 来自模型的动作映射表，不是随意定义的。",
+  "available_motions": [
+    "idle",
+    "home",
+    "login",
+    "complete",
+    "mail",
+    "main_1",
+    "main_2",
+    "main_3",
+    "mission",
+    "mission_complete",
+    "touch_body",
+    "touch_head",
+    "touch_special",
+    "wedding"
+  ],
   "mood_motions": {
-    "happy": [
-      "happy_01",
-      "happy_02"
-    ],
-    "excited": [
-      "excited_01"
-    ],
-    "normal": [
-      "idle_01",
-      "idle_02"
-    ],
-    "shy": [
-      "shy_01"
-    ],
-    "sad": [
-      "sad_01"
-    ],
-    "angry": [
-      "angry_01"
-    ],
-    "surprised": [
-      "surprised_01"
-    ],
-    "thinking": [
-      "thinking_01"
-    ]
+    "happy": ["main_1", "main_2"],
+    "excited": ["main_1", "mission_complete"],
+    "normal": ["idle"],
+    "shy": ["touch_head"],
+    "sad": ["idle"],
+    "angry": ["idle"],
+    "surprised": ["touch_special"],
+    "thinking": ["idle"]
   },
   "intent_motions": {
-    "greeting": [
-      "wave",
-      "smile"
-    ],
-    "agree": [
-      "nod",
-      "smile"
-    ],
-    "disagree": [
-      "shake_head"
-    ],
-    "thinking": [
-      "thinking_01"
-    ],
-    "apologize": [
-      "apologize_01"
-    ],
-    "thank": [
-      "thank_01"
-    ]
+    "greeting": ["home", "login"],
+    "agree": ["main_1"],
+    "disagree": ["idle"],
+    "thinking": ["idle"],
+    "apologize": ["touch_body"],
+    "thank": ["main_2"]
   },
-  "idle_motions": [
-    "idle_01",
-    "idle_02"
-  ],
-  "default_motion": "idle_01",
+  "idle_motions": ["idle"],
+  "default_motion": "idle",
   "settings": {
     "enable_mood_motion": true,
     "enable_idle_motion": true,

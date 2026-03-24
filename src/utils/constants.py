@@ -13,7 +13,7 @@ IMAGES_DIR = ASSETS_DIR / "images"
 # 数据文件
 CONFIG_FILE = DATA_DIR / "config.json"
 CHARACTER_FILE = DATA_DIR / "character.json"
-SKILLS_FILE = DATA_DIR / "skills.json"
+TOOLS_FILE = DATA_DIR / "tools.json"
 MOTIONS_FILE = DATA_DIR / "motions.json"
 CONVERSATIONS_FILE = DATA_DIR / "conversations.json"
 SCHEDULED_TASKS_FILE = DATA_DIR / "scheduled_tasks.json"
@@ -51,7 +51,7 @@ INTENTS = [
 ]
 
 # 默认技能
-DEFAULT_SKILLS = [
+DEFAULT_TOOLS = [
     {"id": "time", "name": "时间工具", "description": "查询时间、日期、星期", "enabled": True},
     {"id": "weather", "name": "天气工具", "description": "查询天气预报", "enabled": True},
     {"id": "todo", "name": "待办事项", "description": "管理待办任务", "enabled": True},
@@ -64,28 +64,31 @@ DEFAULT_SKILLS = [
 ]
 
 # 默认动作配置
+# 注意：实际可用动作从 Live2D 模型的 .model3.json 文件动态读取
+# 此配置仅作为心情-动作映射的默认值参考
 DEFAULT_MOTIONS_CONFIG = {
     "model_id": "default",
+    "description": "Live2D 模型动作配置。动作 ID 从模型文件的 Motions 字段动态读取，无需手动配置 available_motions。",
     "mood_motions": {
-        "happy": ["happy_01", "happy_02"],
-        "excited": ["excited_01"],
-        "normal": ["idle_01", "idle_02"],
-        "shy": ["shy_01"],
-        "sad": ["sad_01"],
-        "angry": ["angry_01"],
-        "surprised": ["surprised_01"],
-        "thinking": ["thinking_01"]
+        "happy": ["main_1", "main_2"],
+        "excited": ["main_1", "mission_complete"],
+        "normal": ["idle"],
+        "shy": ["touch_head"],
+        "sad": ["idle"],
+        "angry": ["idle"],
+        "surprised": ["touch_special"],
+        "thinking": ["idle"]
     },
     "intent_motions": {
-        "greeting": ["wave", "smile"],
-        "agree": ["nod", "smile"],
-        "disagree": ["shake_head"],
-        "thinking": ["thinking_01"],
-        "apologize": ["apologize_01"],
-        "thank": ["thank_01"]
+        "greeting": ["home", "login"],
+        "agree": ["main_1"],
+        "disagree": ["idle"],
+        "thinking": ["idle"],
+        "apologize": ["touch_body"],
+        "thank": ["main_2"]
     },
-    "idle_motions": ["idle_01", "idle_02"],
-    "default_motion": "idle_01",
+    "idle_motions": ["idle"],
+    "default_motion": "idle",
     "settings": {
         "enable_mood_motion": True,
         "enable_idle_motion": True,

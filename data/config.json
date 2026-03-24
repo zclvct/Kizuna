@@ -1,12 +1,14 @@
 {
   "llm": {
-    "provider": "openai",
-    "model": "gpt-4",
+    "provider": "ollama",
+    "model": "qwen3.5:4B",
     "api_key": null,
-    "base_url": null
+    "base_url": "http://localhost:11434",
+    "temperature": 0.7,
+    "max_tokens": 2000
   },
   "live2d": {
-    "model_path": "assets/live2d/biaoqiang",
+    "model_path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang",
     "scale": 1.0,
     "default_motion": "idle_01"
   },
@@ -23,5 +25,82 @@
     "enable_mood_motion": true,
     "enable_idle_motion": true,
     "idle_interval_seconds": 30
+  },
+  "llm_providers": {
+    "providers": [
+      {
+        "name": "ollama",
+        "provider": "ollama",
+        "model": "qwen3.5:4B",
+        "api_key": "",
+        "base_url": "http://localhost:11434"
+      }
+    ],
+    "default_index": 0
+  },
+  "live2d_models": {
+    "models": [
+      {
+        "name": "aimierbeierding_2",
+        "path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2",
+        "motions": [
+          "complete",
+          "home",
+          "idle",
+          "login",
+          "mail",
+          "main_1",
+          "main_2",
+          "main_3",
+          "mission_complete",
+          "mission",
+          "touch_body",
+          "touch_head",
+          "touch_special",
+          "wedding"
+        ]
+      },
+      {
+        "name": "biaoqiang",
+        "path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang",
+        "motions": [
+          "complete",
+          "home",
+          "idle",
+          "login",
+          "mail",
+          "main_1",
+          "main_2",
+          "main_3",
+          "mission_complete",
+          "mission",
+          "touch_body",
+          "touch_head",
+          "touch_special",
+          "wedding"
+        ]
+      },
+      {
+        "name": "chuixue_3",
+        "path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3",
+        "motions": [
+          "complete",
+          "home",
+          "idle",
+          "login",
+          "mail",
+          "main_1",
+          "main_2",
+          "main_3",
+          "mission_complete",
+          "mission",
+          "touch_body",
+          "touch_head",
+          "touch_special",
+          "wedding"
+        ]
+      }
+    ],
+    "default_index": 1
   }
 }

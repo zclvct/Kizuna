@@ -18,6 +18,8 @@ from scheduler import TaskManager, get_task_manager
 from app.context_menu import ContextMenu
 from app.settings_window import SettingsWindow
 from app.tasks_window import TasksWindow
+from app.widgets.emoji_bubble import EmojiBubble
+from agent.tools.mood_tool import set_emoji_callback, get_mood_by_type
 
 logger = get_logger()
 
@@ -107,6 +109,7 @@ class MainWindow(QMainWindow):
         self._dragging = False
 
         set_motion_callback(self._on_global_motion)
+        set_emoji_callback(self._on_show_emoji)
         
         self._setup_window_flags()
         self._setup_ui()
@@ -142,6 +145,7 @@ class MainWindow(QMainWindow):
 
         # Live2D 控件
         self.live2d_widget = Live2DWidget()
+        self.live2d_widget.setObjectName("live2dWidget")
         self.live2d_widget.clicked.connect(self._on_live2d_clicked)
         self.live2d_widget.motion_played.connect(self._on_motion_played)
         self.live2d_widget.drag_started.connect(self._on_drag_started)
@@ -150,6 +154,9 @@ class MainWindow(QMainWindow):
         # 聊天气泡 - 独立窗口
         self.chat_bubble = ChatBubbleWindow()
         self.chat_bubble.chat_widget.response_received.connect(self._on_response_received)
+        
+        # 表情包气泡 - 独立窗口
+        self.emoji_bubble = EmojiBubble()
         
         self.setFixedSize(320, 450)
 
@@ -271,17 +278,58 @@ class MainWindow(QMainWindow):
 
     def _on_global_motion(self, mood: str = None, intent: str = None, motion_id: str = None, new_mood: str = None):
         """全局动作回调"""
+        from live2d_renderer.motion_controller import MotionController
+        
         if new_mood:
             self.live2d_widget.update_mood(new_mood)
 
+        # 创建 MotionController 实例
+        motion_controller = MotionController()
+        
         if motion_id:
             self.live2d_widget.play_motion(motion_id)
-        elif mood:
-            self.live2d_widget.play_motion(motion_id=motion_id, mood=mood)
         elif intent:
-            motion = self.live2d_widget.motion_controller.get_motion_for_intent(intent)
+            # 根据意图获取动作
+            motion = motion_controller.get_motion_for_intent(intent)
             if motion:
                 self.live2d_widget.play_motion(motion)
+            elif mood:
+                # 意图没有对应动作，尝试使用心情
+                motion = motion_controller.get_motion_for_mood(mood)
+                if motion:
+                    self.live2d_widget.play_motion(motion, mood=mood)
+        elif mood:
+            # 只根据心情获取动作
+            motion = motion_controller.get_motion_for_mood(mood)
+            if motion:
+                self.live2d_widget.play_motion(motion, mood=mood)
+
+    def _on_show_emoji(self, mood: str):
+        """显示表情包回调"""
+        logger.info(f"_on_show_emoji 被调用: {mood}")
+        entry = get_mood_by_type(mood)
+        
+        if not entry:
+            logger.warning(f"未找到类型 {mood} 的表情包配置，请检查 data/moods.json")
+            return
+        
+        # 计算模型头顶位置（全局坐标）
+        model_rect = self.geometry()
+        
+        # 模型头顶位置：窗口中央偏上
+        # Live2D 模型通常在窗口中央，头顶约在窗口顶部 20-30% 的位置
+        head_x = model_rect.center().x()
+        head_y = model_rect.top() + int(model_rect.height() * 0.15)  # 头顶位置
+        
+        from PySide6.QtCore import QPoint
+        model_head_pos = QPoint(head_x, head_y)
+        
+        logger.info(f"准备显示表情包: {entry.file_path}, 模型头顶位置: {model_head_pos}")
+        self.emoji_bubble.show_emoji(
+            entry.file_path,
+            entry.duration,
+            model_head_pos  # 传入模型头顶位置，气泡会显示在上方
+        )
 
     def _on_live2d_clicked(self):
         """点击 Live2D - 显示聊天窗口"""
@@ -294,7 +342,24 @@ class MainWindow(QMainWindow):
     def _open_settings(self):
         """打开设置"""
         dialog = SettingsWindow(self)
+        # 连接模型变更信号，延迟刷新模型避免 OpenGL 上下文冲突
+        dialog.model_changed.connect(self._delayed_model_reload)
         dialog.exec()
+
+    def _delayed_model_reload(self, model_path: str):
+        """延迟重新加载模型"""
+        QTimer.singleShot(100, lambda: self._on_model_changed(model_path))
+
+
+    def _on_model_changed(self, model_path: str):
+        """模型变更处理"""
+        logger.info(f"重新加载模型: {model_path}")
+        # 重新加载 Live2D 模型
+        self.live2d_widget.live2d_widget.load_model(model_path)
+        # 清除动作缓存，让 motion_tool 重新读取
+        from live2d_renderer.motion_controller import MotionController
+        MotionController().clear_motions_cache()
+        logger.info("模型和动作缓存已更新")
 
     def _view_tasks(self):
         """查看定时任务"""
@@ -304,6 +369,7 @@ class MainWindow(QMainWindow):
     def _close_all(self):
         """关闭所有窗口"""
         self.chat_bubble.close()
+        self.emoji_bubble.close()
         self.close()
 
     def mouseMoveEvent(self, event):
@@ -329,6 +395,7 @@ class MainWindow(QMainWindow):
     def closeEvent(self, event):
         """关闭窗口"""
         self.chat_bubble.close()
+        self.emoji_bubble.close()
         import asyncio
         try:
             loop = asyncio.get_event_loop()

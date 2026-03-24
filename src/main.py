@@ -17,7 +17,6 @@ from PySide6.QtCore import Qt, QTimer
 # 直接导入模块，避免相对导入问题
 import utils
 import app
-import assistant
 import scheduler
 
 
@@ -67,9 +66,16 @@ def main():
         is_first_run = char_manager.persona.is_first_run()
         logger.info(f"First run: {is_first_run}")
 
-        # 初始化助手工具
-        tool_registry = assistant.get_tool_registry()
-        logger.info(f"已注册 {len(tool_registry.tools)} 个工具")
+        # 初始化 LangChain Agent（替代原有的 ToolManager 和 Orchestrator 初始化）
+        from agent import get_core
+        core = get_core()
+        logger.info(f"LangChain Agent 已初始化，工具数: {len(core.get_enabled_tool_names())}")
+
+        # 清空对话历史（每次启动重新开始）
+        from chat import get_conversation_manager
+        conversation_manager = get_conversation_manager()
+        conversation_manager.clear()
+        logger.info("对话历史已清空")
 
         # 创建应用
         qt_app = QApplication(sys.argv)

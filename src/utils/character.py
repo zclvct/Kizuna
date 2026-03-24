@@ -27,55 +27,13 @@ class CharacterPersona(BaseModel):
     background: str = Field(default="", description="角色背景故事")
     likes: List[str] = Field(default_factory=list, description="喜欢的事物")
     dislikes: List[str] = Field(default_factory=list, description="讨厌的事物")
+    # 开场白配置
+    greeting: str = Field(default="", description="开场白（为空则使用默认）")
+    # 记忆和事实
     memories: List[Dict] = Field(default_factory=list, description="重要记忆列表")
     learned_facts: Dict[str, str] = Field(default_factory=dict, description="学到的事实")
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
-
-    def to_system_prompt(self) -> str:
-        """转换为 System Prompt"""
-        parts = []
-
-        if self.name:
-            parts.append(f"你的名字是：{self.name}")
-        if self.gender:
-            parts.append(f"你的性别是：{self.gender}")
-        if self.age:
-            parts.append(f"你的年龄是：{self.age}")
-
-        if self.personality:
-            parts.append(f"你的性格：{self.personality}")
-        if self.speech_style:
-            parts.append(f"你的说话风格：{self.speech_style}")
-
-        if self.first_person:
-            parts.append(f"你对自己的称呼：{self.first_person}")
-        if self.second_person:
-            parts.append(f"你对用户的称呼：{self.second_person}")
-        if self.user_nickname:
-            parts.append(f"你对用户的昵称：{self.user_nickname}")
-
-        if self.relationship:
-            parts.append(f"你和用户的关系：{self.relationship}")
-
-        if self.background:
-            parts.append(f"你的背景故事：{self.background}")
-        if self.likes:
-            parts.append(f"你喜欢的事物：{', '.join(self.likes)}")
-        if self.dislikes:
-            parts.append(f"你讨厌的事物：{', '.join(self.dislikes)}")
-
-        if self.learned_facts:
-            parts.append("\n你知道的关于用户的信息：")
-            for key, value in self.learned_facts.items():
-                parts.append(f"- {key}: {value}")
-
-        if self.memories:
-            parts.append("\n重要记忆：")
-            for mem in self.memories[-10:]:
-                parts.append(f"- {mem.get('content', '')}")
-
-        return "\n".join(parts) if parts else "你是一个可爱的二次元助手。"
 
     def is_first_run(self) -> bool:
         """是否是第一次运行（没有名字）"""
@@ -176,11 +134,28 @@ class CharacterManager:
         self.save()
 
     def get_random_greeting(self) -> str:
-        """获取随机问候语（用于第一次启动）"""
+        """获取问候语
+        
+        优先使用用户设置的开场白，否则使用默认问候语
+        """
+        # 优先使用自定义开场白
+        if self.persona.greeting:
+            return self.persona.greeting
+        
+        # 首次运行时的默认问候语
+        if self.persona.is_first_run():
+            greetings = [
+                "你好，初次见面！我还没有名字，能给我起个名字吗？",
+                "嗨！很高兴认识你！请问我该怎么称呼你呢？",
+                "你好呀！我是你的新助手，能告诉我你的名字吗？",
+            ]
+            return random.choice(greetings)
+        
+        # 非首次运行的问候语
         greetings = [
-            "你好，初次见面！我还没有名字，能给我起个名字吗？",
-            "嗨！很高兴认识你！请问我该怎么称呼你呢？",
-            "你好呀！我是你的新助手，能告诉我你的名字吗？",
+            f"你好呀！{self.persona.user_nickname or '主人'}，有什么我可以帮你的吗？",
+            f"嗨！{self.persona.user_nickname or '你'}回来啦～",
+            f"欢迎回来，{self.persona.user_nickname or '朋友'}！今天想聊什么呢？",
         ]
         return random.choice(greetings)
 

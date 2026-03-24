@@ -28,6 +28,8 @@ class LLMConfig:
     model: str = DEFAULT_LLM_MODEL
     api_key: Optional[str] = None
     base_url: Optional[str] = None
+    temperature: float = 0.7
+    max_tokens: int = 2000
 
 
 @dataclass
@@ -70,6 +72,8 @@ class Config:
         self.weather = WeatherConfig()
         self.general = GeneralConfig()
         self.motion = MotionSettings()
+        self.llm_providers: Dict[str, Any] = {}  # 多服务商配置
+        self.live2d_models: Dict[str, Any] = {}  # 多模型配置
         self._load_from_env()
         self._load_from_file()
 
@@ -122,6 +126,14 @@ class Config:
                     if hasattr(self.motion, key):
                         setattr(self.motion, key, value)
 
+            # 加载多服务商配置
+            if "llm_providers" in data:
+                self.llm_providers = data["llm_providers"]
+
+            # 加载多模型配置
+            if "live2d_models" in data:
+                self.live2d_models = data["live2d_models"]
+
             logger.info("配置已从文件加载")
         except Exception as e:
             logger.error(f"加载配置文件失败: {e}")
@@ -133,7 +145,9 @@ class Config:
             "live2d": asdict(self.live2d),
             "weather": asdict(self.weather),
             "general": asdict(self.general),
-            "motion": asdict(self.motion)
+            "motion": asdict(self.motion),
+            "llm_providers": self.llm_providers,
+            "live2d_models": self.live2d_models
         }
 
         CONFIG_FILE.write_text(

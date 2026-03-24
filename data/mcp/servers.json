@@ -1,0 +1,26 @@
+{
+  "servers": [
+    {
+      "id": "filesystem",
+      "name": "文件系统",
+      "enabled": false,
+      "command": "mcp-server-filesystem",
+      "args": [],
+      "env": {},
+      "description": "提供文件读写能力，需要单独安装 mcp-server-filesystem"
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave 搜索",
+      "enabled": false,
+      "command": "mcp-server-brave-search",
+      "args": [],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "description": "提供网络搜索能力，需要 Brave API Key"
+    }
+  ],
+  "version": "1.0",
+  "updated_at": "2026-03-23T00:00:00"
+}

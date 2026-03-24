@@ -1,1548 +1,1000 @@
-2026-03-20 09:27:31 - aiFriend - INFO - 创建新的角色设定
-2026-03-23 09:53:17 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:54:22 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:55:33 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:55:58 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:56:42 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:56:43 - aiFriend - INFO - ==================================================
-2026-03-23 09:56:43 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 09:56:43 - aiFriend - INFO - ==================================================
-2026-03-23 09:56:43 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 09:56:43 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 09:56:43 - aiFriend - INFO - 创建新的角色设定
-2026-03-23 09:56:43 - aiFriend - INFO - First run: True
-2026-03-23 09:56:43 - aiFriend - ERROR - 应用启动失败: 'ToolRegistry' object has no attribute 'tools'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/main.py", line 72, in main
-    logger.info(f"已注册 {len(tool_registry.tools)} 个工具")
-                              ^^^^^^^^^^^^^^^^^^^
-AttributeError: 'ToolRegistry' object has no attribute 'tools'
-2026-03-23 09:57:04 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:57:04 - aiFriend - INFO - ==================================================
-2026-03-23 09:57:04 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 09:57:04 - aiFriend - INFO - ==================================================
-2026-03-23 09:57:04 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 09:57:04 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 09:57:04 - aiFriend - INFO - 创建新的角色设定
-2026-03-23 09:57:04 - aiFriend - INFO - First run: True
-2026-03-23 09:57:04 - aiFriend - ERROR - 应用启动失败: 'ToolRegistry' object has no attribute 'tools'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/main.py", line 72, in main
-    logger.info(f"已注册 {len(tool_registry.tools)} 个工具")
-AttributeError: 'ToolRegistry' object has no attribute 'tools'
-2026-03-23 09:57:59 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 09:57:59 - aiFriend - INFO - ==================================================
-2026-03-23 09:57:59 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 09:57:59 - aiFriend - INFO - ==================================================
-2026-03-23 09:57:59 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 09:57:59 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 09:57:59 - aiFriend - INFO - 创建新的角色设定
-2026-03-23 09:57:59 - aiFriend - INFO - First run: True
-2026-03-23 09:57:59 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 09:57:59 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 09:57:59 - aiFriend - INFO - 配置加载完成
-2026-03-23 09:57:59 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 09:57:59 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 09:57:59 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 09:57:59 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 09:57:59 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 09:57:59 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 09:57:59 - aiFriend - INFO - 布局设置完成
-2026-03-23 09:57:59 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 09:57:59 - aiFriend - INFO - 使用静态图片渲染
-2026-03-23 09:57:59 - aiFriend - INFO - 已创建默认动作配置: /Users/zhaochong/Ai/workspace/aiFriend/data/motions.json
-2026-03-23 09:57:59 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 09:57:59 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 09:57:59 - aiFriend - INFO - 模型路径绝对地址: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
-2026-03-23 09:57:59 - aiFriend - INFO - live2d-py 可用: False
-2026-03-23 09:57:59 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 09:57:59 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 09:57:59 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 09:57:59 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 09:57:59 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 09:57:59 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 09:57:59 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 09:57:59 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 09:57:59 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 09:57:59 - aiFriend - INFO - 主窗口已显示
-2026-03-23 09:57:59 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 09:57:59 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 09:57:59 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 09:57:59 - aiFriend - INFO - 应用启动完成
-2026-03-23 09:57:59 - aiFriend - INFO - 加载图片: assets/live2d/biaoqiang/textures/texture_00.png
-2026-03-23 09:57:59 - aiFriend - INFO - 图片加载完成
-2026-03-23 09:57:59 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 09:57:59 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 09:58:00 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 09:58:01 - aiFriend - INFO - Live2D clicked
-2026-03-23 09:58:01 - aiFriend - INFO - 播放动作: tap_shoulder
-2026-03-23 09:58:01 - aiFriend - INFO - 静态模式，无法播放动作: tap_shoulder
-2026-03-23 09:58:01 - aiFriend - INFO - Live2D clicked
-2026-03-23 09:58:01 - aiFriend - INFO - 播放动作: tap_shoulder
-2026-03-23 09:58:01 - aiFriend - INFO - 静态模式，无法播放动作: tap_shoulder
-2026-03-23 09:58:03 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 09:58:09 - aiFriend - INFO - 创建默认技能配置
-2026-03-23 09:58:25 - aiFriend - INFO - 动作配置已保存: /Users/zhaochong/Ai/workspace/aiFriend/data/motions.json
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 角色设定已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 技能配置已保存
-2026-03-23 09:58:25 - aiFriend - INFO - 设置已保存
-2026-03-23 09:58:29 - aiFriend - INFO - 播放动作: idle
-2026-03-23 09:58:29 - aiFriend - INFO - 静态模式，无法播放动作: idle
-2026-03-23 09:58:29 - aiFriend - INFO - 返回 7 个启用的工具
-2026-03-23 09:58:29 - aiFriend - INFO - Calling LLM: openai/gpt-4
-2026-03-23 09:58:29 - aiFriend - ERROR - LLM 调用失败: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
-2026-03-23 09:58:29 - aiFriend - ERROR - 生成回复失败: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
-2026-03-23 09:58:29 - aiFriend - ERROR - 回复生成失败: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
-2026-03-23 09:58:33 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 09:58:34 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:03:55 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 10:03:55 - aiFriend - INFO - ==================================================
-2026-03-23 10:03:55 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:03:55 - aiFriend - INFO - ==================================================
-2026-03-23 10:03:55 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:03:55 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:03:55 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:03:55 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:03:55 - aiFriend - INFO - First run: True
-2026-03-23 10:03:55 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:03:55 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:03:55 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:03:55 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:03:55 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:03:55 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:03:55 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:03:55 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:03:55 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:03:55 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:03:55 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:03:55 - aiFriend - INFO - 使用静态图片渲染
-2026-03-23 10:03:55 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:03:55 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:03:55 - aiFriend - INFO - 模型路径绝对地址: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
-2026-03-23 10:03:55 - aiFriend - INFO - live2d-py 可用: False
-2026-03-23 10:03:55 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:03:55 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:03:55 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:03:55 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:03:55 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:03:55 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:03:55 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:03:55 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:03:55 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:03:55 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:03:55 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:03:55 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:03:55 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:03:55 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:03:55 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:03:55 - aiFriend - INFO - 加载图片: assets/live2d/biaoqiang/textures/texture_00.png
-2026-03-23 10:03:55 - aiFriend - INFO - 图片加载完成
-2026-03-23 10:03:55 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:03:55 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:03:56 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:03:57 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:03:57 - aiFriend - INFO - 播放动作: wave
-2026-03-23 10:03:57 - aiFriend - INFO - 静态模式，无法播放动作: wave
-2026-03-23 10:03:58 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:03:58 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:03:58 - aiFriend - INFO - 播放动作: tap_head
-2026-03-23 10:03:58 - aiFriend - INFO - 静态模式，无法播放动作: tap_head
-2026-03-23 10:06:17 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 10:06:17 - aiFriend - INFO - ==================================================
-2026-03-23 10:06:17 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:06:17 - aiFriend - INFO - ==================================================
-2026-03-23 10:06:17 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:06:17 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:06:17 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:06:17 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:06:17 - aiFriend - INFO - First run: True
-2026-03-23 10:06:17 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:06:17 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:06:17 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:06:17 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:06:17 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:06:17 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:06:17 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:06:17 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:06:17 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:06:17 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:06:17 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:06:17 - aiFriend - INFO - 使用静态图片渲染
-2026-03-23 10:06:17 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:06:17 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:06:17 - aiFriend - INFO - 模型路径绝对地址: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
-2026-03-23 10:06:17 - aiFriend - INFO - live2d-py 可用: False
-2026-03-23 10:06:17 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:06:17 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:06:17 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:06:17 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:06:17 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:06:17 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:06:17 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:06:17 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:06:17 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:06:17 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:06:17 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:06:17 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:06:17 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:06:17 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:06:17 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:06:17 - aiFriend - INFO - 加载图片: assets/live2d/biaoqiang/textures/texture_00.png
-2026-03-23 10:06:17 - aiFriend - INFO - 图片加载完成
-2026-03-23 10:06:18 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:06:18 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:06:18 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:06:19 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:06:19 - aiFriend - INFO - 播放动作: wave
-2026-03-23 10:06:19 - aiFriend - INFO - 静态模式，无法播放动作: wave
-2026-03-23 10:06:20 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:06:21 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:06:21 - aiFriend - INFO - 播放动作: tap_shoulder
-2026-03-23 10:06:21 - aiFriend - INFO - 静态模式，无法播放动作: tap_shoulder
-2026-03-23 10:06:21 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:06:21 - aiFriend - INFO - 播放动作: wave
-2026-03-23 10:06:21 - aiFriend - INFO - 静态模式，无法播放动作: wave
-2026-03-23 10:06:22 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:06:22 - aiFriend - INFO - 播放动作: wave
-2026-03-23 10:06:22 - aiFriend - INFO - 静态模式，无法播放动作: wave
-2026-03-23 10:06:22 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:06:22 - aiFriend - INFO - 播放动作: tap_head
-2026-03-23 10:06:22 - aiFriend - INFO - 静态模式，无法播放动作: tap_head
-2026-03-23 10:06:23 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:06:23 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:06:25 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:06:47 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 10:08:35 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 10:08:35 - aiFriend - INFO - ==================================================
-2026-03-23 10:08:35 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:08:35 - aiFriend - INFO - ==================================================
-2026-03-23 10:08:35 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:08:35 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:08:35 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:08:35 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:08:35 - aiFriend - INFO - First run: True
-2026-03-23 10:08:35 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:08:36 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:08:36 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:08:36 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:08:36 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:08:36 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:08:36 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:08:36 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:08:36 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:08:36 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:08:36 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:08:36 - aiFriend - INFO - 使用静态图片渲染
-2026-03-23 10:08:36 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:08:36 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:08:36 - aiFriend - INFO - 模型路径绝对地址: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
-2026-03-23 10:08:36 - aiFriend - INFO - live2d-py 可用: False
-2026-03-23 10:08:36 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:08:36 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:08:36 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:08:36 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:08:36 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:08:36 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:08:36 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:08:36 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:08:36 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:08:36 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:08:36 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:08:36 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:08:36 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:08:36 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:08:36 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:08:36 - aiFriend - INFO - 加载图片: assets/live2d/biaoqiang/textures/texture_00.png
-2026-03-23 10:08:36 - aiFriend - INFO - 图片加载完成
-2026-03-23 10:08:36 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:08:36 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:08:37 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:09:09 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 10:09:32 - aiFriend - WARNING - live2d-py 未安装，使用静态图片模式
-2026-03-23 10:11:32 - aiFriend - INFO - live2d-py 已安装
-2026-03-23 10:11:32 - aiFriend - INFO - ==================================================
-2026-03-23 10:11:32 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:11:32 - aiFriend - INFO - ==================================================
-2026-03-23 10:11:32 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:11:32 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:11:32 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:11:32 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:11:32 - aiFriend - INFO - First run: True
-2026-03-23 10:11:32 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:11:32 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:11:32 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:11:32 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:11:32 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:11:32 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:11:32 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:11:32 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:11:32 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:11:32 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:11:32 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:11:32 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:11:32 - aiFriend - ERROR - 应用启动失败: 'Live2DGLWidget' object has no attribute 'clicked'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/main.py", line 80, in main
-    window = app.MainWindow()
-             ^^^^^^^^^^^^^^^^
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/app/main_window.py", line 49, in __init__
-    self._setup_ui()
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/app/main_window.py", line 89, in _setup_ui
-    self.live2d_widget = Live2DWidget()
-                         ^^^^^^^^^^^^^^
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/live2d_renderer/widget.py", line 266, in __init__
-    self._setup_ui()
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/live2d_renderer/widget.py", line 277, in _setup_ui
-    self.live2d_widget.clicked.connect(self._on_live2d_clicked)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'Live2DGLWidget' object has no attribute 'clicked'
-2026-03-23 10:12:34 - aiFriend - INFO - live2d-py 已安装
-2026-03-23 10:12:34 - aiFriend - INFO - ==================================================
-2026-03-23 10:12:34 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:12:34 - aiFriend - INFO - ==================================================
-2026-03-23 10:12:34 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:12:34 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:12:34 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:12:34 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:12:34 - aiFriend - INFO - First run: True
-2026-03-23 10:12:34 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:12:34 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:12:34 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:12:34 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:12:34 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:12:34 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:12:34 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:12:34 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:12:34 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:12:34 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:12:34 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:12:34 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:12:34 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:12:34 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:12:34 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:12:34 - aiFriend - INFO - 模型路径绝对地址: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
-2026-03-23 10:12:34 - aiFriend - INFO - live2d-py 可用: True
-2026-03-23 10:12:34 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:12:34 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:12:34 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:12:34 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:12:34 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:12:35 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:12:35 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:12:35 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:12:35 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:12:35 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:12:35 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:12:35 - aiFriend - ERROR - OpenGL 初始化失败: 'PySide6.QtGui.QOpenGLContext' object has no attribute 'versionFunctions'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/live2d_renderer/widget.py", line 62, in initializeGL
-    self._gl = self._gl_context.versionFunctions()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'PySide6.QtGui.QOpenGLContext' object has no attribute 'versionFunctions'
-2026-03-23 10:12:35 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:12:35 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:12:35 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:12:35 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:12:35 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:12:35 - aiFriend - INFO - OpenGL 尚未初始化，延迟加载模型: assets/live2d/biaoqiang
-2026-03-23 10:12:35 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:12:35 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:12:35 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:12:36 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:12:36 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:12:36 - aiFriend - INFO - 播放动作: wave
-2026-03-23 10:12:36 - aiFriend - WARNING - 模型不支持播放动作
-2026-03-23 10:12:37 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:12:38 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:12:39 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:13:43 - aiFriend - INFO - live2d-py 已安装
-2026-03-23 10:13:43 - aiFriend - INFO - ==================================================
-2026-03-23 10:13:43 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:13:43 - aiFriend - INFO - ==================================================
-2026-03-23 10:13:43 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:13:43 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:13:43 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:13:43 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:13:43 - aiFriend - INFO - First run: True
-2026-03-23 10:13:43 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:13:43 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:13:43 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:13:43 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:13:43 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:13:43 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:13:43 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:13:43 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:13:43 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:13:43 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:13:43 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:13:43 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:13:43 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:13:43 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:13:43 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:13:43 - aiFriend - INFO - 模型路径绝对地址: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
-2026-03-23 10:13:43 - aiFriend - INFO - live2d-py 可用: True
-2026-03-23 10:13:43 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:13:43 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:13:43 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:13:43 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:13:43 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:13:43 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:13:43 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:13:43 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:13:43 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:13:43 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:13:43 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:13:43 - aiFriend - ERROR - OpenGL 初始化失败: 'PySide6.QtGui.QOpenGLContext' object has no attribute 'versionFunctions'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/live2d_renderer/widget.py", line 62, in initializeGL
-    self._gl = self._gl_context.versionFunctions()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'PySide6.QtGui.QOpenGLContext' object has no attribute 'versionFunctions'
-2026-03-23 10:13:43 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:13:43 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:13:43 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:13:43 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:13:43 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:13:44 - aiFriend - INFO - OpenGL 尚未初始化，延迟加载模型: assets/live2d/biaoqiang
-2026-03-23 10:13:44 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:13:44 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:13:44 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:13:44 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:13:47 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:13:47 - aiFriend - INFO - 播放动作: wave
-2026-03-23 10:13:47 - aiFriend - WARNING - 模型不支持播放动作
-2026-03-23 10:13:48 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:13:48 - aiFriend - INFO - 播放动作: tap_shoulder
-2026-03-23 10:13:48 - aiFriend - WARNING - 模型不支持播放动作
-2026-03-23 10:17:57 - aiFriend - INFO - ==================================================
-2026-03-23 10:17:57 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:17:57 - aiFriend - INFO - ==================================================
-2026-03-23 10:17:57 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:17:57 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:17:57 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:17:57 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:17:57 - aiFriend - INFO - First run: True
-2026-03-23 10:17:57 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:17:57 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:17:57 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:17:57 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:17:57 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:17:57 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:17:57 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:17:57 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:17:57 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:17:57 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:17:57 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:17:57 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:17:57 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:17:57 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:17:57 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:17:57 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:17:57 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:17:57 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:17:57 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:17:57 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:17:57 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:17:57 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:17:57 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:17:57 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:17:57 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:17:57 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:17:57 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:17:57 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:17:57 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:17:57 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:17:57 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:17:57 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:17:58 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:17:58 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:18:24 - aiFriend - INFO - ==================================================
-2026-03-23 10:18:24 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:18:24 - aiFriend - INFO - ==================================================
-2026-03-23 10:18:24 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:18:24 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:18:24 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:18:24 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:18:24 - aiFriend - INFO - First run: True
-2026-03-23 10:18:24 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:18:24 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:18:24 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:18:24 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:18:24 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:18:24 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:18:24 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:18:24 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:18:24 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:18:24 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:18:24 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:18:24 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:18:24 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:18:24 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:18:24 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:18:24 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:18:24 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:18:24 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:18:24 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:18:24 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:18:24 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:18:24 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:18:24 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:18:24 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:18:24 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:18:25 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:18:25 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:18:25 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:18:25 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:18:25 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:18:25 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:18:25 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:18:25 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:18:25 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:19:03 - aiFriend - INFO - ==================================================
-2026-03-23 10:19:03 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:19:03 - aiFriend - INFO - ==================================================
-2026-03-23 10:19:03 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:19:03 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:19:03 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:19:03 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:19:03 - aiFriend - INFO - First run: True
-2026-03-23 10:19:03 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:19:03 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:19:03 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:19:03 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:19:03 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:19:03 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:19:03 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:19:03 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:19:03 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:19:03 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:19:03 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:19:03 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:19:03 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:19:03 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:19:03 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:19:03 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:19:03 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:19:03 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:19:03 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:19:03 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:19:03 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:19:03 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:19:03 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:19:03 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:19:03 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:19:03 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:19:03 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:19:03 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:19:04 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:19:04 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:19:04 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:19:04 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:19:04 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:19:04 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:20:34 - aiFriend - INFO - ==================================================
-2026-03-23 10:20:34 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:20:34 - aiFriend - INFO - ==================================================
-2026-03-23 10:20:34 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:20:34 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:20:34 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:20:34 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:20:34 - aiFriend - INFO - First run: True
-2026-03-23 10:20:34 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:20:34 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:20:34 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:20:34 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:20:34 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:20:34 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:20:34 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:20:34 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:20:34 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:20:34 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:20:34 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:20:34 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:20:34 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:20:34 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:20:34 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:20:34 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:20:34 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:20:34 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:20:34 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:20:35 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:20:35 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:20:35 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:20:35 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:20:35 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:20:35 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:20:35 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:20:35 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:20:35 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:20:35 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:20:35 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:20:35 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:20:35 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:20:35 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:20:35 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:21:24 - aiFriend - INFO - ==================================================
-2026-03-23 10:21:24 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:21:24 - aiFriend - INFO - ==================================================
-2026-03-23 10:21:24 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:21:24 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:21:24 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:21:24 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:21:24 - aiFriend - INFO - First run: True
-2026-03-23 10:21:24 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:21:24 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:21:24 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:21:24 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:21:24 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:21:24 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:21:24 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:21:24 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:21:24 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:21:24 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:21:24 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:21:24 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:21:24 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:21:24 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:21:24 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:21:24 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:21:24 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:21:24 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:21:24 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:21:24 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:21:24 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:21:24 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:21:24 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:21:24 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:21:24 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:21:24 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:21:24 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:21:24 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:21:24 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:21:24 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:21:24 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:21:24 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:21:24 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:21:24 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:22:22 - aiFriend - INFO - ==================================================
-2026-03-23 10:22:22 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:22:22 - aiFriend - INFO - ==================================================
-2026-03-23 10:22:22 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:22:22 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:22:22 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:22:22 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:22:22 - aiFriend - INFO - First run: True
-2026-03-23 10:22:22 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:22:22 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:22:22 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:22:22 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:22:22 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:22:22 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:22:22 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:22:22 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:22:22 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:22:22 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:22:22 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:22:22 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:22:22 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:22:22 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:22:22 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:22:22 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:22:22 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:22:22 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:22:22 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:22:22 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:22:22 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:22:22 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:22:22 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:22:22 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:22:22 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:22:22 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:22:22 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:22:22 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:22:22 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:22:22 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:22:22 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:22:22 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:22:23 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:22:23 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:23:47 - aiFriend - INFO - ==================================================
-2026-03-23 10:23:47 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:23:47 - aiFriend - INFO - ==================================================
-2026-03-23 10:23:47 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:23:47 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:23:47 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:23:47 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:23:47 - aiFriend - INFO - First run: True
-2026-03-23 10:23:47 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:23:47 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:23:47 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:23:47 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:23:47 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:23:47 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:23:47 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:23:47 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:23:47 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:23:47 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:23:47 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:23:47 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:23:47 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:23:47 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:23:47 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:23:47 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:23:47 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:23:47 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:23:47 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:23:47 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:23:47 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:23:47 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:23:47 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:23:47 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:23:47 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:23:47 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:23:47 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:23:47 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:23:47 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:23:47 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:23:47 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:23:47 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:23:48 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:23:48 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:23:48 - aiFriend - INFO - 模型文件绝对路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:23:48 - aiFriend - INFO - 创建 LAppModel...
-2026-03-23 10:25:49 - aiFriend - INFO - ==================================================
-2026-03-23 10:25:49 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:25:49 - aiFriend - INFO - ==================================================
-2026-03-23 10:25:49 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:25:49 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:25:49 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:25:49 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:25:49 - aiFriend - INFO - First run: True
-2026-03-23 10:25:49 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:25:49 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:25:49 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:25:49 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:25:49 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:25:49 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:25:49 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:25:49 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:25:49 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:25:49 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:25:49 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:25:49 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:25:49 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:25:49 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:25:49 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:25:49 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:25:49 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:25:49 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:25:49 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:25:50 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:25:50 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:25:50 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:25:50 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:25:50 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:25:50 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:25:50 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:25:50 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:25:50 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:25:50 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:25:50 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:25:50 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:25:50 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:25:50 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:25:50 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:25:50 - aiFriend - INFO - 模型文件绝对路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:25:50 - aiFriend - INFO - 创建 LAppModel...
-2026-03-23 10:25:50 - aiFriend - INFO - 加载模型 JSON...
-2026-03-23 10:25:50 - aiFriend - INFO - 模型加载成功
-2026-03-23 10:25:50 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:25:50 - aiFriend - INFO - 模型加载流程完成
-2026-03-23 10:25:50 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:25:50 - aiFriend - INFO - 调整模型画布: 300x144
-2026-03-23 10:25:50 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:25:50 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:25:51 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:25:52 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:52 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:25:52 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:25:52 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:52 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:25:52 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:25:53 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:53 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:25:53 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:25:53 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:53 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:25:53 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:25:54 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:54 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:25:54 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:25:54 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:54 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:25:54 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:25:55 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:55 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:25:55 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:25:55 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:25:55 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:25:55 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:26:58 - aiFriend - INFO - ==================================================
-2026-03-23 10:26:58 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:26:58 - aiFriend - INFO - ==================================================
-2026-03-23 10:26:58 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:26:58 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:26:58 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:26:58 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:26:58 - aiFriend - INFO - First run: True
-2026-03-23 10:26:58 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:26:58 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:26:58 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:26:58 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:26:58 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:26:58 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:26:58 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:26:58 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:26:58 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:26:58 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:26:58 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:26:58 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:26:58 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:26:58 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:26:58 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:26:58 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:26:58 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:26:58 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:26:58 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:26:58 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:26:58 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:26:58 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:26:58 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:26:58 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:26:58 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:26:59 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:26:59 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:26:59 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:26:59 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:26:59 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:26:59 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:26:59 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:26:59 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:26:59 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:26:59 - aiFriend - INFO - 模型文件绝对路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:26:59 - aiFriend - INFO - 创建 LAppModel...
-2026-03-23 10:26:59 - aiFriend - INFO - 加载模型 JSON...
-2026-03-23 10:26:59 - aiFriend - INFO - 模型加载成功
-2026-03-23 10:26:59 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:26:59 - aiFriend - INFO - 模型加载流程完成
-2026-03-23 10:26:59 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:26:59 - aiFriend - INFO - 调整模型画布: 300x384
-2026-03-23 10:26:59 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:26:59 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:27:00 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:03 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:27:03 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:27:03 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:27:04 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:27:04 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:27:04 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:27:04 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:27:04 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:27:04 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:27:05 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:06 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:07 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:07 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:07 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:07 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:08 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:08 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:08 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:08 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:08 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:09 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:09 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:27:09 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:27:10 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:27:10 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:27:10 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:27:10 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:27:10 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:27:10 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:28:46 - aiFriend - INFO - ==================================================
-2026-03-23 10:28:46 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:28:46 - aiFriend - INFO - ==================================================
-2026-03-23 10:28:46 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:28:46 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:28:46 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:28:46 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:28:46 - aiFriend - INFO - First run: True
-2026-03-23 10:28:46 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:28:46 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:28:46 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:28:46 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:28:46 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:28:46 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:28:46 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:28:46 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:28:46 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:28:46 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:28:46 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:28:46 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:28:46 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:28:46 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:28:46 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:28:46 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:28:46 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:28:46 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:28:46 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:28:46 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:28:46 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:28:46 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:28:46 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:28:46 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:28:46 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:28:47 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:28:47 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:28:47 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:28:47 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:28:47 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:28:47 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:28:47 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:28:47 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:28:47 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:28:47 - aiFriend - INFO - 模型文件绝对路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:28:47 - aiFriend - INFO - 创建 LAppModel...
-2026-03-23 10:28:47 - aiFriend - INFO - 加载模型 JSON...
-2026-03-23 10:28:47 - aiFriend - INFO - 模型加载成功
-2026-03-23 10:28:47 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:28:47 - aiFriend - INFO - 模型加载流程完成
-2026-03-23 10:28:47 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:28:47 - aiFriend - INFO - 调整模型画布: 300x384
-2026-03-23 10:28:47 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:28:47 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:28:48 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:30:28 - aiFriend - INFO - ==================================================
-2026-03-23 10:30:28 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:30:28 - aiFriend - INFO - ==================================================
-2026-03-23 10:30:28 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:30:28 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:30:28 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:30:28 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:30:28 - aiFriend - INFO - First run: True
-2026-03-23 10:30:28 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:30:28 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:30:28 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:30:28 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:30:28 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:30:28 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:30:28 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:30:28 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:30:28 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:30:28 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:30:28 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:30:28 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:30:28 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:30:28 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:30:28 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:30:28 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:30:28 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:30:28 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:30:28 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:30:28 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:30:28 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:30:28 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:30:28 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:30:28 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:30:28 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:30:28 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:30:28 - aiFriend - ERROR - OpenGL 初始化失败: module 'live2d.v3' has no attribute 'glewInit'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/live2d_renderer/widget.py", line 53, in initializeGL
-    live2d.glewInit()
-    ^^^^^^^^^^^^^^^
-AttributeError: module 'live2d.v3' has no attribute 'glewInit'
-2026-03-23 10:30:28 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:30:28 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:30:28 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:30:28 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:30:28 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:30:29 - aiFriend - INFO - OpenGL 尚未初始化，延迟加载模型: assets/live2d/biaoqiang
-2026-03-23 10:30:29 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:30:29 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:30:29 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:30:30 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:30:30 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:30:31 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:30:31 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:30:31 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:30:32 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:30:32 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:30:33 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:32:23 - aiFriend - INFO - ==================================================
-2026-03-23 10:32:23 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:32:23 - aiFriend - INFO - ==================================================
-2026-03-23 10:32:23 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:32:23 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:32:23 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:32:23 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:32:23 - aiFriend - INFO - First run: True
-2026-03-23 10:32:23 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:32:24 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:32:24 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:32:24 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:32:24 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:32:24 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:32:24 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:32:24 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:32:24 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:32:24 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:32:24 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:32:24 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:32:24 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:32:24 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:32:24 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:32:24 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:32:24 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:32:24 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:32:24 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:32:24 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:32:24 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:32:24 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:32:24 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:32:24 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:32:24 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:32:24 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:32:24 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:32:24 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:32:24 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:32:24 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:32:24 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:32:24 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:32:24 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:32:24 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:32:24 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 10:32:24 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:32:24 - aiFriend - INFO - 设置模型画布大小: 300x384
-2026-03-23 10:32:24 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:32:24 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:32:24 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:32:25 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:32:26 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:32:26 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:32:26 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:32:27 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:34:00 - aiFriend - INFO - ==================================================
-2026-03-23 10:34:00 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:34:00 - aiFriend - INFO - ==================================================
-2026-03-23 10:34:00 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:34:00 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:34:00 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:34:00 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:34:00 - aiFriend - INFO - First run: True
-2026-03-23 10:34:00 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:34:00 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:34:00 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:34:00 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:34:00 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:34:00 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:34:00 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:34:00 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:34:00 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:34:00 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:34:00 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:34:00 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:34:00 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:34:00 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:34:00 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:34:00 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:34:00 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:34:00 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:34:00 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:34:00 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:34:00 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:34:00 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:34:00 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:34:00 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:34:00 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:34:01 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:34:01 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:34:01 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:34:01 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:34:01 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:34:01 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:34:01 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:34:01 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:34:01 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:34:01 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 10:34:01 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:34:01 - aiFriend - INFO - 设置模型画布大小: 300x384
-2026-03-23 10:34:01 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:34:01 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:34:01 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:34:02 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:34:12 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:34:12 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:34:12 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:34:13 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:34:13 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:34:13 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:34:14 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:34:14 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:34:14 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:49:20 - aiFriend - INFO - ==================================================
-2026-03-23 10:49:20 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:49:20 - aiFriend - INFO - ==================================================
-2026-03-23 10:49:20 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:49:20 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:49:20 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:49:20 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:49:20 - aiFriend - INFO - First run: True
-2026-03-23 10:49:20 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:49:20 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:49:20 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:49:20 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:49:20 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:49:20 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:49:20 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:49:20 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:49:20 - aiFriend - INFO - 中央控件设置完成
-2026-03-23 10:49:20 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:49:20 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:49:20 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:49:20 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:49:20 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:49:20 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:49:20 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:49:20 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:49:20 - aiFriend - INFO - 切换按钮设置完成
-2026-03-23 10:49:20 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:49:20 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:49:20 - aiFriend - INFO - 对话控件设置完成
-2026-03-23 10:49:20 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:49:20 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:49:20 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:49:20 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:49:21 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:49:21 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:49:21 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:49:21 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:49:21 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:49:21 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:49:21 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:49:21 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:49:21 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:49:21 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 10:49:21 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:49:21 - aiFriend - INFO - 设置模型画布大小: 300x384
-2026-03-23 10:49:21 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:49:21 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:49:21 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:49:22 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:49:23 - aiFriend - INFO - 已显示对话窗口
-2026-03-23 10:49:24 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:49:24 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:49:24 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:49:50 - aiFriend - INFO - 播放动作: idle
-2026-03-23 10:49:50 - aiFriend - INFO - 播放动作: idle
-2026-03-23 10:50:20 - aiFriend - INFO - 播放动作: idle
-2026-03-23 10:50:20 - aiFriend - INFO - 播放动作: idle
-2026-03-23 10:50:31 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:31 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:50:31 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:50:33 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:33 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:50:33 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:50:34 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:34 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:50:34 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:50:37 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:37 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:50:37 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:50:38 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:38 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:50:38 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:50:41 - aiFriend - INFO - 技能配置已加载
-2026-03-23 10:50:50 - aiFriend - INFO - 播放动作: idle
-2026-03-23 10:50:50 - aiFriend - INFO - 播放动作: idle
-2026-03-23 10:50:58 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:58 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:50:58 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:50:59 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:50:59 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:50:59 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:51:01 - aiFriend - INFO - 已隐藏对话窗口
-2026-03-23 10:51:02 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:51:02 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:51:02 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:51:03 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:51:03 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:51:03 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:51:04 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:51:04 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:51:04 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:51:05 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:51:05 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:51:05 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:51:06 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:51:06 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:51:06 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:53:46 - aiFriend - INFO - ==================================================
-2026-03-23 10:53:46 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:53:46 - aiFriend - INFO - ==================================================
-2026-03-23 10:53:46 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:53:46 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:53:46 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:53:46 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:53:46 - aiFriend - INFO - First run: True
-2026-03-23 10:53:46 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:53:46 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:53:46 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:53:46 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:53:46 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:53:46 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:53:46 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:53:46 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:53:46 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:53:46 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:53:46 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:53:46 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:53:46 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:53:46 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:53:46 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:53:46 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:53:46 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:53:46 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:53:46 - aiFriend - ERROR - 应用启动失败: 'ChatWidget' object has no attribute 'message_sent'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/main.py", line 80, in main
-    window = app.MainWindow()
-             ^^^^^^^^^^^^^^^^
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/app/main_window.py", line 104, in __init__
-    self._setup_ui()
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/app/main_window.py", line 182, in _setup_ui
-    self.chat_bubble.chat_widget.message_sent.connect(self._on_message_sent)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'ChatWidget' object has no attribute 'message_sent'
-2026-03-23 10:53:46 - aiFriend - INFO - OpenGL 尚未初始化，延迟加载模型: assets/live2d/biaoqiang
-2026-03-23 10:54:14 - aiFriend - INFO - ==================================================
-2026-03-23 10:54:14 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:54:14 - aiFriend - INFO - ==================================================
-2026-03-23 10:54:14 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:54:14 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:54:14 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:54:14 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:54:14 - aiFriend - INFO - First run: True
-2026-03-23 10:54:14 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:54:14 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:54:14 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:54:14 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:54:14 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:54:14 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:54:14 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:54:14 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:54:14 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:54:14 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:54:14 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:54:14 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:54:14 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:54:14 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:54:14 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:54:14 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:54:14 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:54:14 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:54:14 - aiFriend - ERROR - 应用启动失败: 'ChatWidget' object has no attribute 'message_sent'
-Traceback (most recent call last):
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/main.py", line 80, in main
-    window = app.MainWindow()
-             ^^^^^^^^^^^^^^^^
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/app/main_window.py", line 104, in __init__
-    self._setup_ui()
-  File "/Users/zhaochong/Ai/workspace/aiFriend/src/app/main_window.py", line 182, in _setup_ui
-    self.chat_bubble.chat_widget.message_sent.connect(self._on_message_sent)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'ChatWidget' object has no attribute 'message_sent'
-2026-03-23 10:54:14 - aiFriend - INFO - OpenGL 尚未初始化，延迟加载模型: assets/live2d/biaoqiang
-2026-03-23 10:55:03 - aiFriend - INFO - ==================================================
-2026-03-23 10:55:03 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:55:03 - aiFriend - INFO - ==================================================
-2026-03-23 10:55:03 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:55:03 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:55:03 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:55:03 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:55:03 - aiFriend - INFO - First run: True
-2026-03-23 10:55:03 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:55:03 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:55:03 - aiFriend - INFO - 配置加载完成
-2026-03-23 10:55:03 - aiFriend - INFO - 角色管理器加载完成
-2026-03-23 10:55:03 - aiFriend - INFO - 任务管理器加载完成
-2026-03-23 10:55:03 - aiFriend - INFO - 动作回调设置完成
-2026-03-23 10:55:03 - aiFriend - INFO - 准备调用 _setup_ui
-2026-03-23 10:55:03 - aiFriend - INFO - _setup_ui 开始执行
-2026-03-23 10:55:03 - aiFriend - INFO - 布局设置完成
-2026-03-23 10:55:03 - aiFriend - INFO - 开始创建 Live2D 控件
-2026-03-23 10:55:03 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:55:03 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:55:03 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:55:03 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:55:03 - aiFriend - INFO - Live2D 控件已初始化
-2026-03-23 10:55:03 - aiFriend - INFO - Live2D 控件添加到布局
-2026-03-23 10:55:03 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:55:03 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:55:03 - aiFriend - INFO - 聊天气泡创建完成
-2026-03-23 10:55:03 - aiFriend - INFO - _setup_ui 执行完成
-2026-03-23 10:55:03 - aiFriend - INFO - _setup_ui 调用完成
-2026-03-23 10:55:03 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:55:03 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:55:03 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:55:03 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:55:03 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:55:03 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:55:03 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:55:03 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:55:03 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:55:03 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:55:03 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:55:03 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 10:55:03 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:55:03 - aiFriend - INFO - 设置模型画布大小: 300x399
-2026-03-23 10:55:03 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:55:04 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:55:04 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:55:04 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:55:04 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:05 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:55:05 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:05 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:55:08 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:08 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:55:09 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:09 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:55:11 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:11 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:55:12 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:12 - aiFriend - INFO - 播放动作: touch_body
-2026-03-23 10:55:15 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:55:15 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:55:16 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:55:17 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:55:18 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:55:18 - aiFriend - INFO - 播放动作: touch_head
-2026-03-23 10:57:15 - aiFriend - INFO - ==================================================
-2026-03-23 10:57:15 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 10:57:15 - aiFriend - INFO - ==================================================
-2026-03-23 10:57:15 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 10:57:15 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 10:57:15 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 10:57:15 - aiFriend - INFO - 角色设定已加载
-2026-03-23 10:57:15 - aiFriend - INFO - First run: True
-2026-03-23 10:57:15 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 10:57:15 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 10:57:15 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 10:57:15 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 10:57:15 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 10:57:15 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 10:57:15 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 10:57:15 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 10:57:15 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 10:57:15 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 10:57:15 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 10:57:15 - aiFriend - INFO - 主窗口已显示
-2026-03-23 10:57:15 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 10:57:15 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 10:57:15 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 10:57:15 - aiFriend - INFO - 应用启动完成
-2026-03-23 10:57:16 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 10:57:16 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 10:57:16 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 10:57:16 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 10:57:16 - aiFriend - INFO - 设置模型画布大小: 300x399
-2026-03-23 10:57:16 - aiFriend - INFO - 模型加载完成
-2026-03-23 10:57:16 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:16 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 10:57:16 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 10:57:16 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 10:57:16 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:17 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:19 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:57:19 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:57:27 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:28 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:28 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:29 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:29 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:57:29 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:57:35 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:36 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:36 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:37 - aiFriend - INFO - Live2D clicked
-2026-03-23 10:57:37 - aiFriend - INFO - 播放动作: main_1
-2026-03-23 10:57:38 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:40 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:40 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 10:57:41 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 10:57:45 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:02:46 - aiFriend - INFO - ==================================================
-2026-03-23 11:02:46 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 11:02:46 - aiFriend - INFO - ==================================================
-2026-03-23 11:02:46 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 11:02:46 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 11:02:46 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 11:02:46 - aiFriend - INFO - 角色设定已加载
-2026-03-23 11:02:46 - aiFriend - INFO - First run: True
-2026-03-23 11:02:46 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 11:02:46 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 11:02:46 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 11:02:46 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 11:02:46 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 11:02:46 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 11:02:46 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 11:02:46 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 11:02:46 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 11:02:46 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 11:02:46 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 11:02:46 - aiFriend - INFO - 主窗口已显示
-2026-03-23 11:02:46 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 11:02:46 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 11:02:46 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 11:02:46 - aiFriend - INFO - 应用启动完成
-2026-03-23 11:02:46 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 11:02:46 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 11:02:46 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 11:02:46 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 11:02:46 - aiFriend - INFO - 设置模型画布大小: 300x399
-2026-03-23 11:02:46 - aiFriend - INFO - 模型加载完成
-2026-03-23 11:02:46 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:02:46 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 11:02:47 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 11:02:47 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 11:02:47 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 11:02:48 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:03:13 - aiFriend - INFO - ==================================================
-2026-03-23 11:03:13 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 11:03:13 - aiFriend - INFO - ==================================================
-2026-03-23 11:03:13 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 11:03:13 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 11:03:13 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 11:03:13 - aiFriend - INFO - 角色设定已加载
-2026-03-23 11:03:13 - aiFriend - INFO - First run: True
-2026-03-23 11:03:13 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 11:03:13 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 11:03:13 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 11:03:13 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 11:03:13 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 11:03:13 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 11:03:13 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 11:03:13 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 11:03:13 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 11:03:13 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 11:03:13 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 11:03:13 - aiFriend - INFO - 主窗口已显示
-2026-03-23 11:03:13 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 11:03:13 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 11:03:13 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 11:03:13 - aiFriend - INFO - 应用启动完成
-2026-03-23 11:03:13 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 11:03:13 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 11:03:13 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 11:03:13 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 11:03:13 - aiFriend - INFO - 设置模型画布大小: 300x399
-2026-03-23 11:03:13 - aiFriend - INFO - 模型加载完成
-2026-03-23 11:03:13 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:03:13 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 11:03:14 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 11:03:14 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 11:03:14 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 11:03:43 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:04:13 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:04:43 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:05:13 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:05:22 - aiFriend - INFO - ==================================================
-2026-03-23 11:05:22 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 11:05:22 - aiFriend - INFO - ==================================================
-2026-03-23 11:05:22 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 11:05:22 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 11:05:22 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 11:05:22 - aiFriend - INFO - 角色设定已加载
-2026-03-23 11:05:22 - aiFriend - INFO - First run: True
-2026-03-23 11:05:22 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 11:05:22 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 11:05:22 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 11:05:22 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 11:05:22 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 11:05:22 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 11:05:22 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 11:05:22 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 11:05:22 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 11:05:22 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 11:05:22 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 11:05:22 - aiFriend - INFO - 主窗口已显示
-2026-03-23 11:05:22 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 11:05:22 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 11:05:22 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 11:05:22 - aiFriend - INFO - 应用启动完成
-2026-03-23 11:05:22 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 11:05:22 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 11:05:22 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 11:05:22 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 11:05:22 - aiFriend - INFO - 设置模型画布大小: 300x399
-2026-03-23 11:05:22 - aiFriend - INFO - 模型加载完成
-2026-03-23 11:05:22 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:05:22 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 11:05:23 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 11:05:23 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 11:05:23 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 11:05:28 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:05:34 - aiFriend - INFO - 已隐藏聊天窗口
-2026-03-23 11:05:41 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:05:43 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:05:52 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:06:13 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:06:22 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:06:43 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:06:52 - aiFriend - INFO - 播放动作: idle
-2026-03-23 11:10:24 - aiFriend - INFO - ==================================================
-2026-03-23 11:10:24 - aiFriend - INFO - AI Friend - 二次元桌面助手
-2026-03-23 11:10:24 - aiFriend - INFO - ==================================================
-2026-03-23 11:10:24 - aiFriend - INFO - 配置已从文件加载
-2026-03-23 11:10:24 - aiFriend - INFO - LLM Provider: openai
-2026-03-23 11:10:24 - aiFriend - INFO - LLM Model: gpt-4
-2026-03-23 11:10:24 - aiFriend - INFO - 角色设定已加载
-2026-03-23 11:10:24 - aiFriend - INFO - First run: True
-2026-03-23 11:10:24 - aiFriend - INFO - 已注册 11 个工具
-2026-03-23 11:10:25 - aiFriend - INFO - MainWindow.__init__ 开始
-2026-03-23 11:10:25 - aiFriend - INFO - 创建 Live2D OpenGL 控件
-2026-03-23 11:10:25 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
-2026-03-23 11:10:25 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
-2026-03-23 11:10:25 - aiFriend - INFO - Live2D 模型路径: assets/live2d/biaoqiang
-2026-03-23 11:10:25 - aiFriend - INFO - 已加载 1 条对话历史
-2026-03-23 11:10:25 - aiFriend - INFO - 第一次启动，显示引导对话
-2026-03-23 11:10:25 - aiFriend - INFO - 任务管理器将在主程序启动时启动
-2026-03-23 11:10:25 - aiFriend - INFO - 初始化 OpenGL...
-2026-03-23 11:10:25 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
-2026-03-23 11:10:25 - aiFriend - INFO - 主窗口已显示
-2026-03-23 11:10:25 - aiFriend - INFO - 系统托盘已显示
-2026-03-23 11:10:25 - aiFriend - INFO - 系统托盘已创建
-2026-03-23 11:10:25 - aiFriend - INFO - 第一次运行，显示问候
-2026-03-23 11:10:25 - aiFriend - INFO - 应用启动完成
-2026-03-23 11:10:25 - aiFriend - INFO - 开始加载模型: assets/live2d/biaoqiang
-2026-03-23 11:10:25 - aiFriend - INFO - 找到模型文件: assets/live2d/biaoqiang/biaoqiang.model3.json
-2026-03-23 11:10:25 - aiFriend - INFO - 模型 JSON 加载成功
-2026-03-23 11:10:25 - aiFriend - INFO - 设置缩放: 1.0
-2026-03-23 11:10:25 - aiFriend - INFO - 设置模型画布大小: 300x399
-2026-03-23 11:10:25 - aiFriend - INFO - 模型加载完成
-2026-03-23 11:10:25 - aiFriend - INFO - 已显示聊天窗口
-2026-03-23 11:10:25 - aiFriend - INFO - 第一次启动，自动显示对话窗口
-2026-03-23 11:10:25 - aiFriend - INFO - 任务管理器已启动
-2026-03-23 11:10:25 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
-2026-03-23 11:10:26 - aiFriend - INFO - 已隐藏聊天窗口
+2026-03-24 11:13:59 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:13:59 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:13:59 - aiFriend - INFO - ==================================================
+2026-03-24 11:13:59 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-24 11:13:59 - aiFriend - INFO - ==================================================
+2026-03-24 11:13:59 - aiFriend - INFO - LLM Provider: ollama
+2026-03-24 11:13:59 - aiFriend - INFO - LLM Model: qwen3.5:4B
+2026-03-24 11:13:59 - aiFriend - INFO - 角色设定已加载
+2026-03-24 11:13:59 - aiFriend - INFO - First run: False
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-24 11:13:59 - aiFriend - INFO - 应用配置已加载
+2026-03-24 11:13:59 - aiFriend - INFO - 创建 ChatModel: provider=ollama, model=qwen3.5:4B
+2026-03-24 11:13:59 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:13:59 - aiFriend - INFO - 已注册 12 个工具
+2026-03-24 11:13:59 - aiFriend - INFO - 启用的工具: 12/12
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载 0 条长期记忆
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载 0 条事实
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-24 11:13:59 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-24 11:14:00 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 12
+2026-03-24 11:14:00 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-24 11:14:00 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 12
+2026-03-24 11:14:00 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-24 11:14:00 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:14:00 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:14:00 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-24 11:14:00 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x153818150) at 0x1501c1540>>
+2026-03-24 11:14:00 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-24 11:14:00 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-24 11:14:00 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-24 11:14:00 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:14:00 - aiFriend - INFO - 显示开场白
+2026-03-24 11:14:00 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-24 11:14:00 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-24 11:14:00 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-24 11:14:00 - aiFriend - INFO - 主窗口已显示
+2026-03-24 11:14:00 - aiFriend - INFO - 系统托盘已显示
+2026-03-24 11:14:00 - aiFriend - INFO - 系统托盘已创建
+2026-03-24 11:14:00 - aiFriend - INFO - 应用启动完成
+2026-03-24 11:14:00 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:14:00 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-24 11:14:00 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:14:00 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:14:00 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:14:00 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:14:00 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:14:00 - aiFriend - INFO - 任务管理器已启动
+2026-03-24 11:14:00 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-24 11:14:04 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:14:04 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2, stderr: libc++abi: terminating due to uncaught exception of type std::__1::__fs::filesystem::filesystem_error: filesystem error: in file_size: Is a directory ["/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2"]
+
+2026-03-24 11:14:04 - aiFriend - WARNING - 模型不兼容，已跳过: aimierbeierding_2
+2026-03-24 11:14:04 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang, stderr: libc++abi: terminating due to uncaught exception of type std::__1::__fs::filesystem::filesystem_error: filesystem error: in file_size: Is a directory ["/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang"]
+
+2026-03-24 11:14:04 - aiFriend - WARNING - 模型不兼容，已跳过: biaoqiang
+2026-03-24 11:14:04 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3, stderr: libc++abi: terminating due to uncaught exception of type std::__1::__fs::filesystem::filesystem_error: filesystem error: in file_size: Is a directory ["/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3"]
+
+2026-03-24 11:14:04 - aiFriend - WARNING - 模型不兼容，已跳过: chuixue_3
+2026-03-24 11:14:04 - aiFriend - INFO - 扫描到 0 个可用模型
+2026-03-24 11:15:39 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:15:39 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:39 - aiFriend - INFO - ==================================================
+2026-03-24 11:15:39 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-24 11:15:39 - aiFriend - INFO - ==================================================
+2026-03-24 11:15:39 - aiFriend - INFO - LLM Provider: ollama
+2026-03-24 11:15:39 - aiFriend - INFO - LLM Model: qwen3.5:4B
+2026-03-24 11:15:39 - aiFriend - INFO - 角色设定已加载
+2026-03-24 11:15:39 - aiFriend - INFO - First run: False
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-24 11:15:39 - aiFriend - INFO - 应用配置已加载
+2026-03-24 11:15:39 - aiFriend - INFO - 创建 ChatModel: provider=ollama, model=qwen3.5:4B
+2026-03-24 11:15:39 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:39 - aiFriend - INFO - 已注册 12 个工具
+2026-03-24 11:15:39 - aiFriend - INFO - 启用的工具: 12/12
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载 0 条长期记忆
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载 0 条事实
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-24 11:15:39 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 12
+2026-03-24 11:15:39 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-24 11:15:39 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 12
+2026-03-24 11:15:39 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-24 11:15:39 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:15:39 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:15:39 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-24 11:15:39 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x1302c4bb0) at 0x141c3fbc0>>
+2026-03-24 11:15:39 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-24 11:15:39 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-24 11:15:39 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-24 11:15:39 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:15:39 - aiFriend - INFO - 显示开场白
+2026-03-24 11:15:39 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-24 11:15:40 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-24 11:15:40 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-24 11:15:40 - aiFriend - INFO - 主窗口已显示
+2026-03-24 11:15:40 - aiFriend - INFO - 系统托盘已显示
+2026-03-24 11:15:40 - aiFriend - INFO - 系统托盘已创建
+2026-03-24 11:15:40 - aiFriend - INFO - 应用启动完成
+2026-03-24 11:15:40 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:15:40 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-24 11:15:40 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:40 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:15:40 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:15:40 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:15:40 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:40 - aiFriend - INFO - 任务管理器已启动
+2026-03-24 11:15:40 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-24 11:15:42 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:15:42 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-24 11:15:42 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-24 11:15:42 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-24 11:15:42 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-24 11:15:44 - aiFriend - INFO - 模型变更: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2
+2026-03-24 11:15:44 - aiFriend - INFO - 重新加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2
+2026-03-24 11:15:44 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2
+2026-03-24 11:15:44 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2/aimierbeierding_2.model3.json
+2026-03-24 11:15:44 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:44 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:15:44 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:15:44 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:15:44 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:44 - aiFriend - INFO - 模型和动作缓存已更新
+2026-03-24 11:15:46 - aiFriend - INFO - 模型变更: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:15:46 - aiFriend - INFO - 重新加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:15:46 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:15:46 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3/chuixue_3.model3.json
+2026-03-24 11:15:46 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:47 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:15:47 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:15:47 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:15:47 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:15:47 - aiFriend - INFO - 模型和动作缓存已更新
+2026-03-24 11:16:10 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:16:16 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei, stderr: libc++abi: terminating due to uncaught exception of type std::__1::__fs::filesystem::filesystem_error: filesystem error: in file_size: Is a directory ["/Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei"]
+
+2026-03-24 11:16:27 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4, stderr: libc++abi: terminating due to uncaught exception of type std::__1::__fs::filesystem::filesystem_error: filesystem error: in file_size: Is a directory ["/Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4"]
+
+2026-03-24 11:16:40 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:17:10 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:17:40 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:18:42 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:18:42 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:18:42 - aiFriend - INFO - ==================================================
+2026-03-24 11:18:42 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-24 11:18:42 - aiFriend - INFO - ==================================================
+2026-03-24 11:18:42 - aiFriend - INFO - LLM Provider: ollama
+2026-03-24 11:18:42 - aiFriend - INFO - LLM Model: qwen3.5:4B
+2026-03-24 11:18:42 - aiFriend - INFO - 角色设定已加载
+2026-03-24 11:18:42 - aiFriend - INFO - First run: False
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-24 11:18:42 - aiFriend - INFO - 应用配置已加载
+2026-03-24 11:18:42 - aiFriend - INFO - 创建 ChatModel: provider=ollama, model=qwen3.5:4B
+2026-03-24 11:18:42 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:18:42 - aiFriend - INFO - 已注册 12 个工具
+2026-03-24 11:18:42 - aiFriend - INFO - 启用的工具: 12/12
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载 0 条长期记忆
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载 0 条事实
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-24 11:18:42 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 12
+2026-03-24 11:18:42 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-24 11:18:42 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 12
+2026-03-24 11:18:42 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-24 11:18:42 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:18:42 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:18:42 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-24 11:18:42 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x1585b1cf0) at 0x159906900>>
+2026-03-24 11:18:42 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-24 11:18:42 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-24 11:18:42 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-24 11:18:42 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:18:42 - aiFriend - INFO - 显示开场白
+2026-03-24 11:18:42 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-24 11:18:42 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-24 11:18:42 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-24 11:18:42 - aiFriend - INFO - 主窗口已显示
+2026-03-24 11:18:42 - aiFriend - INFO - 系统托盘已显示
+2026-03-24 11:18:42 - aiFriend - INFO - 系统托盘已创建
+2026-03-24 11:18:42 - aiFriend - INFO - 应用启动完成
+2026-03-24 11:18:42 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:18:42 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-24 11:18:42 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:18:42 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:18:42 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:18:42 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:18:42 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:18:43 - aiFriend - INFO - 任务管理器已启动
+2026-03-24 11:18:43 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-24 11:18:46 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:18:46 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-24 11:18:46 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-24 11:18:46 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-24 11:18:46 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-24 11:19:12 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:19:13 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4, returncode=-6, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x11750ab50)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.model3.json
+[INFO]  create model: lafei_4.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/lafei_4.physics3.json
+[INFO]  load motion: motions/mission.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/mission.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/touch_head.motion3.json
+[INFO]  load motion: motions/idle.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/idle.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/idle.motion3.json
+[INFO]  load motion: motions/mail.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/mail.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/touch_special.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/login.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/home.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/main_3.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/main_3.motion3.json
+[INFO]  load motion: motions/main_1.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/main_1.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/main_1.motion3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_9] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/wedding.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_10] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei_4/motions/mission_complete.motion3.json 
+, stderr=
+2026-03-24 11:19:20 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei, returncode=-11, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x11662e8a0)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.model3.json
+[INFO]  create model: lafei.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/lafei.physics3.json
+[INFO]  load motion: motions/complete.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/complete.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/home.motion3.json
+[INFO]  load motion: motions/idle.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/idle.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/idle.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/login.motion3.json
+[INFO]  load motion: motions/mail.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/mail.motion3.json
+[INFO]  load motion: motions/main_1.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/main_1.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/main_1.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/main_2.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/main_3.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/main_3.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_9] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/mission.motion3.json
+[INFO]  load motion: motions/touch_body.motion3.json => [_10] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/touch_body.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/touch_body.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_11] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/touch_head.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_12] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/touch_special.motion3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_13] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/lafei/motions/wedding.motion3.json
+, stderr=
+2026-03-24 11:19:36 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3, returncode=-11, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x102f470f0)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.model3.json
+[INFO]  create model: biaoqiang_3.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/biaoqiang_3.physics3.json
+[INFO]  load motion: motions/touch_body.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/touch_body.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/touch_body.motion3.json
+[INFO]  load motion: motions/complete.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/complete.motion3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/wedding.motion3.json
+[INFO]  load motion: motions/main_1.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/main_1.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/main_1.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/login.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/touch_special.motion3.json
+[INFO]  load motion: motions/mail.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/mail.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/main_2.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/home.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_9] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/mission.motion3.json
+[INFO]  load motion: motions/idle.motion3.json => [_10] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/idle.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/idle.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_11] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/touch_head.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_12] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_13] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/main_3.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/biaoqiang_3/motions/main_3.motion3.json
+, stderr=
+2026-03-24 11:19:40 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2, returncode=-6, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x129e18040)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.model3.json
+[INFO]  create model: genaisennao_2.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/genaisennao_2.physics3.json
+[INFO]  load motion: motions/complete.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/complete.motion3.json
+[INFO]  load motion: motions/main_1.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/main_1.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/main_1.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/touch_head.motion3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/wedding.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/home.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/login.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/main_2.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/genaisennao_2/motions/touch_special.motion3.json 
+, stderr=
+2026-03-24 11:19:42 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:19:44 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3, returncode=-6, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x150fc6640)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.model3.json
+[INFO]  create model: huangjiafangzhou_3.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/huangjiafangzhou_3.physics3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/wedding.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/mission.motion3.json
+[INFO]  load motion: motions/mail.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/mail.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/login.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/touch_special.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/home.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/main_3.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/main_3.motion3.json
+[INFO]  load motion: motions/touch_body.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/touch_body.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/touch_body.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_9] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/main_2.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_10] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/touch_head.motion3.json
+[INFO]  load motion: motions/complete.motion3.json => [_11] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/huangjiafangzhou_3/motions/complete.motion3.json 
+, stderr=
+2026-03-24 11:19:48 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3, returncode=-6, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x13a0b12d0)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.model3.json
+[INFO]  create model: rangbaer_3.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/rangbaer_3.physics3.json
+[INFO]  load motion: motions/mail.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/mail.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/main_2.motion3.json
+[INFO]  load motion: motions/effect.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/effect.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/effect.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/touch_head.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/touch_special.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/login.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/mission.motion3.json
+[INFO]  load motion: motions/complete.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/complete.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/rangbaer_3/motions/mission_complete.motion3.json 
+, stderr=
+2026-03-24 11:19:55 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2, returncode=-6, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x102915dd0)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.model3.json
+[INFO]  create model: wuqi_2.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/wuqi_2.physics3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/motions/touch_head.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/wuqi_2/motions/mission.motion3.json 
+, stderr=
+2026-03-24 11:20:00 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23, returncode=-11, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x11fa36f30)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/z23.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/z23.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/z23.model3.json
+[INFO]  create model: z23.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/z23.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/z23.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/Z23.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/Z23.physics3.json
+[INFO]  load motion: motions/complete.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/complete.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/home.motion3.json
+[INFO]  load motion: motions/idle.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/idle.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/idle.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/login.motion3.json
+[INFO]  load motion: motions/mail.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/mail.motion3.json
+[INFO]  load motion: motions/main_1.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/main_1.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/main_1.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/main_2.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/main_3.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/main_3.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_9] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/mission.motion3.json
+[INFO]  load motion: motions/touch_body.motion3.json => [_10] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/touch_body.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/touch_body.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_11] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/touch_head.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_12] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/touch_special.motion3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_13] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/z23/motions/wedding.motion3.json
+, stderr=
+2026-03-24 11:20:05 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi, returncode=-11, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x10f90fe50)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.model3.json
+[INFO]  create model: mingshi.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/mingshi.physics3.json
+[INFO]  load motion: motions/complete.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/complete.motion3.json
+[INFO]  load motion: motions/diamond.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/diamond.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/diamond.motion3.json
+[INFO]  load motion: motions/gold.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/gold.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/gold.motion3.json
+[INFO]  load motion: motions/home.motion3.json => [_3] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/home.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/home.motion3.json
+[INFO]  load motion: motions/idle.motion3.json => [_4] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/idle.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/idle.motion3.json
+[INFO]  load motion: motions/login.motion3.json => [_5] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/login.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/login.motion3.json
+[INFO]  load motion: motions/mail.motion3.json => [_6] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/mail.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/mail.motion3.json
+[INFO]  load motion: motions/main_1.motion3.json => [_7] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/main_1.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/main_1.motion3.json
+[INFO]  load motion: motions/main_2.motion3.json => [_8] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/main_2.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/main_2.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_9] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/main_3.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/main_3.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_10] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/mission.motion3.json => [_11] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/mission.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/mission.motion3.json
+[INFO]  load motion: motions/oil.motion3.json => [_12] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/oil.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/oil.motion3.json
+[INFO]  load motion: motions/touch_body.motion3.json => [_13] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/touch_body.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/touch_body.motion3.json
+[INFO]  load motion: motions/touch_head.motion3.json => [_14] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/touch_head.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/touch_head.motion3.json
+[INFO]  load motion: motions/touch_special.motion3.json => [_15] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/touch_special.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/touch_special.motion3.json
+[INFO]  load motion: motions/wedding.motion3.json => [_16] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/wedding.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/mingshi/motions/wedding.motion3.json
+, stderr=
+2026-03-24 11:20:12 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:20:16 - aiFriend - WARNING - 模型不兼容: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2, returncode=-6, stdout=─────────────────────────────────────────────────────────────
+ 🐾 live2d-py (built with Python 3.11.0)
+ 🧸 3rd-party lib integrated with official Live2D native SDK 
+ ✨ Official SDK: https://www.live2d.com/sdk/download/native/
+─────────────────────────────────────────────────────────────
+[INFO]  [Pal] Init Shader Dir: /opt/anaconda3/lib/python3.11/site-packages/live2d/v3/
+[INFO]  [CSM][I]Live2D Cubism Core version: 05.01.0000 (83951616)
+
+[INFO]  [CSM][I]CubismFramework::StartUp() is complete.
+
+[INFO]  [CSM][I]CubismFramework::Initialize() is complete.
+
+[34m[DEBUG] [Log] Level=DEBUG[0m
+[INFO]  [M] allocate cpp LAppModel(at=0x1056589d0)
+[INFO]  load model setting: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.model3.json
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.model3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.model3.json
+[INFO]  create model: beierfasite_2.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.moc3 
+Live2D Cubism SDK Core Version 5.1.0
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.moc3
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.physics3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/beierfasite_2.physics3.json
+[INFO]  load motion: motions/touch_body.motion3.json => [_0] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/motions/touch_body.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/motions/touch_body.motion3.json
+[INFO]  load motion: motions/mission_complete.motion3.json => [_1] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/motions/mission_complete.motion3.json 
+[INFO]  delete buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/motions/mission_complete.motion3.json
+[INFO]  load motion: motions/main_3.motion3.json => [_2] 
+[INFO]  create buffer: /Users/zhaochong/work/vs_work/desktop-pet/src/renderer/public/module/beierfasite_2/motions/main_3.motion3.json 
+, stderr=
+2026-03-24 11:24:25 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:24:25 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:24:25 - aiFriend - INFO - 模型文件完整性检查通过: aimierbeierding_2
+2026-03-24 11:24:25 - aiFriend - INFO - 模型文件完整性检查通过: biaoqiang
+2026-03-24 11:24:25 - aiFriend - INFO - 模型文件完整性检查通过: chuixue_3
+2026-03-24 11:24:49 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:24:49 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:24:49 - aiFriend - INFO - ==================================================
+2026-03-24 11:24:49 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-24 11:24:49 - aiFriend - INFO - ==================================================
+2026-03-24 11:24:49 - aiFriend - INFO - LLM Provider: ollama
+2026-03-24 11:24:49 - aiFriend - INFO - LLM Model: qwen3.5:4B
+2026-03-24 11:24:49 - aiFriend - INFO - 角色设定已加载
+2026-03-24 11:24:49 - aiFriend - INFO - First run: False
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-24 11:24:49 - aiFriend - INFO - 应用配置已加载
+2026-03-24 11:24:49 - aiFriend - INFO - 创建 ChatModel: provider=ollama, model=qwen3.5:4B
+2026-03-24 11:24:49 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:24:49 - aiFriend - INFO - 已注册 12 个工具
+2026-03-24 11:24:49 - aiFriend - INFO - 启用的工具: 12/12
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载 0 条长期记忆
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载 0 条事实
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-24 11:24:49 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 12
+2026-03-24 11:24:49 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-24 11:24:49 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 12
+2026-03-24 11:24:49 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-24 11:24:49 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:24:49 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:24:50 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-24 11:24:50 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x13f07dff0) at 0x17bcbea40>>
+2026-03-24 11:24:50 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-24 11:24:50 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-24 11:24:50 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-24 11:24:50 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:24:50 - aiFriend - INFO - 显示开场白
+2026-03-24 11:24:50 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-24 11:24:50 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-24 11:24:50 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-24 11:24:50 - aiFriend - INFO - 主窗口已显示
+2026-03-24 11:24:50 - aiFriend - INFO - 系统托盘已显示
+2026-03-24 11:24:50 - aiFriend - INFO - 系统托盘已创建
+2026-03-24 11:24:50 - aiFriend - INFO - 应用启动完成
+2026-03-24 11:24:50 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:24:50 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-24 11:24:50 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:24:50 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:24:50 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:24:50 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:24:50 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:24:50 - aiFriend - INFO - 任务管理器已启动
+2026-03-24 11:24:50 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-24 11:24:53 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:24:53 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-24 11:24:53 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-24 11:24:53 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-24 11:24:53 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-24 11:25:20 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:25:24 - aiFriend - INFO - 模型文件完整性检查通过: genaisennao_2
+2026-03-24 11:25:24 - aiFriend - INFO - 模型已复制到: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:25:24 - aiFriend - INFO - 模型变更: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:25:24 - aiFriend - INFO - 重新加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:25:24 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:25:24 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2/genaisennao_2.model3.json
+2026-03-24 11:25:24 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'main_1', 'touch_head', 'wedding', 'home', 'login', 'main_2', 'mission_complete', 'touch_special', 'mission', 'touch_body', 'idle', 'main_3', 'mail']
+2026-03-24 11:27:01 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:27:01 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:01 - aiFriend - INFO - ==================================================
+2026-03-24 11:27:01 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-24 11:27:01 - aiFriend - INFO - ==================================================
+2026-03-24 11:27:01 - aiFriend - INFO - LLM Provider: ollama
+2026-03-24 11:27:01 - aiFriend - INFO - LLM Model: qwen3.5:4B
+2026-03-24 11:27:01 - aiFriend - INFO - 角色设定已加载
+2026-03-24 11:27:01 - aiFriend - INFO - First run: False
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-24 11:27:01 - aiFriend - INFO - 应用配置已加载
+2026-03-24 11:27:01 - aiFriend - INFO - 创建 ChatModel: provider=ollama, model=qwen3.5:4B
+2026-03-24 11:27:01 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:01 - aiFriend - INFO - 已注册 12 个工具
+2026-03-24 11:27:01 - aiFriend - INFO - 启用的工具: 12/12
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载 0 条长期记忆
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载 0 条事实
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-24 11:27:01 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 12
+2026-03-24 11:27:01 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-24 11:27:01 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 12
+2026-03-24 11:27:01 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-24 11:27:01 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:27:01 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:27:01 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-24 11:27:01 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x17b8e33c0) at 0x17c6b7b80>>
+2026-03-24 11:27:01 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-24 11:27:01 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-24 11:27:01 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-24 11:27:01 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:27:01 - aiFriend - INFO - 显示开场白
+2026-03-24 11:27:02 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-24 11:27:02 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-24 11:27:02 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-24 11:27:02 - aiFriend - INFO - 主窗口已显示
+2026-03-24 11:27:02 - aiFriend - INFO - 系统托盘已显示
+2026-03-24 11:27:02 - aiFriend - INFO - 系统托盘已创建
+2026-03-24 11:27:02 - aiFriend - INFO - 应用启动完成
+2026-03-24 11:27:02 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:27:02 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-24 11:27:02 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:02 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:27:02 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:27:02 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:27:02 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:02 - aiFriend - INFO - 任务管理器已启动
+2026-03-24 11:27:02 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-24 11:27:04 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:27:04 - aiFriend - INFO - 模型可用: genaisennao_2
+2026-03-24 11:27:04 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-24 11:27:04 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-24 11:27:04 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-24 11:27:04 - aiFriend - INFO - 扫描到 4 个模型
+2026-03-24 11:27:06 - aiFriend - INFO - 模型变更: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:27:06 - aiFriend - INFO - 重新加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:27:06 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:27:06 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3/chuixue_3.model3.json
+2026-03-24 11:27:06 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:06 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:27:06 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:27:06 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:27:06 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:06 - aiFriend - INFO - 模型和动作缓存已更新
+2026-03-24 11:27:09 - aiFriend - INFO - LLM 配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - Live2D 配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 角色设定已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 角色设定已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 心情配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 工具配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 工具配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-24 11:27:09 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-24 11:27:09 - aiFriend - INFO - 用户提示词已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 通用配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 角色设定已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 工具配置已保存
+2026-03-24 11:27:09 - aiFriend - INFO - 设置已保存
+2026-03-24 11:27:13 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:27:13 - aiFriend - INFO - 模型可用: genaisennao_2
+2026-03-24 11:27:13 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-24 11:27:13 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-24 11:27:13 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-24 11:27:13 - aiFriend - INFO - 扫描到 4 个模型
+2026-03-24 11:27:15 - aiFriend - INFO - 模型变更: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:27:15 - aiFriend - INFO - 重新加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:27:15 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2
+2026-03-24 11:27:15 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/genaisennao_2/genaisennao_2.model3.json
+2026-03-24 11:27:15 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'main_1', 'touch_head', 'wedding', 'home', 'login', 'main_2', 'mission_complete', 'touch_special', 'mission', 'touch_body', 'idle', 'main_3', 'mail']
+2026-03-24 11:27:27 - aiFriend - INFO - 配置已从文件加载
+2026-03-24 11:27:27 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:27 - aiFriend - INFO - ==================================================
+2026-03-24 11:27:27 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-24 11:27:27 - aiFriend - INFO - ==================================================
+2026-03-24 11:27:27 - aiFriend - INFO - LLM Provider: ollama
+2026-03-24 11:27:27 - aiFriend - INFO - LLM Model: qwen3.5:4B
+2026-03-24 11:27:27 - aiFriend - INFO - 角色设定已加载
+2026-03-24 11:27:27 - aiFriend - INFO - First run: False
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-24 11:27:27 - aiFriend - INFO - 应用配置已加载
+2026-03-24 11:27:27 - aiFriend - INFO - 创建 ChatModel: provider=ollama, model=qwen3.5:4B
+2026-03-24 11:27:27 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:27 - aiFriend - INFO - 已注册 12 个工具
+2026-03-24 11:27:27 - aiFriend - INFO - 启用的工具: 12/12
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载 0 条长期记忆
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载 0 条事实
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-24 11:27:27 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 12
+2026-03-24 11:27:27 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-24 11:27:27 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 12
+2026-03-24 11:27:27 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-24 11:27:27 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:27:27 - aiFriend - INFO - 对话历史已清空
+2026-03-24 11:27:27 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-24 11:27:27 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x152ff0130) at 0x15409d840>>
+2026-03-24 11:27:27 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-24 11:27:27 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-24 11:27:27 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-24 11:27:27 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:27:27 - aiFriend - INFO - 显示开场白
+2026-03-24 11:27:27 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-24 11:27:27 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-24 11:27:27 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-24 11:27:27 - aiFriend - INFO - 主窗口已显示
+2026-03-24 11:27:27 - aiFriend - INFO - 系统托盘已显示
+2026-03-24 11:27:27 - aiFriend - INFO - 系统托盘已创建
+2026-03-24 11:27:27 - aiFriend - INFO - 应用启动完成
+2026-03-24 11:27:27 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3
+2026-03-24 11:27:28 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3/chuixue_3.model3.json
+2026-03-24 11:27:28 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:28 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:27:28 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:27:28 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:27:28 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:28 - aiFriend - INFO - 任务管理器已启动
+2026-03-24 11:27:28 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-24 11:27:56 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-24 11:27:56 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-24 11:27:56 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-24 11:27:56 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-24 11:27:56 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-24 11:27:57 - aiFriend - INFO - 播放动作: idle
+2026-03-24 11:27:58 - aiFriend - INFO - 模型变更: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:27:59 - aiFriend - INFO - 重新加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:27:59 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-24 11:27:59 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-24 11:27:59 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:59 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-24 11:27:59 - aiFriend - INFO - 设置缩放: 1.0
+2026-03-24 11:27:59 - aiFriend - INFO - 设置模型画布大小: 300x430
+2026-03-24 11:27:59 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-24 11:27:59 - aiFriend - INFO - 模型和动作缓存已更新
+2026-03-24 11:27:59 - aiFriend - INFO - LLM 配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - Live2D 配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 角色设定已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 角色设定已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 心情配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 工具配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 工具配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-24 11:27:59 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-24 11:27:59 - aiFriend - INFO - 用户提示词已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 通用配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 角色设定已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 工具配置已保存
+2026-03-24 11:27:59 - aiFriend - INFO - 设置已保存
+2026-03-24 11:28:02 - aiFriend - INFO - 已显示聊天窗口
+2026-03-24 11:28:02 - aiFriend - INFO - 播放动作: touch_head
+2026-03-24 11:28:03 - aiFriend - INFO - 播放动作: main_1
+2026-03-24 11:28:03 - aiFriend - INFO - 播放动作: touch_head
+2026-03-24 11:28:04 - aiFriend - INFO - 播放动作: touch_body
+2026-03-24 11:28:05 - aiFriend - INFO - 播放动作: touch_body
+2026-03-24 11:28:06 - aiFriend - INFO - 已隐藏聊天窗口
+2026-03-24 11:28:27 - aiFriend - INFO - 播放动作: idle

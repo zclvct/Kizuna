@@ -1,0 +1,133 @@
+# Settings Window - 设置主窗口
+import sys
+from pathlib import Path
+src_path = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(src_path))
+
+from PySide6.QtWidgets import (
+    QDialog, QVBoxLayout, QHBoxLayout, QTabWidget, QPushButton, QMessageBox
+)
+from PySide6.QtCore import Qt, Signal
+
+from .styles import ANIME_STYLE
+from .llm_page import LLMSettingsPage
+from .live2d_page import Live2DSettingsPage
+from .character_page import CharacterSettingsPage
+from .skills_page import SkillsSettingsPage
+from .general_page import GeneralSettingsPage
+from .prompts_page import PromptsSettingsPage
+from .memory_page import MemorySettingsPage
+from .mood_page import MoodSettingsPage
+from utils import get_config, get_character_manager, get_logger
+
+logger = get_logger()
+
+
+class SettingsWindow(QDialog):
+    """设置窗口"""
+
+    model_changed = Signal(str)  # 模型路径变更信号
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.config = get_config()
+        self.character_manager = get_character_manager()
+        self._setup_ui()
+        self._setup_window()
+
+    def _setup_window(self):
+        """设置窗口"""
+        self.setWindowTitle("⚙️ 设置")
+        self.setMinimumSize(700, 600)
+        self.setStyleSheet(ANIME_STYLE)
+
+    def _setup_ui(self):
+        """设置 UI"""
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(15, 15, 15, 15)
+        layout.setSpacing(10)
+
+        # 标签页
+        self.tabs = QTabWidget()
+
+        # 创建各个页面
+        self.llm_page = LLMSettingsPage()
+        self.live2d_page = Live2DSettingsPage()
+        self.character_page = CharacterSettingsPage()
+        self.mood_page = MoodSettingsPage()
+        self.skills_page = SkillsSettingsPage()
+        self.prompts_page = PromptsSettingsPage()
+        self.memory_page = MemorySettingsPage()
+        self.general_page = GeneralSettingsPage()
+        
+        # 连接 Live2D 模型变更信号
+        self.live2d_page.model_changed.connect(self._on_model_changed)
+
+        self.tabs.addTab(self.llm_page, "🤖 LLM")
+        self.tabs.addTab(self.live2d_page, "🎭 Live2D")
+        self.tabs.addTab(self.character_page, "👤 角色")
+        self.tabs.addTab(self.mood_page, "😊 心情")
+        self.tabs.addTab(self.skills_page, "🔧 工具")
+        self.tabs.addTab(self.prompts_page, "📝 提示词")
+        self.tabs.addTab(self.memory_page, "🧠 记忆")
+        self.tabs.addTab(self.general_page, "⚙️ 通用")
+
+        layout.addWidget(self.tabs)
+
+        # 按钮
+        button_layout = QHBoxLayout()
+        button_layout.addStretch()
+
+        reset_btn = QPushButton("重置")
+        reset_btn.setObjectName("secondaryBtn")
+        reset_btn.clicked.connect(self._reset)
+        button_layout.addWidget(reset_btn)
+
+        save_btn = QPushButton("保存")
+        save_btn.clicked.connect(self._save)
+        button_layout.addWidget(save_btn)
+
+        layout.addLayout(button_layout)
+    
+    def _on_model_changed(self, model_path: str):
+        """模型变更处理"""
+        logger.info(f"模型变更: {model_path}")
+        # 更新配置中的模型路径
+        self.config.live2d.model_path = model_path
+        # 直接转发信号，让主窗口立即刷新模型
+        self.model_changed.emit(model_path)
+
+    def _save(self):
+        """保存设置"""
+        # 保存各个页面
+        self.llm_page.save()
+        self.live2d_page.save()
+        self.character_page.save()
+        self.mood_page.save()
+        self.skills_page.save()
+        self.prompts_page.save()
+        self.memory_page.save()
+        self.general_page.save()
+
+        # 保存配置文件
+        self.config.save()
+        self.character_manager.save()
+
+        from utils import get_tools_config
+        tools_config = get_tools_config()
+        tools_config.save()
+
+        logger.info("设置已保存")
+        QMessageBox.information(self, "保存成功", "设置已保存")
+        self.accept()
+
+    def _reset(self):
+        """重置"""
+        self.llm_page._load_config()
+        self.live2d_page._load_config()
+        self.character_page._load_config()
+        self.mood_page._load_moods()
+        self.skills_page._load_config()
+        self.prompts_page.reset()
+        self.memory_page.reset()
+        self.general_page._load_config()
