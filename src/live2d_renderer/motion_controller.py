@@ -9,6 +9,7 @@ import json
 import random
 
 from utils import MOTIONS_FILE, DEFAULT_MOTIONS_CONFIG, get_config, get_logger
+from utils.constants import resolve_path
 
 logger = get_logger()
 
@@ -176,7 +177,7 @@ class MotionController:
         
         try:
             config = get_config()
-            model_path = Path(config.live2d.model_path)
+            model_path = resolve_path(config.live2d.model_path)
             
             if not model_path.exists():
                 logger.warning(f"模型路径不存在: {model_path}")

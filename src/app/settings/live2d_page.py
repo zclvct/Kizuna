@@ -18,6 +18,7 @@ from PySide6.QtGui import QPainter, QColor, QPen, QBrush
 
 from .styles import CARD_STYLE, MENU_STYLE
 from utils import get_config, get_logger
+from utils.constants import resolve_path, get_relative_path
 
 logger = get_logger()
 
@@ -34,7 +35,7 @@ def validate_live2d_model(model_path: str) -> tuple[bool, str, list[str]]:
     Returns:
         (是否有效, 模型名称, 可用动作列表)
     """
-    path = Path(model_path)
+    path = resolve_path(model_path)
     
     if not path.exists():
         return False, "", []
@@ -441,8 +442,8 @@ class Live2DSettingsPage(QWidget):
             shutil.copytree(source_path, target_path)
             logger.info(f"模型已复制到: {target_path}")
 
-            # 使用新路径
-            final_path = str(target_path)
+            # 使用相对路径保存
+            final_path = get_relative_path(target_path)
 
         except Exception as e:
             logger.error(f"复制模型失败: {e}")

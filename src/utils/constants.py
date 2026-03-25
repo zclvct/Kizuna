@@ -1,5 +1,6 @@
 # Constants
 from pathlib import Path
+from typing import Union
 
 # 项目根目录
 PROJECT_ROOT = Path(__file__).parent.parent.parent
@@ -18,6 +19,61 @@ MOTIONS_FILE = DATA_DIR / "motions.json"
 CONVERSATIONS_FILE = DATA_DIR / "conversations.json"
 SCHEDULED_TASKS_FILE = DATA_DIR / "scheduled_tasks.json"
 TODO_FILE = DATA_DIR / "todos.json"
+
+
+def resolve_path(path: Union[str, Path]) -> Path:
+    """解析路径，支持相对路径和绝对路径
+    
+    Args:
+        path: 路径字符串或 Path 对象
+        
+    Returns:
+        解析后的绝对路径
+    """
+    path = Path(path)
+    
+    # 如果已经是绝对路径且存在，直接返回
+    if path.is_absolute():
+        if path.exists():
+            return path
+        # 绝对路径但不存在，尝试从项目根目录查找
+        # 这处理了文件夹改名后绝对路径失效的情况
+    
+    # 尝试相对于项目根目录解析
+    abs_path = PROJECT_ROOT / path
+    if abs_path.exists():
+        return abs_path
+    
+    # 如果路径包含 assets 或 data，尝试提取相对部分
+    path_str = str(path)
+    for prefix in ["assets", "data"]:
+        if prefix in path_str:
+            # 提取 assets 或 data 之后的部分
+            idx = path_str.find(prefix)
+            relative_part = path_str[idx:]
+            new_path = PROJECT_ROOT / relative_part
+            if new_path.exists():
+                return new_path
+    
+    # 都找不到，返回原始解析结果（让调用者处理不存在的情况）
+    return abs_path
+
+
+def get_relative_path(path: Union[str, Path]) -> str:
+    """将绝对路径转换为相对路径（相对于项目根目录）
+    
+    Args:
+        path: 绝对路径
+        
+    Returns:
+        相对路径字符串
+    """
+    path = Path(path)
+    try:
+        return str(path.relative_to(PROJECT_ROOT))
+    except ValueError:
+        # 不在项目根目录下，返回原路径
+        return str(path)
 
 # 确保目录存在
 for dir_path in [DATA_DIR, LIVE2D_MODELS_DIR, IMAGES_DIR]:

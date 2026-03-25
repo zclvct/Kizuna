@@ -18549,3 +18549,313 @@ During task with name 'tools' and id '80867221-0730-3bc8-7102-337bf4379b94'
 2026-03-25 13:48:40 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
 2026-03-25 13:48:40 - aiFriend - INFO - 工具已更新，数量: 22
 2026-03-25 13:48:40 - aiFriend - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 14:18:16 - Kizuna - INFO - 已加载 general 配置: window_x=1698, window_y=697
+2026-03-25 14:18:16 - Kizuna - INFO - 配置已从文件加载
+2026-03-25 14:18:16 - Kizuna - WARNING - 模型路径不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:18:17 - Kizuna - INFO - ==================================================
+2026-03-25 14:18:17 - Kizuna - INFO - AI Friend - 二次元桌面助手
+2026-03-25 14:18:17 - Kizuna - INFO - ==================================================
+2026-03-25 14:18:17 - Kizuna - INFO - LLM Provider: openai
+2026-03-25 14:18:17 - Kizuna - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 14:18:17 - Kizuna - INFO - 角色设定已加载
+2026-03-25 14:18:17 - Kizuna - INFO - First run: False
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载 11 个工具配置
+2026-03-25 14:18:17 - Kizuna - INFO - 应用配置已加载
+2026-03-25 14:18:17 - Kizuna - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 14:18:17 - Kizuna - WARNING - 模型路径不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:18:17 - Kizuna - INFO - 已注册 18 个内置工具
+2026-03-25 14:18:17 - Kizuna - INFO - 启用的内置工具: 18/18
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载系统提示词: base
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载系统提示词: constraints
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载系统提示词: tools
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 14:18:17 - Kizuna - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 14:18:17 - Kizuna - INFO - AIFriendCore 初始化完成
+2026-03-25 14:18:17 - Kizuna - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载 0 条对话历史
+2026-03-25 14:18:17 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:18:17 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:18:17 - Kizuna - INFO - MainWindow.__init__ 开始
+2026-03-25 14:18:17 - Kizuna - INFO - 已加载 1 个定时任务
+2026-03-25 14:18:17 - Kizuna - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x14fd24c50) at 0x15d2cffc0>>
+2026-03-25 14:18:17 - Kizuna - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 14:18:17 - Kizuna - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 14:18:17 - Kizuna - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 14:18:17 - Kizuna - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:18:17 - Kizuna - INFO - 显示开场白
+2026-03-25 14:18:17 - Kizuna - INFO - 恢复窗口大小: 227x317
+2026-03-25 14:18:17 - Kizuna - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 14:18:17 - Kizuna - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 14:18:17 - Kizuna - INFO - 已设置 LLM 任务执行器
+2026-03-25 14:18:17 - Kizuna - INFO - LLM 任务执行器已初始化
+2026-03-25 14:18:18 - Kizuna - INFO - 初始化 OpenGL...
+2026-03-25 14:18:18 - Kizuna - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 14:18:18 - Kizuna - INFO - 尝试恢复窗口位置: (1698, 697)
+2026-03-25 14:18:18 - Kizuna - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 14:18:18 - Kizuna - INFO - 窗口位置恢复至: (1692, 697)
+2026-03-25 14:18:18 - Kizuna - INFO - 主窗口已显示
+2026-03-25 14:18:18 - Kizuna - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/Kizuna/assets/images/AI助手.png
+2026-03-25 14:18:18 - Kizuna - INFO - 系统托盘已显示
+2026-03-25 14:18:18 - Kizuna - INFO - 系统托盘已创建
+2026-03-25 14:18:18 - Kizuna - INFO - 应用启动完成
+2026-03-25 14:18:18 - Kizuna - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:18:18 - Kizuna - ERROR - 加载模型失败: 模型目录不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+Traceback (most recent call last):
+  File "/Users/zhaochong/Ai/workspace/Kizuna/src/live2d_renderer/widget.py", line 172, in _load_model_internal
+    raise FileNotFoundError(f"模型目录不存在: {model_path}")
+FileNotFoundError: 模型目录不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:18:18 - Kizuna - INFO - 任务管理器已启动
+2026-03-25 14:18:18 - Kizuna - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 14:18:18 - Kizuna - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 14:18:18 - Kizuna - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 14:18:18 - Kizuna - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 14:18:21 - Kizuna - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 14:18:22 - Kizuna - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 14:18:22 - Kizuna - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 14:18:22 - Kizuna - INFO - 工具已更新，数量: 22
+2026-03-25 14:18:22 - Kizuna - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 14:21:22 - Kizuna - INFO - 窗口位置和大小已保存: (1692, 697), 227x317
+2026-03-25 14:21:22 - Kizuna - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/Kizuna/data/config.json, 窗口位置: (1692, 697)
+2026-03-25 14:21:22 - Kizuna - INFO - 窗口位置和大小已保存: (1692, 697), 227x317
+2026-03-25 14:21:22 - Kizuna - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/Kizuna/data/config.json, 窗口位置: (1692, 697)
+2026-03-25 14:21:25 - Kizuna - INFO - 已加载 general 配置: window_x=1692, window_y=697
+2026-03-25 14:21:25 - Kizuna - INFO - 配置已从文件加载
+2026-03-25 14:21:25 - Kizuna - WARNING - 模型路径不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:21:25 - Kizuna - INFO - ==================================================
+2026-03-25 14:21:25 - Kizuna - INFO - AI Friend - 二次元桌面助手
+2026-03-25 14:21:25 - Kizuna - INFO - ==================================================
+2026-03-25 14:21:25 - Kizuna - INFO - LLM Provider: openai
+2026-03-25 14:21:25 - Kizuna - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 14:21:25 - Kizuna - INFO - 角色设定已加载
+2026-03-25 14:21:25 - Kizuna - INFO - First run: False
+2026-03-25 14:21:25 - Kizuna - INFO - 已加载 11 个工具配置
+2026-03-25 14:21:25 - Kizuna - INFO - 应用配置已加载
+2026-03-25 14:21:25 - Kizuna - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 14:21:26 - Kizuna - WARNING - 模型路径不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:21:26 - Kizuna - INFO - 已注册 18 个内置工具
+2026-03-25 14:21:26 - Kizuna - INFO - 启用的内置工具: 18/18
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载系统提示词: base
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载系统提示词: constraints
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载系统提示词: tools
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 14:21:26 - Kizuna - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 14:21:26 - Kizuna - INFO - AIFriendCore 初始化完成
+2026-03-25 14:21:26 - Kizuna - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载 0 条对话历史
+2026-03-25 14:21:26 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:21:26 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:21:26 - Kizuna - INFO - MainWindow.__init__ 开始
+2026-03-25 14:21:26 - Kizuna - INFO - 已加载 1 个定时任务
+2026-03-25 14:21:26 - Kizuna - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x158fdb7a0) at 0x1586fdc00>>
+2026-03-25 14:21:26 - Kizuna - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 14:21:26 - Kizuna - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 14:21:26 - Kizuna - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 14:21:26 - Kizuna - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:21:26 - Kizuna - INFO - 显示开场白
+2026-03-25 14:21:26 - Kizuna - INFO - 恢复窗口大小: 227x317
+2026-03-25 14:21:26 - Kizuna - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 14:21:26 - Kizuna - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 14:21:26 - Kizuna - INFO - 已设置 LLM 任务执行器
+2026-03-25 14:21:26 - Kizuna - INFO - LLM 任务执行器已初始化
+2026-03-25 14:21:26 - Kizuna - INFO - 初始化 OpenGL...
+2026-03-25 14:21:26 - Kizuna - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 14:21:26 - Kizuna - INFO - 尝试恢复窗口位置: (1692, 697)
+2026-03-25 14:21:26 - Kizuna - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 14:21:26 - Kizuna - INFO - 窗口位置恢复至: (1692, 697)
+2026-03-25 14:21:26 - Kizuna - INFO - 主窗口已显示
+2026-03-25 14:21:26 - Kizuna - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/Kizuna/assets/images/AI助手.png
+2026-03-25 14:21:26 - Kizuna - INFO - 系统托盘已显示
+2026-03-25 14:21:26 - Kizuna - INFO - 系统托盘已创建
+2026-03-25 14:21:26 - Kizuna - INFO - 应用启动完成
+2026-03-25 14:21:26 - Kizuna - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:21:26 - Kizuna - ERROR - 加载模型失败: 模型目录不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+Traceback (most recent call last):
+  File "/Users/zhaochong/Ai/workspace/Kizuna/src/live2d_renderer/widget.py", line 172, in _load_model_internal
+    raise FileNotFoundError(f"模型目录不存在: {model_path}")
+FileNotFoundError: 模型目录不存在: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 14:21:27 - Kizuna - INFO - 任务管理器已启动
+2026-03-25 14:21:27 - Kizuna - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 14:21:27 - Kizuna - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 14:21:27 - Kizuna - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 14:21:27 - Kizuna - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 14:21:28 - Kizuna - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 14:21:29 - Kizuna - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 14:21:29 - Kizuna - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 14:21:29 - Kizuna - INFO - 工具已更新，数量: 22
+2026-03-25 14:21:29 - Kizuna - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载 general 配置: window_x=1692, window_y=697
+2026-03-25 14:21:53 - Kizuna - INFO - 配置已从文件加载
+2026-03-25 14:21:53 - Kizuna - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:21:53 - Kizuna - INFO - ==================================================
+2026-03-25 14:21:53 - Kizuna - INFO - AI Friend - 二次元桌面助手
+2026-03-25 14:21:53 - Kizuna - INFO - ==================================================
+2026-03-25 14:21:53 - Kizuna - INFO - LLM Provider: openai
+2026-03-25 14:21:53 - Kizuna - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 14:21:53 - Kizuna - INFO - 角色设定已加载
+2026-03-25 14:21:53 - Kizuna - INFO - First run: False
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载 11 个工具配置
+2026-03-25 14:21:53 - Kizuna - INFO - 应用配置已加载
+2026-03-25 14:21:53 - Kizuna - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 14:21:53 - Kizuna - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:21:53 - Kizuna - INFO - 已注册 18 个内置工具
+2026-03-25 14:21:53 - Kizuna - INFO - 启用的内置工具: 18/18
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载系统提示词: base
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载系统提示词: constraints
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载系统提示词: tools
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 14:21:53 - Kizuna - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 14:21:53 - Kizuna - INFO - AIFriendCore 初始化完成
+2026-03-25 14:21:53 - Kizuna - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载 0 条对话历史
+2026-03-25 14:21:53 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:21:53 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:21:53 - Kizuna - INFO - MainWindow.__init__ 开始
+2026-03-25 14:21:53 - Kizuna - INFO - 已加载 1 个定时任务
+2026-03-25 14:21:53 - Kizuna - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x3006db900) at 0x3023a35c0>>
+2026-03-25 14:21:53 - Kizuna - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 14:21:53 - Kizuna - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 14:21:53 - Kizuna - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 14:21:53 - Kizuna - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/Kizuna/assets/live2d/biaoqiang
+2026-03-25 14:21:53 - Kizuna - INFO - 显示开场白
+2026-03-25 14:21:53 - Kizuna - INFO - 恢复窗口大小: 227x317
+2026-03-25 14:21:53 - Kizuna - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 14:21:53 - Kizuna - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 14:21:53 - Kizuna - INFO - 已设置 LLM 任务执行器
+2026-03-25 14:21:53 - Kizuna - INFO - LLM 任务执行器已初始化
+2026-03-25 14:21:53 - Kizuna - INFO - 初始化 OpenGL...
+2026-03-25 14:21:53 - Kizuna - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 14:21:53 - Kizuna - INFO - 尝试恢复窗口位置: (1692, 697)
+2026-03-25 14:21:53 - Kizuna - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 14:21:53 - Kizuna - INFO - 窗口位置恢复至: (1692, 697)
+2026-03-25 14:21:53 - Kizuna - INFO - 主窗口已显示
+2026-03-25 14:21:53 - Kizuna - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/Kizuna/assets/images/AI助手.png
+2026-03-25 14:21:53 - Kizuna - INFO - 系统托盘已显示
+2026-03-25 14:21:53 - Kizuna - INFO - 系统托盘已创建
+2026-03-25 14:21:53 - Kizuna - INFO - 应用启动完成
+2026-03-25 14:21:54 - Kizuna - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/Kizuna/assets/live2d/biaoqiang
+2026-03-25 14:21:54 - Kizuna - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/Kizuna/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 14:21:54 - Kizuna - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:21:54 - Kizuna - INFO - 模型 JSON 加载成功
+2026-03-25 14:21:54 - Kizuna - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 14:21:54 - Kizuna - INFO - 设置缩放: 0.99
+2026-03-25 14:21:54 - Kizuna - INFO - 设置模型画布大小: 350x500
+2026-03-25 14:21:54 - Kizuna - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:21:54 - Kizuna - INFO - 推荐窗口大小: 207x297
+2026-03-25 14:21:54 - Kizuna - INFO - 主窗口大小调整为: 227x317
+2026-03-25 14:21:54 - Kizuna - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 14:21:54 - Kizuna - INFO - 任务管理器已启动
+2026-03-25 14:21:54 - Kizuna - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 14:21:54 - Kizuna - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 14:21:54 - Kizuna - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 14:21:54 - Kizuna - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 14:21:55 - Kizuna - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 14:21:57 - Kizuna - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 14:21:57 - Kizuna - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 14:21:57 - Kizuna - INFO - 工具已更新，数量: 22
+2026-03-25 14:21:57 - Kizuna - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 14:21:59 - Kizuna - INFO - 播放动作: touch_head
+2026-03-25 14:22:01 - Kizuna - INFO - 已显示聊天窗口
+2026-03-25 14:22:02 - Kizuna - INFO - 窗口位置和大小已保存: (1708, 782), 227x317
+2026-03-25 14:22:02 - Kizuna - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/Kizuna/data/config.json, 窗口位置: (1708, 782)
+2026-03-25 14:22:03 - Kizuna - INFO - 窗口位置和大小已保存: (1708, 782), 227x317
+2026-03-25 14:22:03 - Kizuna - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/Kizuna/data/config.json, 窗口位置: (1708, 782)
+2026-03-25 14:22:03 - Kizuna - INFO - 聊天窗口已关闭
+2026-03-25 14:22:03 - Kizuna - INFO - 窗口位置和大小已保存: (1708, 782), 227x317
+2026-03-25 14:22:03 - Kizuna - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/Kizuna/data/config.json, 窗口位置: (1708, 782)
+2026-03-25 14:27:10 - Kizuna - INFO - 已加载 general 配置: window_x=1708, window_y=782
+2026-03-25 14:27:10 - Kizuna - INFO - 配置已从文件加载
+2026-03-25 14:27:10 - Kizuna - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:27:10 - Kizuna - INFO - ==================================================
+2026-03-25 14:27:10 - Kizuna - INFO - AI Friend - 二次元桌面助手
+2026-03-25 14:27:10 - Kizuna - INFO - ==================================================
+2026-03-25 14:27:10 - Kizuna - INFO - LLM Provider: openai
+2026-03-25 14:27:10 - Kizuna - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 14:27:10 - Kizuna - INFO - 角色设定已加载
+2026-03-25 14:27:10 - Kizuna - INFO - First run: False
+2026-03-25 14:27:10 - Kizuna - INFO - 已加载 11 个工具配置
+2026-03-25 14:27:10 - Kizuna - INFO - 应用配置已加载
+2026-03-25 14:27:10 - Kizuna - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 14:27:11 - Kizuna - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:27:11 - Kizuna - INFO - 已注册 18 个内置工具
+2026-03-25 14:27:11 - Kizuna - INFO - 启用的内置工具: 18/18
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载系统提示词: base
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载系统提示词: constraints
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载系统提示词: tools
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 14:27:11 - Kizuna - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 14:27:11 - Kizuna - INFO - AIFriendCore 初始化完成
+2026-03-25 14:27:11 - Kizuna - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载 0 条对话历史
+2026-03-25 14:27:11 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:27:11 - Kizuna - INFO - 对话历史已清空
+2026-03-25 14:27:11 - Kizuna - INFO - MainWindow.__init__ 开始
+2026-03-25 14:27:11 - Kizuna - INFO - 已加载 1 个定时任务
+2026-03-25 14:27:11 - Kizuna - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x15f40aea0) at 0x15fdd7740>>
+2026-03-25 14:27:11 - Kizuna - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 14:27:11 - Kizuna - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 14:27:11 - Kizuna - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 14:27:11 - Kizuna - INFO - Live2D 模型路径: assets/live2d/biaoqiang
+2026-03-25 14:27:11 - Kizuna - INFO - 显示开场白
+2026-03-25 14:27:11 - Kizuna - INFO - 恢复窗口大小: 227x317
+2026-03-25 14:27:11 - Kizuna - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 14:27:11 - Kizuna - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 14:27:11 - Kizuna - INFO - 已设置 LLM 任务执行器
+2026-03-25 14:27:11 - Kizuna - INFO - LLM 任务执行器已初始化
+2026-03-25 14:27:11 - Kizuna - INFO - 初始化 OpenGL...
+2026-03-25 14:27:11 - Kizuna - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 14:27:11 - Kizuna - INFO - 尝试恢复窗口位置: (1708, 782)
+2026-03-25 14:27:11 - Kizuna - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 14:27:11 - Kizuna - INFO - 窗口位置恢复至: (1692, 762)
+2026-03-25 14:27:11 - Kizuna - INFO - 主窗口已显示
+2026-03-25 14:27:11 - Kizuna - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/Kizuna/assets/images/AI助手.png
+2026-03-25 14:27:11 - Kizuna - INFO - 系统托盘已显示
+2026-03-25 14:27:11 - Kizuna - INFO - 系统托盘已创建
+2026-03-25 14:27:11 - Kizuna - INFO - 应用启动完成
+2026-03-25 14:27:11 - Kizuna - INFO - 开始加载模型: assets/live2d/biaoqiang
+2026-03-25 14:27:11 - Kizuna - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/Kizuna/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 14:27:11 - Kizuna - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:27:11 - Kizuna - INFO - 模型 JSON 加载成功
+2026-03-25 14:27:11 - Kizuna - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 14:27:11 - Kizuna - INFO - 设置缩放: 0.99
+2026-03-25 14:27:11 - Kizuna - INFO - 设置模型画布大小: 350x500
+2026-03-25 14:27:11 - Kizuna - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 14:27:11 - Kizuna - INFO - 推荐窗口大小: 207x297
+2026-03-25 14:27:11 - Kizuna - INFO - 主窗口大小调整为: 227x317
+2026-03-25 14:27:11 - Kizuna - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 14:27:12 - Kizuna - INFO - 任务管理器已启动
+2026-03-25 14:27:12 - Kizuna - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 14:27:12 - Kizuna - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 14:27:12 - Kizuna - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 14:27:12 - Kizuna - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 14:27:13 - Kizuna - INFO - 播放动作: touch_body
+2026-03-25 14:27:13 - Kizuna - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 14:27:14 - Kizuna - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 14:27:14 - Kizuna - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 14:27:14 - Kizuna - INFO - 工具已更新，数量: 22
+2026-03-25 14:27:14 - Kizuna - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 14:27:15 - Kizuna - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 14:27:15 - Kizuna - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/Kizuna/assets/live2d
+2026-03-25 14:27:15 - Kizuna - INFO - 模型可用: aimierbeierding_2
+2026-03-25 14:27:15 - Kizuna - INFO - 模型可用: biaoqiang
+2026-03-25 14:27:15 - Kizuna - INFO - 模型可用: chuixue_3
+2026-03-25 14:27:15 - Kizuna - INFO - 扫描到 3 个模型
+2026-03-25 14:27:15 - Kizuna - INFO - 已加载 2 条执行记录
+2026-03-25 14:27:16 - Kizuna - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 14:27:17 - Kizuna - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 14:27:17 - Kizuna - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 14:27:41 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:28:11 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:28:41 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:29:11 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:29:41 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:30:11 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:30:41 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:31:11 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:31:41 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:32:11 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:32:41 - Kizuna - INFO - 播放动作: idle
+2026-03-25 14:33:11 - Kizuna - INFO - 播放动作: idle

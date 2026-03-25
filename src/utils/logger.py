@@ -17,7 +17,7 @@ def setup_logger(level: int = logging.INFO) -> logging.Logger:
     if _logger is not None:
         return _logger
 
-    logger = logging.getLogger("aiFriend")
+    logger = logging.getLogger("Kizuna")
     logger.setLevel(level)
 
     # 避免重复添加 handler

@@ -10,6 +10,7 @@ from PySide6.QtGui import QSurfaceFormat
 from PySide6.QtOpenGLWidgets import QOpenGLWidget
 from OpenGL import GL
 from utils import get_config, get_character_manager, get_logger
+from utils.constants import resolve_path
 
 logger = get_logger()
 
@@ -166,10 +167,10 @@ class Live2DGLWidget(QOpenGLWidget):
             import json
             logger.info(f"开始加载模型: {model_path}")
 
-
-            model_path_obj = Path(model_path)
+            # 解析路径（支持相对路径和绝对路径）
+            model_path_obj = resolve_path(model_path)
             if not model_path_obj.exists():
-                raise FileNotFoundError(f"模型目录不存在: {model_path}")
+                raise FileNotFoundError(f"模型目录不存在: {model_path} (解析后: {model_path_obj})")
 
             model3_files = list(model_path_obj.glob("*.model3.json"))
             if not model3_files:

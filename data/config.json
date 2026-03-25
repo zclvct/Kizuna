@@ -8,7 +8,7 @@
     "max_tokens": 8192
   },
   "live2d": {
-    "model_path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang",
+    "model_path": "assets/live2d/biaoqiang",
     "scale": 0.75,
     "default_motion": "idle_01"
   },
@@ -20,8 +20,8 @@
     "always_on_top": true,
     "sound_enabled": true,
     "log_level": "INFO",
-    "window_x": 1698,
-    "window_y": 697,
+    "window_x": 1708,
+    "window_y": 782,
     "window_width": 227,
     "window_height": 317,
     "draggable": true,
@@ -58,7 +58,7 @@
     "models": [
       {
         "name": "aimierbeierding_2",
-        "path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/aimierbeierding_2",
+        "path": "assets/live2d/aimierbeierding_2",
         "motions": [
           "complete",
           "home",
@@ -78,7 +78,7 @@
       },
       {
         "name": "biaoqiang",
-        "path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang",
+        "path": "assets/live2d/biaoqiang",
         "motions": [
           "complete",
           "home",
@@ -98,7 +98,7 @@
       },
       {
         "name": "chuixue_3",
-        "path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/chuixue_3",
+        "path": "assets/live2d/chuixue_3",
         "motions": [
           "complete",
           "home",
