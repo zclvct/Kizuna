@@ -106,6 +106,11 @@ a = Analysis(
         'pandas',
         'jupyter',
         'IPython',
+        'PyQt5',
+        'PyQt6',
+        'PyQt4',
+        'PySide',
+        'PySide2',
     ],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
@@ -135,7 +140,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=None,  # 可设置图标路径
+    icon='/Users/zhaochong/Ai/workspace/Kizuna/assets/images/icon.icns',  # 可设置图标路径
 )
 
 # macOS 应用包配置
@@ -143,7 +148,7 @@ if sys.platform == 'darwin':
     app = BUNDLE(
         exe,
         name='Kizuna.app',
-        icon=None,  # 可设置 .icns 图标路径
+        icon='/Users/zhaochong/Ai/workspace/Kizuna/assets/images/icon.icns',  # 可设置 .icns 图标路径
         bundle_identifier='com.kizuna.desktop',
         version='1.0.0',
         info_plist={
