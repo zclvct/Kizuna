@@ -19,7 +19,7 @@
 
 ### 桌面助手主界面
 
-<img src="assets/screenshots/main_window.png" width="600" alt="主界面">
+<img src="assets/screenshots/settings_live2d.png" width="600" alt="主界面">
 
 *Live2D 模型在桌面展示，支持拖拽移动*
 
