@@ -20,6 +20,11 @@ from .mood_tool import (
     CATEGORY_MOOD,
     CATEGORY_ACTION
 )
+from .scheduler_tool import (
+    create_scheduled_task,
+    CreateScheduledTaskArgs,
+    SCHEDULER_TOOL,
+)
 
 # LangChain 工具支持
 from .base import BaseToolArgs, LangChainTool, create_tool_from_function
@@ -36,6 +41,7 @@ from .langchain_tools import (
     create_persona_tool,
     create_motion_tool,
     create_mood_emoji_tool,
+    create_scheduled_task_tool,
     create_save_memory_tool,
     create_save_fact_tool,
     create_search_memory_tool,
@@ -88,6 +94,10 @@ __all__ = [
     "MOOD_TYPES",
     "CATEGORY_MOOD",
     "CATEGORY_ACTION",
+    # 定时任务工具
+    "create_scheduled_task",
+    "CreateScheduledTaskArgs",
+    "SCHEDULER_TOOL",
     # 记忆工具函数
     "save_memory",
     "save_fact",
@@ -111,6 +121,7 @@ __all__ = [
     "create_persona_tool",
     "create_motion_tool",
     "create_mood_emoji_tool",
+    "create_scheduled_task_tool",
     "create_save_memory_tool",
     "create_save_fact_tool",
     "create_search_memory_tool",

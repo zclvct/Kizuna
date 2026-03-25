@@ -13,6 +13,7 @@ from apscheduler.triggers.cron import CronTrigger
 from scheduler.task import ScheduledTask, CREATE_SCHEDULED_TASK_TOOL
 from scheduler.storage import get_task_storage
 from scheduler.task_history import get_task_history_manager
+from scheduler.llm_executor import LLMTaskExecutor
 from utils import get_logger
 
 logger = get_logger()
@@ -25,11 +26,17 @@ class TaskManager:
         self.storage = get_task_storage()
         self.scheduler = AsyncIOScheduler()
         self._on_task_execute: Optional[Callable] = None
+        self._executor: Optional[LLMTaskExecutor] = None
         self._running = False
 
     def set_task_executor(self, executor: Callable):
-        """设置任务执行回调"""
+        """设置任务执行回调（旧方式，保持兼容）"""
         self._on_task_execute = executor
+    
+    def set_llm_executor(self, executor: LLMTaskExecutor):
+        """设置 LLM 任务执行器"""
+        self._executor = executor
+        logger.info("已设置 LLM 任务执行器")
 
     async def start(self):
         """启动调度器"""
@@ -129,16 +136,23 @@ class TaskManager:
         error = None
 
         try:
-            # 调用回调
-            if self._on_task_execute:
+            # 优先使用 LLM 执行器
+            if self._executor:
+                logger.info("使用 LLM 执行器执行任务")
+                success = await self._executor.execute_task(task)
+                result = "LLM 执行完成" if success else "LLM 执行失败"
+            # 否则使用旧回调方式（向后兼容）
+            elif self._on_task_execute:
                 await self._on_task_execute(task)
                 result = "执行成功"
             else:
-                result = "未设置执行回调"
+                result = "未设置执行器"
+                logger.warning("未设置任务执行器，任务未执行")
+                
         except Exception as e:
             success = False
             error = str(e)
-            logger.error(f"任务执行失败: {e}")
+            logger.error(f"任务执行失败: {e}", exc_info=True)
 
         # 计算执行时长
         duration = time.time() - start_time

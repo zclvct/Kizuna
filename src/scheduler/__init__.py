@@ -9,6 +9,7 @@ from scheduler.storage import TaskStorage, get_task_storage
 from scheduler.manager import TaskManager, get_task_manager
 from scheduler.parser import TaskParser
 from scheduler.task_history import TaskHistoryManager, get_task_history_manager, TaskExecutionRecord
+from scheduler.llm_executor import LLMTaskExecutor
 
 __all__ = [
     "ScheduledTask",
@@ -21,4 +22,5 @@ __all__ = [
     "TaskHistoryManager",
     "get_task_history_manager",
     "TaskExecutionRecord",
+    "LLMTaskExecutor",
 ]

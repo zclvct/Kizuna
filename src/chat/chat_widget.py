@@ -321,8 +321,13 @@ class ChatWidget(QFrame):
         # 生成回复
         self._generate_response(text)
 
-    def _generate_response(self, user_text: str):
-        """生成回复"""
+    def _generate_response(self, user_text: str, is_task: bool = False):
+        """生成回复
+
+        Args:
+            user_text: 用户输入文本
+            is_task: 是否为任务触发（任务触发时不添加用户消息到历史）
+        """
         self._is_generating = True
         self.send_btn.setEnabled(False)
         self.send_btn.setText("生成中...")
@@ -333,7 +338,7 @@ class ChatWidget(QFrame):
         self.messages_layout.insertWidget(insert_pos, self._stream_bubble)
 
         # 启动后台线程生成 - 使用新的 LangChain Agent
-        self._worker = GenerateWorker(user_text, self.core)
+        self._worker = GenerateWorker(user_text, self.core, is_task=is_task)
         self._worker.stream_update.connect(self._on_stream_update)
         self._worker.debug_update.connect(self._on_debug_update)
         self._worker.finished.connect(self._on_response_finished)
@@ -426,10 +431,11 @@ class GenerateWorker(QThread):
     # 类级别的事件循环，保持持久运行
     _event_loop = None
 
-    def __init__(self, user_text: str, core):
+    def __init__(self, user_text: str, core, is_task: bool = False):
         super().__init__()
         self.user_text = user_text
         self.core = core  # AIFriendCore 实例
+        self.is_task = is_task  # 是否为任务触发
 
     @classmethod
     def _get_event_loop(cls):
@@ -458,12 +464,12 @@ class GenerateWorker(QThread):
     async def _generate_with_agent(self):
         """使用 LangChain Agent 生成回复"""
         full_text = ""
-        
+
         async for response in self.core.chat(self.user_text, stream=True):
             if response.content:
                 full_text += response.content
                 self.stream_update.emit(full_text)
-            
+
             # 发送调试信息
             if response.debug_type:
                 self.debug_update.emit({
@@ -471,5 +477,5 @@ class GenerateWorker(QThread):
                     "debug_title": response.debug_title or "",
                     "debug_content": response.debug_content or ""
                 })
-        
-        return {"final_text": full_text}
+
+        return {"final_text": full_text, "is_task": self.is_task}

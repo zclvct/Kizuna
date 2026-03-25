@@ -37,6 +37,12 @@
       "enabled": true
     },
     {
+      "id": "scheduler",
+      "name": "定时任务",
+      "description": "创建定时提醒",
+      "enabled": true
+    },
+    {
       "id": "persona_edit",
       "name": "角色设定编辑",
       "description": "修改AI自己的设定（名字、性格等）",

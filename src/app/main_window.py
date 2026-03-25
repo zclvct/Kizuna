@@ -15,10 +15,9 @@ sys.path.insert(0, str(src_path))
 from utils import get_config, get_character_manager, get_logger, set_motion_callback
 from chat import ChatWidget
 from live2d_renderer import Live2DWidget
-from scheduler import TaskManager, get_task_manager
+from scheduler import TaskManager, get_task_manager, LLMTaskExecutor
 from app.context_menu import ContextMenu
 from app.settings_window import SettingsWindow
-from app.tasks_window import TasksWindow
 from app.widgets.emoji_bubble import EmojiBubble
 from agent.tools.mood_tool import set_emoji_callback, get_mood_by_type
 
@@ -251,6 +250,7 @@ class MainWindow(QMainWindow):
         self._setup_ui()
         self._setup_context_menu()
         self._setup_task_manager()
+        self._setup_llm_executor()
 
         # 第一次启动时自动显示对话窗口
         if self.character_manager.persona.is_first_run():
@@ -443,7 +443,6 @@ class MainWindow(QMainWindow):
 
     def _setup_task_manager(self):
         """设置任务管理器"""
-        self.task_manager.set_task_executor(self._on_task_execute)
         import asyncio
         try:
             loop = asyncio.get_event_loop()
@@ -456,20 +455,16 @@ class MainWindow(QMainWindow):
         else:
             logger.info("任务管理器将在主程序启动时启动")
 
-    async def _on_task_execute(self, task):
-        """定时任务执行回调"""
-        logger.info(f"执行定时任务: {task.task_name}")
-
-        if task.motion_id:
-            self.live2d_widget.play_motion(task.motion_id)
-        else:
-            self.live2d_widget.update_mood("happy")
-
-        if self._chat_visible and hasattr(self.chat_bubble.chat_widget, '_add_message_bubble'):
-            self.chat_bubble.chat_widget._add_message_bubble(
-                f"📋 定时任务: {task.task_name}\n\n{task.action_prompt}",
-                is_user=False
-            )
+    def _setup_llm_executor(self):
+        """设置 LLM 任务执行器"""
+        # 创建执行器，传入 chat_widget 和主窗口引用
+        executor = LLMTaskExecutor(
+            chat_widget=self.chat_bubble.chat_widget,
+            main_window=self
+        )
+        # 设置到任务管理器
+        self.task_manager.set_llm_executor(executor)
+        logger.info("LLM 任务执行器已初始化")
 
     def _get_available_screen(self):
         """获取当前屏幕的可用区域"""
@@ -678,8 +673,15 @@ class MainWindow(QMainWindow):
         logger.info("模型和动作缓存已更新")
 
     def _view_tasks(self):
-        """查看定时任务"""
-        dialog = TasksWindow(self)
+        """查看定时任务 - 打开设置窗口的任务页面"""
+        dialog = SettingsWindow(self)
+        # 连接必要信号
+        dialog.model_changed.connect(self._delayed_model_reload)
+        dialog.scale_changed.connect(self._on_scale_changed)
+        dialog.always_on_top_changed.connect(self._on_always_on_top_changed)
+        dialog.draggable_changed.connect(self._on_draggable_changed)
+        # 切换到任务页面（索引 5）
+        dialog.tabs.setCurrentIndex(5)
         dialog.exec()
 
     def _close_all(self):

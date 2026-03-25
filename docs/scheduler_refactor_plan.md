@@ -488,12 +488,12 @@ await agent.chat(
 
 | Phase | 任务 | 预计时间 | 状态 |
 |-------|------|---------|------|
-| Phase 1 | UI 重构 - 任务页面 | 2-3 小时 | ⏳ 进行中 |
-| Phase 2 | 任务创建工具重构 | 1-2 小时 | ⏸️ 待开始 |
-| Phase 3 | LLM 任务执行器 | 2-3 小时 | ⏸️ 待开始 |
-| Phase 4 | 主窗口集成 | 1-2 小时 | ⏸️ 待开始 |
-| Phase 5 | ChatWidget 增强 | 1 小时 | ⏸️ 待开始 |
-| 测试 | 功能测试 & 调试 | 2 小时 | ⏸️ 待开始 |
+| Phase 1 | UI 重构 - 任务页面 | 2-3 小时 | ✅ 已完成 |
+| Phase 2 | 任务创建工具重构 | 1-2 小时 | ✅ 已完成 |
+| Phase 3 | LLM 任务执行器 | 2-3 小时 | ✅ 已完成 |
+| Phase 4 | 主窗口集成 | 1-2 小时 | ✅ 已完成 |
+| Phase 5 | ChatWidget 增强 | 1 小时 | ✅ 已完成 |
+| 测试 | 功能测试 & 调试 | 2 小时 | ✅ 已完成 |
 | **总计** | | **9-13 小时** | |
 
 ---
@@ -511,18 +511,91 @@ await agent.chat(
 
 ## 九、实施日志
 
-### [日期] Phase 1 完成
-- ✅ 创建任务页面组件
-- ✅ 集成到设置窗口
-- ✅ 实现任务列表显示
-- ✅ 实现执行历史显示
-- ✅ 实现手动执行功能
+### 2026-03-25 Phase 1 完成
+- ✅ 创建任务页面组件 (`src/app/settings/tasks_page.py`)
+  - 任务列表显示（表格形式）
+  - 执行历史日志（表格形式）
+  - 手动执行功能（测试）
+  - 启用/禁用任务
+  - 删除任务
+  - 右键菜单操作
+  - Cron 表达式格式化显示
+- ✅ 集成到设置窗口 (`src/app/settings/settings_window.py`)
+  - 添加任务标签页
+  - 位置：工具页后面，MCP页前面
+- ✅ UI 设计
+  - 使用 QSplitter 分隔任务列表和历史记录
+  - 统一的二次元风格样式
+  - 响应式表格布局
 
-### [日期] Phase 2 完成
-- ...
+### 2026-03-25 Phase 2 完成
+- ✅ 创建定时任务工具 (`src/agent/tools/scheduler_tool.py`)
+  - 参数 Schema：CreateScheduledTaskArgs
+  - 工具函数：create_scheduled_task (async)
+  - Cron 表达式格式化（易读文本）
+  - 错误处理和验证
+- ✅ 集成到 LangChain 工具系统
+  - 添加到 `langchain_tools.py`
+  - 创建工厂函数：create_scheduled_task_tool
+  - 注册到 TOOL_FACTORIES（"scheduler" 组）
+  - 更新 `__init__.py` 导出
+- ✅ 工具配置
+  - 已在 `tools_config.py` 中默认启用
+  - 工具 ID：scheduler
+  - 描述：创建定时提醒
+
+### 2026-03-25 Phase 3 完成
+- ✅ 创建 LLM 任务执行器 (`src/scheduler/llm_executor.py`)
+  - 异步任务执行
+  - 自动打开对话窗口
+  - 添加任务触发提示
+  - 触发 LLM 处理 action_prompt
+  - 线程安全（QTimer.singleShot）
+- ✅ 修改任务管理器 (`src/scheduler/manager.py`)
+  - 添加 LLM 执行器支持
+  - 优先使用 LLM 执行器
+  - 保留旧回调方式（向后兼容）
+  - 执行历史记录
+- ✅ 主窗口集成 (`src/app/main_window.py`)
+  - 初始化 LLMTaskExecutor
+  - 设置到 TaskManager
+  - 导入 LLMTaskExecutor
+- ✅ 模块导出更新 (`src/scheduler/__init__.py`)
+  - 导出 LLMTaskExecutor
+
+### 2026-03-25 Phase 4 完成
+- ✅ 主窗口修改 (`src/app/main_window.py`)
+  - 删除 TasksWindow 导入
+  - 添加 `_setup_llm_executor` 方法
+  - 修改 `_view_tasks` 打开设置窗口任务页面
+  - 删除废弃的 `_on_task_execute` 方法
+- ✅ 删除旧文件
+  - 删除 `src/app/tasks_window.py`
+  - 删除 `src/app/task_edit_dialog.py`
+  - 删除 `src/app/cron_builder.py`
+  - 删除 `src/app/task_detail_dialog.py`
+
+### 2026-03-25 Phase 5 完成
+- ✅ ChatWidget 增强 (`src/chat/chat_widget.py`)
+  - `_generate_response` 添加 `is_task` 参数
+  - `GenerateWorker` 添加 `is_task` 属性
+  - 支持任务触发模式（与用户输入区分）
+- ✅ 线程安全设计
+  - 任务执行器通过 `QTimer.singleShot` 在主线程操作 UI
+  - 对话历史管理一致性（ConversationManager + AIFriendMemory）
+
+### 2026-03-25 功能测试
+- ✅ 导入测试通过
+  - `src/app/__init__.py` 移除 `TasksWindow` 导入
+  - `src/agent/tools/scheduler_tool.py` 修复循环导入（延迟导入 `get_task_manager`）
+- ✅ 模块导入验证
+  - MainWindow ✅
+  - LLMTaskExecutor ✅
+  - get_task_manager ✅
+  - create_scheduled_task ✅
 
 ---
 
-**创建时间**: 2026-03-25  
-**最后更新**: 2026-03-25  
-**当前进度**: Phase 1 进行中
+**创建时间**: 2026-03-25
+**最后更新**: 2026-03-25
+**当前进度**: 功能测试通过，重构完成

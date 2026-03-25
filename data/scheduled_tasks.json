@@ -1,0 +1,15 @@
+{
+  "tasks": [
+    {
+      "id": "2fe99602-224d-4020-a0c3-e2571ff5f20b",
+      "task_name": "每日新闻推送",
+      "cron": "0 10 * * *",
+      "action_prompt": "给用户推送今天的大模型或者ai技术最新的资讯",
+      "motion_id": null,
+      "enabled": true,
+      "created_at": "2026-03-25T05:16:47.411750",
+      "last_run": "2026-03-25T05:24:59.236254",
+      "next_run": null
+    }
+  ]
+}

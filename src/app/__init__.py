@@ -9,12 +9,10 @@ from app.main_window import MainWindow
 from app.tray_icon import TrayIcon
 from app.context_menu import ContextMenu
 from app.settings_window import SettingsWindow
-from app.tasks_window import TasksWindow
 
 __all__ = [
     "MainWindow",
     "TrayIcon",
     "ContextMenu",
     "SettingsWindow",
-    "TasksWindow",
 ]

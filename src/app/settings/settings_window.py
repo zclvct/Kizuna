@@ -18,6 +18,7 @@ from .general_page import GeneralSettingsPage
 from .prompts_page import PromptsSettingsPage
 from .mood_page import MoodSettingsPage
 from .mcp_page import MCPSettingsPage
+from .tasks_page import TasksSettingsPage
 from utils import get_config, get_character_manager, get_logger
 
 logger = get_logger()
@@ -66,6 +67,7 @@ class SettingsWindow(QDialog):
         self.character_page = CharacterSettingsPage()
         self.mood_page = MoodSettingsPage()
         self.skills_page = SkillsSettingsPage()
+        self.tasks_page = TasksSettingsPage()
         self.prompts_page = PromptsSettingsPage()
         self.mcp_page = MCPSettingsPage()
         self.general_page = GeneralSettingsPage()
@@ -83,6 +85,7 @@ class SettingsWindow(QDialog):
         self.tabs.addTab(self.character_page, "👤 角色")
         self.tabs.addTab(self.mood_page, "😊 心情")
         self.tabs.addTab(self.skills_page, "🔧 工具")
+        self.tabs.addTab(self.tasks_page, "⏰ 任务")
         self.tabs.addTab(self.mcp_page, "🔌 MCP")
         self.tabs.addTab(self.prompts_page, "📝 提示词")
         self.tabs.addTab(self.general_page, "⚙️ 通用")
@@ -120,6 +123,7 @@ class SettingsWindow(QDialog):
         self.character_page.save()
         self.mood_page.save()
         self.skills_page.save()
+        self.tasks_page.save()
         self.prompts_page.save()
         self.mcp_page.save()
         self.general_page.save()
@@ -143,6 +147,7 @@ class SettingsWindow(QDialog):
         self.character_page._load_config()
         self.mood_page._load_moods()
         self.skills_page._load_config()
+        self.tasks_page._refresh_all()
         self.prompts_page.reset()
         self.mcp_page.reset()
         self.general_page._load_config()

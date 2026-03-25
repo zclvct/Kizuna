@@ -27,6 +27,10 @@ from agent.tools.memory_tool import (
     get_user_facts,
     get_memory_stats,
 )
+from agent.tools.scheduler_tool import (
+    create_scheduled_task,
+    CreateScheduledTaskArgs,
+)
 from agent.tools.base import BaseToolArgs
 from utils import get_logger
 
@@ -416,6 +420,16 @@ def create_get_memory_stats_tool() -> StructuredTool:
     )
 
 
+def create_scheduled_task_tool() -> StructuredTool:
+    """创建定时任务工具"""
+    return StructuredTool(
+        name="create_scheduled_task",
+        description="创建定时任务，在指定时间自动执行。用户可以说 '每天10点提醒我开会' 来创建任务。",
+        args_schema=CreateScheduledTaskArgs,
+        coroutine=create_scheduled_task,
+    )
+
+
 # ============ 工具工厂映射 ============
 
 TOOL_FACTORIES = {
@@ -428,6 +442,7 @@ TOOL_FACTORIES = {
     "persona_edit": [create_persona_tool],
     "motion_control": [create_motion_tool],
     "mood_emoji": [create_mood_emoji_tool],
+    "scheduler": [create_scheduled_task_tool],
     "memory": [
         create_save_memory_tool,
         create_save_fact_tool,
