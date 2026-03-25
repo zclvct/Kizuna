@@ -120,11 +120,13 @@ jobs:
           pyinstaller kizuna.spec --noconfirm
 
       - name: Debug - Check build output
+        shell: pwsh
         run: |
           echo "=== Build output ==="
-          dir dist
+          Get-ChildItem dist
           echo "=== Check live2d files ==="
-          dir dist /s /b | findstr live2d || echo "No live2d files found"
+          Get-ChildItem -Path dist -Recurse -Filter "*live2d*" -ErrorAction SilentlyContinue
+          if (-not $?) { echo "No live2d files found" }
 
       - name: Create ZIP
         shell: pwsh
