@@ -1,15 +1,15 @@
 {
   "llm": {
-    "provider": "ollama",
-    "model": "qwen3.5:4B",
-    "api_key": null,
-    "base_url": "http://localhost:11434",
+    "provider": "openai",
+    "model": "qwen3.5-plus-2026-02-15",
+    "api_key": "sk-c6641daec980409cb6893b66e657329b",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
     "temperature": 0.7,
-    "max_tokens": 2000
+    "max_tokens": 8192
   },
   "live2d": {
     "model_path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang",
-    "scale": 0.68,
+    "scale": 0.69,
     "default_motion": "idle_01"
   },
   "weather": {
@@ -20,10 +20,12 @@
     "always_on_top": true,
     "sound_enabled": true,
     "log_level": "INFO",
-    "window_x": 1674,
-    "window_y": 599,
+    "window_x": 65,
+    "window_y": 543,
+    "window_width": 400,
+    "window_height": 600,
     "draggable": true,
-    "model_scale": 0.68
+    "model_scale": 0.69
   },
   "motion": {
     "enable_mood_motion": true,
@@ -38,9 +40,18 @@
         "model": "qwen3.5:4B",
         "api_key": "",
         "base_url": "http://localhost:11434"
+      },
+      {
+        "name": "qwen",
+        "provider": "openai",
+        "model": "qwen3.5-plus-2026-02-15",
+        "api_key": "sk-c6641daec980409cb6893b66e657329b",
+        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "temperature": 0.7,
+        "max_tokens": 8192
       }
     ],
-    "default_index": 0
+    "default_index": 1
   },
   "live2d_models": {
     "models": [

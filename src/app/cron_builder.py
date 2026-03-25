@@ -29,7 +29,8 @@ class CronBuilderDialog(QDialog):
         """设置 UI"""
         self.setWindowTitle("Cron 表达式构建器")
         self.setMinimumSize(550, 500)
-        self.setWindowFlags(Qt.WindowType.Dialog | Qt.WindowType.MSWindowsFixedSizeDialogHint)
+        # 设置窗口标志 - 不在任务栏显示
+        self.setWindowFlags(Qt.WindowType.Dialog | Qt.WindowType.MSWindowsFixedSizeDialogHint | Qt.WindowType.Tool)
 
         layout = QVBoxLayout(self)
         layout.setContentsMargins(20, 20, 20, 20)

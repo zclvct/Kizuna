@@ -23,6 +23,11 @@ class TasksWindow(QDialog):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        # 设置窗口标志 - 不在任务栏显示
+        flags = self.windowFlags()
+        flags |= Qt.WindowType.Tool
+        self.setWindowFlags(flags)
+        
         self.task_manager = get_task_manager()
         self._setup_ui()
         self._load_tasks()

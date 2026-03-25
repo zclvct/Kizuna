@@ -1,16 +1,17 @@
 # LangChain Agent - 基于 LangGraph 的智能体
-from typing import List, Optional, Dict, Any, AsyncGenerator
+from typing import List, Optional, Dict, AsyncGenerator
 from dataclasses import dataclass, field
+import asyncio
 
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.tools import StructuredTool
 from langgraph.prebuilt import create_react_agent
-from langgraph.checkpoint.memory import MemorySaver
 
 from agent.models import create_chat_model, get_llm_config
 from agent.tools.registry import get_tool_registry
 from agent.memory import get_langchain_memory
+
 from agent.prompts import get_agent_prompt, build_system_prompt
 from utils import get_logger
 
@@ -33,7 +34,6 @@ class AIFriendAgent:
     特性：
     - 自动工具调用（LangGraph 自动处理）
     - 流式输出支持
-    - 与现有 MemoryManager 兼容
     """
     
     def __init__(
@@ -53,8 +53,7 @@ class AIFriendAgent:
         # 系统提示词
         self._system_prompt = None
         
-        # 创建 Agent
-        self._checkpointer = MemorySaver()
+        # 创建 Agent（不使用 checkpointer，由 self.memory 管理对话历史）
         self._agent = self._create_agent()
         
         logger.info(f"LangGraph Agent 初始化完成，工具数: {len(self.tools)}")
@@ -65,7 +64,6 @@ class AIFriendAgent:
         return create_react_agent(
             model=self.llm,
             tools=self.tools,
-            checkpointer=self._checkpointer,
             prompt=system_prompt,
         )
     
@@ -101,19 +99,13 @@ class AIFriendAgent:
         # 添加用户消息
         messages = list(messages) + [HumanMessage(content=user_input)]
         
-        # 配置
-        config = {"configurable": {"thread_id": "default"}}
-        
         if stream:
             # 流式输出
-            async for response in self._chat_stream(messages, config):
+            async for response in self._chat_stream(messages):
                 yield response
         else:
             # 非流式输出
-            result = await self._agent.ainvoke(
-                {"messages": messages},
-                config=config
-            )
+            result = await self._agent.ainvoke({"messages": messages})
             
             # 获取最后一条 AI 消息
             output = ""
@@ -130,8 +122,7 @@ class AIFriendAgent:
     
     async def _chat_stream(
         self,
-        messages: List[BaseMessage],
-        config: Dict
+        messages: List[BaseMessage]
     ) -> AsyncGenerator[ChatResponse, None]:
         """流式对话"""
         full_content = ""
@@ -139,7 +130,6 @@ class AIFriendAgent:
         try:
             async for event in self._agent.astream_events(
                 {"messages": messages},
-                config=config,
                 version="v2",
             ):
                 event_type = event.get("event")
@@ -172,10 +162,7 @@ class AIFriendAgent:
             
             # 如果没有收集到内容，尝试获取最终输出
             if not full_content:
-                result = await self._agent.ainvoke(
-                    {"messages": messages},
-                    config=config
-                )
+                result = await self._agent.ainvoke({"messages": messages})
                 for msg in reversed(result.get("messages", [])):
                     if isinstance(msg, AIMessage):
                         full_content = msg.content

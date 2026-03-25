@@ -37,27 +37,27 @@
       "enabled": true
     },
     {
-      "id": "scheduler",
-      "name": "定时任务",
-      "description": "创建定时提醒",
-      "enabled": true
-    },
-    {
       "id": "persona_edit",
       "name": "角色设定编辑",
-      "description": "学习和修改设定",
+      "description": "修改AI自己的设定（名字、性格等）",
       "enabled": true
     },
     {
       "id": "motion_control",
       "name": "动作控制",
-      "description": "控制 Live2D 模型动作（需指定动作ID）",
+      "description": "控制 Live2D 模型动作",
       "enabled": true
     },
     {
       "id": "mood_emoji",
       "name": "心情表情包",
       "description": "显示心情或动作表情包气泡",
+      "enabled": true
+    },
+    {
+      "id": "memory",
+      "name": "记忆管理",
+      "description": "保存和搜索用户信息、记忆",
       "enabled": true
     }
   ]

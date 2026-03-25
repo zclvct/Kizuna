@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "memories": [
+    {
+      "id": "mem_1774314580.89918",
+      "content": "- 用户这周三过生日",
+      "timestamp": "2026-03-24",
+      "importance": 1,
+      "tags": [],
+      "source": "conversation"
+    },
+    {
+      "id": "mem_1774314671.204535",
+      "content": "用户给我起了名字叫婷婷",
+      "timestamp": "2026-03-24",
+      "importance": 4,
+      "tags": [],
+      "source": "conversation"
+    }
+  ]
+}

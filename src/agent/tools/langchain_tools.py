@@ -20,6 +20,14 @@ from agent.tools import (
 )
 from agent.tools.mood_tool import get_all_available_types, MOOD_TYPES, CATEGORY_MOOD, CATEGORY_ACTION
 from agent.tools.motion_tool import get_available_motions
+from agent.tools.memory_tool import (
+    save_memory,
+    save_fact,
+    search_memory,
+    get_user_facts,
+    get_memory_stats,
+)
+from agent.tools.base import BaseToolArgs
 from utils import get_logger
 
 logger = get_logger()
@@ -76,16 +84,19 @@ class EditPersonaArgs(BaseModel):
     """编辑角色设定参数"""
     action: str = Field(
         ...,
-        description="操作类型: set_name, set_field, add_memory, add_fact, remove_memory, remove_fact"
+        description="操作类型: set_name(设置名字), set_field(设置字段)"
     )
     field: Optional[str] = Field(
         None,
-        description="字段名 (set_field 时使用): name, gender, age, personality, speech_style, first_person, second_person, user_nickname, relationship, background"
+        description="字段名 (set_field 时必填): name(AI名字), gender(AI性别), age(AI年龄), personality(AI性格特点), "
+                    "speech_style(AI说话风格), first_person(AI自称), second_person(AI对用户称呼), "
+                    "user_nickname(用户昵称), relationship(与用户关系)"
     )
-    value: Optional[str] = Field(None, description="字段值")
-    content: Optional[str] = Field(None, description="记忆内容 (add_memory 时使用)")
-    key: Optional[str] = Field(None, description="事实键名 (add_fact/remove_fact 时使用)")
-    confirm: bool = Field(default=False, description="是否已经过用户确认")
+    value: str = Field(..., description="要设置的值")
+    confirm: bool = Field(
+        default=False,
+        description="是否已经过用户确认（重要字段修改时需要）"
+    )
 
 
 class PlayMotionArgs(BaseModel):
@@ -225,7 +236,24 @@ def create_persona_tool() -> StructuredTool:
     """创建角色设定编辑工具"""
     return StructuredTool(
         name="edit_persona",
-        description="修改角色设定、记忆、学到的信息。第一次启动时用于保存用户给的名字、关系等信息。重要修改前先询问用户确认。",
+        description="""【AI角色设定】设置 AI 自己的角色属性。仅用于设置 AI 本身的设定，不存储用户信息！
+
+可用操作：
+- set_name: 设置 AI 的名字
+- set_field: 设置 AI 的属性字段
+
+可设置的字段（都是AI自己的属性）：
+- name: AI的名字
+- gender: AI的性别  
+- age: AI的年龄
+- personality: AI的性格特点
+- speech_style: AI的说话风格
+- first_person: AI的自称（如"我"、"本喵"）
+- second_person: AI对用户的称呼（如"主人"、"你"）
+- user_nickname: 用户在AI心中的昵称
+- relationship: AI与用户的关系
+
+【重要】用户的信息（姓名、爱好、喜欢吃什么等）请使用 save_fact 工具！""",
         args_schema=EditPersonaArgs,
         coroutine=edit_persona,
     )
@@ -285,6 +313,109 @@ def create_mood_emoji_tool() -> StructuredTool:
     )
 
 
+# ============ 记忆工具参数 Schema ============
+
+class SaveMemoryArgs(BaseModel):
+    """保存记忆参数"""
+    content: str = Field(description="记忆内容")
+    importance: int = Field(default=3, ge=1, le=5, description="重要性 (1-5)")
+
+
+class SaveFactArgs(BaseModel):
+    """保存事实参数"""
+    key: str = Field(description='事实键名（如"姓名"、"职业"、"爱好"）')
+    value: str = Field(description="事实值")
+
+
+class SearchMemoryArgs(BaseModel):
+    """搜索记忆参数"""
+    query: str = Field(description="搜索关键词")
+    limit: int = Field(default=5, ge=1, le=20, description="返回结果数量")
+
+
+# ============ 记忆工具工厂 ============
+
+def create_save_memory_tool() -> StructuredTool:
+    """创建保存记忆工具"""
+    return StructuredTool(
+        name="save_memory",
+        description="""保存重要记忆到长期记忆库。
+
+使用场景：
+- 用户提到重要事件、纪念日、里程碑
+- 用户表达重要偏好或习惯
+- 用户分享重要的个人信息
+- 有情感价值的重要对话
+
+重要性评分：
+- 5分：极其重要，必须记住
+- 4分：很重要，会影响未来互动
+- 3分：有价值，值得记住（默认）""",
+        args_schema=SaveMemoryArgs,
+        coroutine=save_memory,
+    )
+
+
+def create_save_fact_tool() -> StructuredTool:
+    """创建保存事实工具"""
+    return StructuredTool(
+        name="save_fact",
+        description="""【用户信息】保存关于用户的事实信息。用于记录用户的信息和偏好！
+
+使用场景：
+- 用户分享姓名、年龄、职业等基本信息
+- 用户提到兴趣爱好、喜欢吃什么、讨厌什么
+- 用户透露住址、联系方式
+- 用户提到家庭成员、朋友
+
+key 必须使用中文：
+- key="喜欢的食物" value="鸡腿"
+- key="姓名" value="张三"
+- key="职业" value="程序员"
+
+事实应该简洁明了、准确无误、长期有效。""",
+        args_schema=SaveFactArgs,
+        coroutine=save_fact,
+    )
+
+
+def create_search_memory_tool() -> StructuredTool:
+    """创建搜索记忆工具"""
+    return StructuredTool(
+        name="search_memory",
+        description="""从长期记忆库中搜索相关记忆和用户事实。
+
+使用场景：
+- 用户询问"我喜欢吃什么"、"我叫什么"等
+- 需要回忆用户之前提到的信息
+- 查找相关的历史记忆
+
+支持中文关键词搜索，如"喜欢吃什么"、"名字"、"职业"等。""",
+        args_schema=SearchMemoryArgs,
+        coroutine=search_memory,
+    )
+
+
+def create_get_facts_tool() -> StructuredTool:
+    """创建获取事实工具"""
+    return StructuredTool(
+        name="get_user_facts",
+        description="获取已记录的用户事实信息。用于了解用户的基本信息和偏好。",
+        args_schema=BaseToolArgs,
+        coroutine=get_user_facts,
+    )
+
+
+def create_get_memory_stats_tool() -> StructuredTool:
+    """创建获取记忆统计工具"""
+    return StructuredTool(
+        name="get_memory_stats",
+        description="获取记忆系统的统计信息，包括总记忆数、总事实数等。",
+        args_schema=BaseToolArgs,
+        coroutine=get_memory_stats,
+    )
+
+
 # ============ 工具工厂映射 ============
 
 TOOL_FACTORIES = {
@@ -297,6 +428,13 @@ TOOL_FACTORIES = {
     "persona_edit": [create_persona_tool],
     "motion_control": [create_motion_tool],
     "mood_emoji": [create_mood_emoji_tool],
+    "memory": [
+        create_save_memory_tool,
+        create_save_fact_tool,
+        create_search_memory_tool,
+        create_get_facts_tool,
+        create_get_memory_stats_tool,
+    ],
 }
 
 

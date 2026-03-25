@@ -54,6 +54,8 @@ class ToolsConfig:
             ToolItem(id="scheduler", name="定时任务", description="创建定时提醒", enabled=True),
             ToolItem(id="persona_edit", name="角色设定编辑", description="学习和修改设定", enabled=True),
             ToolItem(id="motion_control", name="动作控制", description="控制 Live2D 动作和表情", enabled=True),
+            ToolItem(id="mood_emoji", name="心情表情", description="显示心情表情包", enabled=True),
+            ToolItem(id="memory", name="记忆管理", description="自动记忆和事实管理", enabled=True),
         ]
         self.save()
     

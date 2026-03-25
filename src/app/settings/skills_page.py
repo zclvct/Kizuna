@@ -6,7 +6,7 @@ sys.path.insert(0, str(src_path))
 
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel,
-    QListWidget, QListWidgetItem, QPushButton
+    QListWidget, QListWidgetItem, QPushButton, QScrollArea
 )
 from PySide6.QtCore import Qt
 
@@ -26,7 +26,40 @@ class ToolsSettingsPage(QWidget):
         self._load_config()
     
     def _setup_ui(self):
-        layout = QVBoxLayout(self)
+        # 主布局
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        
+        # 滚动区域
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setStyleSheet("""
+            QScrollArea {
+                border: none;
+                background: transparent;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #f0f0f0;
+                width: 10px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background: #c0c0c0;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #a0a0a0;
+            }
+        """)
+        
+        # 内容容器
+        content_widget = QWidget()
+        content_widget.setStyleSheet("background: transparent;")
+        layout = QVBoxLayout(content_widget)
         layout.setSpacing(10)
         layout.setContentsMargins(10, 10, 10, 10)
         
@@ -73,6 +106,11 @@ class ToolsSettingsPage(QWidget):
         
         btn_layout.addStretch()
         layout.addLayout(btn_layout)
+        
+        layout.addStretch()
+        
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
     
     def _load_config(self):
         """加载配置"""

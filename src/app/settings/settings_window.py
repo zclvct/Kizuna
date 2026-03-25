@@ -16,8 +16,8 @@ from .character_page import CharacterSettingsPage
 from .skills_page import SkillsSettingsPage
 from .general_page import GeneralSettingsPage
 from .prompts_page import PromptsSettingsPage
-from .memory_page import MemorySettingsPage
 from .mood_page import MoodSettingsPage
+from .mcp_page import MCPSettingsPage
 from utils import get_config, get_character_manager, get_logger
 
 logger = get_logger()
@@ -35,8 +35,15 @@ class SettingsWindow(QDialog):
         super().__init__(parent)
         self.config = get_config()
         self.character_manager = get_character_manager()
+        self._setup_window_flags()
         self._setup_ui()
         self._setup_window()
+    
+    def _setup_window_flags(self):
+        """设置窗口标志 - 不在任务栏显示"""
+        flags = self.windowFlags()
+        flags |= Qt.WindowType.Tool
+        self.setWindowFlags(flags)
 
     def _setup_window(self):
         """设置窗口"""
@@ -60,7 +67,7 @@ class SettingsWindow(QDialog):
         self.mood_page = MoodSettingsPage()
         self.skills_page = SkillsSettingsPage()
         self.prompts_page = PromptsSettingsPage()
-        self.memory_page = MemorySettingsPage()
+        self.mcp_page = MCPSettingsPage()
         self.general_page = GeneralSettingsPage()
         
         # 连接 Live2D 模型变更信号
@@ -76,8 +83,8 @@ class SettingsWindow(QDialog):
         self.tabs.addTab(self.character_page, "👤 角色")
         self.tabs.addTab(self.mood_page, "😊 心情")
         self.tabs.addTab(self.skills_page, "🔧 工具")
+        self.tabs.addTab(self.mcp_page, "🔌 MCP")
         self.tabs.addTab(self.prompts_page, "📝 提示词")
-        self.tabs.addTab(self.memory_page, "🧠 记忆")
         self.tabs.addTab(self.general_page, "⚙️ 通用")
 
         layout.addWidget(self.tabs)
@@ -114,7 +121,7 @@ class SettingsWindow(QDialog):
         self.mood_page.save()
         self.skills_page.save()
         self.prompts_page.save()
-        self.memory_page.save()
+        self.mcp_page.save()
         self.general_page.save()
 
         # 保存配置文件
@@ -137,5 +144,5 @@ class SettingsWindow(QDialog):
         self.mood_page._load_moods()
         self.skills_page._load_config()
         self.prompts_page.reset()
-        self.memory_page.reset()
+        self.mcp_page.reset()
         self.general_page._load_config()

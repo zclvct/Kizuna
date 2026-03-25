@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
     QFrame, QGridLayout, QScrollArea, QDialog,
     QFormLayout, QLineEdit, QComboBox, QPushButton,
     QMessageBox, QMenu, QSpinBox, QFileDialog,
-    QGroupBox
+    QGroupBox, QSizePolicy
 )
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QPixmap, QMovie
@@ -131,10 +131,43 @@ class AddMoodDialog(QDialog):
     
     def _setup_ui(self):
         self.setWindowTitle("添加表情包")
-        self.setFixedSize(400, 400)
+        self.setMinimumSize(400, 400)
         self.setStyleSheet(ANIME_STYLE)
         
-        layout = QVBoxLayout(self)
+        # 主布局
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        
+        # 滚动区域
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setStyleSheet("""
+            QScrollArea {
+                border: none;
+                background: transparent;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #f0f0f0;
+                width: 10px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background: #c0c0c0;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #a0a0a0;
+            }
+        """)
+        
+        # 内容容器
+        content_widget = QWidget()
+        content_widget.setStyleSheet("background: transparent;")
+        layout = QVBoxLayout(content_widget)
         layout.setSpacing(15)
         layout.setContentsMargins(20, 20, 20, 20)
         
@@ -209,6 +242,9 @@ class AddMoodDialog(QDialog):
         btn_layout.addWidget(save_btn)
         
         layout.addLayout(btn_layout)
+        
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
     
     def _on_category_changed(self):
         """类型分类改变时更新选项"""

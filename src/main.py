@@ -14,6 +14,17 @@ sys.path.insert(0, str(project_root / "src"))
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import Qt, QTimer
 
+# macOS 上设置应用不在 Dock 中显示（必须在 QApplication 创建之前）
+if sys.platform == 'darwin':
+    try:
+        from AppKit import NSApplication, NSApplicationActivationPolicyAccessory
+        NSApplication.sharedApplication().setActivationPolicy_(NSApplicationActivationPolicyAccessory)
+        print("✅ macOS Dock 图标隐藏设置成功")
+    except ImportError as e:
+        print(f"⚠️ pyobjc 未安装，Dock 图标将显示: {e}")
+    except Exception as e:
+        print(f"⚠️ 设置 Dock 隐藏失败: {e}")
+
 # 直接导入模块，避免相对导入问题
 import utils
 import app
@@ -82,6 +93,15 @@ def main():
         qt_app.setApplicationName("AI Friend")
         qt_app.setQuitOnLastWindowClosed(False)
 
+        # macOS: 在 QApplication 创建后再次设置 Dock 隐藏（Qt 可能会重置）
+        if sys.platform == 'darwin':
+            try:
+                from AppKit import NSApplication, NSApplicationActivationPolicyAccessory
+                NSApplication.sharedApplication().setActivationPolicy_(NSApplicationActivationPolicyAccessory)
+                print("✅ macOS Dock 图标隐藏已再次确认")
+            except Exception as e:
+                print(f"⚠️ 再次设置 Dock 隐藏失败: {e}")
+
         # 创建主窗口
         window = app.MainWindow()
         window.show()
@@ -95,7 +115,8 @@ def main():
             # 连接托盘信号
             tray.toggle_window.connect(window.setVisible)
             tray.open_settings.connect(window._open_settings)
-            tray.quit_app.connect(qt_app.quit)
+            # 托盘退出时先调用窗口关闭方法，确保配置保存
+            tray.quit_app.connect(window._close_all)
             logger.info("系统托盘已创建")
         except Exception as e:
             logger.warning(f"系统托盘创建失败: {e}，继续运行")
@@ -115,6 +136,8 @@ def main():
 
                 if loop.is_running():
                     asyncio.create_task(task_manager.start())
+                    # 加载 MCP 工具
+                    asyncio.create_task(core.initialize_mcp_tools())
                 else:
                     # 在单独线程中运行事件循环
                     import threading
@@ -124,6 +147,8 @@ def main():
                     thread = threading.Thread(target=run_loop, daemon=True)
                     thread.start()
                     asyncio.run_coroutine_threadsafe(task_manager.start(), loop)
+                    # 加载 MCP 工具
+                    asyncio.run_coroutine_threadsafe(core.initialize_mcp_tools(), loop)
 
                 setup_task_callbacks(window, task_manager)
                 logger.info("任务管理器已启动")

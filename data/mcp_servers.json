@@ -1,0 +1,24 @@
+{
+  "servers": [
+    {
+      "id": "jj",
+      "name": "基金指数查询",
+      "transport": "streamable_http",
+      "command": "",
+      "args": [],
+      "env": {},
+      "url": "https://mcpmarket.cn/mcp/5147b4361e8026694ca5ea19",
+      "enabled": true
+    },
+    {
+      "id": "zllwso",
+      "name": "智谱联网搜索",
+      "transport": "streamable_http",
+      "command": "",
+      "args": [],
+      "env": {},
+      "url": "https://mcpmarket.cn/mcp/0850555758384b5281a59349",
+      "enabled": true
+    }
+  ]
+}

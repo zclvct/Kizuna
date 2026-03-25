@@ -3,6 +3,7 @@ from typing import List, Optional, Dict, Any
 from pathlib import Path
 from dataclasses import dataclass, field
 from datetime import datetime
+import json
 import re
 
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, SystemMessage
@@ -76,36 +77,146 @@ class ShortTermMemory:
 
 
 class LongTermMemory:
-    """长期记忆（MD文件存储）"""
+    """长期记忆（JSON 文件存储）"""
     
     def __init__(self):
         self._base_dir = Path(__file__).parent.parent.parent / "data" / "memories"
-        self._long_term_file = self._base_dir / "long_term.md"
-        self._facts_file = self._base_dir / "facts.md"
-        self.memories: List[Memory] = []
+        self._facts_file = self._base_dir / "facts.json"
+        self._memories_file = self._base_dir / "memories.json"
+        
+        # 内存存储
         self.facts: List[Fact] = []
+        self.facts_index: Dict[str, Fact] = {}  # 快速查找索引
+        self.memories: List[Memory] = []
+        
         self._load()
     
     def _load(self):
-        """从 MD 文件加载"""
-        if self._long_term_file.exists():
-            try:
-                content = self._long_term_file.read_text(encoding="utf-8")
-                self.memories = self._parse_memory_md(content)
-                logger.info(f"已加载 {len(self.memories)} 条长期记忆")
-            except Exception as e:
-                logger.error(f"加载长期记忆失败: {e}")
+        """从 JSON 文件加载，自动迁移 MD 数据"""
+        self._base_dir.mkdir(parents=True, exist_ok=True)
         
-        if self._facts_file.exists():
-            try:
-                content = self._facts_file.read_text(encoding="utf-8")
-                self.facts = self._parse_facts_md(content)
-                logger.info(f"已加载 {len(self.facts)} 条事实")
-            except Exception as e:
-                logger.error(f"加载事实失败: {e}")
+        # 尝试加载 JSON
+        facts_loaded = self._load_facts_json()
+        memories_loaded = self._load_memories_json()
+        
+        # 如果 JSON 不存在，尝试从 MD 迁移
+        if not facts_loaded:
+            facts_loaded = self._migrate_facts_from_md()
+        if not memories_loaded:
+            memories_loaded = self._migrate_memories_from_md()
+        
+        logger.info(f"已加载 {len(self.facts)} 条事实, {len(self.memories)} 条记忆")
+    
+    def _load_facts_json(self) -> bool:
+        """加载 JSON 格式的事实"""
+        if not self._facts_file.exists():
+            return False
+        
+        try:
+            with open(self._facts_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            self.facts = []
+            self.facts_index = {}
+            for key, item in data.get("facts", {}).items():
+                fact = Fact(
+                    key=key,
+                    value=item.get("value", ""),
+                    updated_at=item.get("updated_at", datetime.utcnow().isoformat())
+                )
+                self.facts.append(fact)
+                self.facts_index[key] = fact
+            
+            return True
+        except Exception as e:
+            logger.error(f"加载事实 JSON 失败: {e}")
+            return False
+    
+    def _load_memories_json(self) -> bool:
+        """加载 JSON 格式的记忆"""
+        if not self._memories_file.exists():
+            return False
+        
+        try:
+            with open(self._memories_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            self.memories = []
+            for item in data.get("memories", []):
+                self.memories.append(Memory(
+                    id=item.get("id", f"mem_{datetime.utcnow().timestamp()}"),
+                    content=item.get("content", ""),
+                    timestamp=item.get("timestamp", ""),
+                    importance=item.get("importance", 1),
+                    tags=item.get("tags", []),
+                    source=item.get("source", "conversation")
+                ))
+            
+            return True
+        except Exception as e:
+            logger.error(f"加载记忆 JSON 失败: {e}")
+            return False
+    
+    def _migrate_facts_from_md(self) -> bool:
+        """从 MD 文件迁移事实"""
+        md_file = self._base_dir / "facts.md"
+        if not md_file.exists():
+            return False
+        
+        try:
+            content = md_file.read_text(encoding="utf-8")
+            self.facts = self._parse_facts_md(content)
+            
+            # 构建索引
+            self.facts_index = {f.key: f for f in self.facts}
+            
+            # 保存为 JSON
+            self._save_facts()
+            logger.info(f"已从 MD 迁移 {len(self.facts)} 条事实到 JSON")
+            return True
+        except Exception as e:
+            logger.error(f"迁移事实失败: {e}")
+            return False
+    
+    def _migrate_memories_from_md(self) -> bool:
+        """从 MD 文件迁移记忆"""
+        md_file = self._base_dir / "long_term.md"
+        if not md_file.exists():
+            return False
+        
+        try:
+            content = md_file.read_text(encoding="utf-8")
+            self.memories = self._parse_memory_md(content)
+            
+            # 保存为 JSON
+            self._save_memories()
+            logger.info(f"已从 MD 迁移 {len(self.memories)} 条记忆到 JSON")
+            return True
+        except Exception as e:
+            logger.error(f"迁移记忆失败: {e}")
+            return False
+    
+    def _parse_facts_md(self, content: str) -> List[Fact]:
+        """解析 MD 格式的事实文件（兼容旧数据）"""
+        facts = []
+        lines = content.split("\n")
+        
+        for line in lines:
+            line = line.strip()
+            if line.startswith("- "):
+                content_part = line[2:]
+                match = re.match(r'([^:]+):\s*(.+)', content_part)
+                if match:
+                    facts.append(Fact(
+                        key=match.group(1).strip(),
+                        value=match.group(2).strip(),
+                        updated_at=datetime.utcnow().isoformat()
+                    ))
+        
+        return facts
     
     def _parse_memory_md(self, content: str) -> List[Memory]:
-        """解析 MD 格式的记忆文件"""
+        """解析 MD 格式的记忆文件（兼容旧数据）"""
         memories = []
         lines = content.split("\n")
         current_memory = None
@@ -134,67 +245,44 @@ class LongTermMemory:
         
         return memories
     
-    def _parse_facts_md(self, content: str) -> List[Fact]:
-        """解析 MD 格式的事实文件"""
-        facts = []
-        lines = content.split("\n")
+    def _save_facts(self):
+        """保存事实到 JSON"""
+        data = {
+            "version": 1,
+            "facts": {
+                f.key: {"value": f.value, "updated_at": f.updated_at}
+                for f in self.facts
+            }
+        }
         
-        for line in lines:
-            if line.strip().startswith("- "):
-                match = re.match(r'-\s*([^:]+):\s*(.+)', line.strip()[2:])
-                if match:
-                    facts.append(Fact(
-                        key=match.group(1).strip(),
-                        value=match.group(2).strip(),
-                        updated_at=datetime.utcnow().isoformat()
-                    ))
-        
-        return facts
+        with open(self._facts_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
     
-    def _render_memory_md(self) -> str:
-        """渲染记忆为 MD 格式"""
-        lines = ["# 长期记忆\n"]
+    def _save_memories(self):
+        """保存记忆到 JSON"""
+        data = {
+            "version": 1,
+            "memories": [
+                {
+                    "id": m.id,
+                    "content": m.content,
+                    "timestamp": m.timestamp,
+                    "importance": m.importance,
+                    "tags": m.tags,
+                    "source": m.source
+                }
+                for m in self.memories
+            ]
+        }
         
-        dated_memories: Dict[str, List[Memory]] = {}
-        for mem in self.memories:
-            date = mem.timestamp[:10] if len(mem.timestamp) >= 10 else mem.timestamp
-            if date not in dated_memories:
-                dated_memories[date] = []
-            dated_memories[date].append(mem)
-        
-        for date in sorted(dated_memories.keys(), reverse=True):
-            lines.append(f"### {date}\n")
-            for mem in dated_memories[date]:
-                lines.append(f"- {mem.content}")
-            lines.append("")
-        
-        return "\n".join(lines)
-    
-    def _render_facts_md(self) -> str:
-        """渲染事实为 MD 格式"""
-        lines = ["# 事实知识库\n\n"]
-        lines.append("关于用户的信息：\n")
-        
-        for fact in self.facts:
-            lines.append(f"- {fact.key}: {fact.value}")
-        
-        return "\n".join(lines)
+        with open(self._memories_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
     
     def save(self):
-        """保存到 MD 文件"""
+        """保存到 JSON 文件"""
         try:
-            self._base_dir.mkdir(parents=True, exist_ok=True)
-            
-            self._long_term_file.write_text(
-                self._render_memory_md(), 
-                encoding="utf-8"
-            )
-            
-            self._facts_file.write_text(
-                self._render_facts_md(), 
-                encoding="utf-8"
-            )
-            
+            self._save_facts()
+            self._save_memories()
             logger.info("长期记忆已保存")
         except Exception as e:
             logger.error(f"保存长期记忆失败: {e}")
@@ -215,39 +303,85 @@ class LongTermMemory:
         logger.info(f"已添加记忆: {content[:50]}...")
     
     def set_fact(self, key: str, value: str):
-        """设置事实"""
-        for fact in self.facts:
-            if fact.key == key:
-                fact.value = value
-                fact.updated_at = datetime.utcnow().isoformat()
-                self.save()
-                logger.info(f"已更新事实: {key}")
-                return
+        """设置事实 - O(1) 查找"""
+        now = datetime.utcnow().isoformat()
         
-        self.facts.append(Fact(
-            key=key,
-            value=value,
-            updated_at=datetime.utcnow().isoformat()
-        ))
+        if key in self.facts_index:
+            # 更新现有事实
+            fact = self.facts_index[key]
+            fact.value = value
+            fact.updated_at = now
+            logger.info(f"已更新事实: {key}")
+        else:
+            # 添加新事实
+            fact = Fact(key=key, value=value, updated_at=now)
+            self.facts.append(fact)
+            self.facts_index[key] = fact
+            logger.info(f"已添加事实: {key}")
+        
         self.save()
-        logger.info(f"已添加事实: {key}")
     
     def get_fact(self, key: str) -> Optional[str]:
-        """获取事实"""
-        for fact in self.facts:
-            if fact.key == key:
-                return fact.value
-        return None
+        """获取事实 - O(1) 查找"""
+        fact = self.facts_index.get(key)
+        return fact.value if fact else None
     
     def search(self, query: str, limit: int = 5) -> List[Memory]:
         """搜索记忆"""
         results = []
         query_lower = query.lower()
         
+        # 关键词映射
+        keyword_map = {
+            "喜欢吃什么": ["食物", "吃", "喜欢", "鸡腿", "美食"],
+            "喜欢吃": ["食物", "吃", "喜欢", "鸡腿", "美食"],
+            "食物": ["食物", "吃", "鸡腿", "美食"],
+            "名字": ["名字", "姓名"],
+            "职业": ["职业", "工作"],
+            "爱好": ["爱好", "兴趣"],
+        }
+        
+        search_keywords = [query_lower]
+        for key, keywords in keyword_map.items():
+            if key in query_lower:
+                search_keywords.extend(keywords)
+        
         for mem in reversed(self.memories):
-            if query_lower in mem.content.lower():
-                results.append(mem)
-                if len(results) >= limit:
+            content_lower = mem.content.lower()
+            for keyword in search_keywords:
+                if keyword in content_lower:
+                    results.append(mem)
+                    break
+            if len(results) >= limit:
+                break
+        
+        return results
+    
+    def search_facts(self, query: str) -> List[Fact]:
+        """搜索事实"""
+        results = []
+        query_lower = query.lower()
+        
+        # 关键词映射
+        keyword_map = {
+            "喜欢吃什么": ["食物", "吃", "喜欢"],
+            "喜欢吃": ["食物", "吃", "喜欢"],
+            "食物": ["食物", "吃"],
+            "名字": ["名字", "姓名"],
+            "职业": ["职业", "工作"],
+        }
+        
+        search_keywords = [query_lower]
+        for key, keywords in keyword_map.items():
+            if key in query_lower:
+                search_keywords.extend(keywords)
+        
+        for fact in self.facts:
+            key_lower = fact.key.lower()
+            value_lower = fact.value.lower()
+            for keyword in search_keywords:
+                if keyword in key_lower or keyword in value_lower:
+                    results.append(fact)
                     break
         
         return results

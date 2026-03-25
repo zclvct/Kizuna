@@ -163,10 +163,43 @@ class LLMProviderDialog(QDialog):
     
     def _setup_ui(self):
         self.setWindowTitle("添加服务商" if not self.provider_data.get('name') else "编辑服务商")
-        self.setFixedSize(450, 520)
+        self.setMinimumSize(450, 520)
         self.setStyleSheet(ANIME_STYLE)
         
-        layout = QVBoxLayout(self)
+        # 主布局
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        
+        # 滚动区域
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setStyleSheet("""
+            QScrollArea {
+                border: none;
+                background: transparent;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #f0f0f0;
+                width: 10px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background: #c0c0c0;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #a0a0a0;
+            }
+        """)
+        
+        # 内容容器
+        content_widget = QWidget()
+        content_widget.setStyleSheet("background: transparent;")
+        layout = QVBoxLayout(content_widget)
         layout.setSpacing(12)
         layout.setContentsMargins(20, 20, 20, 20)
         
@@ -275,6 +308,9 @@ class LLMProviderDialog(QDialog):
         btn_layout.addWidget(save_btn)
         
         layout.addLayout(btn_layout)
+        
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
     
     def _on_provider_changed(self, provider: str):
         """提供商类型变更时更新默认 Base URL"""
@@ -401,6 +437,26 @@ class LLMSettingsPage(QWidget):
         
         scroll.setWidget(scroll_content)
         layout.addWidget(scroll)
+        
+        # MCP 工具状态区域（简化版）
+        mcp_frame = QFrame()
+        mcp_frame.setStyleSheet("""
+            QFrame {
+                background: #f8f9fa;
+                border: 1px solid #e8e8e8;
+                border-radius: 8px;
+                padding: 8px;
+            }
+        """)
+        mcp_layout = QHBoxLayout(mcp_frame)
+        mcp_layout.setContentsMargins(12, 8, 12, 8)
+        
+        self.mcp_status_label = QLabel("MCP 工具: 检查中...")
+        self.mcp_status_label.setStyleSheet("color: #666; font-size: 12px;")
+        mcp_layout.addWidget(self.mcp_status_label)
+        
+        mcp_layout.addStretch()
+        layout.addWidget(mcp_frame)
     
     def _load_config(self):
         """加载配置"""
@@ -423,6 +479,7 @@ class LLMSettingsPage(QWidget):
             self._default_provider_index = 0
         
         self._create_provider_cards()
+        self._refresh_mcp_status()
     
     def _create_provider_cards(self):
         """创建服务商卡片"""
@@ -511,3 +568,67 @@ class LLMSettingsPage(QWidget):
             self.config.llm.max_tokens = default_provider.get('max_tokens', 2000)
         
         logger.info("LLM 配置已保存")
+    
+    def _refresh_mcp_status(self):
+        """刷新 MCP 工具状态"""
+        try:
+            from agent.mcp import get_mcp_config, get_mcp_manager
+            
+            mcp_config = get_mcp_config()
+            enabled_servers = mcp_config.get_enabled_servers()
+            
+            if not enabled_servers:
+                self.mcp_status_label.setText("MCP: 未配置服务器")
+                self.mcp_status_label.setStyleSheet("color: #faad14; font-size: 12px;")
+            else:
+                manager = get_mcp_manager()
+                if manager.is_available():
+                    self.mcp_status_label.setText(f"MCP: 加载中...")
+                    self.mcp_status_label.setStyleSheet("color: #1890ff; font-size: 12px;")
+                    self._load_mcp_tools_async()
+                else:
+                    self.mcp_status_label.setText("MCP: 需安装 langchain-mcp-adapters")
+                    self.mcp_status_label.setStyleSheet("color: #ff4d4f; font-size: 12px;")
+                    
+        except Exception as e:
+            self.mcp_status_label.setText(f"MCP: 错误 - {str(e)[:30]}")
+            self.mcp_status_label.setStyleSheet("color: #ff4d4f; font-size: 12px;")
+    
+    def _load_mcp_tools_async(self):
+        """异步加载 MCP 工具"""
+        import asyncio
+        from PySide6.QtCore import QThread, Signal as QSignal
+        
+        class LoadThread(QThread):
+            finished = QSignal(list, str)
+            
+            def run(self):
+                try:
+                    from agent.tools.registry import get_tool_registry
+                    registry = get_tool_registry()
+                    
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                    try:
+                        tools = loop.run_until_complete(registry.get_mcp_tools(force_reload=True))
+                    finally:
+                        loop.close()
+                    
+                    self.finished.emit([t.name for t in tools], "")
+                except* Exception as eg:
+                    self.finished.emit([], "; ".join(str(e) for e in eg.exceptions))
+        
+        def on_loaded(tool_names: list, error: str):
+            if error:
+                self.mcp_status_label.setText(f"MCP: 加载失败")
+                self.mcp_status_label.setStyleSheet("color: #ff4d4f; font-size: 12px;")
+            elif tool_names:
+                self.mcp_status_label.setText(f"MCP: {len(tool_names)} 个工具已加载")
+                self.mcp_status_label.setStyleSheet("color: #52c41a; font-size: 12px;")
+            else:
+                self.mcp_status_label.setText("MCP: 未发现工具")
+                self.mcp_status_label.setStyleSheet("color: #faad14; font-size: 12px;")
+        
+        self._load_thread = LoadThread()
+        self._load_thread.finished.connect(on_loaded)
+        self._load_thread.start()

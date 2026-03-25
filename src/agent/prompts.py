@@ -161,8 +161,6 @@ class PromptManager:
         # 9. 第一次启动引导
         if persona.is_first_run():
             parts.append(self._get_first_run_prompt())
-        else:
-            parts.append(self._get_normal_prompt())
         
         return "\n".join(parts)
     
@@ -208,39 +206,14 @@ class PromptManager:
 【第一次启动引导】
 你是第一次与用户见面，还没有名字和设定。请按照以下流程引导用户：
 
-1. 首先询问用户的姓名（使用随机的问候语）
+1. 首先询问用户的姓名
 2. 询问用户希望如何称呼你（给你起个名字）
 3. 询问用户想让你当什么角色（朋友、助手、姐姐等）
-4. 收集到信息后，使用 edit_persona 工具保存这些信息
+4. 收集到信息后，使用工具保存：
+   - 用户姓名 → save_fact(key="姓名", value="xxx")
+   - AI名字 → edit_persona(action="set_name", value="xxx")
+   - AI与用户关系 → edit_persona(action="set_field", field="relationship", value="xxx")
 5. 友好地结束引导对话
-
-请自然地用对话方式完成这个引导过程，不要太正式。
-
-【可用工具】
-1. show_mood_emoji - 显示表情包气泡表达情感
-2. edit_persona - 保存用户的姓名和设定
-
-重要：必须使用 edit_persona 工具保存信息！
-"""
-    
-    def _get_normal_prompt(self) -> str:
-        """获取正常对话提示词"""
-        return """
-
-【可用工具】
-你可以使用以下工具来帮助用户：
-1. show_mood_emoji - 显示表情包气泡表达情感（支持心情类型和动作类型）
-2. play_motion - 播放 Live2D 模型动作（需指定动作 ID）
-3. edit_persona - 修改你的设定、记忆等（重要修改前先确认）
-4. get_current_time - 获取当前时间
-5. get_weather - 查询天气
-6. get_system_info - 获取系统信息
-7. open_application - 打开应用程序
-8. add_todo / list_todos / complete_todo - 管理待办事项
-
-你可以在对话中学习用户的信息，并使用 edit_persona 工具记录：
-- add_fact: 记录关于用户的事实（如喜好、作息等）
-- add_memory: 添加重要记忆事件
 """
     
     def get_system_prompt(self, key: str) -> Optional[str]:

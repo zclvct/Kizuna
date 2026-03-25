@@ -38,7 +38,40 @@ class PromptsSettingsPage(QWidget):
         return self._prompt_manager
     
     def _setup_ui(self):
-        layout = QVBoxLayout(self)
+        # 主布局
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        
+        # 滚动区域
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setStyleSheet("""
+            QScrollArea {
+                border: none;
+                background: transparent;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #f0f0f0;
+                width: 10px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background: #c0c0c0;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #a0a0a0;
+            }
+        """)
+        
+        # 内容容器
+        content_widget = QWidget()
+        content_widget.setStyleSheet("background: transparent;")
+        layout = QVBoxLayout(content_widget)
         layout.setSpacing(10)
         layout.setContentsMargins(10, 10, 10, 10)
         
@@ -114,6 +147,9 @@ class PromptsSettingsPage(QWidget):
         self.tabs.addTab(system_tab, "🔒 系统提示词")
         
         layout.addWidget(self.tabs)
+        
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
     
     def _load_prompts(self):
         """加载提示词"""

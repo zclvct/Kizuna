@@ -11,7 +11,7 @@ class LLMProviderConfig(BaseModel):
     api_key: Optional[str] = Field(None, description="API Key")
     base_url: Optional[str] = Field(None, description="API 基础 URL")
     temperature: float = Field(0.7, ge=0, le=2, description="温度参数")
-    max_tokens: int = Field(2000, ge=1000, le=256000, description="最大输出 tokens")
+    max_tokens: int = Field(2000, ge=1000, le=65536, description="最大输出 tokens")
     
     class Config:
         extra = "allow"

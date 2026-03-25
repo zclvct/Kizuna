@@ -56,6 +56,9 @@ class GeneralConfig:
     # 窗口位置
     window_x: int = 100
     window_y: int = 100
+    # 窗口大小
+    window_width: int = 400
+    window_height: int = 600
     # 可拖动开关
     draggable: bool = True
     # 模型缩放 (0.5 - 2.0)
@@ -127,6 +130,7 @@ class Config:
                 for key, value in data["general"].items():
                     if hasattr(self.general, key):
                         setattr(self.general, key, value)
+                logger.info(f"已加载 general 配置: window_x={self.general.window_x}, window_y={self.general.window_y}")
 
             if "motion" in data:
                 for key, value in data["motion"].items():
@@ -157,11 +161,14 @@ class Config:
             "live2d_models": self.live2d_models
         }
 
-        CONFIG_FILE.write_text(
-            json.dumps(data, indent=2, ensure_ascii=False),
-            encoding="utf-8"
-        )
-        logger.info("配置已保存")
+        try:
+            CONFIG_FILE.write_text(
+                json.dumps(data, indent=2, ensure_ascii=False),
+                encoding="utf-8"
+            )
+            logger.info(f"配置已保存到 {CONFIG_FILE}, 窗口位置: ({self.general.window_x}, {self.general.window_y})")
+        except Exception as e:
+            logger.error(f"保存配置失败: {e}")
 
 
 # 全局配置实例

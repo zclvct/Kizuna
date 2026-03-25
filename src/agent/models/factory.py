@@ -25,6 +25,8 @@ def get_llm_config() -> LLMConfig:
                 "model": config.llm.model,
                 "api_key": config.llm.api_key,
                 "base_url": config.llm.base_url,
+                "temperature": config.llm.temperature,
+                "max_tokens": config.llm.max_tokens,
             },
             "llm_providers": config.llm_providers,
         }

@@ -36,10 +36,23 @@ from .langchain_tools import (
     create_persona_tool,
     create_motion_tool,
     create_mood_emoji_tool,
+    create_save_memory_tool,
+    create_save_fact_tool,
+    create_search_memory_tool,
+    create_get_facts_tool,
+    create_get_memory_stats_tool,
     get_all_tools,
     get_tools_by_ids,
 )
 from .registry import ToolRegistry, get_tool_registry
+from .memory_tool import (
+    save_memory,
+    save_fact,
+    search_memory,
+    get_user_facts,
+    get_memory_stats,
+    MEMORY_TOOLS,
+)
 
 __all__ = [
     # 原有工具函数
@@ -75,6 +88,13 @@ __all__ = [
     "MOOD_TYPES",
     "CATEGORY_MOOD",
     "CATEGORY_ACTION",
+    # 记忆工具函数
+    "save_memory",
+    "save_fact",
+    "search_memory",
+    "get_user_facts",
+    "get_memory_stats",
+    "MEMORY_TOOLS",
     # LangChain 工具
     "BaseToolArgs",
     "LangChainTool",
@@ -91,6 +111,11 @@ __all__ = [
     "create_persona_tool",
     "create_motion_tool",
     "create_mood_emoji_tool",
+    "create_save_memory_tool",
+    "create_save_fact_tool",
+    "create_search_memory_tool",
+    "create_get_facts_tool",
+    "create_get_memory_stats_tool",
     "get_all_tools",
     "get_tools_by_ids",
     "ToolRegistry",
