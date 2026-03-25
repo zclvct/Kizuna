@@ -51,7 +51,7 @@
 
 ### 方式一：下载安装包（推荐）
 
-从 [Releases](https://github.com/yourname/Kizuna/releases) 页面下载对应平台的安装包：
+从 [Releases](https://github.com/zclvct/Kizuna/releases) 页面下载对应平台的安装包：
 
 | 平台 | 文件 | 说明 |
 |------|------|------|
@@ -62,7 +62,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourname/Kizuna.git
+git clone https://github.com/zclvct/Kizuna.git
 cd Kizuna
 
 # 创建虚拟环境（推荐）
