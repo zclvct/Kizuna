@@ -13,6 +13,42 @@
 
 ---
 
+## 📸 软件截图
+
+<div align="center">
+
+### 桌面助手主界面
+
+<img src="assets/screenshots/main_window.png" width="600" alt="主界面">
+
+*Live2D 模型在桌面展示，支持拖拽移动*
+
+### AI 对话界面
+
+<img src="assets/screenshots/chat.png" width="600" alt="对话界面">
+
+*与 AI 助手进行自然对话，支持流式输出*
+
+### 设置面板
+
+| Live2D 模型管理 | 角色设定 |
+|:---:|:---:|
+| <img src="assets/screenshots/settings_live2d.png" width="280" alt="模型管理"> | <img src="assets/screenshots/settings_persona.png" width="280" alt="角色设定"> |
+
+| 技能配置 | MCP 服务器 |
+|:---:|:---:|
+| <img src="assets/screenshots/settings_tools.png" width="280" alt="技能配置"> | <img src="assets/screenshots/settings_mcp.png" width="280" alt="MCP配置"> |
+
+### 表情包气泡
+
+<img src="assets/screenshots/emoji_bubble.png" width="400" alt="表情包气泡">
+
+*心情表情包气泡，增添互动趣味*
+
+</div>
+
+---
+
 ## ✨ 功能特性
 
 ### 🎭 Live2D 模型
