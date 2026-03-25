@@ -1,12 +1,19 @@
 # Constants
 import os
+import sys
 import shutil
 from pathlib import Path
 from typing import Union
 import platform
 
 # 项目根目录（代码所在位置，用于读取默认资源）
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+# 兼容 PyInstaller 打包环境
+if getattr(sys, 'frozen', False):
+    # PyInstaller 打包后的路径
+    PROJECT_ROOT = Path(sys._MEIPASS)
+else:
+    # 正常开发环境
+    PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 
 def get_user_data_dir() -> Path:

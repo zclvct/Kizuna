@@ -115,7 +115,16 @@ jobs:
 
       - name: Build Windows exe
         run: |
+          # 临时开启控制台用于调试
+          sed -i 's/console=False/console=True/g' kizuna.spec
           pyinstaller kizuna.spec --noconfirm
+
+      - name: Debug - Check build output
+        run: |
+          echo "=== Build output ==="
+          dir dist
+          echo "=== Check live2d files ==="
+          dir dist /s /b | findstr live2d || echo "No live2d files found"
 
       - name: Create ZIP
         shell: pwsh

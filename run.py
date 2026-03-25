@@ -6,8 +6,15 @@ AI Friend - 二次元桌面助手
 import sys
 from pathlib import Path
 
+# 获取项目根目录（兼容 PyInstaller 打包）
+if getattr(sys, 'frozen', False):
+    # PyInstaller 打包后的路径
+    project_root = Path(sys._MEIPASS)
+else:
+    # 正常开发环境
+    project_root = Path(__file__).parent
+
 # 添加 src 到路径
-project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root / "src"))
 
 # 导入并运行真正的 main 函数
