@@ -30,8 +30,15 @@ class TrayIcon(QObject):
 
     def _setup_tray(self):
         """设置托盘图标"""
-        # TODO: 使用实际图标
-        # 暂时使用默认图标，后续替换为自定义图标
+        # 设置托盘图标
+        icon_path = Path(__file__).parent.parent.parent / "assets" / "images" / "AI助手.png"
+        if icon_path.exists():
+            icon = QIcon(str(icon_path))
+            self._tray.setIcon(icon)
+            logger.info(f"托盘图标已加载: {icon_path}")
+        else:
+            logger.warning(f"托盘图标文件不存在: {icon_path}")
+        
         self._tray.setToolTip("AI Friend - 二次元桌面助手")
 
         # 连接点击事件
@@ -40,13 +47,6 @@ class TrayIcon(QObject):
     def _setup_menu(self):
         """设置右键菜单"""
         menu = QMenu()
-
-        # 显示/隐藏
-        toggle_action = QAction("显示/隐藏", menu)
-        toggle_action.triggered.connect(self.toggle_window.emit)
-        menu.addAction(toggle_action)
-
-        menu.addSeparator()
 
         # 设置
         settings_action = QAction("设置", menu)

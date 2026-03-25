@@ -1,24 +1,24 @@
 {
   "records": [
     {
-      "id": "1774387244.263085",
+      "id": "1774388134.990359",
       "task_id": "2fe99602-224d-4020-a0c3-e2571ff5f20b",
       "task_name": "每日新闻推送",
-      "executed_at": "2026-03-25T05:20:44.263131",
+      "executed_at": "2026-03-25T05:35:34.990406",
       "success": true,
       "result": "LLM 执行完成",
       "error": null,
-      "duration_seconds": 0.5043818950653076
+      "duration_seconds": 0.503619909286499
     },
     {
-      "id": "1774387499.740066",
+      "id": "1774388306.905296",
       "task_id": "2fe99602-224d-4020-a0c3-e2571ff5f20b",
       "task_name": "每日新闻推送",
-      "executed_at": "2026-03-25T05:24:59.740115",
+      "executed_at": "2026-03-25T05:38:26.905344",
       "success": true,
       "result": "LLM 执行完成",
       "error": null,
-      "duration_seconds": 0.5037360191345215
+      "duration_seconds": 0.5037569999694824
     }
   ]
 }

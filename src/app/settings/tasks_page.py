@@ -471,18 +471,61 @@ class TasksSettingsPage(QWidget):
     
     def _clear_history(self):
         """清理历史记录"""
-        reply = QMessageBox.question(
-            self,
-            "确认清理",
-            "确定要清理 30 天前的执行记录吗？",
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
-            QMessageBox.StandardButton.No
-        )
+        # 先询问清理类型
+        menu = QMenu(self)
+        menu.setStyleSheet("""
+            QMenu {
+                background-color: white;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 6px;
+            }
+            QMenu::item {
+                padding: 8px 16px;
+                border-radius: 4px;
+            }
+            QMenu::item:selected {
+                background-color: #e8f4ff;
+            }
+        """)
         
-        if reply == QMessageBox.StandardButton.Yes:
-            self.history_manager.clear_old_records(days=30)
-            self._load_history()
-            logger.info("已清理 30 天前的执行记录")
+        clear_30_action = menu.addAction("清理 30 天前的记录")
+        clear_all_action = menu.addAction("清理全部记录")
+        
+        action = menu.exec(QCursor.pos())
+        
+        if action == clear_30_action:
+            self._do_clear_history(days=30)
+        elif action == clear_all_action:
+            reply = QMessageBox.question(
+                self,
+                "确认清理",
+                "确定要清理全部执行记录吗？\n此操作不可撤销。",
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No
+            )
+            if reply == QMessageBox.StandardButton.Yes:
+                self._do_clear_history(days=0)
+    
+    def _do_clear_history(self, days: int):
+        """执行清理历史记录"""
+        if days > 0:
+            self.history_manager.clear_old_records(days=days)
+            logger.info(f"已清理 {days} 天前的执行记录")
+        else:
+            # 清理全部
+            count = len(self.history_manager._records)
+            self.history_manager._records = []
+            self.history_manager._save()
+            logger.info(f"已清理全部 {count} 条执行记录")
+        
+        self._load_history()
+        
+        QMessageBox.information(
+            self,
+            "清理完成",
+            "历史记录已清理"
+        )
     
     def _refresh_all(self):
         """刷新所有数据"""

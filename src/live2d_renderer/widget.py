@@ -252,7 +252,7 @@ class Live2DGLWidget(QOpenGLWidget):
                """
         # 计算推荐窗口大小
         # 添加边距，让模型不会紧贴窗口边缘
-        margin_ratio = -0.5  # 5% 边距
+        margin_ratio = -0.3  # 5% 边距
 
         recommended_width = int(self._model_natural_width * self._scale * (1 + margin_ratio))
         recommended_height = int(self._model_natural_height * self._scale * (1 + margin_ratio))

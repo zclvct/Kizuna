@@ -17266,3 +17266,1286 @@ During task with name 'tools' and id '26dc914b-1f83-37e1-50e3-e38a1d9f5ce1'
 2026-03-25 13:28:48 - aiFriend - INFO - 播放动作: idle
 2026-03-25 13:29:18 - aiFriend - INFO - 播放动作: idle
 2026-03-25 13:29:48 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:30:18 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:30:48 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:31:18 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载 general 配置: window_x=1691, window_y=678
+2026-03-25 13:31:37 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:31:37 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:31:37 - aiFriend - INFO - ==================================================
+2026-03-25 13:31:37 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:31:37 - aiFriend - INFO - ==================================================
+2026-03-25 13:31:37 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:31:37 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:31:37 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:31:37 - aiFriend - INFO - First run: False
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:31:37 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:31:37 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:31:37 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:31:37 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:31:37 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:31:37 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:31:37 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:31:37 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载 2 条对话历史
+2026-03-25 13:31:37 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:31:37 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:31:37 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:31:37 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:31:37 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x13566d520) at 0x176092040>>
+2026-03-25 13:31:37 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:31:37 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:31:37 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:31:37 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:31:38 - aiFriend - INFO - 显示开场白
+2026-03-25 13:31:38 - aiFriend - INFO - 恢复窗口大小: 228x318
+2026-03-25 13:31:38 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:31:38 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:31:38 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:31:38 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:31:38 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:31:38 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:31:38 - aiFriend - INFO - 尝试恢复窗口位置: (1691, 678)
+2026-03-25 13:31:38 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:31:38 - aiFriend - INFO - 窗口位置恢复至: (1691, 678)
+2026-03-25 13:31:38 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:31:38 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:31:38 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:31:38 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:31:38 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:31:38 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:31:38 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:31:38 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:31:38 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:31:38 - aiFriend - INFO - 设置缩放: 1.39
+2026-03-25 13:31:38 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:31:38 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:31:38 - aiFriend - INFO - 推荐窗口大小: 291x418
+2026-03-25 13:31:38 - aiFriend - INFO - 主窗口大小调整为: 311x438
+2026-03-25 13:31:38 - aiFriend - INFO - Live2DWidget 大小调整为: 291x418
+2026-03-25 13:31:38 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:31:38 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:31:38 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:31:38 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 13:31:39 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:31:40 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:31:41 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:31:41 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:31:41 - aiFriend - INFO - 工具已更新，数量: 22
+2026-03-25 13:31:41 - aiFriend - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 13:31:41 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:31:41 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:31:41 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:31:41 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:31:41 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:31:41 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:31:41 - aiFriend - INFO - 已加载 2 条执行记录
+2026-03-25 13:31:42 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:31:43 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:31:43 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 287x412
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 307x432
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 287x412
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.37x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 285x409
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 305x429
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 285x409
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.36x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 283x406
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 303x426
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 283x406
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.35x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 281x403
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 301x423
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 281x403
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.34x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 279x400
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 299x420
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 279x400
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.33x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 270x388
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 290x408
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 270x388
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.29x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 247x355
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 267x375
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 247x355
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.18x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 239x343
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 259x363
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 239x343
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.14x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 228x328
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 248x348
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 228x328
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.09x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 220x316
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 240x336
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 220x316
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.05x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 212x304
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 232x324
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 212x304
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 1.01x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 0.99x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 203x291
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 223x311
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 203x291
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 0.97x
+2026-03-25 13:31:44 - aiFriend - INFO - 推荐窗口大小: 199x285
+2026-03-25 13:31:44 - aiFriend - INFO - 主窗口大小调整为: 219x305
+2026-03-25 13:31:44 - aiFriend - INFO - Live2DWidget 大小调整为: 199x285
+2026-03-25 13:31:44 - aiFriend - INFO - 模型缩放更新: 0.95x
+2026-03-25 13:31:45 - aiFriend - INFO - 推荐窗口大小: 195x279
+2026-03-25 13:31:45 - aiFriend - INFO - 主窗口大小调整为: 215x299
+2026-03-25 13:31:45 - aiFriend - INFO - Live2DWidget 大小调整为: 195x279
+2026-03-25 13:31:45 - aiFriend - INFO - 模型缩放更新: 0.93x
+2026-03-25 13:31:45 - aiFriend - INFO - 推荐窗口大小: 193x276
+2026-03-25 13:31:45 - aiFriend - INFO - 主窗口大小调整为: 213x296
+2026-03-25 13:31:45 - aiFriend - INFO - Live2DWidget 大小调整为: 193x276
+2026-03-25 13:31:45 - aiFriend - INFO - 模型缩放更新: 0.92x
+2026-03-25 13:31:47 - aiFriend - INFO - 推荐窗口大小: 195x279
+2026-03-25 13:31:47 - aiFriend - INFO - 主窗口大小调整为: 215x299
+2026-03-25 13:31:47 - aiFriend - INFO - Live2DWidget 大小调整为: 195x279
+2026-03-25 13:31:47 - aiFriend - INFO - 模型缩放更新: 0.93x
+2026-03-25 13:31:47 - aiFriend - INFO - 推荐窗口大小: 197x282
+2026-03-25 13:31:47 - aiFriend - INFO - 主窗口大小调整为: 217x302
+2026-03-25 13:31:47 - aiFriend - INFO - Live2DWidget 大小调整为: 197x282
+2026-03-25 13:31:47 - aiFriend - INFO - 模型缩放更新: 0.94x
+2026-03-25 13:31:47 - aiFriend - INFO - 推荐窗口大小: 199x285
+2026-03-25 13:31:47 - aiFriend - INFO - 主窗口大小调整为: 219x305
+2026-03-25 13:31:47 - aiFriend - INFO - Live2DWidget 大小调整为: 199x285
+2026-03-25 13:31:47 - aiFriend - INFO - 模型缩放更新: 0.95x
+2026-03-25 13:31:47 - aiFriend - INFO - 推荐窗口大小: 201x288
+2026-03-25 13:31:47 - aiFriend - INFO - 主窗口大小调整为: 221x308
+2026-03-25 13:31:47 - aiFriend - INFO - Live2DWidget 大小调整为: 201x288
+2026-03-25 13:31:47 - aiFriend - INFO - 模型缩放更新: 0.96x
+2026-03-25 13:31:47 - aiFriend - INFO - 推荐窗口大小: 205x294
+2026-03-25 13:31:47 - aiFriend - INFO - 主窗口大小调整为: 225x314
+2026-03-25 13:31:47 - aiFriend - INFO - Live2DWidget 大小调整为: 205x294
+2026-03-25 13:31:47 - aiFriend - INFO - 模型缩放更新: 0.98x
+2026-03-25 13:31:47 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:31:47 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:31:47 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:31:47 - aiFriend - INFO - 模型缩放更新: 0.99x
+2026-03-25 13:31:48 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 心情配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 13:31:48 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 13:31:48 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 通用配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1691, 678)
+2026-03-25 13:31:48 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:31:48 - aiFriend - INFO - 设置已保存
+2026-03-25 13:31:52 - aiFriend - INFO - 窗口位置和大小已保存: (1729, 694), 227x317
+2026-03-25 13:31:52 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1729, 694)
+2026-03-25 13:31:52 - aiFriend - INFO - 播放动作: main_1
+2026-03-25 13:31:54 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 13:31:57 - aiFriend - INFO - 聊天窗口已关闭
+2026-03-25 13:32:08 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:32:24 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:32:24 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:32:24 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:32:24 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:32:24 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:32:24 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:32:25 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:32:26 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:32:26 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:32:38 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:32:47 - aiFriend - INFO - MCP 配置已保存
+2026-03-25 13:32:47 - aiFriend - INFO - 已添加 MCP 服务器: bing必应搜索
+2026-03-25 13:32:51 - aiFriend - INFO - MCP 配置已保存
+2026-03-25 13:32:51 - aiFriend - INFO - 已更新 MCP 服务器: 智谱联网搜索
+2026-03-25 13:32:52 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 心情配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 13:32:52 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 13:32:52 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 通用配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1729, 694)
+2026-03-25 13:32:52 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:32:52 - aiFriend - INFO - 设置已保存
+2026-03-25 13:32:56 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:32:56 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:32:56 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:32:56 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:32:56 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:32:56 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:32:57 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:32:57 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:32:57 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:33:02 - aiFriend - INFO - 窗口位置和大小已保存: (1729, 694), 227x317
+2026-03-25 13:33:02 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1729, 694)
+2026-03-25 13:33:02 - aiFriend - INFO - 窗口位置和大小已保存: (1729, 694), 227x317
+2026-03-25 13:33:02 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1729, 694)
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载 general 配置: window_x=1729, window_y=694
+2026-03-25 13:33:06 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:33:06 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:33:06 - aiFriend - INFO - ==================================================
+2026-03-25 13:33:06 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:33:06 - aiFriend - INFO - ==================================================
+2026-03-25 13:33:06 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:33:06 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:33:06 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:33:06 - aiFriend - INFO - First run: False
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:33:06 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:33:06 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:33:06 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:33:06 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:33:06 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:33:06 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:33:06 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:33:06 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 13:33:06 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:33:06 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:33:06 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:33:06 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:33:06 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x16c8dd110) at 0x16d3b4840>>
+2026-03-25 13:33:06 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:33:06 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:33:06 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:33:06 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:33:06 - aiFriend - INFO - 显示开场白
+2026-03-25 13:33:06 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:33:06 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:33:06 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:33:06 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:33:06 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:33:06 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:33:06 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:33:06 - aiFriend - INFO - 尝试恢复窗口位置: (1729, 694)
+2026-03-25 13:33:06 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:33:06 - aiFriend - INFO - 窗口位置恢复至: (1692, 694)
+2026-03-25 13:33:06 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:33:06 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:33:06 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:33:06 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:33:07 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:33:07 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:33:07 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:33:07 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:33:07 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:33:07 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:33:07 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:33:07 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:33:07 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:33:07 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:33:07 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:33:07 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:33:07 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:33:07 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:33:07 - aiFriend - INFO - 已加载 3 个 MCP 服务器配置
+2026-03-25 13:33:07 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:33:08 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:33:09 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:33:09 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:33:09 - aiFriend - INFO - 工具已更新，数量: 23
+2026-03-25 13:33:09 - aiFriend - INFO - MCP 工具已加载，总工具数: 23
+2026-03-25 13:33:09 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:33:09 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:33:09 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:33:09 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:33:09 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:33:09 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:33:09 - aiFriend - INFO - 已加载 2 条执行记录
+2026-03-25 13:33:10 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:33:10 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:33:10 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:33:12 - aiFriend - INFO - 手动触发任务: 每日新闻推送
+2026-03-25 13:33:12 - aiFriend - INFO - 执行定时任务: 每日新闻推送
+2026-03-25 13:33:12 - aiFriend - INFO - 使用 LLM 执行器执行任务
+2026-03-25 13:33:12 - aiFriend - INFO - 开始执行任务: 每日新闻推送
+2026-03-25 13:33:12 - aiFriend - INFO - 对话窗口未打开，正在打开...
+2026-03-25 13:33:13 - aiFriend - INFO - 已触发 LLM 处理任务: 每日新闻推送
+2026-03-25 13:33:13 - aiFriend - INFO - 任务执行完成: 每日新闻推送
+2026-03-25 13:33:13 - aiFriend - INFO - 已记录任务执行: 每日新闻推送 - 成功
+2026-03-25 13:33:13 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 13:33:13 - aiFriend - INFO - 处理用户输入: [定时任务执行]
+任务名称：每日新闻推送
+任务内容：给用户推送今天的大模型或者ai技术最新的资讯
+
+...
+2026-03-25 13:33:16 - aiFriend - INFO - 工具调用开始: bing_search
+2026-03-25 13:33:16 - aiFriend - INFO - 显示调试信息: 调用工具: bing_search
+2026-03-25 13:33:18 - aiFriend - INFO - 工具调用结束: bing_search
+2026-03-25 13:33:18 - aiFriend - INFO - 显示调试信息: 工具结果: bing_search
+2026-03-25 13:33:22 - aiFriend - INFO - 工具调用开始: crawl_webpage
+2026-03-25 13:33:22 - aiFriend - INFO - 显示调试信息: 调用工具: crawl_webpage
+2026-03-25 13:33:23 - aiFriend - ERROR - Agent 执行错误: 错误: 以下UUID在urlMap中不存在: 72b5b38c-6439-47c1-b995-18f0fd0174b6
+Traceback (most recent call last):
+  File "/Users/zhaochong/Ai/workspace/aiFriend/src/agent/agent.py", line 135, in _chat_stream
+    async for event in self._agent.astream_events(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1516, in astream_events
+    async for event in event_stream:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1100, in _astream_events_implementation_v2
+    await task
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1055, in consume_astream
+    async for _ in event_streamer.tap_output_aiter(run_id, stream):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 222, in tap_output_aiter
+    async for chunk in output:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3111, in astream
+    async for _ in runner.atick(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_runner.py", line 304, in atick
+    await arun_with_retry(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_retry.py", line 206, in arun_with_retry
+    async for _ in task.proc.astream(task.input, config):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 839, in astream
+    output = await asyncio.create_task(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 904, in _consume_aiter
+    async for chunk in it:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 199, in tap_output_aiter
+    first = await anext(output, sentinel)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1589, in atransform
+    async for ichunk in input:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1170, in astream
+    yield await self.ainvoke(input, config, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 846, in _afunc
+    outputs = await asyncio.gather(*coros)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1177, in _arun_one
+    return await self._execute_tool_async(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1126, in _execute_tool_async
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 430, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 387, in _default_handle_tool_errors
+    raise e
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1083, in _execute_tool_async
+    response = await tool.ainvoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 70, in ainvoke
+    return await super().ainvoke(input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 652, in ainvoke
+    return await self.arun(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1131, in arun
+    raise error_to_raise
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1097, in arun
+    response = await coro_with_context(coro, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 124, in _arun
+    return await self.coroutine(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 414, in call_tool
+    return _convert_call_tool_result(call_tool_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 189, in _convert_call_tool_result
+    raise ToolException(error_msg)
+langchain_core.tools.base.ToolException: 错误: 以下UUID在urlMap中不存在: 72b5b38c-6439-47c1-b995-18f0fd0174b6
+During task with name 'tools' and id '1c51ce60-d644-47fb-186d-b5cfd3d18305'
+2026-03-25 13:33:23 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: 72b5b38c-6439-47c1-b995-18f0fd0174b6', 'is_task': False}
+2026-03-25 13:33:23 - aiFriend - INFO - final_text: '抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: 72b5b38c-6439-47c1-b995-18f0fd0174b6'
+2026-03-25 13:33:23 - aiFriend - INFO - 已添加消息气泡: 抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: 72b5b38c-6439-47...
+2026-03-25 13:33:23 - aiFriend - INFO - 回复生成完成
+2026-03-25 13:33:29 - aiFriend - INFO - 已清理 30 天前的执行记录
+2026-03-25 13:33:36 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:33:39 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:33:39 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:33:39 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:33:39 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:33:39 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:33:39 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:33:39 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:33:40 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 心情配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 13:33:40 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 13:33:40 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 通用配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1729, 694)
+2026-03-25 13:33:40 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - 设置已保存
+2026-03-25 13:33:40 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:33:40 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:33:59 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:33:59 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:33:59 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:33:59 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:33:59 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:33:59 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:34:00 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:34:00 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:34:00 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:34:01 - aiFriend - INFO - 已清理 30 天前的执行记录
+2026-03-25 13:34:06 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:34:36 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:35:06 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载 general 配置: window_x=1729, window_y=694
+2026-03-25 13:35:16 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:35:16 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:35:16 - aiFriend - INFO - ==================================================
+2026-03-25 13:35:16 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:35:16 - aiFriend - INFO - ==================================================
+2026-03-25 13:35:16 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:35:16 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:35:16 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:35:16 - aiFriend - INFO - First run: False
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:35:16 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:35:16 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:35:16 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:35:16 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:35:16 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:35:16 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:35:16 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:35:16 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载 2 条对话历史
+2026-03-25 13:35:16 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:35:16 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:35:16 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:35:16 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:35:16 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x17d2b8ca0) at 0x17e4cd000>>
+2026-03-25 13:35:16 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:35:16 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:35:16 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:35:16 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:35:17 - aiFriend - INFO - 显示开场白
+2026-03-25 13:35:17 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:35:17 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:35:17 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:35:17 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:35:17 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:35:17 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:35:17 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:35:17 - aiFriend - INFO - 尝试恢复窗口位置: (1729, 694)
+2026-03-25 13:35:17 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:35:17 - aiFriend - INFO - 窗口位置恢复至: (1692, 694)
+2026-03-25 13:35:17 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:35:17 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:35:17 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:35:17 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:35:17 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:35:17 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:35:17 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:35:17 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:35:17 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:35:17 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:35:17 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:35:17 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:35:17 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:35:17 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:35:17 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:35:17 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:35:17 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:35:17 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:35:17 - aiFriend - INFO - 已加载 3 个 MCP 服务器配置
+2026-03-25 13:35:17 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:35:19 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:35:19 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:35:19 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:35:19 - aiFriend - INFO - 工具已更新，数量: 23
+2026-03-25 13:35:19 - aiFriend - INFO - MCP 工具已加载，总工具数: 23
+2026-03-25 13:35:22 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:35:22 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:35:22 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:35:22 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:35:22 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:35:22 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:35:22 - aiFriend - INFO - 已加载 3 条执行记录
+2026-03-25 13:35:23 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:35:23 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:35:23 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:35:30 - aiFriend - INFO - 已清理全部 3 条执行记录
+2026-03-25 13:35:34 - aiFriend - INFO - 手动触发任务: 每日新闻推送
+2026-03-25 13:35:34 - aiFriend - INFO - 执行定时任务: 每日新闻推送
+2026-03-25 13:35:34 - aiFriend - INFO - 使用 LLM 执行器执行任务
+2026-03-25 13:35:34 - aiFriend - INFO - 开始执行任务: 每日新闻推送
+2026-03-25 13:35:34 - aiFriend - INFO - 对话窗口未打开，正在打开...
+2026-03-25 13:35:34 - aiFriend - INFO - 已触发 LLM 处理任务: 每日新闻推送
+2026-03-25 13:35:34 - aiFriend - INFO - 任务执行完成: 每日新闻推送
+2026-03-25 13:35:34 - aiFriend - INFO - 已记录任务执行: 每日新闻推送 - 成功
+2026-03-25 13:35:35 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 13:35:35 - aiFriend - INFO - 处理用户输入: [定时任务执行]
+任务名称：每日新闻推送
+任务内容：给用户推送今天的大模型或者ai技术最新的资讯
+
+...
+2026-03-25 13:35:38 - aiFriend - INFO - 工具调用开始: bing_search
+2026-03-25 13:35:38 - aiFriend - INFO - 显示调试信息: 调用工具: bing_search
+2026-03-25 13:35:39 - aiFriend - INFO - 工具调用结束: bing_search
+2026-03-25 13:35:39 - aiFriend - INFO - 显示调试信息: 工具结果: bing_search
+2026-03-25 13:35:42 - aiFriend - INFO - 工具调用开始: bing_search
+2026-03-25 13:35:42 - aiFriend - INFO - 显示调试信息: 调用工具: bing_search
+2026-03-25 13:35:42 - aiFriend - INFO - 工具调用结束: bing_search
+2026-03-25 13:35:42 - aiFriend - INFO - 显示调试信息: 工具结果: bing_search
+2026-03-25 13:35:47 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:35:47 - aiFriend - INFO - 工具调用开始: crawl_webpage
+2026-03-25 13:35:47 - aiFriend - INFO - 显示调试信息: 调用工具: crawl_webpage
+2026-03-25 13:35:48 - aiFriend - ERROR - Agent 执行错误: 错误: 以下UUID在urlMap中不存在: eb34030e-8c36-4021-9d8d-990909cf7e11, 1c14b75e-348a-4fed-97a1-ab05bb76b3e4
+Traceback (most recent call last):
+  File "/Users/zhaochong/Ai/workspace/aiFriend/src/agent/agent.py", line 135, in _chat_stream
+    async for event in self._agent.astream_events(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1516, in astream_events
+    async for event in event_stream:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1100, in _astream_events_implementation_v2
+    await task
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1055, in consume_astream
+    async for _ in event_streamer.tap_output_aiter(run_id, stream):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 222, in tap_output_aiter
+    async for chunk in output:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3111, in astream
+    async for _ in runner.atick(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_runner.py", line 304, in atick
+    await arun_with_retry(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_retry.py", line 206, in arun_with_retry
+    async for _ in task.proc.astream(task.input, config):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 839, in astream
+    output = await asyncio.create_task(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 904, in _consume_aiter
+    async for chunk in it:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 199, in tap_output_aiter
+    first = await anext(output, sentinel)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1589, in atransform
+    async for ichunk in input:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1170, in astream
+    yield await self.ainvoke(input, config, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 846, in _afunc
+    outputs = await asyncio.gather(*coros)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1177, in _arun_one
+    return await self._execute_tool_async(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1126, in _execute_tool_async
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 430, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 387, in _default_handle_tool_errors
+    raise e
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1083, in _execute_tool_async
+    response = await tool.ainvoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 70, in ainvoke
+    return await super().ainvoke(input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 652, in ainvoke
+    return await self.arun(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1131, in arun
+    raise error_to_raise
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1097, in arun
+    response = await coro_with_context(coro, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 124, in _arun
+    return await self.coroutine(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 414, in call_tool
+    return _convert_call_tool_result(call_tool_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 189, in _convert_call_tool_result
+    raise ToolException(error_msg)
+langchain_core.tools.base.ToolException: 错误: 以下UUID在urlMap中不存在: eb34030e-8c36-4021-9d8d-990909cf7e11, 1c14b75e-348a-4fed-97a1-ab05bb76b3e4
+During task with name 'tools' and id 'ff27dc56-ddb9-5455-b847-6cf9c22e36b4'
+2026-03-25 13:35:48 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: eb34030e-8c36-4021-9d8d-990909cf7e11, 1c14b75e-348a-4fed-97a1-ab05bb76b3e4', 'is_task': False}
+2026-03-25 13:35:48 - aiFriend - INFO - final_text: '抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: eb34030e-8c36-4021-9d8d-990909cf7e11, 1c14b75e-348a-4fed-97a1-ab05bb76b3e4'
+2026-03-25 13:35:48 - aiFriend - INFO - 已添加消息气泡: 抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: eb34030e-8c36-40...
+2026-03-25 13:35:48 - aiFriend - INFO - 回复生成完成
+2026-03-25 13:36:17 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:36:47 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载 general 配置: window_x=1729, window_y=694
+2026-03-25 13:38:00 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:38:00 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:38:00 - aiFriend - INFO - ==================================================
+2026-03-25 13:38:00 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:38:00 - aiFriend - INFO - ==================================================
+2026-03-25 13:38:00 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:38:00 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:38:00 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:38:00 - aiFriend - INFO - First run: False
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:38:00 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:38:00 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:38:00 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:38:00 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:38:00 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:38:00 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:38:00 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:38:00 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载 2 条对话历史
+2026-03-25 13:38:00 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:38:00 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:38:00 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:38:00 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:38:00 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x1069f67a0) at 0x17a3ce040>>
+2026-03-25 13:38:00 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:38:00 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:38:00 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:38:00 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:38:00 - aiFriend - INFO - 显示开场白
+2026-03-25 13:38:00 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:38:00 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:38:00 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:38:00 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:38:00 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:38:00 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:38:00 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:38:00 - aiFriend - INFO - 尝试恢复窗口位置: (1729, 694)
+2026-03-25 13:38:00 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:38:00 - aiFriend - INFO - 窗口位置恢复至: (1692, 694)
+2026-03-25 13:38:00 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:38:00 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:38:00 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:38:00 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:38:01 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:38:01 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:38:01 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:38:01 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:38:01 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:38:01 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:38:01 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:38:01 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:38:01 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:38:01 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:38:01 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:38:01 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:38:01 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:38:01 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:38:01 - aiFriend - INFO - 已加载 3 个 MCP 服务器配置
+2026-03-25 13:38:01 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:38:02 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:38:02 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:38:02 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:38:02 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:38:02 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:38:02 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:38:02 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:38:02 - aiFriend - INFO - 已加载 1 条执行记录
+2026-03-25 13:38:03 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:38:03 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 13:38:03 - aiFriend - INFO - 工具已更新，数量: 23
+2026-03-25 13:38:03 - aiFriend - INFO - MCP 工具已加载，总工具数: 23
+2026-03-25 13:38:03 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:38:04 - aiFriend - INFO - MCP 服务器 'bing必应搜索' 加载了 2 个工具
+2026-03-25 13:38:04 - aiFriend - INFO - MCP 工具加载完成，共 10 个工具
+2026-03-25 13:38:09 - aiFriend - INFO - MCP 配置已保存
+2026-03-25 13:38:09 - aiFriend - INFO - 已更新 MCP 服务器: 智谱联网搜索
+2026-03-25 13:38:11 - aiFriend - INFO - MCP 配置已保存
+2026-03-25 13:38:11 - aiFriend - INFO - 已删除 MCP 服务器: bing必应搜索
+2026-03-25 13:38:15 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 心情配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 13:38:15 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 13:38:15 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 通用配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1729, 694)
+2026-03-25 13:38:15 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:38:15 - aiFriend - INFO - 设置已保存
+2026-03-25 13:38:18 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:38:18 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:38:18 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:38:18 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:38:18 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:38:18 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:38:19 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:38:20 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:38:20 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:38:26 - aiFriend - INFO - 手动触发任务: 每日新闻推送
+2026-03-25 13:38:26 - aiFriend - INFO - 执行定时任务: 每日新闻推送
+2026-03-25 13:38:26 - aiFriend - INFO - 使用 LLM 执行器执行任务
+2026-03-25 13:38:26 - aiFriend - INFO - 开始执行任务: 每日新闻推送
+2026-03-25 13:38:26 - aiFriend - INFO - 对话窗口未打开，正在打开...
+2026-03-25 13:38:26 - aiFriend - INFO - 已触发 LLM 处理任务: 每日新闻推送
+2026-03-25 13:38:26 - aiFriend - INFO - 任务执行完成: 每日新闻推送
+2026-03-25 13:38:26 - aiFriend - INFO - 已记录任务执行: 每日新闻推送 - 成功
+2026-03-25 13:38:26 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 13:38:26 - aiFriend - INFO - 处理用户输入: [定时任务执行]
+任务名称：每日新闻推送
+任务内容：给用户推送今天的大模型或者ai技术最新的资讯
+
+...
+2026-03-25 13:38:30 - aiFriend - INFO - 工具调用开始: bing_search
+2026-03-25 13:38:30 - aiFriend - INFO - 显示调试信息: 调用工具: bing_search
+2026-03-25 13:38:30 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:38:31 - aiFriend - INFO - 工具调用结束: bing_search
+2026-03-25 13:38:31 - aiFriend - INFO - 显示调试信息: 工具结果: bing_search
+2026-03-25 13:38:39 - aiFriend - INFO - 工具调用开始: crawl_webpage
+2026-03-25 13:38:39 - aiFriend - INFO - 显示调试信息: 调用工具: crawl_webpage
+2026-03-25 13:38:39 - aiFriend - ERROR - Agent 执行错误: 错误: 以下UUID在urlMap中不存在: bba3ed22-5609-44ef-851c-74fa1ff1f0b4, 2fbee855-a1e7-4b8f-aa96-8fd55e494be3
+Traceback (most recent call last):
+  File "/Users/zhaochong/Ai/workspace/aiFriend/src/agent/agent.py", line 135, in _chat_stream
+    async for event in self._agent.astream_events(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1516, in astream_events
+    async for event in event_stream:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1100, in _astream_events_implementation_v2
+    await task
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1055, in consume_astream
+    async for _ in event_streamer.tap_output_aiter(run_id, stream):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 222, in tap_output_aiter
+    async for chunk in output:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3111, in astream
+    async for _ in runner.atick(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_runner.py", line 304, in atick
+    await arun_with_retry(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_retry.py", line 206, in arun_with_retry
+    async for _ in task.proc.astream(task.input, config):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 839, in astream
+    output = await asyncio.create_task(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 904, in _consume_aiter
+    async for chunk in it:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 199, in tap_output_aiter
+    first = await anext(output, sentinel)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1589, in atransform
+    async for ichunk in input:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1170, in astream
+    yield await self.ainvoke(input, config, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 846, in _afunc
+    outputs = await asyncio.gather(*coros)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1177, in _arun_one
+    return await self._execute_tool_async(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1126, in _execute_tool_async
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 430, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 387, in _default_handle_tool_errors
+    raise e
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1083, in _execute_tool_async
+    response = await tool.ainvoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 70, in ainvoke
+    return await super().ainvoke(input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 652, in ainvoke
+    return await self.arun(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1131, in arun
+    raise error_to_raise
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1097, in arun
+    response = await coro_with_context(coro, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 124, in _arun
+    return await self.coroutine(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 414, in call_tool
+    return _convert_call_tool_result(call_tool_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 189, in _convert_call_tool_result
+    raise ToolException(error_msg)
+langchain_core.tools.base.ToolException: 错误: 以下UUID在urlMap中不存在: bba3ed22-5609-44ef-851c-74fa1ff1f0b4, 2fbee855-a1e7-4b8f-aa96-8fd55e494be3
+During task with name 'tools' and id '80867221-0730-3bc8-7102-337bf4379b94'
+2026-03-25 13:38:39 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: bba3ed22-5609-44ef-851c-74fa1ff1f0b4, 2fbee855-a1e7-4b8f-aa96-8fd55e494be3', 'is_task': False}
+2026-03-25 13:38:39 - aiFriend - INFO - final_text: '抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: bba3ed22-5609-44ef-851c-74fa1ff1f0b4, 2fbee855-a1e7-4b8f-aa96-8fd55e494be3'
+2026-03-25 13:38:39 - aiFriend - INFO - 已添加消息气泡: 抱歉，处理时出现错误：错误: 以下UUID在urlMap中不存在: bba3ed22-5609-44...
+2026-03-25 13:38:39 - aiFriend - INFO - 回复生成完成
+2026-03-25 13:39:00 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:39:30 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:39:39 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:39:39 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:39:39 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:39:39 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:39:39 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:39:39 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:39:40 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:39:41 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:39:41 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:40:00 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:40:30 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:40:36 - aiFriend - INFO - 窗口位置和大小已保存: (1718, 724), 227x317
+2026-03-25 13:40:36 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1718, 724)
+2026-03-25 13:40:37 - aiFriend - INFO - 聊天窗口已关闭
+2026-03-25 13:41:00 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:41:30 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:41:36 - aiFriend - INFO - 已加载 general 配置: window_x=1718, window_y=724
+2026-03-25 13:41:36 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:41:36 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:41:36 - aiFriend - INFO - ==================================================
+2026-03-25 13:41:36 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:41:36 - aiFriend - INFO - ==================================================
+2026-03-25 13:41:36 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:41:36 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:41:36 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:41:36 - aiFriend - INFO - First run: False
+2026-03-25 13:41:36 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:41:36 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:41:36 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:41:37 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:41:37 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:41:37 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:41:37 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:41:37 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:41:37 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载 2 条对话历史
+2026-03-25 13:41:37 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:41:37 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:41:37 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:41:37 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:41:37 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x14abd3480) at 0x30a5df740>>
+2026-03-25 13:41:37 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:41:37 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:41:37 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:41:37 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:41:37 - aiFriend - INFO - 显示开场白
+2026-03-25 13:41:37 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:41:37 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:41:37 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:41:37 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:41:37 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:41:37 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:41:37 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:41:37 - aiFriend - INFO - 尝试恢复窗口位置: (1718, 724)
+2026-03-25 13:41:37 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:41:37 - aiFriend - INFO - 窗口位置恢复至: (1692, 724)
+2026-03-25 13:41:37 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:41:37 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:41:37 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:41:37 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:41:37 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:41:37 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:41:37 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:41:37 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:41:37 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:41:37 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:41:37 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:41:37 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:41:37 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:41:37 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:41:37 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:41:38 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:41:38 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:41:38 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:41:38 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 13:41:38 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:41:39 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:41:39 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:41:39 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:41:39 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:41:39 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:41:39 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:41:39 - aiFriend - INFO - 已加载 2 条执行记录
+2026-03-25 13:41:39 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:41:40 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:41:41 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:41:41 - aiFriend - INFO - MCP 工具加载完成，共 7 个工具
+2026-03-25 13:41:41 - aiFriend - INFO - 工具已更新，数量: 25
+2026-03-25 13:41:41 - aiFriend - INFO - MCP 工具已加载，总工具数: 25
+2026-03-25 13:41:41 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:41:41 - aiFriend - INFO - MCP 工具加载完成，共 8 个工具
+2026-03-25 13:41:48 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:41:48 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:41:49 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:41:50 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:41:50 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:41:50 - aiFriend - INFO - 总工具数: 22 (内置: 18, MCP: 4)
+2026-03-25 13:41:50 - aiFriend - INFO - 工具已更新，数量: 22
+2026-03-25 13:41:50 - aiFriend - INFO - 所有工具已重新加载，数量: 22
+2026-03-25 13:41:54 - aiFriend - INFO - MCP 服务已手动重新加载
+2026-03-25 13:42:07 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:42:37 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:43:15 - aiFriend - INFO - 已加载 general 配置: window_x=1718, window_y=724
+2026-03-25 13:43:15 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:43:15 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:43:16 - aiFriend - INFO - ==================================================
+2026-03-25 13:43:16 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:43:16 - aiFriend - INFO - ==================================================
+2026-03-25 13:43:16 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:43:16 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:43:16 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:43:16 - aiFriend - INFO - First run: False
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:43:16 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:43:16 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:43:16 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:43:16 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:43:16 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:43:16 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:43:16 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:43:16 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 13:43:16 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:43:16 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:43:16 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:43:16 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:43:16 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x15ec26790) at 0x15eba16c0>>
+2026-03-25 13:43:16 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:43:16 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:43:16 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:43:16 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:43:16 - aiFriend - INFO - 显示开场白
+2026-03-25 13:43:16 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:43:16 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:43:16 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:43:16 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:43:16 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:43:16 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:43:16 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:43:16 - aiFriend - INFO - 尝试恢复窗口位置: (1718, 724)
+2026-03-25 13:43:16 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:43:16 - aiFriend - INFO - 窗口位置恢复至: (1692, 724)
+2026-03-25 13:43:16 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:43:16 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:43:16 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:43:16 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:43:16 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:43:16 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:43:16 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:43:17 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:43:17 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:43:17 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:43:17 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:43:17 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:43:17 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:43:17 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:43:17 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:43:17 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:43:17 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:43:17 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:43:17 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 13:43:17 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:43:18 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:43:18 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:43:18 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:43:18 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:43:18 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:43:18 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:43:18 - aiFriend - INFO - 已加载 2 条执行记录
+2026-03-25 13:43:19 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:43:20 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:43:20 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:43:20 - aiFriend - INFO - MCP 工具加载完成，共 7 个工具
+2026-03-25 13:43:20 - aiFriend - INFO - 工具已更新，数量: 25
+2026-03-25 13:43:20 - aiFriend - INFO - MCP 工具已加载，总工具数: 25
+2026-03-25 13:43:21 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:43:21 - aiFriend - INFO - MCP 工具加载完成，共 8 个工具
+2026-03-25 13:43:26 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:43:26 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:43:27 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:43:29 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:43:29 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:43:29 - aiFriend - INFO - 总工具数: 22 (内置: 18, MCP: 4)
+2026-03-25 13:43:29 - aiFriend - INFO - 工具已更新，数量: 22
+2026-03-25 13:43:30 - aiFriend - INFO - MCP 服务已手动重新加载: 已重新加载 22 个工具
+2026-03-25 13:43:32 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 心情配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 13:43:32 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 13:43:32 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 通用配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1718, 724)
+2026-03-25 13:43:32 - aiFriend - INFO - 角色设定已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 工具配置已保存
+2026-03-25 13:43:32 - aiFriend - INFO - 设置已保存
+2026-03-25 13:43:35 - aiFriend - INFO - 窗口位置和大小已保存: (1698, 697), 227x317
+2026-03-25 13:43:35 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1698, 697)
+2026-03-25 13:43:46 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:44:16 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:44:46 - aiFriend - INFO - 已加载 general 配置: window_x=1698, window_y=697
+2026-03-25 13:44:46 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:44:46 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:44:46 - aiFriend - INFO - ==================================================
+2026-03-25 13:44:46 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:44:46 - aiFriend - INFO - ==================================================
+2026-03-25 13:44:46 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:44:46 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:44:46 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:44:46 - aiFriend - INFO - First run: False
+2026-03-25 13:44:46 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:44:46 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:44:46 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:44:47 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:44:47 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:44:47 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:44:47 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:44:47 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:44:47 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 13:44:47 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:44:47 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:44:47 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:44:47 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:44:47 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x14c8f2a80) at 0x178ca7dc0>>
+2026-03-25 13:44:47 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:44:47 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:44:47 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:44:47 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:44:47 - aiFriend - INFO - 显示开场白
+2026-03-25 13:44:47 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:44:47 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:44:47 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:44:47 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:44:47 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:44:47 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:44:47 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:44:47 - aiFriend - INFO - 尝试恢复窗口位置: (1698, 697)
+2026-03-25 13:44:47 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:44:47 - aiFriend - INFO - 窗口位置恢复至: (1692, 697)
+2026-03-25 13:44:47 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:44:47 - aiFriend - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/aiFriend/assets/images/AI助手.png
+2026-03-25 13:44:47 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:44:47 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:44:47 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:44:47 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:44:47 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:44:47 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:44:47 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:44:47 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:44:47 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:44:47 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:44:47 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:44:47 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:44:47 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:44:47 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:44:48 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:44:48 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:44:48 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:44:48 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 13:44:48 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:44:49 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:44:50 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:44:50 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:44:50 - aiFriend - INFO - 工具已更新，数量: 22
+2026-03-25 13:44:50 - aiFriend - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载 general 配置: window_x=1698, window_y=697
+2026-03-25 13:45:13 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:45:13 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:45:13 - aiFriend - INFO - ==================================================
+2026-03-25 13:45:13 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:45:13 - aiFriend - INFO - ==================================================
+2026-03-25 13:45:13 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:45:13 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:45:13 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:45:13 - aiFriend - INFO - First run: False
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:45:13 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:45:13 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:45:13 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:45:13 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:45:13 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:45:13 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:45:13 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:45:13 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 13:45:13 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:45:13 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:45:13 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:45:13 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:45:13 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x16b67e180) at 0x16c1d1000>>
+2026-03-25 13:45:13 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:45:13 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:45:13 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:45:13 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:45:13 - aiFriend - INFO - 显示开场白
+2026-03-25 13:45:13 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:45:13 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:45:13 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:45:13 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:45:13 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:45:13 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:45:13 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:45:13 - aiFriend - INFO - 尝试恢复窗口位置: (1698, 697)
+2026-03-25 13:45:13 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:45:13 - aiFriend - INFO - 窗口位置恢复至: (1692, 697)
+2026-03-25 13:45:13 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:45:13 - aiFriend - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/aiFriend/assets/images/AI助手.png
+2026-03-25 13:45:14 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:45:14 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:45:14 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:45:14 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:45:14 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:45:14 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:45:14 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:45:14 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:45:14 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:45:14 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:45:14 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:45:14 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:45:14 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:45:14 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:45:14 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:45:14 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:45:14 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:45:14 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 13:45:14 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:45:15 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:45:16 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:45:16 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:45:16 - aiFriend - INFO - 工具已更新，数量: 22
+2026-03-25 13:45:16 - aiFriend - INFO - MCP 工具已加载，总工具数: 22
+2026-03-25 13:45:43 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:46:08 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:46:08 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 13:46:08 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 13:46:08 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 13:46:08 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 13:46:08 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 13:46:08 - aiFriend - INFO - 已加载 2 条执行记录
+2026-03-25 13:46:09 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:46:10 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:46:10 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:46:13 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:46:43 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:47:13 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:47:43 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:48:13 - aiFriend - INFO - 播放动作: idle
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载 general 配置: window_x=1698, window_y=697
+2026-03-25 13:48:37 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 13:48:37 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:48:37 - aiFriend - INFO - ==================================================
+2026-03-25 13:48:37 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 13:48:37 - aiFriend - INFO - ==================================================
+2026-03-25 13:48:37 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 13:48:37 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 13:48:37 - aiFriend - INFO - 角色设定已加载
+2026-03-25 13:48:37 - aiFriend - INFO - First run: False
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载 11 个工具配置
+2026-03-25 13:48:37 - aiFriend - INFO - 应用配置已加载
+2026-03-25 13:48:37 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 13:48:37 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:48:37 - aiFriend - INFO - 已注册 18 个内置工具
+2026-03-25 13:48:37 - aiFriend - INFO - 启用的内置工具: 18/18
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 13:48:37 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 18
+2026-03-25 13:48:37 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 13:48:37 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 18
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 13:48:37 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:48:37 - aiFriend - INFO - 对话历史已清空
+2026-03-25 13:48:37 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 13:48:37 - aiFriend - INFO - 已加载 1 个定时任务
+2026-03-25 13:48:37 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x13f09d2b0) at 0x1705a1000>>
+2026-03-25 13:48:37 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 13:48:37 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 13:48:37 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 13:48:37 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:48:37 - aiFriend - INFO - 显示开场白
+2026-03-25 13:48:37 - aiFriend - INFO - 恢复窗口大小: 227x317
+2026-03-25 13:48:37 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 13:48:37 - aiFriend - INFO - LLMTaskExecutor 初始化完成
+2026-03-25 13:48:37 - aiFriend - INFO - 已设置 LLM 任务执行器
+2026-03-25 13:48:37 - aiFriend - INFO - LLM 任务执行器已初始化
+2026-03-25 13:48:37 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 13:48:37 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 13:48:37 - aiFriend - INFO - 尝试恢复窗口位置: (1698, 697)
+2026-03-25 13:48:37 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 13:48:37 - aiFriend - INFO - 窗口位置恢复至: (1692, 697)
+2026-03-25 13:48:37 - aiFriend - INFO - 主窗口已显示
+2026-03-25 13:48:37 - aiFriend - INFO - 托盘图标已加载: /Users/zhaochong/Ai/workspace/aiFriend/assets/images/AI助手.png
+2026-03-25 13:48:38 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 13:48:38 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 13:48:38 - aiFriend - INFO - 应用启动完成
+2026-03-25 13:48:38 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 13:48:38 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 13:48:38 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:48:38 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 13:48:38 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 13:48:38 - aiFriend - INFO - 设置缩放: 0.99
+2026-03-25 13:48:38 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 13:48:38 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 13:48:38 - aiFriend - INFO - 推荐窗口大小: 207x297
+2026-03-25 13:48:38 - aiFriend - INFO - 主窗口大小调整为: 227x317
+2026-03-25 13:48:38 - aiFriend - INFO - Live2DWidget 大小调整为: 207x297
+2026-03-25 13:48:38 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 13:48:38 - aiFriend - INFO - 已添加定时任务: 每日新闻推送 (0 10 * * *)
+2026-03-25 13:48:38 - aiFriend - INFO - 定时任务管理器已启动，1 个任务已加载
+2026-03-25 13:48:38 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 13:48:38 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 13:48:39 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 13:48:40 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 13:48:40 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 13:48:40 - aiFriend - INFO - 工具已更新，数量: 22
+2026-03-25 13:48:40 - aiFriend - INFO - MCP 工具已加载，总工具数: 22

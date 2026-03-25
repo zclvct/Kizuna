@@ -135,15 +135,12 @@ class AIFriendCore:
         logger.info(f"所有工具已重新加载，数量: {len(self.tools)}")
     
     def reload_mcp_tools(self):
-        """重新加载 MCP 工具（异步包装）"""
-        try:
-            loop = asyncio.get_event_loop()
-            if loop.is_running():
-                asyncio.create_task(self.reload_tools_async())
-            else:
-                loop.run_until_complete(self.reload_tools_async())
-        except RuntimeError:
+        """重新加载 MCP 工具（在新线程中运行异步代码）"""
+        import threading
+        def run_in_thread():
             asyncio.run(self.reload_tools_async())
+        thread = threading.Thread(target=run_in_thread, daemon=True)
+        thread.start()
     
     def clear_memory(self):
         """清空记忆"""

@@ -108,6 +108,41 @@ BTN_DANGER_STYLE = """
 """
 
 
+class ReloadMCPThread(QThread):
+    """MCP 重新加载线程"""
+    finished = QSignal(bool, str)
+
+    def run(self):
+        try:
+            import asyncio
+            from agent.mcp import get_mcp_manager
+            from agent.core import get_core
+            
+            # 重置 MCP 管理器的加载状态
+            get_mcp_manager()._loaded = False
+            
+            # 在新事件循环中重新加载
+            async def reload():
+                from agent.tools.registry import get_tool_registry
+                registry = get_tool_registry()
+                tools = await registry.get_all_enabled_tools()
+                core = get_core()
+                core.tools = tools
+                core.agent.update_tools(tools)
+                return len(tools)
+            
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            try:
+                count = loop.run_until_complete(reload())
+            finally:
+                loop.close()
+            
+            self.finished.emit(True, f"已重新加载 {count} 个工具")
+        except Exception as e:
+            self.finished.emit(False, str(e))
+
+
 class ToolLoadThread(QThread):
     """工具加载线程"""
     finished = QSignal(bool, list, str)
@@ -557,6 +592,11 @@ class MCPSettingsPage(QWidget):
         test_btn.clicked.connect(self._test_selected)
         btn_layout.addWidget(test_btn)
 
+        reload_btn = QPushButton("重新加载")
+        reload_btn.setStyleSheet(BTN_SECONDARY_STYLE)
+        reload_btn.clicked.connect(self._reload_mcp)
+        btn_layout.addWidget(reload_btn)
+
         btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
@@ -609,6 +649,33 @@ class MCPSettingsPage(QWidget):
         server = self.config.get_server(item.data(Qt.ItemDataRole.UserRole))
         if server:
             MCPTestDialog(self, server).exec()
+
+    def _reload_mcp(self):
+        """重新加载 MCP 服务"""
+        # 禁用按钮防止重复点击
+        sender = self.sender()
+        if sender:
+            sender.setEnabled(False)
+            sender.setText("加载中...")
+        
+        self._reload_thread = ReloadMCPThread()
+        self._reload_thread.finished.connect(
+            lambda success, msg: self._on_reload_finished(success, msg, sender)
+        )
+        self._reload_thread.start()
+    
+    def _on_reload_finished(self, success: bool, msg: str, btn):
+        """重新加载完成回调"""
+        if btn:
+            btn.setEnabled(True)
+            btn.setText("重新加载")
+        
+        if success:
+            QMessageBox.information(self, "成功", msg)
+            logger.info(f"MCP 服务已手动重新加载: {msg}")
+        else:
+            QMessageBox.warning(self, "错误", f"重新加载失败: {msg}")
+            logger.error(f"重新加载 MCP 失败: {msg}")
 
     def save(self):
         pass
