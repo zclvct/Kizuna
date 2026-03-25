@@ -95,7 +95,17 @@ jobs:
       - name: Create ZIP
         shell: pwsh
         run: |
-          Compress-Archive -Path "dist/Kizuna" -DestinationPath "dist/Kizuna_Windows.zip"
+          # Windows 打包生成的是 Kizuna.exe 单文件
+          if (Test-Path "dist/Kizuna.exe") {
+            New-Item -ItemType Directory -Force -Path "dist/Kizuna"
+            Move-Item "dist/Kizuna.exe" "dist/Kizuna/"
+            Compress-Archive -Path "dist/Kizuna" -DestinationPath "dist/Kizuna_Windows.zip"
+          } elseif (Test-Path "dist/Kizuna") {
+            Compress-Archive -Path "dist/Kizuna" -DestinationPath "dist/Kizuna_Windows.zip"
+          } else {
+            Write-Error "Build output not found!"
+            exit 1
+          }
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
