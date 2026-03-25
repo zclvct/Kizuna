@@ -21,6 +21,7 @@ class Live2DGLWidget(QOpenGLWidget):
     """Live2D OpenGL 渲染控件"""
     clicked = Signal()
     drag_started = Signal(QPoint)  # 开始拖拽信号，传递全局坐标
+    size_changed = Signal(int, int)  # 窗口大小变化信号 (width, height)
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -31,6 +32,10 @@ class Live2DGLWidget(QOpenGLWidget):
         self._pending_model_path = None
         self._motion_map = {}  # 动态动作映射: {motion_name: index}
         self._model_config = None  # 模型配置数据
+        
+        # 模型的自然尺寸（在 scale=1.0 时的显示大小）
+        self._model_natural_width = 300
+        self._model_natural_height = 430
         
         # 拖拽相关
         self._press_pos = None  # 按下时的位置
@@ -180,6 +185,9 @@ class Live2DGLWidget(QOpenGLWidget):
             self.model.LoadModelJson(str(model_json_path.absolute()))
             logger.info("模型 JSON 加载成功")
 
+            # 尝试获取模型的画布尺寸
+            self._detect_model_canvas_size(model_json_path)
+
             config = get_config()
             self._scale = config.live2d.scale
             self.model.SetScale(self._scale)
@@ -194,11 +202,65 @@ class Live2DGLWidget(QOpenGLWidget):
 
             self._model_loaded = True
             logger.info(f"模型加载完成，可用动作: {list(self._motion_map.keys())}")
+            
+            # 通知父控件更新大小
+            self._emit_recommended_size()
+            
             return True
 
         except Exception as e:
             logger.error(f"加载模型失败: {e}", exc_info=True)
             return False
+
+    def _detect_model_canvas_size(self, model_json_path: Path):
+        """
+        检测模型的画布尺寸
+        从模型配置中读取或使用默认值
+        """
+        try:
+            import json
+            with open(model_json_path, 'r', encoding='utf-8') as f:
+                config = json.load(f)
+            
+            # 尝试从配置中读取画布尺寸
+            # Live2D 模型通常在 Layout 或其他字段中定义画布大小
+            layout = config.get("Layout", {})
+            
+            if layout:
+                # 有些模型会定义 CenterX, CenterY, Width, Height
+                width = layout.get("Width")
+                height = layout.get("Height")
+                
+                if width and height:
+                    # 转换为像素值（Live2D 使用的是归一化坐标）
+                    # 通常画布大小在 1000-2000 范围内
+                    self._model_natural_width = int(width * 500)
+                    self._model_natural_height = int(height * 500)
+                    logger.info(f"检测到模型画布尺寸: {self._model_natural_width}x{self._model_natural_height}")
+                    return
+            
+            # 如果没有找到，使用默认值
+            logger.info("未找到模型画布尺寸，使用默认值")
+            
+        except Exception as e:
+            logger.warning(f"检测模型画布尺寸失败: {e}")
+
+    def _emit_recommended_size(self):
+        """
+               根据模型自然尺寸和当前缩放，发出推荐的窗口大小
+               """
+        # 计算推荐窗口大小
+        # 添加边距，让模型不会紧贴窗口边缘
+        margin_ratio = -0.5  # 5% 边距
+
+        recommended_width = int(self._model_natural_width * self._scale * (1 + margin_ratio))
+        recommended_height = int(self._model_natural_height * self._scale * (1 + margin_ratio))
+
+        logger.info(f"推荐窗口大小: {recommended_width}x{recommended_height}")
+
+        # 发出信号
+        self.size_changed.emit(recommended_width, recommended_height)
+
 
     def _parse_model_motions(self, model_json_path: Path):
         """从模型配置文件解析动作映射"""
@@ -245,6 +307,10 @@ class Live2DGLWidget(QOpenGLWidget):
         self._scale = scale
         if self.model:
             self.model.SetScale(scale)
+        
+        # 发出推荐的窗口大小
+        if self._model_loaded:
+            self._emit_recommended_size()
 
     def play_motion(self, motion_name: str):
         """播放动作"""
@@ -328,6 +394,7 @@ class Live2DWidget(QFrame):
     clicked = Signal()
     motion_played = Signal(str)
     drag_started = Signal(QPoint)  # 转发拖拽信号
+    size_changed = Signal(int, int)  # 转发窗口大小变化信号
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -343,9 +410,10 @@ class Live2DWidget(QFrame):
 
         # Live2D OpenGL 控件
         self.live2d_widget = Live2DGLWidget()
-        self.live2d_widget.setMinimumSize(280, 380)
+        self.live2d_widget.setMinimumSize(140, 215)
         self.live2d_widget.clicked.connect(self._on_live2d_clicked)
-        self.live2d_widget.drag_started.connect(self.drag_started)  # 转发拖拽信号
+        self.live2d_widget.drag_started.connect(self.drag_started)
+        self.live2d_widget.size_changed.connect(self._on_size_changed)
         layout.addWidget(self.live2d_widget, 1)
         logger.info("使用 Live2D OpenGL 渲染")
 
@@ -355,7 +423,9 @@ class Live2DWidget(QFrame):
                 background-color: transparent;
             }
         """)
-        self.setFixedSize(300, 430)
+        
+        # 设置初始大小（会在模型加载后自动调整）
+        self.setFixedSize(350, 500)
 
     def _load_model(self):
         """加载模型"""
@@ -407,6 +477,16 @@ class Live2DWidget(QFrame):
         motion = random.choice(interactive_motions)
         self.play_motion(motion)
 
+    def _on_size_changed(self, width: int, height: int):
+        """处理窗口大小变化"""
+        # 调整自身大小
+        self.setFixedSize(width, height)
+        
+        # 转发信号给主窗口
+        self.size_changed.emit(width, height)
+        
+        logger.info(f"Live2DWidget 大小调整为: {width}x{height}")
+
     def play_motion(self, motion_id: str, mood: str = None):
         """播放动作"""
         from live2d_renderer.motion_controller import MotionController
@@ -442,8 +522,6 @@ class Live2DWidget(QFrame):
     
     def set_scale(self, scale: float):
         """设置模型缩放"""
+        # 调用内部控件的缩放方法
+        # 大小变化会通过 size_changed 信号传递
         self.live2d_widget.set_scale(scale)
-        # 更新配置
-        config = get_config()
-        config.live2d.scale = scale
-        config.general.model_scale = scale

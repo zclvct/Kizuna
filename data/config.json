@@ -9,7 +9,7 @@
   },
   "live2d": {
     "model_path": "/Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang",
-    "scale": 0.69,
+    "scale": 0.75,
     "default_motion": "idle_01"
   },
   "weather": {
@@ -20,12 +20,12 @@
     "always_on_top": true,
     "sound_enabled": true,
     "log_level": "INFO",
-    "window_x": 65,
-    "window_y": 543,
+    "window_x": 1740,
+    "window_y": 693,
     "window_width": 400,
     "window_height": 600,
     "draggable": true,
-    "model_scale": 0.69
+    "model_scale": 1.39
   },
   "motion": {
     "enable_mood_motion": true,

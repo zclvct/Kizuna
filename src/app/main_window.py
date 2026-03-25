@@ -351,6 +351,7 @@ class MainWindow(QMainWindow):
         self.live2d_widget.setObjectName("live2dWidget")
         self.live2d_widget.motion_played.connect(self._on_motion_played)
         self.live2d_widget.drag_started.connect(self._on_drag_started)
+        self.live2d_widget.size_changed.connect(self._on_live2d_size_changed)
         layout.addWidget(self.live2d_widget)
 
         # 聊天气泡 - 独立窗口
@@ -361,7 +362,8 @@ class MainWindow(QMainWindow):
         # 表情包气泡 - 独立窗口
         self.emoji_bubble = EmojiBubble()
         
-        self.setFixedSize(320, 450)
+        # 设置初始窗口大小（会在模型加载后自动调整）
+        self.setFixedSize(370, 520)
 
     def _on_drag_started(self, global_pos: QPoint):
         """模型区域开始拖拽"""
@@ -373,6 +375,50 @@ class MainWindow(QMainWindow):
         self._dragging = True
         self.grabMouse()
         logger.debug("开始拖拽窗口")
+
+    def _on_live2d_size_changed(self, width: int, height: int):
+        """处理 Live2D 控件大小变化"""
+        # 保存当前窗口位置
+        current_pos = self.pos()
+        
+        # 调整主窗口大小（添加边距）
+        window_margin = 20
+        new_width = width + window_margin
+        new_height = height + window_margin
+        
+        # 设置新窗口大小
+        self.setFixedSize(new_width, new_height)
+        
+        # 确保窗口位置在屏幕范围内
+        screen = QApplication.screenAt(current_pos)
+        if screen is None:
+            screen = QApplication.primaryScreen()
+        screen_rect = screen.availableGeometry()
+        
+        # 调整位置，确保窗口不超出屏幕
+        new_x = current_pos.x()
+        new_y = current_pos.y()
+        
+        # 如果窗口右边界超出屏幕，调整位置
+        if new_x + new_width > screen_rect.right():
+            new_x = screen_rect.right() - new_width
+        
+        # 如果窗口下边界超出屏幕，调整位置
+        if new_y + new_height > screen_rect.bottom():
+            new_y = screen_rect.bottom() - new_height
+        
+        # 确保不超出左边界和上边界
+        new_x = max(screen_rect.left(), new_x)
+        new_y = max(screen_rect.top(), new_y)
+        
+        # 移动窗口到新位置
+        self.move(new_x, new_y)
+        
+        # 更新聊天气泡位置
+        if self._chat_visible:
+            self._update_bubble_position()
+        
+        logger.info(f"主窗口大小调整为: {new_width}x{new_height}")
 
     def _setup_context_menu(self):
         """设置右键菜单"""
@@ -563,8 +609,10 @@ class MainWindow(QMainWindow):
     
     def _on_scale_changed(self, scale: float):
         """模型缩放变化"""
+        # 调用 Live2DWidget 的缩放方法
+        # 大小变化会通过 size_changed 信号自动传递
         self.live2d_widget.set_scale(scale)
-        logger.info(f"模型缩放更新: {scale}")
+        logger.info(f"模型缩放更新: {scale:.2f}x")
     
     def _on_always_on_top_changed(self, always_on_top: bool):
         """窗口置顶状态变化"""
