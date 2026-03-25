@@ -7,8 +7,13 @@ import sys
 import asyncio
 from pathlib import Path
 
-# 添加 src 到路径
-project_root = Path(__file__).parent.parent
+# 添加 src 到路径（兼容 PyInstaller 打包）
+if getattr(sys, 'frozen', False):
+    # PyInstaller 打包后的路径
+    project_root = Path(sys._MEIPASS)
+else:
+    # 正常开发环境
+    project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
 from PySide6.QtWidgets import QApplication

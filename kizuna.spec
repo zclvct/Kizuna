@@ -90,7 +90,7 @@ if sys.platform == 'win32':
     ])
 
 a = Analysis(
-    ['run.py'],
+    ['src/main.py'],
     pathex=[],
     binaries=binaries,
     datas=datas,
