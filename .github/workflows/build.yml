@@ -49,8 +49,30 @@ jobs:
 
       - name: Build macOS app
         run: |
-          sed -i '' "s|icon=None|icon='assets/images/icon.icns'|g" kizuna.spec
+          # 使用绝对路径设置图标
+          ICON_PATH="$(pwd)/assets/images/icon.icns"
+          sed -i '' "s|icon=None|icon='$ICON_PATH'|g" kizuna.spec
+          # 临时开启控制台用于调试
+          sed -i '' "s|console=False|console=True|g" kizuna.spec
           pyinstaller kizuna.spec --noconfirm
+
+      - name: Debug - List app contents
+        run: |
+          echo "=== App Contents ==="
+          ls -la dist/Kizuna.app/Contents/
+          echo "=== MacOS ==="
+          ls -la dist/Kizuna.app/Contents/MacOS/
+          echo "=== Resources ==="
+          ls -la dist/Kizuna.app/Contents/Resources/ | head -30
+          echo "=== Frameworks ==="
+          ls -la dist/Kizuna.app/Contents/Frameworks/ 2>/dev/null || echo "No Frameworks"
+          echo "=== Check live2d libs ==="
+          find dist/Kizuna.app -name "*live2d*" -o -name "*.so" -o -name "*.dylib" | head -20
+
+      - name: Test run app (quick check)
+        run: |
+          # 尝试运行应用并捕获输出（5秒超时）
+          timeout 5 ./dist/Kizuna.app/Contents/MacOS/Kizuna 2>&1 || echo "App exited or timed out"
 
       - name: Create DMG
         run: |

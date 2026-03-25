@@ -15,6 +15,33 @@ datas = [
     ('data', 'data'),
 ]
 
+# 收集 live2d-py 包（包含动态库）
+try:
+    import live2d
+    live2d_path = Path(live2d.__file__).parent
+    datas.append((str(live2d_path), 'live2d'))
+    print(f"Added live2d package to datas: {live2d_path}")
+except ImportError:
+    print("Warning: live2d not found")
+
+# 收集 live2d-py 动态库（备用）
+binaries = []
+try:
+    import live2d
+    live2d_path = Path(live2d.__file__).parent
+    print(f"live2d module path: {live2d_path}")
+    # 收集 live2d 的所有动态库
+    for f in live2d_path.rglob('*'):
+        if f.suffix in ['.so', '.dylib', '.pyd', '.dll']:
+            # 保持相对路径结构
+            rel_path = f.relative_to(live2d_path)
+            binaries.append((str(f), str(live2d_path.name / rel_path.parent)))
+            print(f"Found live2d binary: {f} -> {rel_path}")
+except ImportError:
+    print("Warning: live2d not found, skipping binary collection")
+except Exception as e:
+    print(f"Warning: Error collecting live2d binaries: {e}")
+
 # 隐式导入（PyInstaller 无法自动检测的模块）
 hiddenimports = [
     'PySide6.QtCore',
@@ -65,7 +92,7 @@ if sys.platform == 'win32':
 a = Analysis(
     ['run.py'],
     pathex=[],
-    binaries=[],
+    binaries=binaries,
     datas=datas,
     hiddenimports=hiddenimports,
     hookspath=[],
