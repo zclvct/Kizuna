@@ -26,6 +26,10 @@ class ChatResponse:
     tool_calls: List[Dict] = field(default_factory=list)
     skill_triggered: Optional[str] = None
     metadata: Dict = field(default_factory=dict)
+    # 调试信息
+    debug_type: Optional[str] = None  # tool_call, tool_result, thought
+    debug_title: Optional[str] = None
+    debug_content: Optional[str] = None
 
 
 class AIFriendAgent:
@@ -145,12 +149,34 @@ class AIFriendAgent:
                 # 工具调用开始
                 elif event_type == "on_tool_start":
                     tool_name = event.get("name", "")
+                    tool_input = event.get("data", {}).get("input", {})
                     logger.info(f"工具调用开始: {tool_name}")
+                    
+                    # 返回工具调用调试信息
+                    import json
+                    yield ChatResponse(
+                        content="",
+                        debug_type="tool_call",
+                        debug_title=f"调用工具: {tool_name}",
+                        debug_content=f"```json\n{json.dumps(tool_input, indent=2, ensure_ascii=False)}\n```"
+                    )
                 
                 # 工具调用结束
                 elif event_type == "on_tool_end":
                     tool_name = event.get("name", "")
+                    tool_output = event.get("data", {}).get("output", "")
                     logger.info(f"工具调用结束: {tool_name}")
+                    
+                    # 返回工具结果调试信息
+                    output_str = str(tool_output)
+                    if len(output_str) > 500:
+                        output_str = output_str[:500] + "..."
+                    yield ChatResponse(
+                        content="",
+                        debug_type="tool_result",
+                        debug_title=f"工具结果: {tool_name}",
+                        debug_content=output_str
+                    )
             
             # 保存到记忆
             if messages:

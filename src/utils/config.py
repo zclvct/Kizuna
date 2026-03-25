@@ -63,6 +63,8 @@ class GeneralConfig:
     draggable: bool = True
     # 模型缩放 (0.5 - 2.0)
     model_scale: float = 1.0
+    # 对话模式: normal(正常模式) / debug(调试模式)
+    chat_mode: str = "normal"
 
 
 @dataclass

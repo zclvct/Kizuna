@@ -20,12 +20,13 @@
     "always_on_top": true,
     "sound_enabled": true,
     "log_level": "INFO",
-    "window_x": 1740,
-    "window_y": 693,
-    "window_width": 400,
-    "window_height": 600,
+    "window_x": 1691,
+    "window_y": 678,
+    "window_width": 228,
+    "window_height": 318,
     "draggable": true,
-    "model_scale": 1.39
+    "model_scale": 1.39,
+    "chat_mode": "debug"
   },
   "motion": {
     "enable_mood_motion": true,

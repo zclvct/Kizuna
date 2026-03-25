@@ -14789,3 +14789,1835 @@ AttributeError: 'GeneralConfig' object has no attribute 'window_width'
 2026-03-25 11:25:08 - aiFriend - INFO - 窗口位置已保存: (1740, 693)
 2026-03-25 11:25:08 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1740, 693)
 2026-03-25 11:25:09 - aiFriend - INFO - 聊天窗口已关闭
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载 general 配置: window_x=1740, window_y=693
+2026-03-25 11:25:51 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:25:51 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:25:51 - aiFriend - INFO - ==================================================
+2026-03-25 11:25:51 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:25:51 - aiFriend - INFO - ==================================================
+2026-03-25 11:25:51 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:25:51 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:25:51 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:25:51 - aiFriend - INFO - First run: False
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:25:51 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:25:51 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:25:51 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:25:51 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:25:51 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:25:51 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:25:51 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:25:51 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:25:51 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:25:51 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:25:51 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:25:51 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:25:51 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x15e2232b0) at 0x15e1b2040>>
+2026-03-25 11:25:51 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:25:51 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:25:51 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:25:51 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:25:51 - aiFriend - INFO - 显示开场白
+2026-03-25 11:25:51 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:25:51 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:25:51 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:25:51 - aiFriend - INFO - 尝试恢复窗口位置: (1740, 693)
+2026-03-25 11:25:51 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:25:51 - aiFriend - INFO - 窗口位置恢复至: (1549, 559)
+2026-03-25 11:25:51 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:25:51 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:25:51 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:25:51 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:25:52 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:25:52 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:25:52 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:25:52 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:25:52 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:25:52 - aiFriend - INFO - 设置缩放: 0.75
+2026-03-25 11:25:52 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:25:52 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:25:52 - aiFriend - INFO - 推荐窗口大小: 112x161
+2026-03-25 11:25:52 - aiFriend - INFO - 主窗口大小调整为: 132x181
+2026-03-25 11:25:52 - aiFriend - INFO - Live2DWidget 大小调整为: 112x161
+2026-03-25 11:25:52 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:25:52 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:25:52 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:25:52 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:25:53 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:25:54 - aiFriend - INFO - 窗口位置已保存: (1767, 776)
+2026-03-25 11:25:54 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1767, 776)
+2026-03-25 11:25:55 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:25:55 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:25:55 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:25:55 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:25:57 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:25:57 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:25:57 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:25:57 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:25:57 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:25:57 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:25:58 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:25:59 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:25:59 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 206x296
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 226x316
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 206x296
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.38x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 202x290
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 222x310
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 202x290
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.35x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 196x281
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 216x301
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 196x281
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.31x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 193x277
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 213x297
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 193x277
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.29x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 189x270
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 209x290
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 189x270
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.26x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 184x264
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 204x284
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 184x264
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.23x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 169x242
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 189x262
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 169x242
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.13x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 160x230
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 180x250
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 160x230
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.07x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 153x219
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 173x239
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 153x219
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 1.02x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 145x208
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 165x228
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 145x208
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.97x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 141x202
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 161x222
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 141x202
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.94x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 135x193
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 155x213
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 135x193
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.90x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 132x189
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 152x209
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 132x189
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.88x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 130x187
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 150x207
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 130x187
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.87x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 129x184
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 149x204
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 129x184
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.86x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 127x182
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 147x202
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 127x182
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.85x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 126x180
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 146x200
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 126x180
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.84x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 124x178
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 144x198
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 124x178
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.83x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 122x176
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 142x196
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 122x176
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.82x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 121x174
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 141x194
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 121x174
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.81x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 120x172
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 140x192
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 120x172
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.80x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 118x169
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 138x189
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 118x169
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.79x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 117x167
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 137x187
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 117x167
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.78x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 112x161
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 132x181
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 112x161
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.75x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 111x159
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 131x179
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 111x159
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.74x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 109x156
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 129x176
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 109x156
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.73x
+2026-03-25 11:26:00 - aiFriend - INFO - 推荐窗口大小: 108x154
+2026-03-25 11:26:00 - aiFriend - INFO - 主窗口大小调整为: 128x174
+2026-03-25 11:26:00 - aiFriend - INFO - Live2DWidget 大小调整为: 108x154
+2026-03-25 11:26:00 - aiFriend - INFO - 模型缩放更新: 0.72x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 106x152
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 126x172
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 106x152
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.71x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 105x150
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 125x170
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 105x150
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.70x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 103x148
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 123x168
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 103x148
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.69x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 102x146
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 122x166
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 102x146
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.68x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 99x141
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 119x161
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 99x141
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.66x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 97x139
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 117x159
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 97x139
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.65x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 96x137
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 116x157
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 96x137
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.64x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 94x135
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 114x155
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 94x135
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.63x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 93x133
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 113x153
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 93x133
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.62x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 91x131
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 111x151
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 91x131
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.61x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 90x129
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 110x149
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 90x129
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.60x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 88x126
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 108x146
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 88x126
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.59x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 87x124
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 107x144
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 87x124
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.58x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 88x126
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 108x146
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 88x126
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.59x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 90x129
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 110x149
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 90x129
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.60x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 91x131
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 111x151
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 91x131
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.61x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 93x133
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 113x153
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 93x133
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.62x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 94x135
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 114x155
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 94x135
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.63x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 97x139
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 117x159
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 97x139
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.65x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 103x148
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 123x168
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 103x148
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.69x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 105x150
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 125x170
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 105x150
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.70x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 106x152
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 126x172
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 106x152
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.71x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 108x154
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 128x174
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 108x154
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.72x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 112x161
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 132x181
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 112x161
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.75x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 114x163
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 134x183
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 114x163
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.76x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 115x165
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 135x185
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 115x165
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.77x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 118x169
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 138x189
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 118x169
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.79x
+2026-03-25 11:26:01 - aiFriend - INFO - 推荐窗口大小: 120x172
+2026-03-25 11:26:01 - aiFriend - INFO - 主窗口大小调整为: 140x192
+2026-03-25 11:26:01 - aiFriend - INFO - Live2DWidget 大小调整为: 120x172
+2026-03-25 11:26:01 - aiFriend - INFO - 模型缩放更新: 0.80x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 121x174
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 141x194
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 121x174
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.81x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 124x178
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 144x198
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 124x178
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.83x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 126x180
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 146x200
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 126x180
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.84x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 127x182
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 147x202
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 127x182
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.85x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 129x184
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 149x204
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 129x184
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.86x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 130x187
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 150x207
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 130x187
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.87x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 133x191
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 153x211
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 133x191
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.89x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 136x195
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 156x215
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 136x195
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.91x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 139x199
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 159x219
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 139x199
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.93x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 141x202
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 161x222
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 141x202
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.94x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 142x204
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 162x224
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 142x204
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.95x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 144x206
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 164x226
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 144x206
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.96x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 145x208
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 165x228
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 145x208
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.97x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 147x210
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 167x230
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 147x210
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.98x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 148x212
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 168x232
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 148x212
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 0.99x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 150x215
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 170x235
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 150x215
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 1.00x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 151x217
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 171x237
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 151x217
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 1.01x
+2026-03-25 11:26:02 - aiFriend - INFO - 推荐窗口大小: 153x219
+2026-03-25 11:26:02 - aiFriend - INFO - 主窗口大小调整为: 173x239
+2026-03-25 11:26:02 - aiFriend - INFO - Live2DWidget 大小调整为: 153x219
+2026-03-25 11:26:02 - aiFriend - INFO - 模型缩放更新: 1.02x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 154x221
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 174x241
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 154x221
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.03x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 156x223
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 176x243
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 156x223
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.04x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 157x225
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 177x245
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 157x225
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.05x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 159x227
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 179x247
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 159x227
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.06x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 160x230
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 180x250
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 160x230
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.07x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 162x232
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 182x252
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 162x232
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.08x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 163x234
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 183x254
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 163x234
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.09x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 165x236
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 185x256
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 165x236
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.10x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 166x238
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 186x258
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 166x238
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.11x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 165x236
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 185x256
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 165x236
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.10x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 163x234
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 183x254
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 163x234
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.09x
+2026-03-25 11:26:03 - aiFriend - INFO - 推荐窗口大小: 162x232
+2026-03-25 11:26:03 - aiFriend - INFO - 主窗口大小调整为: 182x252
+2026-03-25 11:26:03 - aiFriend - INFO - Live2DWidget 大小调整为: 162x232
+2026-03-25 11:26:03 - aiFriend - INFO - 模型缩放更新: 1.08x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 163x234
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 183x254
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 163x234
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.09x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 165x236
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 185x256
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 165x236
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.10x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 166x238
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 186x258
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 166x238
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.11x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 168x240
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 188x260
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 168x240
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.12x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 169x242
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 189x262
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 169x242
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.13x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 170x245
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 190x265
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 170x245
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.14x
+2026-03-25 11:26:04 - aiFriend - INFO - 推荐窗口大小: 172x247
+2026-03-25 11:26:04 - aiFriend - INFO - 主窗口大小调整为: 192x267
+2026-03-25 11:26:04 - aiFriend - INFO - Live2DWidget 大小调整为: 172x247
+2026-03-25 11:26:04 - aiFriend - INFO - 模型缩放更新: 1.15x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 174x249
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 194x269
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 174x249
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.16x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 175x251
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 195x271
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 175x251
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.17x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 177x253
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 197x273
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 177x253
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.18x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 178x255
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 198x275
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 178x255
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.19x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 181x260
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 201x280
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 181x260
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.21x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 183x262
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 203x282
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 183x262
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.22x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 184x264
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 204x284
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 184x264
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.23x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 186x266
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 206x286
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 186x266
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.24x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 187x268
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 207x288
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 187x268
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.25x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 189x270
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 209x290
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 189x270
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.26x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 190x273
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 210x293
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 190x273
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.27x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 192x275
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 212x295
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 192x275
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.28x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 193x277
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 213x297
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 193x277
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.29x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 195x279
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 215x299
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 195x279
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.30x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 196x281
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 216x301
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 196x281
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.31x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 198x283
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 218x303
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 198x283
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.32x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 199x285
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 219x305
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 199x285
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.33x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 202x290
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 222x310
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 202x290
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.35x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 204x292
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 224x312
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 204x292
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.36x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 205x294
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 225x314
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 205x294
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.37x
+2026-03-25 11:26:05 - aiFriend - INFO - 推荐窗口大小: 206x296
+2026-03-25 11:26:05 - aiFriend - INFO - 主窗口大小调整为: 226x316
+2026-03-25 11:26:05 - aiFriend - INFO - Live2DWidget 大小调整为: 206x296
+2026-03-25 11:26:05 - aiFriend - INFO - 模型缩放更新: 1.38x
+2026-03-25 11:26:06 - aiFriend - INFO - 推荐窗口大小: 205x294
+2026-03-25 11:26:06 - aiFriend - INFO - 主窗口大小调整为: 225x314
+2026-03-25 11:26:06 - aiFriend - INFO - Live2DWidget 大小调整为: 205x294
+2026-03-25 11:26:06 - aiFriend - INFO - 模型缩放更新: 1.37x
+2026-03-25 11:26:09 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 心情配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 11:26:09 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 11:26:09 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 通用配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1767, 776)
+2026-03-25 11:26:09 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:26:09 - aiFriend - INFO - 设置已保存
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载 general 配置: window_x=1767, window_y=776
+2026-03-25 11:26:20 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:26:20 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:20 - aiFriend - INFO - ==================================================
+2026-03-25 11:26:20 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:26:20 - aiFriend - INFO - ==================================================
+2026-03-25 11:26:20 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:26:20 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:26:20 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:26:20 - aiFriend - INFO - First run: False
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:26:20 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:26:20 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:26:20 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:20 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:26:20 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:26:20 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:26:20 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:26:20 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:26:20 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:26:20 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:26:20 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:26:20 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:26:20 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x138ca99e0) at 0x14f8b0100>>
+2026-03-25 11:26:20 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:26:20 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:26:20 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:26:20 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:26:20 - aiFriend - INFO - 显示开场白
+2026-03-25 11:26:20 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:26:20 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:26:20 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:26:20 - aiFriend - INFO - 尝试恢复窗口位置: (1767, 776)
+2026-03-25 11:26:20 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:26:20 - aiFriend - INFO - 窗口位置恢复至: (1549, 559)
+2026-03-25 11:26:20 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:26:20 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:26:20 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:26:20 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:26:20 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:26:20 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:26:20 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:21 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:26:21 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:26:21 - aiFriend - INFO - 设置缩放: 0.75
+2026-03-25 11:26:21 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:26:21 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:21 - aiFriend - INFO - 推荐窗口大小: 112x161
+2026-03-25 11:26:21 - aiFriend - INFO - 主窗口大小调整为: 132x181
+2026-03-25 11:26:21 - aiFriend - INFO - Live2DWidget 大小调整为: 112x161
+2026-03-25 11:26:21 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:26:21 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:26:21 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:26:21 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:26:22 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:26:22 - aiFriend - INFO - 窗口位置已保存: (1552, 611)
+2026-03-25 11:26:22 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1552, 611)
+2026-03-25 11:26:23 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:26:23 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:26:23 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:26:23 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载 general 配置: window_x=1552, window_y=611
+2026-03-25 11:26:38 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:26:38 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:38 - aiFriend - INFO - ==================================================
+2026-03-25 11:26:38 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:26:38 - aiFriend - INFO - ==================================================
+2026-03-25 11:26:38 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:26:38 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:26:38 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:26:38 - aiFriend - INFO - First run: False
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:26:38 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:26:38 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:26:38 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:38 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:26:38 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:26:38 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:26:38 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:26:38 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:26:38 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:26:38 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:26:38 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:26:38 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:26:38 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x138d830c0) at 0x16ffb0640>>
+2026-03-25 11:26:38 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:26:38 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:26:38 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:26:38 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:26:38 - aiFriend - INFO - 显示开场白
+2026-03-25 11:26:38 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:26:38 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:26:38 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:26:38 - aiFriend - INFO - 尝试恢复窗口位置: (1552, 611)
+2026-03-25 11:26:38 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:26:38 - aiFriend - INFO - 窗口位置恢复至: (1549, 559)
+2026-03-25 11:26:38 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:26:38 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:26:38 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:26:38 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:26:39 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:26:39 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:26:39 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:39 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:26:39 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:26:39 - aiFriend - INFO - 设置缩放: 0.75
+2026-03-25 11:26:39 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:26:39 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:26:39 - aiFriend - INFO - 推荐窗口大小: 112x161
+2026-03-25 11:26:39 - aiFriend - INFO - 主窗口大小调整为: 132x181
+2026-03-25 11:26:39 - aiFriend - INFO - Live2DWidget 大小调整为: 112x161
+2026-03-25 11:26:39 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:26:39 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:26:39 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:26:39 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:26:40 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:26:42 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:26:42 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:26:42 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:26:42 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:26:43 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:26:43 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:26:43 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:26:43 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:26:43 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:26:43 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:26:44 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:26:46 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:26:46 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:28:08 - aiFriend - INFO - 已加载 general 配置: window_x=1552, window_y=611
+2026-03-25 11:28:08 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:28:08 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:09 - aiFriend - INFO - ==================================================
+2026-03-25 11:28:09 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:28:09 - aiFriend - INFO - ==================================================
+2026-03-25 11:28:09 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:28:09 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:28:09 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:28:09 - aiFriend - INFO - First run: False
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:28:09 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:28:09 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:28:09 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:09 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:28:09 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:28:09 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:28:09 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:28:09 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:28:09 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:28:09 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:28:09 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:28:09 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:28:09 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x163593990) at 0x1646b0640>>
+2026-03-25 11:28:09 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:28:09 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:28:09 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:28:09 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:28:09 - aiFriend - INFO - 显示开场白
+2026-03-25 11:28:09 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:28:09 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:28:09 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:28:09 - aiFriend - INFO - 尝试恢复窗口位置: (1552, 611)
+2026-03-25 11:28:09 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:28:09 - aiFriend - INFO - 窗口位置恢复至: (1549, 559)
+2026-03-25 11:28:09 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:28:09 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:28:09 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:28:09 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:28:09 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:28:09 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:28:09 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:09 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:28:09 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:28:09 - aiFriend - INFO - 设置缩放: 1.37
+2026-03-25 11:28:09 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:28:09 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:09 - aiFriend - INFO - 推荐窗口大小: 205x294
+2026-03-25 11:28:09 - aiFriend - INFO - 主窗口大小调整为: 225x314
+2026-03-25 11:28:09 - aiFriend - INFO - Live2DWidget 大小调整为: 205x294
+2026-03-25 11:28:10 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:28:10 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:28:10 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:28:10 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:28:11 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:28:11 - aiFriend - INFO - 窗口位置已保存: (1706, 684)
+2026-03-25 11:28:11 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1706, 684)
+2026-03-25 11:28:12 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:28:12 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:28:12 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:28:12 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:28:14 - aiFriend - INFO - 播放动作: touch_body
+2026-03-25 11:28:15 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:28:15 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:28:15 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:28:15 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:28:15 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:28:15 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:28:16 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:28:18 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:28:18 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 206x296
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 226x316
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 206x296
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.38x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 205x294
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 225x314
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 205x294
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.37x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 201x288
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 221x308
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 201x288
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.34x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 199x285
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 219x305
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 199x285
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.33x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 196x281
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 216x301
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 196x281
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.31x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 193x277
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 213x297
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 193x277
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.29x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 189x270
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 209x290
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 189x270
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.26x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 181x260
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 201x280
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 181x260
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.21x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 168x240
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 188x260
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 168x240
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.12x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 165x236
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 185x256
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 165x236
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.10x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 159x227
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 179x247
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 159x227
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.06x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 156x223
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 176x243
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 156x223
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.04x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 151x217
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 171x237
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 151x217
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.01x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 150x215
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 170x235
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 150x215
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 1.00x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 148x212
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 168x232
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 148x212
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 0.99x
+2026-03-25 11:28:19 - aiFriend - INFO - 推荐窗口大小: 147x210
+2026-03-25 11:28:19 - aiFriend - INFO - 主窗口大小调整为: 167x230
+2026-03-25 11:28:19 - aiFriend - INFO - Live2DWidget 大小调整为: 147x210
+2026-03-25 11:28:19 - aiFriend - INFO - 模型缩放更新: 0.98x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 145x208
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 165x228
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 145x208
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.97x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 144x206
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 164x226
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 144x206
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.96x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 142x204
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 162x224
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 142x204
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.95x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 141x202
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 161x222
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 141x202
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.94x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 139x199
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 159x219
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 139x199
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.93x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 138x197
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 158x217
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 138x197
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.92x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 136x195
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 156x215
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 136x195
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.91x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 130x187
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 150x207
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 130x187
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.87x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 129x184
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 149x204
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 129x184
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.86x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 126x180
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 146x200
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 126x180
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.84x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 122x176
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 142x196
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 122x176
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.82x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 118x169
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 138x189
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 118x169
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.79x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 111x159
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 131x179
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 111x159
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.74x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 106x152
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 126x172
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 106x152
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.71x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 103x148
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 123x168
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 103x148
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.69x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 100x144
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 120x164
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 100x144
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.67x
+2026-03-25 11:28:20 - aiFriend - INFO - 推荐窗口大小: 97x139
+2026-03-25 11:28:20 - aiFriend - INFO - 主窗口大小调整为: 117x159
+2026-03-25 11:28:20 - aiFriend - INFO - Live2DWidget 大小调整为: 97x139
+2026-03-25 11:28:20 - aiFriend - INFO - 模型缩放更新: 0.65x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 96x137
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 116x157
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 96x137
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.64x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 97x139
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 117x159
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 97x139
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.65x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 102x146
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 122x166
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 102x146
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.68x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 106x152
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 126x172
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 106x152
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.71x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 109x156
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 129x176
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 109x156
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.73x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 111x159
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 131x179
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 111x159
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.74x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 112x161
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 132x181
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 112x161
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.75x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 114x163
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 134x183
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 114x163
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.76x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 115x165
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 135x185
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 115x165
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.77x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 117x167
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 137x187
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 117x167
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.78x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 118x169
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 138x189
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 118x169
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.79x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 120x172
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 140x192
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 120x172
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.80x
+2026-03-25 11:28:24 - aiFriend - INFO - 推荐窗口大小: 121x174
+2026-03-25 11:28:24 - aiFriend - INFO - 主窗口大小调整为: 141x194
+2026-03-25 11:28:24 - aiFriend - INFO - Live2DWidget 大小调整为: 121x174
+2026-03-25 11:28:24 - aiFriend - INFO - 模型缩放更新: 0.81x
+2026-03-25 11:28:28 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 心情配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 11:28:28 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 11:28:28 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 通用配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1706, 684)
+2026-03-25 11:28:28 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:28:28 - aiFriend - INFO - 设置已保存
+2026-03-25 11:28:31 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:28:31 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:28:31 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:28:31 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:28:31 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:28:31 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:28:32 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:28:33 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:28:33 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:28:34 - aiFriend - INFO - 窗口位置已保存: (1693, 682)
+2026-03-25 11:28:34 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1693, 682)
+2026-03-25 11:28:34 - aiFriend - INFO - 窗口位置已保存: (1693, 682)
+2026-03-25 11:28:34 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1693, 682)
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载 general 配置: window_x=1693, window_y=682
+2026-03-25 11:28:38 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:28:38 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:38 - aiFriend - INFO - ==================================================
+2026-03-25 11:28:38 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:28:38 - aiFriend - INFO - ==================================================
+2026-03-25 11:28:38 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:28:38 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:28:38 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:28:38 - aiFriend - INFO - First run: False
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:28:38 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:28:38 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:28:38 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:38 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:28:38 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:28:38 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:28:39 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:28:39 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:28:39 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:28:39 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:28:39 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:28:39 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:28:39 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:28:39 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x146d9a050) at 0x168db2340>>
+2026-03-25 11:28:39 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:28:39 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:28:39 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:28:39 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:28:39 - aiFriend - INFO - 显示开场白
+2026-03-25 11:28:39 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:28:39 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:28:39 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:28:39 - aiFriend - INFO - 尝试恢复窗口位置: (1693, 682)
+2026-03-25 11:28:39 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:28:39 - aiFriend - INFO - 窗口位置恢复至: (1549, 559)
+2026-03-25 11:28:39 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:28:39 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:28:39 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:28:39 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:28:39 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:28:39 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:28:39 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:39 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:28:39 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:28:39 - aiFriend - INFO - 设置缩放: 0.81
+2026-03-25 11:28:39 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:28:39 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:28:39 - aiFriend - INFO - 推荐窗口大小: 121x174
+2026-03-25 11:28:39 - aiFriend - INFO - 主窗口大小调整为: 141x194
+2026-03-25 11:28:39 - aiFriend - INFO - Live2DWidget 大小调整为: 121x174
+2026-03-25 11:28:39 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:28:39 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:28:39 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:28:40 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:28:41 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:28:42 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:28:42 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:28:42 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:28:42 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:28:43 - aiFriend - INFO - 窗口位置已保存: (1694, 749)
+2026-03-25 11:28:43 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1694, 749)
+2026-03-25 11:28:45 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:28:45 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:28:45 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:28:45 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:28:45 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:28:45 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:28:46 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:28:47 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:28:47 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:28:48 - aiFriend - INFO - 窗口位置已保存: (1637, 718)
+2026-03-25 11:28:48 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1637, 718)
+2026-03-25 11:28:49 - aiFriend - INFO - 窗口位置已保存: (1637, 718)
+2026-03-25 11:28:49 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1637, 718)
+2026-03-25 11:28:49 - aiFriend - INFO - 窗口位置已保存: (1637, 718)
+2026-03-25 11:28:49 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1637, 718)
+2026-03-25 11:30:29 - aiFriend - INFO - 已加载 general 配置: window_x=1637, window_y=718
+2026-03-25 11:30:29 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:30:29 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:29 - aiFriend - INFO - ==================================================
+2026-03-25 11:30:29 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:30:29 - aiFriend - INFO - ==================================================
+2026-03-25 11:30:29 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:30:29 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:30:29 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:30:29 - aiFriend - INFO - First run: False
+2026-03-25 11:30:29 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:30:29 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:30:29 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:30:30 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:30 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:30:30 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:30:30 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:30:30 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:30:30 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:30:30 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:30:30 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:30:30 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:30:30 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x14abe5620) at 0x14bdb03c0>>
+2026-03-25 11:30:30 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:30:30 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:30:30 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:30:30 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:30:30 - aiFriend - INFO - 显示开场白
+2026-03-25 11:30:30 - aiFriend - INFO - 恢复窗口大小: 400x600
+2026-03-25 11:30:30 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:30:30 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:30:30 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:30:30 - aiFriend - INFO - 尝试恢复窗口位置: (1637, 718)
+2026-03-25 11:30:30 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:30:30 - aiFriend - INFO - 窗口位置恢复至: (1519, 479)
+2026-03-25 11:30:30 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:30:30 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:30:30 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:30:30 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:30:30 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:30:30 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:30:30 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:30 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:30:30 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:30:30 - aiFriend - INFO - 设置缩放: 0.81
+2026-03-25 11:30:30 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:30:30 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:30 - aiFriend - INFO - 推荐窗口大小: 121x174
+2026-03-25 11:30:30 - aiFriend - INFO - 主窗口大小调整为: 141x194
+2026-03-25 11:30:30 - aiFriend - INFO - Live2DWidget 大小调整为: 121x174
+2026-03-25 11:30:30 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:30:30 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:30:30 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:30:31 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:30:31 - aiFriend - INFO - 窗口位置和大小已保存: (1696, 744), 141x194
+2026-03-25 11:30:31 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1696, 744)
+2026-03-25 11:30:32 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:30:32 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:30:32 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:30:32 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:30:32 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:30:32 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:30:32 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:30:33 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:30:33 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:30:33 - aiFriend - INFO - MCP 工具加载完成，共 7 个工具
+2026-03-25 11:30:33 - aiFriend - INFO - 工具已更新，数量: 24
+2026-03-25 11:30:33 - aiFriend - INFO - MCP 工具已加载，总工具数: 24
+2026-03-25 11:30:34 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:30:34 - aiFriend - INFO - MCP 工具加载完成，共 8 个工具
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 122x176
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 142x196
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 122x176
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.82x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 124x178
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 144x198
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 124x178
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.83x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 126x180
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 146x200
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 126x180
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.84x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 127x182
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 147x202
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 127x182
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.85x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 129x184
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 149x204
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 129x184
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.86x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 130x187
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 150x207
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 130x187
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.87x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 132x189
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 152x209
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 132x189
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.88x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 133x191
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 153x211
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 133x191
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.89x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 136x195
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 156x215
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 136x195
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.91x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 139x199
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 159x219
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 139x199
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.93x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 144x206
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 164x226
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 144x206
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.96x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 145x208
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 165x228
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 145x208
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.97x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 147x210
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 167x230
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 147x210
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.98x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 148x212
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 168x232
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 148x212
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 0.99x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 150x215
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 170x235
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 150x215
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.00x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 153x219
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 173x239
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 153x219
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.02x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 154x221
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 174x241
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 154x221
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.03x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 160x230
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 180x250
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 160x230
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.07x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 166x238
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 186x258
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 166x238
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.11x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 168x240
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 188x260
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 168x240
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.12x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 174x249
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 194x269
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 174x249
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.16x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 175x251
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 195x271
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 175x251
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.17x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 177x253
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 197x273
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 177x253
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.18x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 178x255
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 198x275
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 178x255
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.19x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 180x258
+2026-03-25 11:30:36 - aiFriend - INFO - 主窗口大小调整为: 200x278
+2026-03-25 11:30:36 - aiFriend - INFO - Live2DWidget 大小调整为: 180x258
+2026-03-25 11:30:36 - aiFriend - INFO - 模型缩放更新: 1.20x
+2026-03-25 11:30:36 - aiFriend - INFO - 推荐窗口大小: 183x262
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 203x282
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 183x262
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.22x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 184x264
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 204x284
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 184x264
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.23x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 186x266
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 206x286
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 186x266
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.24x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 187x268
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 207x288
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 187x268
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.25x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 189x270
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 209x290
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 189x270
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.26x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 190x273
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 210x293
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 190x273
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.27x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 192x275
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 212x295
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 192x275
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.28x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 193x277
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 213x297
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 193x277
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.29x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 195x279
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 215x299
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 195x279
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.30x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 196x281
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 216x301
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 196x281
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.31x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 198x283
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 218x303
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 198x283
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.32x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 199x285
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 219x305
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 199x285
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.33x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 201x288
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 221x308
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 201x288
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.34x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 202x290
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 222x310
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 202x290
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.35x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 204x292
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 224x312
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 204x292
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.36x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 205x294
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 225x314
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 205x294
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.37x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 206x296
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 226x316
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 206x296
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.38x
+2026-03-25 11:30:37 - aiFriend - INFO - 推荐窗口大小: 208x298
+2026-03-25 11:30:37 - aiFriend - INFO - 主窗口大小调整为: 228x318
+2026-03-25 11:30:37 - aiFriend - INFO - Live2DWidget 大小调整为: 208x298
+2026-03-25 11:30:37 - aiFriend - INFO - 模型缩放更新: 1.39x
+2026-03-25 11:30:40 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 心情配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 11:30:40 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 11:30:40 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 通用配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1696, 744)
+2026-03-25 11:30:40 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:30:40 - aiFriend - INFO - 设置已保存
+2026-03-25 11:30:42 - aiFriend - INFO - 窗口位置和大小已保存: (1557, 682), 228x318
+2026-03-25 11:30:42 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1557, 682)
+2026-03-25 11:30:44 - aiFriend - INFO - 窗口位置和大小已保存: (1721, 678), 228x318
+2026-03-25 11:30:44 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1721, 678)
+2026-03-25 11:30:45 - aiFriend - INFO - 窗口位置和大小已保存: (1721, 678), 228x318
+2026-03-25 11:30:45 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1721, 678)
+2026-03-25 11:30:45 - aiFriend - INFO - 窗口位置和大小已保存: (1721, 678), 228x318
+2026-03-25 11:30:45 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1721, 678)
+2026-03-25 11:30:48 - aiFriend - INFO - 已加载 general 配置: window_x=1721, window_y=678
+2026-03-25 11:30:48 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:30:48 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:48 - aiFriend - INFO - ==================================================
+2026-03-25 11:30:48 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:30:48 - aiFriend - INFO - ==================================================
+2026-03-25 11:30:48 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:30:48 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:30:48 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:30:48 - aiFriend - INFO - First run: False
+2026-03-25 11:30:48 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:30:48 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:30:48 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:30:49 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:49 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:30:49 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:30:49 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:30:49 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:30:49 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:30:49 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:30:49 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:30:49 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:30:49 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:30:49 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:30:49 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:30:49 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:30:49 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:30:49 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:30:49 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x11838a890) at 0x14eab2940>>
+2026-03-25 11:30:49 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:30:49 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:30:49 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:30:49 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:30:49 - aiFriend - INFO - 显示开场白
+2026-03-25 11:30:49 - aiFriend - INFO - 恢复窗口大小: 228x318
+2026-03-25 11:30:49 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:30:49 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:30:49 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:30:49 - aiFriend - INFO - 尝试恢复窗口位置: (1721, 678)
+2026-03-25 11:30:49 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:30:49 - aiFriend - INFO - 窗口位置恢复至: (1691, 678)
+2026-03-25 11:30:49 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:30:49 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:30:49 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:30:49 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:30:49 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:30:49 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:30:49 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:49 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:30:49 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:30:49 - aiFriend - INFO - 设置缩放: 1.39
+2026-03-25 11:30:49 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:30:49 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:30:49 - aiFriend - INFO - 推荐窗口大小: 208x298
+2026-03-25 11:30:49 - aiFriend - INFO - 主窗口大小调整为: 228x318
+2026-03-25 11:30:49 - aiFriend - INFO - Live2DWidget 大小调整为: 208x298
+2026-03-25 11:30:50 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:30:50 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:30:50 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:30:50 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:30:51 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:30:52 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:30:52 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:30:52 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:30:52 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载 general 配置: window_x=1721, window_y=678
+2026-03-25 11:36:27 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:36:27 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:36:27 - aiFriend - INFO - ==================================================
+2026-03-25 11:36:27 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:36:27 - aiFriend - INFO - ==================================================
+2026-03-25 11:36:27 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:36:27 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:36:27 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:36:27 - aiFriend - INFO - First run: False
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:36:27 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:36:27 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:36:27 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:36:27 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:36:27 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:36:27 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:36:27 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:36:27 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:36:27 - aiFriend - INFO - 已加载 0 条对话历史
+2026-03-25 11:36:27 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:36:27 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:36:27 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:36:27 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x16c91a3d0) at 0x16c896800>>
+2026-03-25 11:36:27 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:36:27 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:36:27 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:36:27 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:36:27 - aiFriend - INFO - 显示开场白
+2026-03-25 11:36:27 - aiFriend - INFO - 恢复窗口大小: 228x318
+2026-03-25 11:36:27 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:36:28 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:36:28 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:36:28 - aiFriend - INFO - 尝试恢复窗口位置: (1721, 678)
+2026-03-25 11:36:28 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:36:28 - aiFriend - INFO - 窗口位置恢复至: (1691, 678)
+2026-03-25 11:36:28 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:36:28 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:36:28 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:36:28 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:36:28 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:36:28 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:36:28 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:36:28 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:36:28 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:36:28 - aiFriend - INFO - 设置缩放: 1.39
+2026-03-25 11:36:28 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:36:28 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:36:28 - aiFriend - INFO - 推荐窗口大小: 208x298
+2026-03-25 11:36:28 - aiFriend - INFO - 主窗口大小调整为: 228x318
+2026-03-25 11:36:28 - aiFriend - INFO - Live2DWidget 大小调整为: 208x298
+2026-03-25 11:36:28 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:36:28 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:36:28 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:36:28 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:36:29 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:36:29 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:36:29 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:36:29 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:36:29 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:36:29 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:36:29 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:36:31 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:36:31 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:36:31 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:36:31 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:36:31 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:36:32 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:36:32 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 11:36:34 - aiFriend - INFO - LLM 配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - Live2D 配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 心情配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 已保存用户提示词: custom_instructions
+2026-03-25 11:36:34 - aiFriend - INFO - 重新加载用户提示词: custom_instructions
+2026-03-25 11:36:34 - aiFriend - INFO - 用户提示词已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 通用配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1721, 678)
+2026-03-25 11:36:34 - aiFriend - INFO - 角色设定已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 工具配置已保存
+2026-03-25 11:36:34 - aiFriend - INFO - 设置已保存
+2026-03-25 11:36:36 - aiFriend - INFO - 播放动作: touch_body
+2026-03-25 11:36:37 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 11:36:41 - aiFriend - INFO - 处理用户输入: 打个招呼...
+2026-03-25 11:36:45 - aiFriend - INFO - 工具调用开始: show_mood_emoji
+2026-03-25 11:36:45 - aiFriend - INFO - 显示心情表情包: greeting
+2026-03-25 11:36:45 - aiFriend - INFO - 选中表情包: greeting -> assets/emojis/801b9b99_greeting.gif
+2026-03-25 11:36:45 - aiFriend - INFO - trigger_emoji 被调用: greeting, 当前线程: Dummy-3
+2026-03-25 11:36:45 - aiFriend - INFO - 发射 emoji_triggered 信号: greeting
+2026-03-25 11:36:45 - aiFriend - INFO - 信号已发射: greeting
+2026-03-25 11:36:45 - aiFriend - INFO - 工具调用结束: show_mood_emoji
+2026-03-25 11:36:45 - aiFriend - INFO - 显示调试信息: 调用工具: show_mood_emoji
+2026-03-25 11:36:45 - aiFriend - INFO - _on_show_emoji 被调用: greeting
+2026-03-25 11:36:45 - aiFriend - INFO - 选中表情包: greeting -> assets/emojis/801b9b99_greeting.gif
+2026-03-25 11:36:45 - aiFriend - INFO - 准备显示表情包: assets/emojis/801b9b99_greeting.gif, 模型头顶位置: PySide6.QtCore.QPoint(1804, 725)
+2026-03-25 11:36:45 - aiFriend - INFO - EmojiBubble.show_emoji 被调用: assets/emojis/801b9b99_greeting.gif, duration=3000
+2026-03-25 11:36:45 - aiFriend - INFO - 表情包完整路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/emojis/801b9b99_greeting.gif, 存在: True
+2026-03-25 11:36:45 - aiFriend - INFO - 气泡位置: (1732, 561), 指向: PySide6.QtCore.QPoint(1804, 725)
+2026-03-25 11:36:45 - aiFriend - INFO - EmojiBubble 已显示, visible=True, geometry=PySide6.QtCore.QRect(1732, 541, 144, 164)
+2026-03-25 11:36:45 - aiFriend - INFO - 显示调试信息: 工具结果: show_mood_emoji
+2026-03-25 11:36:48 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '主人，你好。我是小秘，你的智能桌面助手。有什么需要我帮忙的吗？'}
+2026-03-25 11:36:48 - aiFriend - INFO - final_text: '主人，你好。我是小秘，你的智能桌面助手。有什么需要我帮忙的吗？'
+2026-03-25 11:36:48 - aiFriend - INFO - 已添加消息气泡: 主人，你好。我是小秘，你的智能桌面助手。有什么需要我帮忙的吗？...
+2026-03-25 11:36:48 - aiFriend - INFO - 回复生成完成
+2026-03-25 11:36:57 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:37:07 - aiFriend - INFO - 处理用户输入: 搜索今天的抖音热点...
+2026-03-25 11:37:10 - aiFriend - INFO - 工具调用开始: web_search_prime
+2026-03-25 11:37:10 - aiFriend - INFO - 显示调试信息: 调用工具: web_search_prime
+2026-03-25 11:37:15 - aiFriend - INFO - 工具调用结束: web_search_prime
+2026-03-25 11:37:15 - aiFriend - INFO - 显示调试信息: 工具结果: web_search_prime
+2026-03-25 11:37:21 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '主人，今天的抖音热点我已经帮你查好了：\n\n**热门话题：**\n1. **习近平总书记九年四赴雄安** - 1172.4万热度\n2. **人民网评"雪山救狐"演绎** - 1172.4万热度\n3. **把春天穿出门** - 1122.1万热度\n4. **我国日均词元调用量超140万亿** - 1082.1万热度\n5. **大疆起诉影石** - 1117.1万热度\n6. **武汉的城市规模有多庞大** - 1097.0万热度\n7. **109项重大工程项目里有哪些机会** - 1093.4万热度\n8. **不一样的约会方式** - 1081.0万热度\n\n这些是今日抖音热榜的热门内容，主人想深入了解哪个话题吗？'}
+2026-03-25 11:37:21 - aiFriend - INFO - final_text: '主人，今天的抖音热点我已经帮你查好了：
+
+**热门话题：**
+1. **习近平总书记九年四赴雄安** - 1172.4万热度
+2. **人民网评"雪山救狐"演绎** - 1172.4万热度
+3. **把春天穿出门** - 1122.1万热度
+4. **我国日均词元调用量超140万亿** - 1082.1万热度
+5. **大疆起诉影石** - 1117.1万热度
+6. **武汉的城市规模有多庞大** - 1097.0万热度
+7. **109项重大工程项目里有哪些机会** - 1093.4万热度
+8. **不一样的约会方式** - 1081.0万热度
+
+这些是今日抖音热榜的热门内容，主人想深入了解哪个话题吗？'
+2026-03-25 11:37:21 - aiFriend - INFO - 已添加消息气泡: 主人，今天的抖音热点我已经帮你查好了：
+
+**热门话题：**
+1. **习近平总书记九年四赴雄安**...
+2026-03-25 11:37:21 - aiFriend - INFO - 回复生成完成
+2026-03-25 11:37:27 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:37:38 - aiFriend - INFO - 处理用户输入: 今天开心嘛...
+2026-03-25 11:37:42 - aiFriend - INFO - 工具调用开始: show_mood_emoji
+2026-03-25 11:37:42 - aiFriend - INFO - 显示心情表情包: happy
+2026-03-25 11:37:42 - aiFriend - INFO - 选中表情包: happy -> assets/emojis/0748faae_happy.gif
+2026-03-25 11:37:42 - aiFriend - INFO - trigger_emoji 被调用: happy, 当前线程: Dummy-5
+2026-03-25 11:37:42 - aiFriend - INFO - 发射 emoji_triggered 信号: happy
+2026-03-25 11:37:42 - aiFriend - INFO - 信号已发射: happy
+2026-03-25 11:37:42 - aiFriend - INFO - 工具调用结束: show_mood_emoji
+2026-03-25 11:37:42 - aiFriend - INFO - 显示调试信息: 调用工具: show_mood_emoji
+2026-03-25 11:37:42 - aiFriend - INFO - _on_show_emoji 被调用: happy
+2026-03-25 11:37:42 - aiFriend - INFO - 选中表情包: happy -> assets/emojis/0748faae_happy.gif
+2026-03-25 11:37:42 - aiFriend - INFO - 准备显示表情包: assets/emojis/0748faae_happy.gif, 模型头顶位置: PySide6.QtCore.QPoint(1804, 725)
+2026-03-25 11:37:42 - aiFriend - INFO - EmojiBubble.show_emoji 被调用: assets/emojis/0748faae_happy.gif, duration=3000
+2026-03-25 11:37:42 - aiFriend - INFO - 表情包完整路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/emojis/0748faae_happy.gif, 存在: True
+2026-03-25 11:37:42 - aiFriend - INFO - 气泡位置: (1732, 561), 指向: PySide6.QtCore.QPoint(1804, 725)
+2026-03-25 11:37:42 - aiFriend - INFO - EmojiBubble 已显示, visible=True, geometry=PySide6.QtCore.QRect(1732, 561, 144, 164)
+2026-03-25 11:37:42 - aiFriend - INFO - 显示调试信息: 工具结果: show_mood_emoji
+2026-03-25 11:37:45 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '（露出开心的表情）主人，和你在一起，我当然开心。虽然我一向高冷，但面对主人时，心里的温暖是藏不住的。今天有什么想和我分享的吗？'}
+2026-03-25 11:37:45 - aiFriend - INFO - final_text: '（露出开心的表情）主人，和你在一起，我当然开心。虽然我一向高冷，但面对主人时，心里的温暖是藏不住的。今天有什么想和我分享的吗？'
+2026-03-25 11:37:45 - aiFriend - INFO - 已添加消息气泡: （露出开心的表情）主人，和你在一起，我当然开心。虽然我一向高冷，但面对主人时，心里的温暖是藏不住的。...
+2026-03-25 11:37:45 - aiFriend - INFO - 回复生成完成
+2026-03-25 11:37:57 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:38:12 - aiFriend - INFO - 聊天窗口已关闭
+2026-03-25 11:38:27 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:38:57 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:39:27 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:39:57 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:40:04 - aiFriend - INFO - 播放动作: main_1
+2026-03-25 11:40:06 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:40:06 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:40:06 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:40:06 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:40:06 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:40:06 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:40:07 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:40:09 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:40:09 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:40:27 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:40:31 - aiFriend - INFO - 已加载 general 配置: window_x=1721, window_y=678
+2026-03-25 11:40:31 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:40:31 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:40:31 - aiFriend - INFO - ==================================================
+2026-03-25 11:40:31 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:40:31 - aiFriend - INFO - ==================================================
+2026-03-25 11:40:31 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:40:31 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:40:31 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:40:31 - aiFriend - INFO - First run: False
+2026-03-25 11:40:31 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:40:31 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:40:31 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:40:32 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:40:32 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:40:32 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:40:32 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:40:32 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:40:32 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:40:32 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:40:32 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:40:32 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:40:32 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:40:32 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:40:32 - aiFriend - INFO - 已加载 6 条对话历史
+2026-03-25 11:40:32 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:40:32 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:40:32 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:40:32 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x16ac5cbd0) at 0x1705c4700>>
+2026-03-25 11:40:32 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:40:32 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:40:32 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:40:32 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:40:32 - aiFriend - INFO - 显示开场白
+2026-03-25 11:40:32 - aiFriend - INFO - 恢复窗口大小: 228x318
+2026-03-25 11:40:32 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:40:32 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:40:32 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:40:32 - aiFriend - INFO - 尝试恢复窗口位置: (1721, 678)
+2026-03-25 11:40:32 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:40:32 - aiFriend - INFO - 窗口位置恢复至: (1691, 678)
+2026-03-25 11:40:32 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:40:32 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:40:32 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:40:32 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:40:32 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:40:32 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:40:32 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:40:33 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:40:33 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:40:33 - aiFriend - INFO - 设置缩放: 1.39
+2026-03-25 11:40:33 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:40:33 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:40:33 - aiFriend - INFO - 推荐窗口大小: 208x298
+2026-03-25 11:40:33 - aiFriend - INFO - 主窗口大小调整为: 228x318
+2026-03-25 11:40:33 - aiFriend - INFO - Live2DWidget 大小调整为: 208x298
+2026-03-25 11:40:33 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:40:33 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:40:33 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:40:33 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:40:34 - aiFriend - INFO - 播放动作: touch_body
+2026-03-25 11:40:34 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:40:36 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:40:36 - aiFriend - INFO - MCP 工具加载完成，共 4 个工具
+2026-03-25 11:40:36 - aiFriend - INFO - 工具已更新，数量: 21
+2026-03-25 11:40:36 - aiFriend - INFO - MCP 工具已加载，总工具数: 21
+2026-03-25 11:40:37 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 11:40:42 - aiFriend - INFO - 处理用户输入: 今天天气怎么样...
+2026-03-25 11:40:44 - aiFriend - INFO - 工具调用开始: get_weather
+2026-03-25 11:40:44 - aiFriend - INFO - 显示调试信息: 调用工具: get_weather
+2026-03-25 11:40:45 - aiFriend - INFO - 工具调用结束: get_weather
+2026-03-25 11:40:45 - aiFriend - INFO - 显示调试信息: 工具结果: get_weather
+2026-03-25 11:40:48 - aiFriend - INFO - 工具调用开始: play_motion
+2026-03-25 11:40:48 - aiFriend - INFO - 播放 Live2D 动作: idle
+2026-03-25 11:40:48 - aiFriend - INFO - 显示调试信息: 调用工具: play_motion
+2026-03-25 11:40:48 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:40:48 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:40:48 - aiFriend - INFO - 工具调用结束: play_motion
+2026-03-25 11:40:48 - aiFriend - INFO - 显示调试信息: 工具结果: play_motion
+2026-03-25 11:40:51 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '北京今天气温20度，体感温度也是20度，湿度35%，风速4级。天气还算舒适，主人。'}
+2026-03-25 11:40:51 - aiFriend - INFO - final_text: '北京今天气温20度，体感温度也是20度，湿度35%，风速4级。天气还算舒适，主人。'
+2026-03-25 11:40:51 - aiFriend - INFO - 已添加消息气泡: 北京今天气温20度，体感温度也是20度，湿度35%，风速4级。天气还算舒适，主人。...
+2026-03-25 11:40:51 - aiFriend - INFO - 回复生成完成
+2026-03-25 11:41:02 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:41:32 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:42:02 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:42:32 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:43:02 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载 general 配置: window_x=1721, window_y=678
+2026-03-25 11:43:08 - aiFriend - INFO - 配置已从文件加载
+2026-03-25 11:43:08 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:43:08 - aiFriend - INFO - ==================================================
+2026-03-25 11:43:08 - aiFriend - INFO - AI Friend - 二次元桌面助手
+2026-03-25 11:43:08 - aiFriend - INFO - ==================================================
+2026-03-25 11:43:08 - aiFriend - INFO - LLM Provider: openai
+2026-03-25 11:43:08 - aiFriend - INFO - LLM Model: qwen3.5-plus-2026-02-15
+2026-03-25 11:43:08 - aiFriend - INFO - 角色设定已加载
+2026-03-25 11:43:08 - aiFriend - INFO - First run: False
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载 10 个工具配置
+2026-03-25 11:43:08 - aiFriend - INFO - 应用配置已加载
+2026-03-25 11:43:08 - aiFriend - INFO - 创建 ChatModel: provider=openai, model=qwen3.5-plus-2026-02-15
+2026-03-25 11:43:08 - aiFriend - INFO - 从模型读取到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:43:08 - aiFriend - INFO - 已注册 17 个内置工具
+2026-03-25 11:43:08 - aiFriend - INFO - 启用的内置工具: 17/17
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载 3 条事实, 2 条记忆
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载系统提示词: base
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载系统提示词: constraints
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载系统提示词: tools
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载用户提示词: custom_instructions
+2026-03-25 11:43:08 - aiFriend - INFO - LangGraph Agent 初始化完成，工具数: 17
+2026-03-25 11:43:08 - aiFriend - INFO - AIFriendCore 初始化完成
+2026-03-25 11:43:08 - aiFriend - INFO - LangChain Agent 已初始化，工具数: 17
+2026-03-25 11:43:08 - aiFriend - INFO - 已加载 2 条对话历史
+2026-03-25 11:43:08 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:43:08 - aiFriend - INFO - 对话历史已清空
+2026-03-25 11:43:09 - aiFriend - INFO - MainWindow.__init__ 开始
+2026-03-25 11:43:09 - aiFriend - INFO - 表情包回调已设置并连接信号: <bound method MainWindow._on_show_emoji of <app.main_window.MainWindow(0x168bbea40) at 0x168eb3b80>>
+2026-03-25 11:43:09 - aiFriend - INFO - 创建 Live2D OpenGL 控件
+2026-03-25 11:43:09 - aiFriend - INFO - 使用 Live2D OpenGL 渲染
+2026-03-25 11:43:09 - aiFriend - INFO - 空闲动作已启用，间隔 30.0 秒
+2026-03-25 11:43:09 - aiFriend - INFO - Live2D 模型路径: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:43:09 - aiFriend - INFO - 显示开场白
+2026-03-25 11:43:09 - aiFriend - INFO - 恢复窗口大小: 228x318
+2026-03-25 11:43:09 - aiFriend - INFO - 任务管理器将在主程序启动时启动
+2026-03-25 11:43:09 - aiFriend - INFO - 初始化 OpenGL...
+2026-03-25 11:43:09 - aiFriend - INFO - OpenGL 和 Live2D 初始化成功
+2026-03-25 11:43:09 - aiFriend - INFO - 尝试恢复窗口位置: (1721, 678)
+2026-03-25 11:43:09 - aiFriend - INFO - 目标屏幕可用区域: PySide6.QtCore.QRect(0, 30, 1920, 969), 屏幕几何: PySide6.QtCore.QRect(0, 0, 1920, 1080)
+2026-03-25 11:43:09 - aiFriend - INFO - 窗口位置恢复至: (1691, 678)
+2026-03-25 11:43:09 - aiFriend - INFO - 主窗口已显示
+2026-03-25 11:43:09 - aiFriend - INFO - 系统托盘已显示
+2026-03-25 11:43:09 - aiFriend - INFO - 系统托盘已创建
+2026-03-25 11:43:09 - aiFriend - INFO - 应用启动完成
+2026-03-25 11:43:09 - aiFriend - INFO - 开始加载模型: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang
+2026-03-25 11:43:09 - aiFriend - INFO - 找到模型文件: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d/biaoqiang/biaoqiang.model3.json
+2026-03-25 11:43:09 - aiFriend - INFO - 从模型解析到 14 个动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:43:09 - aiFriend - INFO - 模型 JSON 加载成功
+2026-03-25 11:43:09 - aiFriend - INFO - 未找到模型画布尺寸，使用默认值
+2026-03-25 11:43:09 - aiFriend - INFO - 设置缩放: 1.39
+2026-03-25 11:43:09 - aiFriend - INFO - 设置模型画布大小: 350x500
+2026-03-25 11:43:09 - aiFriend - INFO - 模型加载完成，可用动作: ['complete', 'home', 'idle', 'login', 'mail', 'main_1', 'main_2', 'main_3', 'mission_complete', 'mission', 'touch_body', 'touch_head', 'touch_special', 'wedding']
+2026-03-25 11:43:09 - aiFriend - INFO - 推荐窗口大小: 208x298
+2026-03-25 11:43:09 - aiFriend - INFO - 主窗口大小调整为: 228x318
+2026-03-25 11:43:09 - aiFriend - INFO - Live2DWidget 大小调整为: 208x298
+2026-03-25 11:43:09 - aiFriend - INFO - 任务管理器已启动
+2026-03-25 11:43:09 - aiFriend - INFO - 定时任务管理器已启动，0 个任务已加载
+2026-03-25 11:43:09 - aiFriend - INFO - 已加载 2 个 MCP 服务器配置
+2026-03-25 11:43:10 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:43:11 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:43:11 - aiFriend - INFO - 开始加载 2 个 MCP 服务器的工具...
+2026-03-25 11:43:11 - aiFriend - INFO - 扫描模型目录: /Users/zhaochong/Ai/workspace/aiFriend/assets/live2d
+2026-03-25 11:43:11 - aiFriend - INFO - 模型可用: aimierbeierding_2
+2026-03-25 11:43:11 - aiFriend - INFO - 模型可用: biaoqiang
+2026-03-25 11:43:11 - aiFriend - INFO - 模型可用: chuixue_3
+2026-03-25 11:43:11 - aiFriend - INFO - 扫描到 3 个模型
+2026-03-25 11:43:12 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:43:12 - aiFriend - INFO - MCP 工具加载完成，共 1 个工具
+2026-03-25 11:43:12 - aiFriend - INFO - 工具已更新，数量: 18
+2026-03-25 11:43:12 - aiFriend - INFO - MCP 工具已加载，总工具数: 18
+2026-03-25 11:43:12 - aiFriend - INFO - MCP 服务器 '基金指数查询' 加载了 3 个工具
+2026-03-25 11:43:13 - aiFriend - INFO - MCP 服务器 '智谱联网搜索' 加载了 1 个工具
+2026-03-25 11:43:13 - aiFriend - INFO - MCP 工具加载完成，共 5 个工具
+2026-03-25 11:43:15 - aiFriend - INFO - 已显示聊天窗口
+2026-03-25 11:43:24 - aiFriend - INFO - 处理用户输入: 张雪峰怎么了...
+2026-03-25 11:43:27 - aiFriend - INFO - 工具调用开始: web_search_prime
+2026-03-25 11:43:27 - aiFriend - INFO - 显示调试信息: 调用工具: web_search_prime
+2026-03-25 11:43:31 - aiFriend - ERROR - Agent 执行错误: MCP error -400: {"contentFilter":[{"level":1,"role":"search"}],"error":{"code":"1301","message":"系统检测到输入或生成内容可能包含不安全或敏感内容，请您避免输入易产生敏感内容的提示语，感谢您的配合。"}}
+Traceback (most recent call last):
+  File "/Users/zhaochong/Ai/workspace/aiFriend/src/agent/agent.py", line 135, in _chat_stream
+    async for event in self._agent.astream_events(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1516, in astream_events
+    async for event in event_stream:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1100, in _astream_events_implementation_v2
+    await task
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 1055, in consume_astream
+    async for _ in event_streamer.tap_output_aiter(run_id, stream):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 222, in tap_output_aiter
+    async for chunk in output:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3111, in astream
+    async for _ in runner.atick(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_runner.py", line 304, in atick
+    await arun_with_retry(
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/pregel/_retry.py", line 206, in arun_with_retry
+    async for _ in task.proc.astream(task.input, config):
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 839, in astream
+    output = await asyncio.create_task(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 904, in _consume_aiter
+    async for chunk in it:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tracers/event_stream.py", line 199, in tap_output_aiter
+    first = await anext(output, sentinel)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1589, in atransform
+    async for ichunk in input:
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1170, in astream
+    yield await self.ainvoke(input, config, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/_internal/_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 846, in _afunc
+    outputs = await asyncio.gather(*coros)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1177, in _arun_one
+    return await self._execute_tool_async(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1126, in _execute_tool_async
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 430, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 387, in _default_handle_tool_errors
+    raise e
+  File "/opt/anaconda3/lib/python3.11/site-packages/langgraph/prebuilt/tool_node.py", line 1083, in _execute_tool_async
+    response = await tool.ainvoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 70, in ainvoke
+    return await super().ainvoke(input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 652, in ainvoke
+    return await self.arun(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1131, in arun
+    raise error_to_raise
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/base.py", line 1097, in arun
+    response = await coro_with_context(coro, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_core/tools/structured.py", line 124, in _arun
+    return await self.coroutine(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 414, in call_tool
+    return _convert_call_tool_result(call_tool_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 189, in _convert_call_tool_result
+    raise ToolException(error_msg)
+langchain_core.tools.base.ToolException: MCP error -400: {"contentFilter":[{"level":1,"role":"search"}],"error":{"code":"1301","message":"系统检测到输入或生成内容可能包含不安全或敏感内容，请您避免输入易产生敏感内容的提示语，感谢您的配合。"}}
+During task with name 'tools' and id 'ac60faea-63af-3a0c-f4f0-ac9f1f3914f3'
+2026-03-25 11:43:31 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '抱歉，处理时出现错误：MCP error -400: {"contentFilter":[{"level":1,"role":"search"}],"error":{"code":"1301","message":"系统检测到输入或生成内容可能包含不安全或敏感内容，请您避免输入易产生敏感内容的提示语，感谢您的配合。"}}'}
+2026-03-25 11:43:31 - aiFriend - INFO - final_text: '抱歉，处理时出现错误：MCP error -400: {"contentFilter":[{"level":1,"role":"search"}],"error":{"code":"1301","message":"系统检测到输入或生成内容可能包含不安全或敏感内容，请您避免输入易产生敏感内容的提示语，感谢您的配合。"}}'
+2026-03-25 11:43:31 - aiFriend - INFO - 已添加消息气泡: 抱歉，处理时出现错误：MCP error -400: {"contentFilter":[{"lev...
+2026-03-25 11:43:31 - aiFriend - INFO - 回复生成完成
+2026-03-25 11:43:39 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:43:42 - aiFriend - INFO - 处理用户输入: 你知道张雪峰吗...
+2026-03-25 11:43:45 - aiFriend - INFO - 工具调用开始: web_search_prime
+2026-03-25 11:43:45 - aiFriend - INFO - 显示调试信息: 调用工具: web_search_prime
+2026-03-25 11:43:52 - aiFriend - INFO - 工具调用结束: web_search_prime
+2026-03-25 11:43:52 - aiFriend - INFO - 显示调试信息: 工具结果: web_search_prime
+2026-03-25 11:43:57 - aiFriend - INFO - _on_response_finished 收到结果: {'final_text': '主人，我当然知道张雪峰。\n\n他本名张子彪，1984年出生于黑龙江齐齐哈尔，毕业于郑州大学给排水专业。他是中国知名的考研辅导讲师和网络红人，以幽默风趣的讲解风格和对高校专业的独到见解而走红。\n\n他创办了苏州研途教育科技有限公司，多年来帮助无数学生进行考研规划和高考志愿填报。不过他的言论也时常引发争议，有人认为他过于功利，有人则觉得他说出了现实。\n\n主人是想了解他的什么方面呢？是他的教育理念，还是最近的动态？'}
+2026-03-25 11:43:57 - aiFriend - INFO - final_text: '主人，我当然知道张雪峰。
+
+他本名张子彪，1984年出生于黑龙江齐齐哈尔，毕业于郑州大学给排水专业。他是中国知名的考研辅导讲师和网络红人，以幽默风趣的讲解风格和对高校专业的独到见解而走红。
+
+他创办了苏州研途教育科技有限公司，多年来帮助无数学生进行考研规划和高考志愿填报。不过他的言论也时常引发争议，有人认为他过于功利，有人则觉得他说出了现实。
+
+主人是想了解他的什么方面呢？是他的教育理念，还是最近的动态？'
+2026-03-25 11:43:57 - aiFriend - INFO - 已添加消息气泡: 主人，我当然知道张雪峰。
+
+他本名张子彪，1984年出生于黑龙江齐齐哈尔，毕业于郑州大学给排水专业。...
+2026-03-25 11:43:57 - aiFriend - INFO - 回复生成完成
+2026-03-25 11:44:09 - aiFriend - INFO - 播放动作: idle
+2026-03-25 11:44:13 - aiFriend - INFO - 聊天窗口已关闭
+2026-03-25 11:44:16 - aiFriend - INFO - 窗口位置和大小已保存: (1691, 678), 228x318
+2026-03-25 11:44:16 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1691, 678)
+2026-03-25 11:44:16 - aiFriend - INFO - 窗口位置和大小已保存: (1691, 678), 228x318
+2026-03-25 11:44:16 - aiFriend - INFO - 配置已保存到 /Users/zhaochong/Ai/workspace/aiFriend/data/config.json, 窗口位置: (1691, 678)

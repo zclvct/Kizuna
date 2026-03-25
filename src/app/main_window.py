@@ -331,11 +331,14 @@ class MainWindow(QMainWindow):
         logger.info(f"窗口位置恢复至: ({x}, {y})")
     
     def _save_window_position(self):
-        """保存窗口位置"""
+        """保存窗口位置和大小"""
         pos = self.pos()
         self.config.general.window_x = pos.x()
         self.config.general.window_y = pos.y()
-        logger.info(f"窗口位置已保存: ({pos.x()}, {pos.y()})")
+        # 同时保存窗口大小
+        self.config.general.window_width = self.width()
+        self.config.general.window_height = self.height()
+        logger.info(f"窗口位置和大小已保存: ({pos.x()}, {pos.y()}), {self.width()}x{self.height()}")
 
     def _setup_ui(self):
         """设置 UI"""
@@ -362,8 +365,14 @@ class MainWindow(QMainWindow):
         # 表情包气泡 - 独立窗口
         self.emoji_bubble = EmojiBubble()
         
-        # 设置初始窗口大小（会在模型加载后自动调整）
-        self.setFixedSize(370, 520)
+        # 尝试从配置恢复窗口大小，否则使用默认值
+        saved_width = self.config.general.window_width
+        saved_height = self.config.general.window_height
+        if saved_width > 0 and saved_height > 0:
+            self.setFixedSize(saved_width, saved_height)
+            logger.info(f"恢复窗口大小: {saved_width}x{saved_height}")
+        else:
+            self.setFixedSize(370, 520)
 
     def _on_drag_started(self, global_pos: QPoint):
         """模型区域开始拖拽"""
@@ -388,6 +397,10 @@ class MainWindow(QMainWindow):
         
         # 设置新窗口大小
         self.setFixedSize(new_width, new_height)
+        
+        # 更新配置中的窗口大小
+        self.config.general.window_width = new_width
+        self.config.general.window_height = new_height
         
         # 确保窗口位置在屏幕范围内
         screen = QApplication.screenAt(current_pos)

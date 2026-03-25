@@ -189,7 +189,8 @@ class Live2DGLWidget(QOpenGLWidget):
             self._detect_model_canvas_size(model_json_path)
 
             config = get_config()
-            self._scale = config.live2d.scale
+            # 使用 general.model_scale 作为统一的缩放配置
+            self._scale = config.general.model_scale
             self.model.SetScale(self._scale)
             logger.info(f"设置缩放: {self._scale}")
 

@@ -8,15 +8,16 @@ sys.path.insert(0, str(src_path))
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout,
     QTextEdit, QLineEdit, QPushButton, QScrollArea,
-    QFrame, QLabel, QGraphicsOpacityEffect
+    QFrame, QLabel, QGraphicsOpacityEffect, QApplication
 )
 from PySide6.QtCore import Qt, Signal, QThread, QEventLoop, QPropertyAnimation, QEasingCurve, QTimer
 from PySide6.QtGui import QFont, QColor
 
 from chat.message_bubble import MessageBubble
+from chat.debug_bubble import DebugBubble
 from chat.conversation_manager import get_conversation_manager
 from agent import get_core, get_langchain_memory
-from utils import get_character_manager, get_logger
+from utils import get_character_manager, get_logger, get_config
 
 logger = get_logger()
 
@@ -33,6 +34,7 @@ class ChatWidget(QFrame):
         self.conversation_manager = get_conversation_manager()
         self.character_manager = get_character_manager()
         self.memory = get_langchain_memory()
+        self.config = get_config()
         
         self._is_generating = False
         self._scroll_button = None
@@ -165,23 +167,27 @@ class ChatWidget(QFrame):
     
     def _setup_scroll_to_bottom_button(self):
         """设置跳转到最新消息按钮"""
-        self._scroll_button = QPushButton("💬 新消息")
+        self._scroll_button = QPushButton("⬇")
         self._scroll_button.setObjectName("scrollBtn")
-        self._scroll_button.setFixedSize(100, 35)
+        self._scroll_button.setFixedSize(40, 40)
         self._scroll_button.setCursor(Qt.CursorShape.PointingHandCursor)
         self._scroll_button.setStyleSheet("""
             QPushButton#scrollBtn {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #FFB8D9, stop:1 #FF9AC8);
+                    stop:0 #A8D8FF, stop:1 #7BB8FF);
                 color: white;
                 border: none;
-                border-radius: 17px;
+                border-radius: 20px;
+                font-size: 18px;
                 font-weight: bold;
-                font-size: 11px;
             }
             QPushButton#scrollBtn:hover {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #FFC8E9, stop:1 #FFAAD8);
+                    stop:0 #B8E8FF, stop:1 #8BC8FF);
+            }
+            QPushButton#scrollBtn:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #8BC8FF, stop:1 #6BA8FF);
             }
         """)
         self._scroll_button.clicked.connect(self._scroll_to_bottom)
@@ -209,8 +215,8 @@ class ChatWidget(QFrame):
         """显示跳转按钮"""
         if not self._scroll_button.isVisible():
             # 计算按钮位置（右下角）
-            btn_x = self._scroll_area.width() - self._scroll_button.width() - 15
-            btn_y = self._scroll_area.height() - self._scroll_button.height() - 15
+            btn_x = self._scroll_area.width() - self._scroll_button.width() - 10
+            btn_y = self._scroll_area.height() - self._scroll_button.height() - 10
             self._scroll_button.move(btn_x, btn_y)
             self._scroll_button.show()
             
@@ -223,6 +229,14 @@ class ChatWidget(QFrame):
                 self._scroll_animation.setEndValue(1.0)
                 self._scroll_animation.setEasingCurve(QEasingCurve.Type.OutQuad)
                 self._scroll_animation.start()
+    
+    def resizeEvent(self, event):
+        """窗口大小改变时更新按钮位置"""
+        super().resizeEvent(event)
+        if self._scroll_button and self._scroll_button.isVisible():
+            btn_x = self._scroll_area.width() - self._scroll_button.width() - 10
+            btn_y = self._scroll_area.height() - self._scroll_button.height() - 10
+            self._scroll_button.move(btn_x, btn_y)
     
     def _hide_scroll_button(self):
         """隐藏跳转按钮"""
@@ -273,20 +287,19 @@ class ChatWidget(QFrame):
         insert_pos = self.messages_layout.count() - 1
         self.messages_layout.insertWidget(insert_pos, bubble)
 
-        # 滚动到底部
-        QTimer.singleShot(50, self._scroll_to_bottom)
+        # 滚动到底部（延迟确保布局完成）
+        QTimer.singleShot(100, self._scroll_to_bottom)
 
     def _scroll_to_bottom(self):
-        """平滑滚动到底部"""
-        scroll_bar = self._scroll_area.verticalScrollBar()
+        """滚动到底部"""
+        # 强制更新布局
+        self.messages_container.layout().update()
+        self.messages_container.updateGeometry()
+        QApplication.processEvents()
         
-        # 使用动画平滑滚动
-        self._scroll_animation = QPropertyAnimation(scroll_bar, b"value")
-        self._scroll_animation.setDuration(200)
-        self._scroll_animation.setStartValue(scroll_bar.value())
-        self._scroll_animation.setEndValue(scroll_bar.maximum())
-        self._scroll_animation.setEasingCurve(QEasingCurve.Type.OutQuad)
-        self._scroll_animation.start()
+        # 直接滚动到底部
+        scroll_bar = self._scroll_area.verticalScrollBar()
+        scroll_bar.setValue(scroll_bar.maximum())
         
         # 隐藏跳转按钮
         self._hide_scroll_button()
@@ -322,6 +335,7 @@ class ChatWidget(QFrame):
         # 启动后台线程生成 - 使用新的 LangChain Agent
         self._worker = GenerateWorker(user_text, self.core)
         self._worker.stream_update.connect(self._on_stream_update)
+        self._worker.debug_update.connect(self._on_debug_update)
         self._worker.finished.connect(self._on_response_finished)
         self._worker.error.connect(self._on_response_error)
         self._worker.start()
@@ -332,7 +346,31 @@ class ChatWidget(QFrame):
         if hasattr(self, '_stream_bubble') and self._stream_bubble:
             # 更新流式气泡内容
             self._stream_bubble.update_text(text)
-            self._scroll_to_bottom()
+            # 流式输出时直接滚动（不用动画）
+            scroll_bar = self._scroll_area.verticalScrollBar()
+            scroll_bar.setValue(scroll_bar.maximum())
+    
+    def _on_debug_update(self, debug_info: dict):
+        """调试信息更新"""
+        # 检查是否为调试模式
+        if self.config.general.chat_mode != "debug":
+            return
+        
+        debug_type = debug_info.get("debug_type", "")
+        debug_title = debug_info.get("debug_title", "")
+        debug_content = debug_info.get("debug_content", "")
+        
+        if not debug_type or not debug_content:
+            return
+        
+        # 创建调试气泡
+        debug_bubble = DebugBubble(debug_type, debug_title, debug_content)
+        insert_pos = self.messages_layout.count() - 1
+        self.messages_layout.insertWidget(insert_pos, debug_bubble)
+        
+        logger.info(f"显示调试信息: {debug_title}")
+        # 延迟滚动确保布局更新
+        QTimer.singleShot(50, self._scroll_to_bottom)
 
     def _on_response_finished(self, result: dict):
         """回复生成完成"""
@@ -380,7 +418,8 @@ class ChatWidget(QFrame):
 class GenerateWorker(QThread):
     """生成回复的后台线程 - 使用 LangChain Agent"""
 
-    stream_update = Signal(str)
+    stream_update = Signal(str)  # 文本内容
+    debug_update = Signal(dict)  # 调试信息
     finished = Signal(dict)
     error = Signal(str)
 
@@ -424,5 +463,13 @@ class GenerateWorker(QThread):
             if response.content:
                 full_text += response.content
                 self.stream_update.emit(full_text)
+            
+            # 发送调试信息
+            if response.debug_type:
+                self.debug_update.emit({
+                    "debug_type": response.debug_type,
+                    "debug_title": response.debug_title or "",
+                    "debug_content": response.debug_content or ""
+                })
         
         return {"final_text": full_text}

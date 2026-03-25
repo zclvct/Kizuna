@@ -104,6 +104,37 @@ class GeneralSettingsPage(QWidget):
         
         layout.addWidget(window_group)
         
+        # ====== 对话设置 ======
+        chat_group = QGroupBox("💬 对话设置")
+        chat_group.setStyleSheet(self._get_group_style())
+        chat_layout = QVBoxLayout(chat_group)
+        chat_layout.setSpacing(12)
+        
+        # 对话模式选择
+        mode_layout = QHBoxLayout()
+        mode_label = QLabel("对话模式:")
+        mode_label.setFixedWidth(80)
+        mode_layout.addWidget(mode_label)
+        
+        self.chat_mode = QComboBox()
+        self.chat_mode.addItems(["正常模式", "调试模式"])
+        self.chat_mode.setStyleSheet(COMBO_BOX_STYLE)
+        self.chat_mode.currentIndexChanged.connect(self._on_chat_mode_changed)
+        mode_layout.addWidget(self.chat_mode)
+        
+        chat_layout.addLayout(mode_layout)
+        
+        # 调试模式说明
+        self.debug_hint = QLabel(
+            "💡 调试模式将显示：工具调用、请求参数、\n"
+            "   返回结果、思考过程等详细信息"
+        )
+        self.debug_hint.setStyleSheet("color: #999; font-size: 11px; background: transparent;")
+        self.debug_hint.setWordWrap(True)
+        chat_layout.addWidget(self.debug_hint)
+        
+        layout.addWidget(chat_group)
+        
         # ====== 模型设置 ======
         model_group = QGroupBox("🎭 模型设置")
         model_group.setStyleSheet(self._get_group_style())
@@ -211,6 +242,15 @@ class GeneralSettingsPage(QWidget):
         scale_percent = int(self.config.general.model_scale * 100)
         self.scale_slider.setValue(scale_percent)
         self.scale_value_label.setText(f"{scale_percent}%")
+        
+        # 加载对话模式
+        chat_mode = self.config.general.chat_mode
+        self.chat_mode.setCurrentIndex(0 if chat_mode == "normal" else 1)
+    
+    def _on_chat_mode_changed(self, index: int):
+        """对话模式变化"""
+        # 根据模式显示/隐藏提示
+        self.debug_hint.setVisible(index == 1)
     
     def _on_scale_changed(self, value: int):
         """模型大小滑块变化"""
@@ -234,5 +274,8 @@ class GeneralSettingsPage(QWidget):
         self.config.general.log_level = self.log_level.currentText()
         self.config.general.draggable = self.draggable.isChecked()
         self.config.general.model_scale = self.scale_slider.value() / 100.0
+        
+        # 保存对话模式
+        self.config.general.chat_mode = "normal" if self.chat_mode.currentIndex() == 0 else "debug"
         
         logger.info("通用配置已保存")
