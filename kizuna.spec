@@ -9,6 +9,9 @@ block_cipher = None
 # 项目根目录
 project_root = Path(SPECPATH)
 
+# 图标路径
+icon_path = project_root / 'assets' / 'images' / 'icon.icns'
+
 # 收集所有数据文件
 datas = [
     ('assets', 'assets'),
@@ -140,7 +143,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='/Users/zhaochong/Ai/workspace/Kizuna/assets/images/icon.icns',  # 可设置图标路径
+    icon=str(icon_path),  # 使用相对路径
 )
 
 # macOS 应用包配置
@@ -148,7 +151,7 @@ if sys.platform == 'darwin':
     app = BUNDLE(
         exe,
         name='Kizuna.app',
-        icon='/Users/zhaochong/Ai/workspace/Kizuna/assets/images/icon.icns',  # 可设置 .icns 图标路径
+        icon=str(icon_path),  # 使用相对路径
         bundle_identifier='com.kizuna.desktop',
         version='1.0.0',
         info_plist={
