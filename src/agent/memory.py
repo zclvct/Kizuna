@@ -15,6 +15,7 @@ except ImportError:
     ConversationBufferMemory = None
 
 from utils import get_logger
+from utils.constants import DATA_DIR
 
 logger = get_logger()
 
@@ -80,7 +81,7 @@ class LongTermMemory:
     """长期记忆（JSON 文件存储）"""
     
     def __init__(self):
-        self._base_dir = Path(__file__).parent.parent.parent / "data" / "memories"
+        self._base_dir = DATA_DIR / "memories"
         self._facts_file = self._base_dir / "facts.json"
         self._memories_file = self._base_dir / "memories.json"
         

@@ -7,12 +7,13 @@ from pathlib import Path
 from pydantic import BaseModel, Field
 
 from utils import get_logger
+from utils.constants import DATA_DIR, EMOJIS_DIR, resolve_path, get_relative_path
 
 logger = get_logger()
 
-# 心情数据文件路径
-MOODS_FILE = Path(__file__).parent.parent.parent.parent / "data" / "moods.json"
-EMOJI_DIR = Path(__file__).parent.parent.parent.parent / "assets" / "emojis"
+# 心情数据文件路径 - 使用用户数据目录
+MOODS_FILE = DATA_DIR / "moods.json"
+EMOJI_DIR = EMOJIS_DIR
 
 # 表情类型：心情类型 和 动作类型
 MOOD_TYPES = {
@@ -185,7 +186,7 @@ def add_mood(
         id=uuid.uuid4().hex[:8],
         mood=mood,
         category=category,
-        file_path=str(dest_path.relative_to(dest_path.parent.parent.parent)),
+        file_path=get_relative_path(dest_path),
         description=description,
         duration=duration
     )
@@ -202,8 +203,8 @@ def remove_mood(mood_id: str) -> bool:
     
     for i, m in enumerate(config.moods):
         if m.id == mood_id:
-            # 删除文件
-            file_path = Path(__file__).parent.parent.parent.parent / m.file_path
+            # 删除文件 - 使用 resolve_path 解析路径
+            file_path = resolve_path(m.file_path)
             if file_path.exists():
                 file_path.unlink()
             # 从配置中移除

@@ -16,7 +16,7 @@ from PySide6.QtCore import Qt, QTimer, QPropertyAnimation, QEasingCurve, QPoint,
 from PySide6.QtGui import QPixmap, QMovie, QPainter, QColor, QPainterPath, QPen, QBrush
 
 from utils.logger import get_logger
-from utils.constants import PROJECT_ROOT
+from utils.constants import resolve_path
 
 logger = get_logger()
 
@@ -138,11 +138,8 @@ class EmojiBubble(QWidget):
         if self._current_movie:
             self._current_movie.stop()
         
-        # 解析文件路径
-        if not Path(file_path).is_absolute():
-            full_path = PROJECT_ROOT / file_path
-        else:
-            full_path = Path(file_path)
+        # 使用 resolve_path 解析文件路径（优先用户目录，然后项目目录）
+        full_path = resolve_path(file_path)
         
         logger.info(f"表情包完整路径: {full_path}, 存在: {full_path.exists()}")
         

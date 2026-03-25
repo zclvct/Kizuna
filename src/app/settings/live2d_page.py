@@ -18,12 +18,12 @@ from PySide6.QtGui import QPainter, QColor, QPen, QBrush
 
 from .styles import CARD_STYLE, MENU_STYLE
 from utils import get_config, get_logger
-from utils.constants import resolve_path, get_relative_path
+from utils.constants import resolve_path, get_relative_path, LIVE2D_MODELS_DIR
 
 logger = get_logger()
 
-# 获取 assets/live2d 目录
-ASSETS_LIVE2D_DIR = Path(__file__).parent.parent.parent.parent / "assets" / "live2d"
+# 使用统一的 Live2D 模型目录（用户目录）
+ASSETS_LIVE2D_DIR = LIVE2D_MODELS_DIR
 
 
 def validate_live2d_model(model_path: str) -> tuple[bool, str, list[str]]:

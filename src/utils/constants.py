@@ -1,15 +1,83 @@
 # Constants
+import os
+import shutil
 from pathlib import Path
 from typing import Union
+import platform
 
-# 项目根目录
+# 项目根目录（代码所在位置，用于读取默认资源）
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
-# 数据目录
-DATA_DIR = PROJECT_ROOT / "data"
-ASSETS_DIR = PROJECT_ROOT / "assets"
+
+def get_user_data_dir() -> Path:
+    """获取跨平台的用户数据目录
+    
+    macOS: ~/Kizuna
+    Windows: %USERPROFILE%\\Kizuna
+    Linux: ~/Kizuna
+    
+    Returns:
+        用户数据目录路径
+    """
+    home = Path.home()
+    app_name = "Kizuna"
+    
+    system = platform.system()
+    if system == "Windows":
+        # Windows: C:\\Users\\用户名\\Kizuna
+        user_data = Path(os.environ.get("USERPROFILE", home)) / app_name
+    else:
+        # macOS/Linux: ~/Kizuna
+        user_data = home / app_name
+    
+    return user_data
+
+
+def _init_user_data_dir():
+    """初始化用户数据目录，用户目录下没有对应文件夹时从项目目录复制"""
+    user_data = get_user_data_dir()
+    project_data = PROJECT_ROOT / "data"
+    project_assets = PROJECT_ROOT / "assets"
+    
+    # 如果 data 目录不存在，从项目复制
+    data_target = user_data / "data"
+    if not data_target.exists() and project_data.exists():
+        shutil.copytree(project_data, data_target)
+    
+    # 确保 assets 子目录存在
+    (user_data / "assets").mkdir(parents=True, exist_ok=True)
+    
+    # 如果 live2d 目录不存在，从项目复制
+    live2d_target = user_data / "assets" / "live2d"
+    if not live2d_target.exists() and (project_assets / "live2d").exists():
+        shutil.copytree(project_assets / "live2d", live2d_target)
+    
+    # 如果 images 目录不存在，从项目复制
+    images_target = user_data / "assets" / "images"
+    if not images_target.exists() and (project_assets / "images").exists():
+        shutil.copytree(project_assets / "images", images_target)
+    
+    # 如果 emojis 目录不存在，从项目复制
+    emojis_target = user_data / "assets" / "emojis"
+    if not emojis_target.exists() and (project_assets / "emojis").exists():
+        shutil.copytree(project_assets / "emojis", emojis_target)
+
+
+# 初始化用户数据目录
+_init_user_data_dir()
+
+# 用户数据目录（配置、记忆等）
+USER_DATA_DIR = get_user_data_dir()
+
+# 数据目录 - 使用用户目录
+DATA_DIR = USER_DATA_DIR / "data"
+ASSETS_DIR = USER_DATA_DIR / "assets"
 LIVE2D_MODELS_DIR = ASSETS_DIR / "live2d"
 IMAGES_DIR = ASSETS_DIR / "images"
+EMOJIS_DIR = ASSETS_DIR / "emojis"
+
+# 项目内置资源目录（只读资源，如默认图标）
+BUILTIN_ASSETS_DIR = PROJECT_ROOT / "assets"
 
 # 数据文件
 CONFIG_FILE = DATA_DIR / "config.json"
@@ -24,6 +92,11 @@ TODO_FILE = DATA_DIR / "todos.json"
 def resolve_path(path: Union[str, Path]) -> Path:
     """解析路径，支持相对路径和绝对路径
     
+    优先级：
+    1. 如果是绝对路径且存在，直接返回
+    2. 尝试从用户数据目录解析
+    3. 尝试从项目目录解析（用于内置资源）
+    
     Args:
         path: 路径字符串或 Path 对象
         
@@ -36,31 +109,40 @@ def resolve_path(path: Union[str, Path]) -> Path:
     if path.is_absolute():
         if path.exists():
             return path
-        # 绝对路径但不存在，尝试从项目根目录查找
-        # 这处理了文件夹改名后绝对路径失效的情况
     
-    # 尝试相对于项目根目录解析
-    abs_path = PROJECT_ROOT / path
-    if abs_path.exists():
-        return abs_path
+    # 尝试相对于用户数据目录解析
+    user_path = USER_DATA_DIR / path
+    if user_path.exists():
+        return user_path
+    
+    # 尝试相对于项目根目录解析（用于内置资源）
+    project_path = PROJECT_ROOT / path
+    if project_path.exists():
+        return project_path
     
     # 如果路径包含 assets 或 data，尝试提取相对部分
     path_str = str(path)
     for prefix in ["assets", "data"]:
         if prefix in path_str:
-            # 提取 assets 或 data 之后的部分
             idx = path_str.find(prefix)
             relative_part = path_str[idx:]
-            new_path = PROJECT_ROOT / relative_part
-            if new_path.exists():
-                return new_path
+            
+            # 先尝试用户目录
+            user_path = USER_DATA_DIR / relative_part
+            if user_path.exists():
+                return user_path
+            
+            # 再尝试项目目录
+            project_path = PROJECT_ROOT / relative_part
+            if project_path.exists():
+                return project_path
     
-    # 都找不到，返回原始解析结果（让调用者处理不存在的情况）
-    return abs_path
+    # 默认返回用户数据目录下的路径（用于新建文件）
+    return user_path
 
 
 def get_relative_path(path: Union[str, Path]) -> str:
-    """将绝对路径转换为相对路径（相对于项目根目录）
+    """将绝对路径转换为相对路径（相对于用户数据目录）
     
     Args:
         path: 绝对路径
@@ -70,13 +152,17 @@ def get_relative_path(path: Union[str, Path]) -> str:
     """
     path = Path(path)
     try:
-        return str(path.relative_to(PROJECT_ROOT))
+        return str(path.relative_to(USER_DATA_DIR))
     except ValueError:
-        # 不在项目根目录下，返回原路径
-        return str(path)
+        try:
+            # 如果不在用户目录，尝试相对于项目目录
+            return str(path.relative_to(PROJECT_ROOT))
+        except ValueError:
+            # 都不在，返回原路径
+            return str(path)
 
 # 确保目录存在
-for dir_path in [DATA_DIR, LIVE2D_MODELS_DIR, IMAGES_DIR]:
+for dir_path in [DATA_DIR, LIVE2D_MODELS_DIR, IMAGES_DIR, EMOJIS_DIR]:
     dir_path.mkdir(parents=True, exist_ok=True)
 
 # 默认配置

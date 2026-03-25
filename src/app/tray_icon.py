@@ -9,6 +9,7 @@ from PySide6.QtGui import QIcon, QAction
 from PySide6.QtCore import Signal, QObject
 
 from utils import get_logger
+from utils.constants import IMAGES_DIR, BUILTIN_ASSETS_DIR
 
 logger = get_logger()
 
@@ -30,8 +31,12 @@ class TrayIcon(QObject):
 
     def _setup_tray(self):
         """设置托盘图标"""
-        # 设置托盘图标
-        icon_path = Path(__file__).parent.parent.parent / "assets" / "images" / "AI助手.png"
+        # 优先从用户目录查找图标，找不到则从项目内置资源查找
+        icon_filename = "AI助手.png"
+        icon_path = IMAGES_DIR / icon_filename
+        if not icon_path.exists():
+            icon_path = BUILTIN_ASSETS_DIR / "images" / icon_filename
+        
         if icon_path.exists():
             icon = QIcon(str(icon_path))
             self._tray.setIcon(icon)
