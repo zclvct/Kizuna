@@ -123,20 +123,11 @@ excludes = [
     'nbconvert',
     'nbformat',
     
-    # 网络相关（保留必要的）
-    'http.server',
-    'http.client',
-    'urllib3.util',
-    'requests.adapters',
-    'requests.packages',
-    
-    # 文档
-    'html.parser',
-    
-    # 编码和证书
-    'certifi',
-    'charset_normalizer',
-    'idna',
+    # 网络相关 - 不排除核心模块，requests/urllib3/langchain 依赖它们
+    # html.parser - langchain 用于解析 HTML
+    # certifi - requests 用于 HTTPS 证书验证
+    # charset_normalizer - requests 用于编码检测
+    # idna - requests 用于国际化域名
     
     # 其他工具
     'tqdm',
