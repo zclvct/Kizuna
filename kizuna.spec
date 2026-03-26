@@ -130,8 +130,7 @@ excludes = [
     'requests.adapters',
     'requests.packages',
     
-    # 邮件和文档
-    'email',
+    # 文档
     'html.parser',
     
     # 编码和证书
