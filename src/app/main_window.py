@@ -8,6 +8,8 @@ from PySide6.QtCore import Qt, QPoint, QTimer, Signal, QRect
 from PySide6.QtGui import QCursor, QColor, QPainterPath, QPainter, QPen, QBrush, QFont
 
 import sys
+import ctypes
+from ctypes import wintypes
 from pathlib import Path
 src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
@@ -287,6 +289,65 @@ class MainWindow(QMainWindow):
         # macOS 上设置特殊属性确保窗口行为正确
         if sys.platform == 'darwin':
             self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow, True)
+        
+        # Windows 上消除 DWM 阴影边框
+        QTimer.singleShot(0, self._fix_win_dwm_shadow)
+    
+    def _fix_win_dwm_shadow(self):
+        """彻底消除 Windows DWM 残留阴影/边框"""
+        if sys.platform != "win32":
+            return
+        
+        try:
+            # Windows API 常量
+            GWL_STYLE = -16
+            WS_CAPTION = 0x00C00000
+            WS_THICKFRAME = 0x00040000
+            SWP_NOMOVE = 0x0002
+            SWP_NOSIZE = 0x0001
+            SWP_NOZORDER = 0x0004
+            SWP_FRAMECHANGED = 0x0020
+            DWMWA_MICA_EFFECT = 1029
+            DWMWA_TRANSITIONS_FORCEDISABLED = 3
+            
+            # 加载 Windows API
+            user32 = ctypes.windll.user32
+            dwmapi = ctypes.windll.dwmapi
+            
+            hwnd = int(self.winId())
+            
+            # 1. 关闭 DWM 阴影和过渡效果
+            false_value = wintypes.BOOL(False)
+            dwmapi.DwmSetWindowAttribute(
+                hwnd, DWMWA_MICA_EFFECT, ctypes.byref(false_value), ctypes.sizeof(false_value)
+            )
+            dwmapi.DwmSetWindowAttribute(
+                hwnd, DWMWA_TRANSITIONS_FORCEDISABLED, ctypes.byref(false_value), ctypes.sizeof(false_value)
+            )
+            
+            # 2. 清空非客户区边距
+            class Margins(ctypes.Structure):
+                _fields_ = [("cxLeftWidth", ctypes.c_int),
+                            ("cxRightWidth", ctypes.c_int),
+                            ("cyTopHeight", ctypes.c_int),
+                            ("cyBottomHeight", ctypes.c_int)]
+            margins = Margins(0, 0, 0, 0)
+            dwmapi.DwmExtendFrameIntoClientArea(hwnd, ctypes.byref(margins))
+            
+            # 3. 移除系统边框样式
+            style = user32.GetWindowLongPtrW(hwnd, GWL_STYLE)
+            style &= ~(WS_THICKFRAME | WS_CAPTION)
+            user32.SetWindowLongPtrW(hwnd, GWL_STYLE, style)
+            
+            # 4. 强制刷新窗口样式
+            user32.SetWindowPos(
+                hwnd, 0, 0, 0, 0, 0,
+                SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED
+            )
+            
+            logger.info("已消除 Windows DWM 阴影边框")
+        except Exception as e:
+            logger.warning(f"消除 Windows DWM 阴影边框失败: {e}")
     
     def _restore_window_position(self):
         """恢复窗口位置"""
