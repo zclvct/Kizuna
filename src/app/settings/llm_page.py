@@ -168,8 +168,8 @@ class LLMProviderDialog(QDialog):
         
         # 主布局
         main_layout = QVBoxLayout(self)
-        main_layout.setContentsMargins(0, 0, 0, 0)
-        main_layout.setSpacing(0)
+        main_layout.setContentsMargins(20, 20, 20, 20)
+        main_layout.setSpacing(12)
         
         # 滚动区域
         scroll = QScrollArea()
@@ -201,7 +201,7 @@ class LLMProviderDialog(QDialog):
         content_widget.setStyleSheet("background: transparent;")
         layout = QVBoxLayout(content_widget)
         layout.setSpacing(12)
-        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setContentsMargins(0, 0, 0, 0)
         
         # 表单
         form_layout = QFormLayout()
@@ -294,7 +294,10 @@ class LLMProviderDialog(QDialog):
         
         layout.addStretch()
         
-        # 按钮
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
+        
+        # 按钮 - 放在滚动区域外面
         btn_layout = QHBoxLayout()
         btn_layout.addStretch()
         
@@ -307,10 +310,7 @@ class LLMProviderDialog(QDialog):
         save_btn.clicked.connect(self._save)
         btn_layout.addWidget(save_btn)
         
-        layout.addLayout(btn_layout)
-        
-        scroll.setWidget(content_widget)
-        main_layout.addWidget(scroll)
+        main_layout.addLayout(btn_layout)
     
     def _on_provider_changed(self, provider: str):
         """提供商类型变更时更新默认 Base URL"""
