@@ -212,28 +212,6 @@ Kizuna/
 └── kizuna.spec          # PyInstaller 配置
 ```
 
-### 本地打包
-
-```bash
-# macOS
-./build_mac.sh
-
-# Windows
-build_win.bat
-
-# 清理后重新打包
-./build_mac.sh --clean
-```
-
-### 发布版本
-
-```bash
-# 创建 tag 触发 GitHub Actions 自动打包
-./release.sh 1.0.0
-
-# 或手动
-git tag v1.0.0 && git push --tags
-```
 
 ---
 
