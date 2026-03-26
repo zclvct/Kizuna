@@ -442,8 +442,8 @@ class Live2DSettingsPage(QWidget):
             shutil.copytree(source_path, target_path)
             logger.info(f"模型已复制到: {target_path}")
 
-            # 使用相对路径保存
-            final_path = get_relative_path(target_path)
+            # 使用绝对路径保存
+            final_path = str(target_path.resolve())
 
         except Exception as e:
             logger.error(f"复制模型失败: {e}")

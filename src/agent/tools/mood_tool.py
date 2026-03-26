@@ -186,7 +186,7 @@ def add_mood(
         id=uuid.uuid4().hex[:8],
         mood=mood,
         category=category,
-        file_path=get_relative_path(dest_path),
+        file_path=str(dest_path.resolve()),
         description=description,
         duration=duration
     )

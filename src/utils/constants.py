@@ -2,6 +2,7 @@
 import os
 import sys
 import shutil
+import json
 from pathlib import Path
 from typing import Union
 import platform
@@ -68,6 +69,37 @@ def _init_user_data_dir():
     emojis_target = user_data / "assets" / "emojis"
     if not emojis_target.exists() and (project_assets / "emojis").exists():
         shutil.copytree(project_assets / "emojis", emojis_target)
+    
+    # 更新 config.json 中的模型路径为绝对路径
+    config_file = data_target / "config.json"
+    if config_file.exists():
+        try:
+            with open(config_file, 'r', encoding='utf-8') as f:
+                config_data = json.load(f)
+            
+            # 更新 live2d 模型路径为绝对路径
+            if 'live2d' in config_data and 'model_path' in config_data['live2d']:
+                model_path = config_data['live2d']['model_path']
+                if model_path:
+                    # 解析为绝对路径
+                    model_path_obj = Path(model_path)
+                    if not model_path_obj.is_absolute():
+                        # 相对路径，转换为绝对路径
+                        # 优先检查用户目录
+                        user_model_path = user_data / model_path
+                        if user_model_path.exists():
+                            config_data['live2d']['model_path'] = str(user_model_path.resolve())
+                        else:
+                            # 再检查项目目录
+                            project_model_path = PROJECT_ROOT / model_path
+                            if project_model_path.exists():
+                                config_data['live2d']['model_path'] = str(project_model_path.resolve())
+                    
+                    # 保存更新后的配置
+                    with open(config_file, 'w', encoding='utf-8') as f:
+                        json.dump(config_data, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"更新配置文件失败: {e}")
 
 
 # 初始化用户数据目录

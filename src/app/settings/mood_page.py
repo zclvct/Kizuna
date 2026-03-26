@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
     QFrame, QGridLayout, QScrollArea, QDialog,
     QFormLayout, QLineEdit, QComboBox, QPushButton,
     QMessageBox, QMenu, QSpinBox, QFileDialog,
-    QGroupBox, QSizePolicy
+    QGroupBox
 )
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QPixmap, QMovie
@@ -83,7 +83,11 @@ class MoodCard(QFrame):
     
     def _load_preview(self, label: QLabel):
         """加载预览图"""
-        file_path = Path(__file__).parent.parent.parent.parent / self.mood_entry.file_path
+        file_path = Path(self.mood_entry.file_path)
+        
+        # 如果是相对路径，转换为绝对路径
+        if not file_path.is_absolute():
+            file_path = Path(__file__).parent.parent.parent.parent / self.mood_entry.file_path
         
         if not file_path.exists():
             label.setText("❌")
@@ -131,43 +135,10 @@ class AddMoodDialog(QDialog):
     
     def _setup_ui(self):
         self.setWindowTitle("添加表情包")
-        self.setMinimumSize(400, 400)
+        self.setFixedSize(500, 500)
         self.setStyleSheet(ANIME_STYLE)
         
-        # 主布局
-        main_layout = QVBoxLayout(self)
-        main_layout.setContentsMargins(0, 0, 0, 0)
-        main_layout.setSpacing(0)
-        
-        # 滚动区域
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        scroll.setStyleSheet("""
-            QScrollArea {
-                border: none;
-                background: transparent;
-            }
-            QScrollBar:vertical {
-                border: none;
-                background: #f0f0f0;
-                width: 10px;
-                border-radius: 5px;
-            }
-            QScrollBar::handle:vertical {
-                background: #c0c0c0;
-                border-radius: 5px;
-                min-height: 20px;
-            }
-            QScrollBar::handle:vertical:hover {
-                background: #a0a0a0;
-            }
-        """)
-        
-        # 内容容器
-        content_widget = QWidget()
-        content_widget.setStyleSheet("background: transparent;")
-        layout = QVBoxLayout(content_widget)
+        layout = QVBoxLayout(self)
         layout.setSpacing(15)
         layout.setContentsMargins(20, 20, 20, 20)
         
@@ -242,9 +213,6 @@ class AddMoodDialog(QDialog):
         btn_layout.addWidget(save_btn)
         
         layout.addLayout(btn_layout)
-        
-        scroll.setWidget(content_widget)
-        main_layout.addWidget(scroll)
     
     def _on_category_changed(self):
         """类型分类改变时更新选项"""

@@ -1,8 +1,14 @@
 {
   "llm": {
+    "provider": "ollama",
+    "model": "qwen3.5:4B",
+    "api_key": null,
+    "base_url": "http://localhost:11434",
+    "temperature": 0.7,
+    "max_tokens": 2000
   },
   "live2d": {
-    "model_path": "assets/live2d/biaoqiang",
+    "model_path": "assets/live2d/aimierbeierding_2",
     "scale": 0.75,
     "default_motion": "idle_01"
   },
@@ -14,8 +20,8 @@
     "always_on_top": true,
     "sound_enabled": true,
     "log_level": "INFO",
-    "window_x": 1708,
-    "window_y": 700,
+    "window_x": 1692,
+    "window_y": 681,
     "window_width": 227,
     "window_height": 317,
     "draggable": true,
@@ -29,31 +35,18 @@
   },
   "llm_providers": {
     "providers": [
+      {
+        "name": "ollama",
+        "provider": "ollama",
+        "model": "qwen3.5:4B",
+        "api_key": "",
+        "base_url": "http://localhost:11434"
+      }
     ],
-    "default_index": 1
+    "default_index": 0
   },
   "live2d_models": {
     "models": [
-      {
-        "name": "aimierbeierding_2",
-        "path": "assets/live2d/aimierbeierding_2",
-        "motions": [
-          "complete",
-          "home",
-          "idle",
-          "login",
-          "mail",
-          "main_1",
-          "main_2",
-          "main_3",
-          "mission_complete",
-          "mission",
-          "touch_body",
-          "touch_head",
-          "touch_special",
-          "wedding"
-        ]
-      },
       {
         "name": "biaoqiang",
         "path": "assets/live2d/biaoqiang",
@@ -73,28 +66,8 @@
           "touch_special",
           "wedding"
         ]
-      },
-      {
-        "name": "chuixue_3",
-        "path": "assets/live2d/chuixue_3",
-        "motions": [
-          "complete",
-          "home",
-          "idle",
-          "login",
-          "mail",
-          "main_1",
-          "main_2",
-          "main_3",
-          "mission_complete",
-          "mission",
-          "touch_body",
-          "touch_head",
-          "touch_special",
-          "wedding"
-        ]
       }
     ],
-    "default_index": 1
+    "default_index": 0
   }
 }
