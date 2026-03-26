@@ -22,6 +22,7 @@ from agent.tools.mood_tool import (
     EMOJI_DIR, MOOD_TYPES, CATEGORY_MOOD, CATEGORY_ACTION
 )
 from utils import get_logger
+from utils.constants import resolve_path
 
 logger = get_logger()
 
@@ -83,11 +84,7 @@ class MoodCard(QFrame):
     
     def _load_preview(self, label: QLabel):
         """加载预览图"""
-        file_path = Path(self.mood_entry.file_path)
-        
-        # 如果是相对路径，转换为绝对路径
-        if not file_path.is_absolute():
-            file_path = Path(__file__).parent.parent.parent.parent / self.mood_entry.file_path
+        file_path = resolve_path(self.mood_entry.file_path)
         
         if not file_path.exists():
             label.setText("❌")

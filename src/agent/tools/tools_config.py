@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import json
 
 from utils import get_logger
+from utils.constants import DATA_DIR
 
 logger = get_logger()
 
@@ -21,7 +22,7 @@ class ToolsConfig:
     """工具配置管理"""
     
     def __init__(self):
-        self._config_file = Path(__file__).parent.parent.parent.parent / "data" / "tools.json"
+        self._config_file = DATA_DIR / "tools.json"
         self.tools: List[ToolItem] = []
         self._load()
     

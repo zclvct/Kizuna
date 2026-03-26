@@ -184,7 +184,7 @@ class GeneralSettingsPage(QWidget):
         info_label = QLabel(
             "<b>AI Friend</b> - 二次元桌面助手<br><br>"
             "版本: 1.0.0<br>"
-            "作者: AI Assistant<br><br>"
+            "作者: ZCCT<br><br>"
             "一个可爱的桌面宠物，陪伴你的每一天 ✨"
         )
         info_label.setStyleSheet("color: #666;")

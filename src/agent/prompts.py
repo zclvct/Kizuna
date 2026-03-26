@@ -6,20 +6,21 @@ import re
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from utils import get_logger, get_character_manager
+from utils.constants import DATA_DIR
 
 logger = get_logger()
 
 
 class PromptManager:
     """提示词管理器
-    
+
     负责加载和管理系统提示词和用户提示词
     """
-    
+
     def __init__(self):
         self.system_prompts: Dict[str, str] = {}
         self.user_prompts: Dict[str, str] = {}
-        self._base_dir = Path(__file__).parent.parent.parent / "data" / "prompts"
+        self._base_dir = DATA_DIR / "prompts"
         self._load_prompts()
     
     def _load_prompts(self):

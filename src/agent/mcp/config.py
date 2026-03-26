@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 
 from utils import get_logger
+from utils.constants import DATA_DIR
 
 logger = get_logger()
 
@@ -44,7 +45,7 @@ class MCPServerConfig:
     _instance: Optional["MCPServerConfig"] = None
     
     def __init__(self):
-        self._config_path = Path(__file__).parent.parent.parent.parent / "data" / "mcp_servers.json"
+        self._config_path = DATA_DIR / "mcp_servers.json"
         self.servers: List[MCPServer] = []
         self._load()
     
