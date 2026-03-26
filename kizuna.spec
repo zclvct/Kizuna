@@ -230,6 +230,7 @@ if sys.platform == 'darwin':
         info_plist={
             'NSHighResolutionCapable': True,
             'LSMinimumSystemVersion': '10.13',
+            'LSUIElement': True,
             'CFBundleShortVersionString': '1.0.0',
             'CFBundleVersion': '1.0.0',
             'NSHumanReadableCopyright': 'Copyright © 2024 Kizuna',

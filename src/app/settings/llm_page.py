@@ -264,20 +264,20 @@ class LLMProviderDialog(QDialog):
         temp_layout.addStretch()
         form_layout.addRow("Temperature:", temp_layout)
         
-        # Max Tokens - 使用滑块+数值输入（以K为单位）
+        # Max Tokens - 使用滑块+数值输入（以 token 为单位）
         tokens_layout = QHBoxLayout()
         self.tokens_slider = QSlider(Qt.Orientation.Horizontal)
-        self.tokens_slider.setRange(1, 256)  # 1K - 256K
-        self.tokens_slider.setValue(2)  # 默认 2K
+        self.tokens_slider.setRange(100, 32000)  # 100 - 32000 tokens
+        self.tokens_slider.setValue(2000)  # 默认 2000
+        self.tokens_slider.setSingleStep(500)
         self.tokens_slider.setMaximumWidth(150)
         self.tokens_slider.valueChanged.connect(self._on_tokens_slider_changed)
         
         self.tokens_spin = QSpinBox()
-        self.tokens_spin.setRange(1, 256)
-        self.tokens_spin.setSingleStep(1)
-        self.tokens_spin.setValue(2)
-        self.tokens_spin.setSuffix(" K")
-        self.tokens_spin.setMaximumWidth(80)
+        self.tokens_spin.setRange(100, 65536)
+        self.tokens_spin.setSingleStep(500)
+        self.tokens_spin.setValue(2000)
+        self.tokens_spin.setMaximumWidth(100)
         self.tokens_spin.valueChanged.connect(self._on_tokens_spin_changed)
         
         tokens_layout.addWidget(self.tokens_slider)
@@ -288,7 +288,7 @@ class LLMProviderDialog(QDialog):
         layout.addLayout(form_layout)
         
         # 参数说明
-        hint_label = QLabel("💡 Temperature 越高越随机，Max Tokens 限制输出长度（单位: K = 1000 tokens）")
+        hint_label = QLabel("💡 Temperature 越高越随机，Max Tokens 限制最大输出 token 数量")
         hint_label.setStyleSheet("color: #888; font-size: 10px;")
         layout.addWidget(hint_label)
         
@@ -346,7 +346,8 @@ class LLMProviderDialog(QDialog):
     def _on_tokens_spin_changed(self, value: int):
         """Max Tokens 数值变更"""
         self.tokens_slider.blockSignals(True)
-        self.tokens_slider.setValue(value)
+        # 滑块最大 32000，SpinBox 可输入到 65536
+        self.tokens_slider.setValue(min(value, self.tokens_slider.maximum()))
         self.tokens_slider.blockSignals(False)
     
     def _load_values(self):
@@ -362,11 +363,11 @@ class LLMProviderDialog(QDialog):
         self.temp_spin.setValue(temperature)
         self.temp_slider.setValue(int(temperature * 100))
         
-        # 加载 max_tokens（转换为 K 单位）
+        # 加载 max_tokens（直接使用 token 数值）
         max_tokens = self.provider_data.get('max_tokens', 2000)
-        tokens_k = max(1, min(256, max_tokens // 1000))  # 转换为 K，范围 1-256
-        self.tokens_spin.setValue(tokens_k)
-        self.tokens_slider.setValue(tokens_k)
+        max_tokens = max(100, min(65536, max_tokens))
+        self.tokens_spin.setValue(max_tokens)
+        self.tokens_slider.setValue(min(max_tokens, self.tokens_slider.maximum()))
     
     def _save(self):
         """保存"""
@@ -386,7 +387,7 @@ class LLMProviderDialog(QDialog):
         self.provider_data['api_key'] = self.api_key_edit.text().strip()
         self.provider_data['base_url'] = self.base_url_edit.text().strip()
         self.provider_data['temperature'] = self.temp_spin.value()
-        self.provider_data['max_tokens'] = self.tokens_spin.value() * 1000  # K 转换为实际值
+        self.provider_data['max_tokens'] = self.tokens_spin.value()
         
         self.accept()
     
