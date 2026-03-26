@@ -52,8 +52,6 @@ jobs:
           # 使用绝对路径设置图标
           ICON_PATH="$(pwd)/assets/images/icon.icns"
           sed -i '' "s|icon=None|icon='$ICON_PATH'|g" kizuna.spec
-          # 临时开启控制台用于调试
-          sed -i '' "s|console=False|console=True|g" kizuna.spec
           pyinstaller kizuna.spec --noconfirm
 
       - name: Debug - List app contents
@@ -115,8 +113,6 @@ jobs:
 
       - name: Build Windows exe
         run: |
-          # 临时开启控制台用于调试
-          sed -i 's/console=False/console=True/g' kizuna.spec
           pyinstaller kizuna.spec --noconfirm
 
       - name: Debug - Check build output
