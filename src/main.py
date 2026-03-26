@@ -30,41 +30,12 @@ if sys.platform == 'darwin':
     except Exception as e:
         print(f"⚠️ 设置 Dock 隐藏失败: {e}")
 
-# 直接导入模块，避免相对导入问题
-import utils
-import app
-import scheduler
-
-
-async def start_task_manager():
-    """启动任务管理器"""
-    task_manager = scheduler.get_task_manager()
-    await task_manager.start()
-    return task_manager
-
-
-def setup_task_callbacks(window, task_manager):
-    """设置任务回调"""
-    async def on_task_execute(task):
-        """任务执行回调"""
-        # 在主线程中更新 UI
-        if task.motion_id:
-            window.live2d_widget.play_motion(task.motion_id)
-        else:
-            window.live2d_widget.update_mood("happy")
-
-        # 如果对话窗口可见，显示消息
-        if window._chat_visible:
-            window.chat_widget._add_message_bubble(
-                f"📋 定时任务: {task.task_name}\n\n{task.action_prompt}",
-                is_user=False
-            )
-
-    task_manager.set_task_executor(on_task_execute)
-
 
 def main():
     """主函数"""
+    # 延迟导入 utils，避免启动时加载过多模块
+    import utils
+    
     # 初始化日志
     logger = utils.setup_logger()
     logger.info("=" * 50)
@@ -82,18 +53,7 @@ def main():
         is_first_run = char_manager.persona.is_first_run()
         logger.info(f"First run: {is_first_run}")
 
-        # 初始化 LangChain Agent（替代原有的 ToolManager 和 Orchestrator 初始化）
-        from agent import get_core
-        core = get_core()
-        logger.info(f"LangChain Agent 已初始化，工具数: {len(core.get_enabled_tool_names())}")
-
-        # 清空对话历史（每次启动重新开始）
-        from chat import get_conversation_manager
-        conversation_manager = get_conversation_manager()
-        conversation_manager.clear()
-        logger.info("对话历史已清空")
-
-        # 创建应用
+        # 创建应用（先创建 Qt 应用，尽快显示窗口）
         qt_app = QApplication(sys.argv)
         qt_app.setApplicationName("AI Friend")
         qt_app.setQuitOnLastWindowClosed(False)
@@ -107,6 +67,9 @@ def main():
             except Exception as e:
                 print(f"⚠️ 再次设置 Dock 隐藏失败: {e}")
 
+        # 延迟导入 UI 模块
+        import app
+        
         # 创建主窗口
         window = app.MainWindow()
         window.show()
@@ -126,13 +89,55 @@ def main():
         except Exception as e:
             logger.warning(f"系统托盘创建失败: {e}，继续运行")
 
-        # 启动任务管理器（异步）
-        task_manager = scheduler.get_task_manager()
-
-        # 使用 QTimer 延迟启动异步任务
-        def start_async_tasks():
-            """启动异步任务"""
+        # 延迟初始化 Agent（在窗口显示后）
+        def init_agent():
+            """延迟初始化 Agent"""
             try:
+                from agent import get_core
+                from chat import get_conversation_manager
+                
+                core = get_core()
+                logger.info(f"LangChain Agent 已初始化，工具数: {len(core.get_enabled_tool_names())}")
+
+                # 清空对话历史（每次启动重新开始）
+                conversation_manager = get_conversation_manager()
+                conversation_manager.clear()
+                logger.info("对话历史已清空")
+                
+                # 初始化 MCP 工具
+                async def init_mcp():
+                    try:
+                        await core.initialize_mcp_tools()
+                        logger.info("MCP 工具已初始化")
+                    except Exception as e:
+                        logger.warning(f"MCP 工具初始化失败: {e}")
+                
+                # 启动 MCP 初始化
+                import threading
+                loop = asyncio.new_event_loop()
+                
+                def run_loop():
+                    asyncio.set_event_loop(loop)
+                    loop.run_forever()
+                
+                thread = threading.Thread(target=run_loop, daemon=True)
+                thread.start()
+                
+                asyncio.run_coroutine_threadsafe(init_mcp(), loop)
+                
+            except Exception as e:
+                logger.error(f"Agent 初始化失败: {e}", exc_info=True)
+
+        # 延迟 300ms 初始化 Agent
+        QTimer.singleShot(300, init_agent)
+
+        # 延迟启动任务管理器
+        def start_task_manager():
+            """启动任务管理器"""
+            try:
+                import scheduler
+                task_manager = scheduler.get_task_manager()
+
                 try:
                     loop = asyncio.get_event_loop()
                 except RuntimeError:
@@ -141,26 +146,35 @@ def main():
 
                 if loop.is_running():
                     asyncio.create_task(task_manager.start())
-                    # 加载 MCP 工具
-                    asyncio.create_task(core.initialize_mcp_tools())
                 else:
-                    # 在单独线程中运行事件循环
                     import threading
                     def run_loop():
+                        asyncio.set_event_loop(loop)
                         loop.run_forever()
 
                     thread = threading.Thread(target=run_loop, daemon=True)
                     thread.start()
                     asyncio.run_coroutine_threadsafe(task_manager.start(), loop)
-                    # 加载 MCP 工具
-                    asyncio.run_coroutine_threadsafe(core.initialize_mcp_tools(), loop)
 
-                setup_task_callbacks(window, task_manager)
+                # 设置任务回调
+                async def on_task_execute(task):
+                    if task.motion_id:
+                        window.live2d_widget.play_motion(task.motion_id)
+                    else:
+                        window.live2d_widget.update_mood("happy")
+
+                    if window._chat_visible:
+                        window.chat_widget._add_message_bubble(
+                            f"📋 定时任务: {task.task_name}\n\n{task.action_prompt}",
+                            is_user=False
+                        )
+
+                task_manager.set_task_executor(on_task_execute)
                 logger.info("任务管理器已启动")
             except Exception as e:
                 logger.error(f"任务管理器启动失败: {e}")
 
-        QTimer.singleShot(500, start_async_tasks)
+        QTimer.singleShot(500, start_task_manager)
 
         if is_first_run:
             logger.info("第一次运行，显示问候")
@@ -172,6 +186,9 @@ def main():
         return qt_app.exec()
 
     except Exception as e:
+        # 延迟导入 logger
+        import utils
+        logger = utils.get_logger()
         logger.error(f"应用启动失败: {e}", exc_info=True)
         # 尝试显示错误对话框
         try:

@@ -8,7 +8,7 @@
     "max_tokens": 2000
   },
   "live2d": {
-    "model_path": "assets/live2d/aimierbeierding_2",
+    "model_path": "assets/live2d/biaoqiang",
     "scale": 0.75,
     "default_motion": "idle_01"
   },
