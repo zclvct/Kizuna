@@ -93,31 +93,90 @@ if sys.platform == 'win32':
         'win32con',
     ])
 
-# 排除不必要的模块以减小体积
+# 排除不必要的模块以减小体积（关键优化！）
 excludes = [
+    # GUI 框架（只保留 PySide6）
     'tkinter',
-    'matplotlib',
-    'numpy.f2py',
-    'scipy',
-    'pandas',
-    'jupyter',
-    'IPython',
     'PyQt5',
     'PyQt6',
     'PyQt4',
     'PySide',
     'PySide2',
+    
+    # 数据科学（项目不需要）
+    'matplotlib',
+    'numpy.f2py',
+    'scipy',
+    'pandas',
+    'statsmodels',
+    'sympy',
+    
+    # 开发工具
     'pytest',
     'sphinx',
     'docutils',
+    'IPython',
+    'jupyter',
+    'notebook',
+    'jupyter_client',
+    'jupyter_core',
+    'nbconvert',
+    'nbformat',
+    
+    # 网络相关（保留必要的）
+    'http.server',
+    'http.client',
+    'urllib3.util',
+    'requests.adapters',
+    'requests.packages',
+    
+    # 邮件和文档
     'email',
-    'html',
-    'http',
-    'urllib3',
+    'html.parser',
+    
+    # 编码和证书
     'certifi',
     'charset_normalizer',
     'idna',
+    
+    # 其他工具
     'tqdm',
+    'PIL',
+    'pillow',
+    'cv2',
+    'opencv',
+    'sklearn',
+    'torch',
+    'tensorflow',
+    'keras',
+    
+    # PySide6 不常用的模块
+    'PySide6.QtBluetooth',
+    'PySide6.QtCharts',
+    'PySide6.QtDataVisualization',
+    'PySide6.QtDesigner',
+    'PySide6.QtHelp',
+    'PySide6.QtLocation',
+    'PySide6.QtMultimedia',
+    'PySide6.QtMultimediaWidgets',
+    'PySide6.QtNetwork',
+    'PySide6.QtNfc',
+    'PySide6.QtPositioning',
+    'PySide6.QtQuick',
+    'PySide6.QtQuickWidgets',
+    'PySide6.QtRemoteObjects',
+    'PySide6.QtScript',
+    'PySide6.QtScxml',
+    'PySide6.QtSensors',
+    'PySide6.QtSerialPort',
+    'PySide6.QtSql',
+    'PySide6.QtSvg',
+    'PySide6.QtTest',
+    'PySide6.QtTextToSpeech',
+    'PySide6.QtWebChannel',
+    'PySide6.QtWebEngine',
+    'PySide6.QtWebSockets',
+    'PySide6.QtXml',
 ]
 
 a = Analysis(
@@ -148,7 +207,7 @@ exe = EXE(
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
+    upx=False,  # macOS 上 UPX 可能导致问题，禁用
     console=False,  # 不显示控制台窗口
     disable_windowed_traceback=False,
     argv_emulation=False,
@@ -165,7 +224,7 @@ coll = COLLECT(
     a.zipfiles,
     a.datas,
     strip=False,
-    upx=True,
+    upx=False,  # macOS 上 UPX 可能导致问题，禁用
     upx_exclude=[],
     name='Kizuna',
 )

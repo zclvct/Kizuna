@@ -119,6 +119,13 @@ if [ -d "$APP_PATH" ]; then
     APP_SIZE=$(du -sh "$APP_PATH" | awk '{print $1}')
     echo -e "${GREEN}应用大小: $APP_SIZE${NC}"
     
+    # 分析体积占用
+    echo -e "${BLUE}分析应用体积...${NC}"
+    echo -e "${YELLOW}主要模块大小:${NC}"
+    du -sh "$APP_PATH/Contents/MacOS/Kizuna"/*.pyd 2>/dev/null | sort -hr | head -5
+    du -sh "$APP_PATH/Contents/MacOS/Kizuna"/PySide6 2>/dev/null
+    du -sh "$APP_PATH/Contents/MacOS/Kizuna"/langchain* 2>/dev/null
+    
     # 创建 DMG（可选）
     echo -e "${BLUE}创建 DMG 安装包...${NC}"
     DMG_PATH="$PROJECT_ROOT/dist/Kizuna.dmg"
