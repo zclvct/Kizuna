@@ -88,6 +88,25 @@ class ToolsSettingsPage(QWidget):
                 background-color: #e8f4ff;
                 color: #333;
             }
+            QListWidget::indicator {
+                width: 18px;
+                height: 18px;
+                border-radius: 4px;
+                border: 2px solid #ccc;
+                background-color: white;
+            }
+            QListWidget::indicator:checked {
+                background-color: #5c9eff;
+                border-color: #5c9eff;
+            }
+            QListWidget::indicator:unchecked {
+                background-color: white;
+                border-color: #ccc;
+            }
+            QListWidget::indicator:unchecked:hover {
+                border-color: #5c9eff;
+                background-color: #f0f7ff;
+            }
         """)
         layout.addWidget(self.tools_list)
         

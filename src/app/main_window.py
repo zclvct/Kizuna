@@ -134,12 +134,13 @@ class ChatBubbleWindow(QWidget):
         self.setMinimumSize(300, 350)
         self.resize(380, 450)
         
-        # 窗口阴影
-        shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(25)
-        shadow.setColor(QColor(150, 200, 255, 80))
-        shadow.setOffset(0, 5)
-        self.setGraphicsEffect(shadow)
+        # 窗口阴影 - 仅在非 Windows 平台上启用（Windows 上会有灰色边框问题）
+        if sys.platform != 'win32':
+            shadow = QGraphicsDropShadowEffect()
+            shadow.setBlurRadius(25)
+            shadow.setColor(QColor(150, 200, 255, 80))
+            shadow.setOffset(0, 5)
+            self.setGraphicsEffect(shadow)
     
     def _on_response_received(self):
         """收到模型回复"""

@@ -97,13 +97,19 @@ QCheckBox::indicator {
     height: 18px;
     border-radius: 4px;
     border: 2px solid #ccc;
+    background-color: white;
 }
 QCheckBox::indicator:checked {
     background-color: #5c9eff;
     border-color: #5c9eff;
 }
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border-color: #ccc;
+}
 QCheckBox::indicator:unchecked:hover {
     border-color: #5c9eff;
+    background-color: #f0f7ff;
 }
 QGroupBox {
     border: 2px solid #e0e0e0;

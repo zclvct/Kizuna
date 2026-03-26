@@ -176,11 +176,6 @@ def main():
 
         QTimer.singleShot(500, start_task_manager)
 
-        if is_first_run:
-            logger.info("第一次运行，显示问候")
-            # 第一次运行时自动打开对话窗口
-            QTimer.singleShot(1000, window._toggle_chat)
-
         logger.info("应用启动完成")
 
         return qt_app.exec()
