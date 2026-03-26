@@ -266,6 +266,9 @@ class MainWindow(QMainWindow):
         if not hasattr(self, '_position_restored'):
             self._position_restored = True
             self._restore_window_position()
+            # Windows 上消除 DWM 阴影边框（需要在窗口显示后执行）
+            if sys.platform == "win32":
+                QTimer.singleShot(100, self._fix_win_dwm_shadow)
 
     def _show_chat_initial(self):
         """延迟显示聊天窗口"""
@@ -289,9 +292,6 @@ class MainWindow(QMainWindow):
         # macOS 上设置特殊属性确保窗口行为正确
         if sys.platform == 'darwin':
             self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow, True)
-        
-        # Windows 上消除 DWM 阴影边框
-        QTimer.singleShot(0, self._fix_win_dwm_shadow)
     
     def _fix_win_dwm_shadow(self):
         """彻底消除 Windows DWM 残留阴影/边框"""
@@ -301,8 +301,10 @@ class MainWindow(QMainWindow):
         try:
             # Windows API 常量
             GWL_STYLE = -16
+            GWL_EXSTYLE = -20
             WS_CAPTION = 0x00C00000
             WS_THICKFRAME = 0x00040000
+            WS_EX_LAYERED = 0x00080000
             SWP_NOMOVE = 0x0002
             SWP_NOSIZE = 0x0001
             SWP_NOZORDER = 0x0004
@@ -325,26 +327,35 @@ class MainWindow(QMainWindow):
                 hwnd, DWMWA_TRANSITIONS_FORCEDISABLED, ctypes.byref(false_value), ctypes.sizeof(false_value)
             )
             
-            # 2. 清空非客户区边距
+            # 2. 扩展客户区到整个窗口（使用 -1 边距）
             class Margins(ctypes.Structure):
                 _fields_ = [("cxLeftWidth", ctypes.c_int),
                             ("cxRightWidth", ctypes.c_int),
                             ("cyTopHeight", ctypes.c_int),
                             ("cyBottomHeight", ctypes.c_int)]
-            margins = Margins(0, 0, 0, 0)
+            margins = Margins(-1, -1, -1, -1)
             dwmapi.DwmExtendFrameIntoClientArea(hwnd, ctypes.byref(margins))
             
-            # 3. 移除系统边框样式
+            # 3. 移除系统边框样式，添加分层窗口样式
             style = user32.GetWindowLongPtrW(hwnd, GWL_STYLE)
             style &= ~(WS_THICKFRAME | WS_CAPTION)
             user32.SetWindowLongPtrW(hwnd, GWL_STYLE, style)
             
-            # 4. 强制刷新窗口样式
+            # 4. 确保分层窗口样式
+            ex_style = user32.GetWindowLongPtrW(hwnd, GWL_EXSTYLE)
+            ex_style |= WS_EX_LAYERED
+            user32.SetWindowLongPtrW(hwnd, GWL_EXSTYLE, ex_style)
+            
+            # 5. 强制刷新窗口样式
             user32.SetWindowPos(
                 hwnd, 0, 0, 0, 0, 0,
                 SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED
             )
             
+            logger.info("已消除 Windows DWM 阴影边框")
+        except Exception as e:
+            logger.warning(f"消除 Windows DWM 阴影边框失败: {e}")
+    
             logger.info("已消除 Windows DWM 阴影边框")
         except Exception as e:
             logger.warning(f"消除 Windows DWM 阴影边框失败: {e}")
