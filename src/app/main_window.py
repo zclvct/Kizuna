@@ -34,12 +34,13 @@ class ChatBubbleWindow(QWidget):
     def __init__(self):
         super().__init__()
         flags = (
-            Qt.WindowType.FramelessWindowHint |
-            Qt.WindowType.WindowStaysOnTopHint |
-            Qt.WindowType.Tool
+                Qt.WindowType.FramelessWindowHint |
+                Qt.WindowType.WindowStaysOnTopHint |
+                Qt.WindowType.Tool
         )
         self.setWindowFlags(flags)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        self.setAttribute(Qt.WidgetAttribute.WA_NoSystemBackground, True)
         self._arrow_on_left = True
         self._resizing = False
         self._resize_start_pos = None
@@ -71,11 +72,11 @@ class ChatBubbleWindow(QWidget):
                 border-top-right-radius: 18px;
             }
         """)
-        
+
         title_layout = QHBoxLayout(title_bar)
         title_layout.setContentsMargins(15, 8, 10, 8)
         title_layout.setSpacing(8)
-        
+
         # 标题
         title_label = QLabel("💬 对话")
         title_label.setFont(QFont("Arial", 12, QFont.Weight.Bold))
@@ -85,9 +86,9 @@ class ChatBubbleWindow(QWidget):
             text-shadow: 0px 1px 2px rgba(0,0,0,0.1);
         """)
         title_layout.addWidget(title_label)
-        
+
         title_layout.addStretch()
-        
+
         # 关闭按钮
         close_btn = QPushButton("✕")
         close_btn.setObjectName("closeBtn")
@@ -111,9 +112,9 @@ class ChatBubbleWindow(QWidget):
             }
         """)
         title_layout.addWidget(close_btn)
-        
+
         content_layout.addWidget(title_bar)
-        
+
         # 聊天内容区域
         chat_container = QWidget()
         chat_container.setStyleSheet("""
@@ -123,19 +124,19 @@ class ChatBubbleWindow(QWidget):
         """)
         chat_layout = QVBoxLayout(chat_container)
         chat_layout.setContentsMargins(10, 5, 10, 10)
-        
+
         self.chat_widget = ChatWidget()
         self.chat_widget.response_received.connect(self._on_response_received)
         chat_layout.addWidget(self.chat_widget)
-        
+
         content_layout.addWidget(chat_container)
-        
+
         main_layout.addWidget(content_widget)
-        
+
         # 设置最小尺寸和默认尺寸（可调整大小）
         self.setMinimumSize(300, 350)
         self.resize(380, 450)
-        
+
         # 窗口阴影 - 仅在非 Windows 平台上启用（Windows 上会有灰色边框问题）
         if sys.platform != 'win32':
             shadow = QGraphicsDropShadowEffect()
@@ -143,20 +144,20 @@ class ChatBubbleWindow(QWidget):
             shadow.setColor(QColor(150, 200, 255, 80))
             shadow.setOffset(0, 5)
             self.setGraphicsEffect(shadow)
-    
+
     def _on_response_received(self):
         """收到模型回复"""
         pass
-    
+
     def paintEvent(self, event):
         """绘制圆角背景和箭头"""
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        
+
         # 绘制箭头指向
         painter.setBrush(QBrush(QColor(255, 255, 255, 250)))
         painter.setPen(QPen(QColor(230, 230, 230), 1))
-        
+
         triangle = QPainterPath()
         if self._arrow_on_left:
             triangle.moveTo(0, 55)
@@ -167,7 +168,7 @@ class ChatBubbleWindow(QWidget):
             triangle.lineTo(self.width() + 12, 65)
             triangle.lineTo(self.width(), 75)
         painter.drawPath(triangle)
-        
+
         # 绘制右下角调整大小的手柄
         grip_size = 16
         painter.setPen(QPen(QColor(200, 200, 200), 1))
@@ -182,20 +183,20 @@ class ChatBubbleWindow(QWidget):
         self.move(global_pos)
         self.show()
         self.activateWindow()
-    
+
     def hideEvent(self, event):
         """窗口隐藏事件"""
         super().hideEvent(event)
         # 发出关闭信号，通知主窗口更新状态
         self.closed.emit()
-    
+
     def mousePressEvent(self, event):
         """鼠标按下 - 检查是否在调整大小区域"""
         if event.button() == Qt.MouseButton.LeftButton:
             # 检查是否在右下角调整大小区域
             grip_margin = 20
             if (event.position().x() >= self.width() - grip_margin and
-                event.position().y() >= self.height() - grip_margin):
+                    event.position().y() >= self.height() - grip_margin):
                 self._resizing = True
                 self._resize_start_pos = event.globalPosition().toPoint()
                 self._resize_start_geometry = self.geometry()
@@ -203,13 +204,13 @@ class ChatBubbleWindow(QWidget):
                 event.accept()
                 return
         super().mousePressEvent(event)
-    
+
     def mouseMoveEvent(self, event):
         """鼠标移动 - 调整大小或显示调整光标"""
         grip_margin = 20
         in_grip_area = (event.position().x() >= self.width() - grip_margin and
                         event.position().y() >= self.height() - grip_margin)
-        
+
         if self._resizing and self._resize_start_geometry:
             # 计算新的尺寸
             delta = event.globalPosition().toPoint() - self._resize_start_pos
@@ -220,7 +221,7 @@ class ChatBubbleWindow(QWidget):
             self.setCursor(Qt.CursorShape.SizeFDiagCursor)
         else:
             self.setCursor(Qt.CursorShape.ArrowCursor)
-    
+
     def mouseReleaseEvent(self, event):
         """鼠标释放 - 结束调整大小"""
         if self._resizing:
@@ -237,7 +238,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         logger.info("MainWindow.__init__ 开始")
-        
+
         self.config = get_config()
         self.character_manager = get_character_manager()
         self.task_manager = get_task_manager()
@@ -248,7 +249,7 @@ class MainWindow(QMainWindow):
 
         set_motion_callback(self._on_global_motion)
         set_emoji_callback(self._on_show_emoji)
-        
+
         self._setup_window_flags()
         self._setup_ui()
         self._setup_context_menu()
@@ -258,7 +259,7 @@ class MainWindow(QMainWindow):
         # 第一次启动时自动显示对话窗口
         if self.character_manager.persona.is_first_run():
             QTimer.singleShot(200, self._show_chat_initial)
-    
+
     def showEvent(self, event):
         """窗口显示事件 - 在此处恢复位置"""
         super().showEvent(event)
@@ -278,130 +279,121 @@ class MainWindow(QMainWindow):
     def _setup_window_flags(self):
         """设置窗口标志"""
         flags = Qt.WindowType.FramelessWindowHint
-        
+
         # 根据配置设置是否置顶
         if self.config.general.always_on_top:
             flags |= Qt.WindowType.WindowStaysOnTopHint
-        
+
         # 使用 Tool 标志，使窗口不在任务栏/扩展坞显示
         flags |= Qt.WindowType.Tool
-        
+
         self.setWindowFlags(flags)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        
+        self.setAttribute(Qt.WidgetAttribute.WA_NoSystemBackground, True)
+
         # macOS 上设置特殊属性确保窗口行为正确
         if sys.platform == 'darwin':
             self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow, True)
 
     def _fix_win_dwm_shadow(self):
-        """彻底消除 Windows DWM 残留阴影/边框（完整版修复）"""
+        """彻底消除 Windows DWM 残留阴影/边框（终极修复版）"""
         if sys.platform != "win32":
             return
 
         try:
-            user32 = ctypes.WinDLL('user32', use_last_error=True)
-            dwmapi = ctypes.WinDLL('dwmapi', use_last_error=True)
+            user32 = ctypes.WinDLL("user32", use_last_error=True)
+            dwmapi = ctypes.WinDLL("dwmapi", use_last_error=True)
 
-            hwnd = int(self.winId())
+            hwnd = wintypes.HWND(int(self.winId()))
 
-            # 窗口样式常量
-            GWL_STYLE = -16
-            GWL_EXSTYLE = -20
-            WS_CAPTION = 0x00C00000
-            WS_THICKFRAME = 0x00040000
-            WS_EX_DLGMODALFRAME = 0x00000001
-            WS_EX_WINDOWEDGE = 0x00000100
-            WS_EX_CLIENTEDGE = 0x00000200
-            WS_EX_STATICEDGE = 0x00020000
-            SWP_NOMOVE = 0x0002
-            SWP_NOSIZE = 0x0001
-            SWP_NOZORDER = 0x0004
-            SWP_FRAMECHANGED = 0x0020
-
-            # DWM 属性：彻底关闭窗口阴影
             DWMWA_NCRENDERING_POLICY = 2
             DWMNCRP_DISABLED = 1
             DWMWA_TRANSITIONS_FORCEDISABLED = 3
 
-            # 1. 禁用 DWM 非客户区渲染（关闭阴影）
-            policy = ctypes.c_int(DWMNCRP_DISABLED)
+            # 1. 禁用 DWM 非客户区渲染（彻底关闭阴影）
+            val = ctypes.c_int(DWMNCRP_DISABLED)
             dwmapi.DwmSetWindowAttribute(
                 hwnd, DWMWA_NCRENDERING_POLICY,
-                ctypes.byref(policy), ctypes.sizeof(policy)
+                ctypes.byref(val), ctypes.sizeof(val)
             )
 
-            # 2. 禁用窗口过渡效果
-            disable = ctypes.c_int(1)
+            # 2. 禁用过渡效果
+            val = ctypes.c_int(1)
             dwmapi.DwmSetWindowAttribute(
                 hwnd, DWMWA_TRANSITIONS_FORCEDISABLED,
-                ctypes.byref(disable), ctypes.sizeof(disable)
+                ctypes.byref(val), ctypes.sizeof(val)
             )
 
-            # 3. 移除所有系统边框样式
+            # 3. 移除所有系统边框
+            GWL_STYLE = -16
+            GWL_EXSTYLE = -20
+            WS_CAPTION = 0x00C00000
+            WS_THICKFRAME = 0x00040000
+            WS_EX_WINDOWEDGE = 0x00000100
+            WS_EX_CLIENTEDGE = 0x00000200
+
             style = user32.GetWindowLongPtrW(hwnd, GWL_STYLE)
             style &= ~(WS_CAPTION | WS_THICKFRAME)
             user32.SetWindowLongPtrW(hwnd, GWL_STYLE, style)
 
-            # 4. 移除所有扩展边框/边缘样式
             ex_style = user32.GetWindowLongPtrW(hwnd, GWL_EXSTYLE)
-            ex_style &= ~(WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE |
-                          WS_EX_CLIENTEDGE | WS_EX_STATICEDGE)
+            ex_style &= ~(WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE)
             user32.SetWindowLongPtrW(hwnd, GWL_EXSTYLE, ex_style)
 
-            # 5. 强制刷新窗口样式
+            # 4. 强制刷新窗口
             user32.SetWindowPos(
-                hwnd, None, 0, 0, 0, 0,
-                SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED
+                hwnd, 0, 0, 0, 0, 0,
+                0x0001 | 0x0002 | 0x0004 | 0x0020
             )
 
-            logger.info("✅ Windows 阴影边框已彻底移除")
+            logger.info("✅ Windows 边框已彻底移除")
 
         except Exception as e:
-            logger.warning(f"❌ 移除边框失败: {e}")
-    
+            logger.warning(f"移除边框失败: {e}")
+
     def _restore_window_position(self):
         """恢复窗口位置"""
         x = self.config.general.window_x
         y = self.config.general.window_y
-        
+
         logger.info(f"尝试恢复窗口位置: ({x}, {y})")
-        
+
         # 检查保存的位置是否在任意屏幕内
         screens = QApplication.screens()
         target_screen = None
-        
+
         for screen in screens:
             screen_geo = screen.geometry()
             if screen_geo.contains(QPoint(x, y)):
                 target_screen = screen
                 break
-        
+
         # 如果找不到对应屏幕，使用主屏幕
         if target_screen is None:
             target_screen = QApplication.primaryScreen()
             logger.info(f"位置不在任何屏幕内，使用主屏幕")
-        
+
         # 使用可用区域（排除任务栏/停靠栏）
         available_rect = target_screen.availableGeometry()
         screen_geo = target_screen.geometry()
-        
+
         logger.info(f"目标屏幕可用区域: {available_rect}, 屏幕几何: {screen_geo}")
-        
+
         # 确保窗口在屏幕可见范围内
         # 使用屏幕几何区域作为边界，而不是可用区域（避免位置被过度调整）
         min_x = screen_geo.left()
         max_x = screen_geo.right() - self.width()
         min_y = screen_geo.top()
         max_y = screen_geo.bottom() - self.height()
-        
+
         # 如果保存的位置在可用区域内，直接使用
         # 否则，限制在屏幕边界内
         x = max(min_x, min(x, max_x))
         y = max(min_y, min(y, max_y))
-        
+
         self.move(x, y)
         logger.info(f"窗口位置恢复至: ({x}, {y})")
-    
+
     def _save_window_position(self):
         """保存窗口位置和大小"""
         pos = self.pos()
@@ -417,6 +409,7 @@ class MainWindow(QMainWindow):
         central = QWidget()
         self.setCentralWidget(central)
         central.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        central.setAttribute(Qt.WidgetAttribute.WA_NoSystemBackground, True)
 
         layout = QVBoxLayout(central)
         layout.setContentsMargins(5, 5, 5, 5)
@@ -433,10 +426,10 @@ class MainWindow(QMainWindow):
         self.chat_bubble = ChatBubbleWindow()
         self.chat_bubble.chat_widget.response_received.connect(self._on_response_received)
         self.chat_bubble.closed.connect(self._on_chat_closed)
-        
+
         # 表情包气泡 - 独立窗口
         self.emoji_bubble = EmojiBubble()
-        
+
         # 尝试从配置恢复窗口大小，否则使用默认值
         saved_width = self.config.general.window_width
         saved_height = self.config.general.window_height
@@ -461,48 +454,48 @@ class MainWindow(QMainWindow):
         """处理 Live2D 控件大小变化"""
         # 保存当前窗口位置
         current_pos = self.pos()
-        
+
         # 调整主窗口大小（添加边距）
         window_margin = 20
         new_width = width + window_margin
         new_height = height + window_margin
-        
+
         # 设置新窗口大小
         self.setFixedSize(new_width, new_height)
-        
+
         # 更新配置中的窗口大小
         self.config.general.window_width = new_width
         self.config.general.window_height = new_height
-        
+
         # 确保窗口位置在屏幕范围内
         screen = QApplication.screenAt(current_pos)
         if screen is None:
             screen = QApplication.primaryScreen()
         screen_rect = screen.availableGeometry()
-        
+
         # 调整位置，确保窗口不超出屏幕
         new_x = current_pos.x()
         new_y = current_pos.y()
-        
+
         # 如果窗口右边界超出屏幕，调整位置
         if new_x + new_width > screen_rect.right():
             new_x = screen_rect.right() - new_width
-        
+
         # 如果窗口下边界超出屏幕，调整位置
         if new_y + new_height > screen_rect.bottom():
             new_y = screen_rect.bottom() - new_height
-        
+
         # 确保不超出左边界和上边界
         new_x = max(screen_rect.left(), new_x)
         new_y = max(screen_rect.top(), new_y)
-        
+
         # 移动窗口到新位置
         self.move(new_x, new_y)
-        
+
         # 更新聊天气泡位置
         if self._chat_visible:
             self._update_bubble_position()
-        
+
         logger.info(f"主窗口大小调整为: {new_width}x{new_height}")
 
     def _setup_context_menu(self):
@@ -551,26 +544,26 @@ class MainWindow(QMainWindow):
         screen_rect = self._get_available_screen()
         bubble_width = self.chat_bubble.width()
         bubble_height = self.chat_bubble.height()
-        
+
         # 默认放在右侧
         bubble_x = model_rect.right() + 15
         bubble_y = model_rect.top() + 30
         arrow_on_left = True
-        
+
         # 检查右侧是否超出屏幕
         if bubble_x + bubble_width > screen_rect.right():
             bubble_x = model_rect.left() - bubble_width - 15
             arrow_on_left = False
-        
+
         if bubble_x < screen_rect.left():
             bubble_x = screen_rect.left()
             arrow_on_left = True
-        
+
         if bubble_y + bubble_height > screen_rect.bottom():
             bubble_y = screen_rect.bottom() - bubble_height - 10
         if bubble_y < screen_rect.top():
             bubble_y = screen_rect.top() + 10
-        
+
         return QPoint(bubble_x, bubble_y), arrow_on_left
 
     def _show_chat(self):
@@ -600,7 +593,7 @@ class MainWindow(QMainWindow):
     def _on_response_received(self):
         """收到模型回复时自动显示聊天窗口"""
         self._show_chat()
-    
+
     def _on_chat_closed(self):
         """聊天窗口被关闭（点击X按钮）"""
         self._chat_visible = False
@@ -618,13 +611,13 @@ class MainWindow(QMainWindow):
     def _on_global_motion(self, mood: str = None, intent: str = None, motion_id: str = None, new_mood: str = None):
         """全局动作回调"""
         from live2d_renderer.motion_controller import MotionController
-        
+
         if new_mood:
             self.live2d_widget.update_mood(new_mood)
 
         # 创建 MotionController 实例
         motion_controller = MotionController()
-        
+
         if motion_id:
             self.live2d_widget.play_motion(motion_id)
         elif intent:
@@ -647,22 +640,22 @@ class MainWindow(QMainWindow):
         """显示表情包回调"""
         logger.info(f"_on_show_emoji 被调用: {mood}")
         entry = get_mood_by_type(mood)
-        
+
         if not entry:
             logger.warning(f"未找到类型 {mood} 的表情包配置，请检查 data/moods.json")
             return
-        
+
         # 计算模型头顶位置（全局坐标）
         model_rect = self.geometry()
-        
+
         # 模型头顶位置：窗口中央偏上
         # Live2D 模型通常在窗口中央，头顶约在窗口顶部 20-30% 的位置
         head_x = model_rect.center().x()
         head_y = model_rect.top() + int(model_rect.height() * 0.15)  # 头顶位置
-        
+
         from PySide6.QtCore import QPoint
         model_head_pos = QPoint(head_x, head_y)
-        
+
         logger.info(f"准备显示表情包: {entry.file_path}, 模型头顶位置: {model_head_pos}")
         self.emoji_bubble.show_emoji(
             entry.file_path,
@@ -686,42 +679,42 @@ class MainWindow(QMainWindow):
         # 连接拖动状态变更信号
         dialog.draggable_changed.connect(self._on_draggable_changed)
         dialog.exec()
-    
+
     def _on_scale_changed(self, scale: float):
         """模型缩放变化"""
         # 调用 Live2DWidget 的缩放方法
         # 大小变化会通过 size_changed 信号自动传递
         self.live2d_widget.set_scale(scale)
         logger.info(f"模型缩放更新: {scale:.2f}x")
-    
+
     def _on_always_on_top_changed(self, always_on_top: bool):
         """窗口置顶状态变化"""
         # 保存当前窗口位置
         pos = self.pos()
-        
+
         # 重新设置窗口标志
         flags = Qt.WindowType.FramelessWindowHint
         if always_on_top:
             flags |= Qt.WindowType.WindowStaysOnTopHint
-        
+
         # 使用 Tool 标志，使窗口不在任务栏/扩展坞显示
         flags |= Qt.WindowType.Tool
-        
+
         self.setWindowFlags(flags)
-        
+
         # macOS 上设置特殊属性
         if sys.platform == 'darwin':
             self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow, True)
-        
+
         self.show()
         self.move(pos)
-        
+
         # 更新聊天气泡位置
         if self._chat_visible:
             self._update_bubble_position()
-        
+
         logger.info(f"窗口置顶状态更新: {always_on_top}")
-    
+
     def _on_draggable_changed(self, draggable: bool):
         """拖动状态变化"""
         if not draggable and self._dragging:
@@ -732,7 +725,6 @@ class MainWindow(QMainWindow):
     def _delayed_model_reload(self, model_path: str):
         """延迟重新加载模型"""
         QTimer.singleShot(100, lambda: self._on_model_changed(model_path))
-
 
     def _on_model_changed(self, model_path: str):
         """模型变更处理"""
@@ -761,11 +753,11 @@ class MainWindow(QMainWindow):
         # 保存窗口位置和配置
         self._save_window_position()
         self.config.save()
-        
+
         self.chat_bubble.close()
         self.emoji_bubble.close()
         self.close()
-        
+
         # 退出应用
         QApplication.instance().quit()
 
@@ -797,7 +789,7 @@ class MainWindow(QMainWindow):
         # 保存窗口位置
         self._save_window_position()
         self.config.save()
-        
+
         self.chat_bubble.close()
         self.emoji_bubble.close()
         import asyncio
