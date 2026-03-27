@@ -20,7 +20,6 @@ wheels/
 .installed.cfg
 *.egg
 .idea
-.github
 # Virtual environments
 venv/
 ENV/
