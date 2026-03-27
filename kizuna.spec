@@ -10,8 +10,17 @@ block_cipher = None
 # 项目根目录
 project_root = Path(SPECPATH)
 
-# 图标路径
-icon_path = project_root / 'assets' / 'images' / 'icon.icns'
+# 图标路径（按平台选择，避免 Windows 使用 .icns 报错）
+if sys.platform == 'darwin':
+    icon_path = project_root / 'assets' / 'images' / 'icon.icns'
+elif sys.platform == 'win32':
+    icon_path = project_root / 'assets' / 'images' / 'icon.ico'
+else:
+    icon_path = None
+
+if icon_path is not None and not icon_path.exists():
+    print(f"Warning: icon file not found: {icon_path}, fallback to default icon")
+    icon_path = None
 
 # 收集所有数据文件
 datas = [
@@ -113,8 +122,6 @@ excludes = [
     
     # 其他工具
     'tqdm',
-    'PIL',
-    'pillow',
     'cv2',
     'opencv',
     'sklearn',
@@ -186,7 +193,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=str(icon_path),
+    icon=str(icon_path) if icon_path else None,
 )
 
 # 收集所有文件到目录
@@ -206,7 +213,7 @@ if sys.platform == 'darwin':
     app = BUNDLE(
         coll,
         name='Kizuna.app',
-        icon=str(icon_path),
+        icon=str(icon_path) if icon_path else None,
         bundle_identifier='com.kizuna.desktop',
         version='1.0.0',
         info_plist={

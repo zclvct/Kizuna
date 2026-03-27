@@ -49,9 +49,6 @@ jobs:
 
       - name: Build macOS app
         run: |
-          # 使用绝对路径设置图标
-          ICON_PATH="$(pwd)/assets/images/icon.icns"
-          sed -i '' "s|icon=None|icon='$ICON_PATH'|g" kizuna.spec
           pyinstaller kizuna.spec --noconfirm
 
       - name: Debug - List app contents
