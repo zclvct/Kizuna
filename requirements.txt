@@ -4,9 +4,8 @@
 # GUI 框架
 PySide6>=6.6.0
 
-# Live2D 渲染
-PyOpenGL>=3.1.7
-live2d-py>=0.6.0
+# Live2D 渲染 (WebEngine 方案，不再需要 PyOpenGL/live2d-py)
+# pixi-live2d-display 等 JS 库已本地化到 assets/live2d_web/libs/
 
 # LangChain 核心
 langchain>=1.2.0

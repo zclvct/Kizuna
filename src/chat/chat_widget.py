@@ -35,14 +35,22 @@ class ChatWidget(QFrame):
         self.character_manager = get_character_manager()
         self.memory = get_langchain_memory()
         self.config = get_config()
-        
+
         self._is_generating = False
         self._scroll_button = None
         self._scroll_animation = None
         self._setup_ui()
-        self._load_history()
+
+        # 根据配置决定是否加载/清空历史
+        if self.config.general.keep_conversation_history:
+            self._load_history()
+        else:
+            # 不保留历史时，启动即清空，确保能显示开场白
+            if self.conversation_manager.messages:
+                self.conversation_manager.clear()
+
         self._check_first_run()
-        
+
         # 延迟滚动到底部（等待布局完成）
         QTimer.singleShot(100, self._scroll_to_bottom)
 
@@ -263,8 +271,8 @@ class ChatWidget(QFrame):
         """检查是否是第一次运行，显示引导对话或开场白"""
         persona = self.character_manager.persona
         
-        # 如果有对话历史，不显示开场白
-        if self.conversation_manager.messages:
+        # 仅在“保留历史”且确实有历史时，不显示开场白
+        if self.config.general.keep_conversation_history and self.conversation_manager.messages:
             return
         
         # 获取问候语并处理模板变量

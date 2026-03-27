@@ -1,162 +1,205 @@
-# Live2D Widget - 使用 live2d-py
+# Live2D Widget - 使用 WebEngineView + pixi-live2d-display
 import sys
 from pathlib import Path
 src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
 
-from PySide6.QtWidgets import QFrame, QVBoxLayout
-from PySide6.QtCore import Qt, Signal, QTimer, QPoint
-from PySide6.QtGui import QSurfaceFormat
-from PySide6.QtOpenGLWidgets import QOpenGLWidget
-from OpenGL import GL
+import json
+from PySide6.QtWidgets import QFrame, QVBoxLayout, QWidget
+from PySide6.QtCore import Qt, Signal, QTimer, QPoint, QUrl
+from PySide6.QtWebEngineWidgets import QWebEngineView
+from PySide6.QtGui import QCursor
 from utils import get_config, get_character_manager, get_logger
 from utils.constants import resolve_path
 
 logger = get_logger()
 
-# 导入 live2d-py (按官方文档方式)
-import live2d.v3 as live2d
+# HTML 页面路径
+LIVE2D_HTML_DIR = Path(__file__).parent.parent.parent / "assets" / "live2d_web"
+LIVE2D_HTML_PATH = LIVE2D_HTML_DIR / "index.html"
 
 
-class Live2DGLWidget(QOpenGLWidget):
-    """Live2D OpenGL 渲染控件"""
+class _MouseOverlay(QWidget):
+    """透明覆盖层 - 拦截 QWebEngineView 上的所有鼠标事件"""
+
     clicked = Signal()
-    drag_started = Signal(QPoint)  # 开始拖拽信号，传递全局坐标
-    size_changed = Signal(int, int)  # 窗口大小变化信号 (width, height)
+    drag_started = Signal(QPoint)
+    tapped = Signal(float, float)  # (x, y) 相对坐标
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.model = None
-        self._scale = 1.0
+        # 透明且可接收鼠标事件
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        self.setAttribute(Qt.WidgetAttribute.WA_NoSystemBackground)
+        self.setCursor(Qt.CursorShape.ArrowCursor)
+        self.setMouseTracking(True)
+
+        self._press_pos = None
+        self._is_dragging = False
+        self._drag_threshold = 5
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            self._press_pos = event.position().toPoint()
+            self._is_dragging = False
+            event.accept()
+        else:
+            # 右键/中键: ignore 让 Qt 事件冒泡到父链
+            # 最终由 MainWindow.contextMenuEvent 处理
+            event.ignore()
+
+    def mouseMoveEvent(self, event):
+        if self._press_pos is not None and not self._is_dragging:
+            current_pos = event.position().toPoint()
+            distance = (current_pos - self._press_pos).manhattanLength()
+            if distance > self._drag_threshold:
+                self._is_dragging = True
+                global_pos = self.mapToGlobal(self._press_pos)
+                self.drag_started.emit(global_pos)
+                logger.debug("Overlay: 开始拖拽")
+            event.accept()
+        else:
+            # 非拖拽时 ignore，让事件传播给父控件
+            event.ignore()
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            if not self._is_dragging and self._press_pos is not None:
+                self.clicked.emit()
+                x = event.position().x()
+                y = event.position().y()
+                self.tapped.emit(x, y)
+            self._press_pos = None
+            self._is_dragging = False
+        event.accept()
+
+    # 不重写 contextMenuEvent，让事件自然冒泡到 MainWindow
+
+
+class Live2DGLWidget(QFrame):
+    """Live2D WebEngine 渲染控件 - QFrame 包裹 QWebEngineView + 透明 Overlay"""
+    clicked = Signal()
+    drag_started = Signal(QPoint)
+    size_changed = Signal(int, int)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.model = None  # 保留兼容性
+        self._scale = get_config().general.model_scale
         self._initialized = False
         self._model_loaded = False
         self._pending_model_path = None
-        self._motion_map = {}  # 动态动作映射: {motion_name: index}
-        self._model_config = None  # 模型配置数据
-        
-        # 模型的自然尺寸（在 scale=1.0 时的显示大小）
-        self._model_natural_width = 300
-        self._model_natural_height = 430
-        
-        # 拖拽相关
-        self._press_pos = None  # 按下时的位置
-        self._is_dragging = False
-        self._drag_threshold = 5  # 拖拽阈值（像素）
-        
-        # 眼睛追踪
-        self._eye_target_x = 0.0  # 目标眼球X位置 (-1 到 1)
-        self._eye_target_y = 0.0  # 目标眼球Y位置 (-1 到 1)
-        self._eye_current_x = 0.0  # 当前眼球X位置
-        self._eye_current_y = 0.0  # 当前眼球Y位置
-        self._eye_smoothing = 0.15  # 眼球移动平滑度
-        
-        logger.info("创建 Live2D OpenGL 控件")
+        self._motion_map = {}
+        self._model_config = None
 
-        # 设置 OpenGL 格式
-        fmt = QSurfaceFormat()
-        fmt.setAlphaBufferSize(8)
-        fmt.setDepthBufferSize(24)
-        fmt.setStencilBufferSize(8)
-        fmt.setSamples(4)
-        QSurfaceFormat.setDefaultFormat(fmt)
+        # 模型自然尺寸（将在模型加载后从 JS 查询）
+        self._model_natural_width = 0
+        self._model_natural_height = 0
 
-        # 动画定时器 (~60 FPS)
-        self._animation_timer = QTimer()
-        self._animation_timer.timeout.connect(self._on_animation_tick)
-        self._animation_timer.start(16)
-        
-        # 设置鼠标追踪
-        self.setMouseTracking(True)
+        # 眼球追踪
+        self._eye_target_x = 0.0
+        self._eye_target_y = 0.0
+        self._eye_current_x = 0.0
+        self._eye_current_y = 0.0
+        self._eye_smoothing = 0.15
 
-    def initializeGL(self):
-        """初始化 OpenGL"""
-        logger.info("初始化 OpenGL...")
-        try:
-            live2d.init()
-            live2d.glInit()
+        logger.info("创建 Live2D WebEngine 控件")
 
-            # 禁用 Live2D SDK 的 INFO 日志，只显示 WARNING 和 ERROR
-            live2d.setLogLevel(live2d.Live2DLogLevels.LV_WARN)
+        # 透明背景
+        self.setStyleSheet("background: transparent; border: none;")
 
+        # 内部布局
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+
+        # QWebEngineView 渲染层
+        self._web_view = QWebEngineView()
+        self._web_view.setStyleSheet("background: transparent; border: none;")
+        self._web_view.page().setBackgroundColor(Qt.GlobalColor.transparent)
+        layout.addWidget(self._web_view, 1)
+
+        # 透明鼠标覆盖层（直接子控件，覆盖整个区域）
+        self._overlay = _MouseOverlay(self)
+
+        # 加载本地 HTML
+        if LIVE2D_HTML_PATH.exists():
+            url = QUrl.fromLocalFile(str(LIVE2D_HTML_PATH.absolute()))
+            self._web_view.load(url)
+            self._web_view.loadFinished.connect(self._on_page_loaded)
+        else:
+            logger.error(f"Live2D HTML 文件不存在: {LIVE2D_HTML_PATH}")
+
+        # Overlay 信号连接
+        self._overlay.clicked.connect(self.clicked.emit)
+        self._overlay.drag_started.connect(self.drag_started.emit)
+        self._overlay.tapped.connect(self._on_tap)
+
+        # 眼球追踪定时器 (15 FPS 足够流畅，避免 JS 调用积压)
+        self._eye_timer = QTimer()
+        self._eye_timer.timeout.connect(self._update_eye_tracking)
+        self._eye_timer.start(66)  # ~15 FPS
+
+        # 延迟初始化 canvas 尺寸（等待 widget 被布局）
+        QTimer.singleShot(50, self._init_canvas_size)
+
+    def resizeEvent(self, event):
+        """窗口大小改变 - 同步 overlay 大小并通知 JS"""
+        super().resizeEvent(event)
+        # Overlay 覆盖整个控件
+        self._overlay.setGeometry(0, 0, self.width(), self.height())
+        w, h = self.width(), self.height()
+        if w > 0 and h > 0:
+            self._run_js(f"resizeView({w}, {h})")
+
+    def _on_tap(self, x: float, y: float):
+        """Overlay 点击 → 触发模型触摸"""
+        self._run_js(f"tapModel({x}, {y})")
+
+    def _init_canvas_size(self):
+        """延迟初始化 canvas 尺寸"""
+        w, h = self.width(), self.height()
+        if w > 0 and h > 0 and self._initialized:
+            logger.info(f"延迟初始化 canvas 尺寸: {w}x{h}")
+            self._run_js(f"resizeView({w}, {h})")
+
+    def _on_page_loaded(self, ok):
+        """页面加载完成"""
+        if ok:
             self._initialized = True
-            logger.info("OpenGL 和 Live2D 初始化成功")
+            logger.info("Live2D WebEngine 页面加载成功")
 
+            # 立即初始化 canvas 尺寸（使用当前 widget 尺寸）
+            w, h = self.width(), self.height()
+            if w > 0 and h > 0:
+                logger.info(f"初始化 canvas 尺寸: {w}x{h}")
+                self._run_js(f"resizeView({w}, {h})")
+
+            # 延迟加载模型，确保 canvas 尺寸已设置
             if self._pending_model_path:
-                logger.info(f"OpenGL 初始化完成，加载模型: {self._pending_model_path}")
-                self._load_model_internal(self._pending_model_path)
+                # 使用默认参数捕获当前值，避免闭包问题
+                path = self._pending_model_path
                 self._pending_model_path = None
+                QTimer.singleShot(100, lambda p=path: self._load_model_internal(p))
+        else:
+            logger.error("Live2D WebEngine 页面加载失败")
 
-        except Exception as e:
-            logger.error(f"OpenGL 初始化失败: {e}", exc_info=True)
-            self._initialized = False
-
-    def paintGL(self):
-        """绘制 OpenGL"""
-        if not self._initialized or self.model is None:
+    def _run_js(self, js_code, callback=None):
+        """执行 JavaScript 代码"""
+        if not self._initialized:
             return
-
         try:
-            live2d.clearBuffer()
-            # 更新眼球追踪
-            self._update_eye_tracking()
-            self.model.Update()
-            self.model.Draw()
+            if callback:
+                self._web_view.page().runJavaScript(js_code, callback)
+            else:
+                self._web_view.page().runJavaScript(js_code)
         except Exception as e:
-            logger.error(f"绘制失败: {e}", exc_info=True)
-
-    def _on_animation_tick(self):
-        """动画帧更新"""
-        self._update_global_eye_target()
-        self.update()
-
-    def _update_global_eye_target(self):
-        """根据全局鼠标位置更新眼睛目标"""
-        from PySide6.QtWidgets import QApplication
-        cursor_pos = QApplication.instance().keyboardModifiers()  # 检查应用状态
-        global_pos = self.mapToGlobal(self.rect().center())
-        
-        # 获取全局鼠标位置
-        mouse_pos = self.cursor().pos()
-        
-        # 计算相对于控件中心的位置
-        center_x = global_pos.x()
-        center_y = global_pos.y()
-        
-        # 计算偏移量并归一化 (-1 到 1)
-        max_distance = 300  # 最大追踪距离
-        dx = (mouse_pos.x() - center_x) / max_distance
-        dy = -(mouse_pos.y() - center_y) / max_distance  # Y轴翻转
-        
-        # 限制范围
-        self._eye_target_x = max(-1.0, min(1.0, dx))
-        self._eye_target_y = max(-1.0, min(1.0, dy))
-
-    def _update_eye_tracking(self):
-        """更新眼球追踪 - 平滑移动"""
-        if not self.model:
-            return
-            
-        # 平滑插值
-        self._eye_current_x += (self._eye_target_x - self._eye_current_x) * self._eye_smoothing
-        self._eye_current_y += (self._eye_target_y - self._eye_current_y) * self._eye_smoothing
-        
-        try:
-            # 设置眼球参数
-            self.model.SetParameterValue("ParamEyeBallX", self._eye_current_x, 1.0)
-            self.model.SetParameterValue("ParamEyeBallY", self._eye_current_y, 1.0)
-        except Exception:
-            # 某些模型可能不支持这些参数
-            pass
-
-    def resizeGL(self, w, h):
-        """窗口大小改变"""
-        if self.model and w > 0 and h > 0:
-            self.model.Resize(w, h)
+            logger.error(f"执行 JS 失败: {e}")
 
     def load_model(self, model_path: str):
         """加载 Live2D 模型"""
         if not self._initialized:
-            logger.info(f"OpenGL 尚未初始化，延迟加载模型: {model_path}")
+            logger.info(f"页面尚未加载，延迟加载模型: {model_path}")
             self._pending_model_path = model_path
             return True
         return self._load_model_internal(model_path)
@@ -164,10 +207,11 @@ class Live2DGLWidget(QOpenGLWidget):
     def _load_model_internal(self, model_path: str):
         """内部加载模型方法"""
         try:
-            import json
             logger.info(f"开始加载模型: {model_path}")
 
-            # 解析路径（支持相对路径和绝对路径）
+            if not model_path:
+                raise ValueError("model_path 为空，请检查配置文件中的 live2d.model_path 设置")
+
             model_path_obj = resolve_path(model_path)
             if not model_path_obj.exists():
                 raise FileNotFoundError(f"模型目录不存在: {model_path} (解析后: {model_path_obj})")
@@ -179,215 +223,167 @@ class Live2DGLWidget(QOpenGLWidget):
             model_json_path = model3_files[0]
             logger.info(f"找到模型文件: {model_json_path}")
 
-            # 读取模型配置文件，解析 motions
+            # 解析动作映射（Python 端保持缓存）
             self._parse_model_motions(model_json_path)
 
-            self.model = live2d.LAppModel()
-            self.model.LoadModelJson(str(model_json_path.absolute()))
-            logger.info("模型 JSON 加载成功")
+            # 使用 file:// URL 加载模型
+            model_url = QUrl.fromLocalFile(str(model_json_path.absolute())).toString()
+            logger.info(f"模型 URL: {model_url}")
 
-            # 尝试获取模型的画布尺寸
-            self._detect_model_canvas_size(model_json_path)
+            js_code = f"initLive2D('{model_url}')"
+            self._run_js(js_code, lambda result: self._on_model_init_result(result))
 
-            config = get_config()
-            # 使用 general.model_scale 作为统一的缩放配置
-            self._scale = config.general.model_scale
-            self.model.SetScale(self._scale)
-            logger.info(f"设置缩放: {self._scale}")
-
-            w, h = self.width(), self.height()
-            if w > 0 and h > 0:
-                logger.info(f"设置模型画布大小: {w}x{h}")
-                self.model.Resize(w, h)
-            else:
-                QTimer.singleShot(50, self._resize_model)
-
+            # runJavaScript 对 async 函数返回值不稳定，先进入可缩放状态
             self._model_loaded = True
-            logger.info(f"模型加载完成，可用动作: {list(self._motion_map.keys())}")
-            
-            # 通知父控件更新大小
-            self._emit_recommended_size()
-            
+            # 缩短延迟时间，尽快调整窗口大小
+            QTimer.singleShot(300, self._query_model_dimensions)
+
             return True
 
         except Exception as e:
             logger.error(f"加载模型失败: {e}", exc_info=True)
             return False
 
-    def _detect_model_canvas_size(self, model_json_path: Path):
-        """
-        检测模型的画布尺寸
-        从模型配置中读取或使用默认值
-        """
-        try:
-            import json
-            with open(model_json_path, 'r', encoding='utf-8') as f:
-                config = json.load(f)
-            
-            # 尝试从配置中读取画布尺寸
-            # Live2D 模型通常在 Layout 或其他字段中定义画布大小
-            layout = config.get("Layout", {})
-            
-            if layout:
-                # 有些模型会定义 CenterX, CenterY, Width, Height
-                width = layout.get("Width")
-                height = layout.get("Height")
-                
-                if width and height:
-                    # 转换为像素值（Live2D 使用的是归一化坐标）
-                    # 通常画布大小在 1000-2000 范围内
-                    self._model_natural_width = int(width * 500)
-                    self._model_natural_height = int(height * 500)
-                    logger.info(f"检测到模型画布尺寸: {self._model_natural_width}x{self._model_natural_height}")
-                    return
-            
-            # 如果没有找到，使用默认值
-            logger.info("未找到模型画布尺寸，使用默认值")
-            
-        except Exception as e:
-            logger.warning(f"检测模型画布尺寸失败: {e}")
+    def _on_model_init_result(self, result):
+        """模型初始化结果回调"""
+        if result is True:
+            self._model_loaded = True
+            logger.info("WebEngine Live2D 模型加载完成")
+            # 延迟查询模型实际尺寸（等 PIXI 渲染完成）
+            QTimer.singleShot(500, self._query_model_dimensions)
+        elif result is False:
+            logger.error("WebEngine Live2D 模型加载失败")
+        else:
+            logger.debug(f"模型初始化回调返回异步占位值: {result}")
 
-    def _emit_recommended_size(self):
-        """
-               根据模型自然尺寸和当前缩放，发出推荐的窗口大小
-               """
-        # 计算推荐窗口大小
-        # 添加边距，让模型不会紧贴窗口边缘
-        margin_ratio = -0.3  # 5% 边距
+    def _query_model_dimensions(self):
+        """从 JS 查询模型实际像素尺寸"""
+        self._run_js("getModelInfo()", self._on_model_dimensions_received)
 
-        recommended_width = int(self._model_natural_width * self._scale * (1 + margin_ratio))
-        recommended_height = int(self._model_natural_height * self._scale * (1 + margin_ratio))
-
-        logger.info(f"推荐窗口大小: {recommended_width}x{recommended_height}")
-
-        # 发出信号
-        self.size_changed.emit(recommended_width, recommended_height)
-
+    def _on_model_dimensions_received(self, result):
+        """处理从 JS 查询到的模型尺寸"""
+        if result:
+            try:
+                info = json.loads(result)
+                self._model_natural_width = info.get('width', 0)
+                self._model_natural_height = info.get('height', 0)
+                logger.info(f"模型实际尺寸: {self._model_natural_width}x{self._model_natural_height}")
+            except Exception as e:
+                logger.warning(f"解析模型尺寸失败: {e}")
+        self._emit_recommended_size()
 
     def _parse_model_motions(self, model_json_path: Path):
         """从模型配置文件解析动作映射"""
-        import json
         try:
             with open(model_json_path, 'r', encoding='utf-8') as f:
                 self._model_config = json.load(f)
-            
+
             motions = self._model_config.get("FileReferences", {}).get("Motions", {})
             self._motion_map = {}
-            
-            # 遍历所有动作组（通常主组是空字符串 ""）
+
             for group_name, motion_list in motions.items():
                 for index, motion_entry in enumerate(motion_list):
                     file_path = motion_entry.get("File", "")
-                    # 从文件路径提取动作名称: motions/idle.motion3.json -> idle
                     if file_path:
-                        motion_name = Path(file_path).stem  # 去掉目录和扩展名
-                        # 去掉 .motion3 后缀（如果有）
+                        motion_name = Path(file_path).stem
                         if motion_name.endswith(".motion3"):
                             motion_name = motion_name[:-8]
                         self._motion_map[motion_name] = index
                         logger.debug(f"解析动作: {motion_name} -> 索引 {index} (组: '{group_name}')")
-            
+
             logger.info(f"从模型解析到 {len(self._motion_map)} 个动作: {list(self._motion_map.keys())}")
-            
+
         except Exception as e:
             logger.error(f"解析模型动作失败: {e}", exc_info=True)
-            self._motion_map = {"idle": 0}  # 默认备用
+            self._motion_map = {"idle": 0}
+
+    def _emit_recommended_size(self):
+        """发出推荐的窗口大小"""
+        scale = max(0.5, min(2.0, float(self._scale)))
+
+        if self._model_natural_width > 0 and self._model_natural_height > 0:
+            # 基于模型实际像素尺寸和宽高比计算窗口大小
+            # 目标宽度约 350px（可被 model_scale 调节）
+            target_width = int(350 * scale)
+            aspect = self._model_natural_height / self._model_natural_width
+            target_height = int(target_width * aspect)
+        else:
+            # 无尺寸信息时使用默认值
+            target_width = int(350 * scale)
+            target_height = int(500 * scale)
+
+        # 边距保护
+        recommended_width = max(200, min(600, target_width))
+        recommended_height = max(300, min(900, target_height))
+
+        logger.info(f"推荐窗口大小: {recommended_width}x{recommended_height} (scale: {scale})")
+        self.size_changed.emit(recommended_width, recommended_height)
 
     def get_available_motions(self) -> list:
         """获取模型支持的所有动作名称列表"""
         return list(self._motion_map.keys())
 
-    def _resize_model(self):
-        """调整模型画布大小"""
-        if self.model:
-            w, h = self.width(), self.height()
-            if w > 0 and h > 0:
-                self.model.Resize(w, h)
-
     def set_scale(self, scale: float):
-        """设置缩放"""
-        self._scale = scale
-        if self.model:
-            self.model.SetScale(scale)
-        
-        # 发出推荐的窗口大小
+        """设置缩放 - 通过改变窗口大小实现"""
+        self._scale = max(0.5, min(2.0, float(scale)))
+        # 不再调用 JS 的 setScale，而是通过改变窗口大小实现
         if self._model_loaded:
             self._emit_recommended_size()
 
     def play_motion(self, motion_name: str):
         """播放动作"""
-        if self.model:
-            try:
-                logger.info(f"播放动作: {motion_name}")
-                
-                if not self._motion_map:
-                    logger.warning("动作映射表为空，无法播放动作")
-                    return
-                
-                motion_no = self._motion_map.get(motion_name)
-                if motion_no is None:
-                    # 尝试模糊匹配
-                    available = list(self._motion_map.keys())
-                    logger.warning(f"动作 '{motion_name}' 不在映射表中，可用动作: {available}")
-                    # 默认使用第一个动作或 idle
-                    motion_no = self._motion_map.get("idle", 0)
-                
-                self.model.StartMotion("", motion_no, 3)
-            except Exception as e:
-                logger.error(f"播放动作失败: {e}", exc_info=True)
+        if not self._initialized:
+            return
+
+        try:
+            logger.info(f"播放动作: {motion_name}")
+
+            if not self._motion_map:
+                logger.warning("动作映射表为空，无法播放动作")
+                return
+
+            motion_no = self._motion_map.get(motion_name)
+            if motion_no is None:
+                available = list(self._motion_map.keys())
+                logger.warning(f"动作 '{motion_name}' 不在映射表中，可用动作: {available}")
+                motion_no = self._motion_map.get("idle", 0)
+
+            self._run_js(f"playMotion('{motion_name}', '', 3)")
+        except Exception as e:
+            logger.error(f"播放动作失败: {e}", exc_info=True)
 
     def update_mood(self, mood: str):
         """更新心情"""
-        if self.model:
-            try:
-                logger.info(f"更新心情: {mood}")
-                if mood == "happy":
-                    self.model.SetParameterValue("ParamEyeLOpen", 1.0, 1.0)
-                    self.model.SetParameterValue("ParamEyeROpen", 1.0, 1.0)
-                elif mood == "sad":
-                    self.model.SetParameterValue("ParamEyeLOpen", 0.5, 1.0)
-                    self.model.SetParameterValue("ParamEyeROpen", 0.5, 1.0)
-            except Exception as e:
-                logger.error(f"更新心情失败: {e}", exc_info=True)
+        if not self._initialized:
+            return
+        try:
+            logger.info(f"更新心情: {mood}")
+            self._run_js(f"setMood('{mood}')")
+        except Exception as e:
+            logger.error(f"更新心情失败: {e}", exc_info=True)
 
-    def mousePressEvent(self, event):
-        """鼠标按下"""
-        if event.button() == Qt.MouseButton.LeftButton:
-            self._press_pos = event.position().toPoint()
-            self._is_dragging = False
-            event.accept()
+    def _update_eye_tracking(self):
+        """更新眼球追踪"""
+        if not self._model_loaded:
+            return
 
-    def mouseMoveEvent(self, event):
-        """鼠标移动"""
-        if self._press_pos is not None and not self._is_dragging:
-            current_pos = event.position().toPoint()
-            # 检查是否超过拖拽阈值
-            distance = (current_pos - self._press_pos).manhattanLength()
-            if distance > self._drag_threshold:
-                # 开始拖拽
-                self._is_dragging = True
-                global_pos = self.mapToGlobal(self._press_pos)
-                self.drag_started.emit(global_pos)
-                logger.debug("开始拖拽")
-        event.accept()
+        try:
+            global_pos = self.mapToGlobal(self.rect().center())
+            mouse_pos = QCursor.pos()
 
-    def mouseReleaseEvent(self, event):
-        """鼠标释放"""
-        if event.button() == Qt.MouseButton.LeftButton:
-            if not self._is_dragging and self._press_pos is not None:
-                # 没有拖拽，视为点击
-                self.clicked.emit()
-                # 触发模型的 Touch
-                if self.model:
-                    x = event.position().x()
-                    y = event.position().y()
-                    try:
-                        self.model.Touch(x, y, lambda g, n: None, lambda: None)
-                    except Exception:
-                        pass
-            self._press_pos = None
-            self._is_dragging = False
-        event.accept()
+            max_distance = 300
+            dx = (mouse_pos.x() - global_pos.x()) / max_distance
+            dy = -(mouse_pos.y() - global_pos.y()) / max_distance
+
+            self._eye_target_x = max(-1.0, min(1.0, dx))
+            self._eye_target_y = max(-1.0, min(1.0, dy))
+
+            self._eye_current_x += (self._eye_target_x - self._eye_current_x) * self._eye_smoothing
+            self._eye_current_y += (self._eye_target_y - self._eye_current_y) * self._eye_smoothing
+
+            self._run_js(f"setEyeTracking({self._eye_current_x:.4f}, {self._eye_current_y:.4f})")
+        except Exception:
+            pass
 
 
 class Live2DWidget(QFrame):
@@ -395,8 +391,8 @@ class Live2DWidget(QFrame):
 
     clicked = Signal()
     motion_played = Signal(str)
-    drag_started = Signal(QPoint)  # 转发拖拽信号
-    size_changed = Signal(int, int)  # 转发窗口大小变化信号
+    drag_started = Signal(QPoint)
+    size_changed = Signal(int, int)
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -410,24 +406,28 @@ class Live2DWidget(QFrame):
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
 
-        # Live2D OpenGL 控件
+        # Live2D WebEngine 控件
         self.live2d_widget = Live2DGLWidget()
         self.live2d_widget.setMinimumSize(140, 215)
         self.live2d_widget.clicked.connect(self._on_live2d_clicked)
         self.live2d_widget.drag_started.connect(self.drag_started)
         self.live2d_widget.size_changed.connect(self._on_size_changed)
         layout.addWidget(self.live2d_widget, 1)
-        logger.info("使用 Live2D OpenGL 渲染")
+        logger.info("使用 Live2D WebEngine 渲染")
 
-        # 透明背景，无边框
+        # 透明背景
         self.setStyleSheet("""
             QFrame {
                 background-color: transparent;
             }
         """)
-        
-        # 设置初始大小（会在模型加载后自动调整）
-        self.setFixedSize(350, 500)
+
+        # 设置初始大小：优先使用上次保存的主窗口大小，避免启动后再跳变
+        cfg = get_config().general
+        initial_w = max(140, int(cfg.window_width) - 20) if int(cfg.window_width) > 0 else 350
+        initial_h = max(215, int(cfg.window_height) - 20) if int(cfg.window_height) > 0 else 500
+        self.setFixedSize(initial_w, initial_h)
+        logger.info(f"Live2DWidget 初始大小: {initial_w}x{initial_h}")
 
     def _load_model(self):
         """加载模型"""
@@ -435,7 +435,8 @@ class Live2DWidget(QFrame):
             config = get_config()
             model_path = config.live2d.model_path
             logger.info(f"Live2D 模型路径: {model_path}")
-            QTimer.singleShot(100, self._do_load_model)
+            # 延迟 300ms 加载模型，确保窗口布局完成
+            QTimer.singleShot(300, self._do_load_model)
         except Exception as e:
             logger.error(f"加载模型时出错: {e}", exc_info=True)
 
@@ -444,6 +445,16 @@ class Live2DWidget(QFrame):
         try:
             config = get_config()
             model_path = config.live2d.model_path
+            if not model_path:
+                logger.error("model_path 为空，请检查配置文件中的 live2d.model_path 设置")
+                return
+            
+            # 确保 canvas 尺寸已正确设置
+            w, h = self.live2d_widget.width(), self.live2d_widget.height()
+            logger.info(f"加载模型前 canvas 尺寸: {w}x{h}")
+            if w > 0 and h > 0:
+                self.live2d_widget._run_js(f"resizeView({w}, {h})")
+            
             self.live2d_widget.load_model(model_path)
         except Exception as e:
             logger.error(f"加载模型时出错: {e}", exc_info=True)
@@ -481,12 +492,8 @@ class Live2DWidget(QFrame):
 
     def _on_size_changed(self, width: int, height: int):
         """处理窗口大小变化"""
-        # 调整自身大小
         self.setFixedSize(width, height)
-        
-        # 转发信号给主窗口
         self.size_changed.emit(width, height)
-        
         logger.info(f"Live2DWidget 大小调整为: {width}x{height}")
 
     def play_motion(self, motion_id: str, mood: str = None):
@@ -496,7 +503,6 @@ class Live2DWidget(QFrame):
         settings = motion_controller.config.get("settings", {})
         enable_chat_motion = settings.get("enable_chat_motion", True)
 
-        # 防御性检查：motion_id 为 None 时跳过
         if motion_id is None:
             logger.warning("motion_id is None, skipping motion playback")
             return
@@ -521,9 +527,7 @@ class Live2DWidget(QFrame):
         motion = motion_controller.get_motion_for_mood(mood)
         if motion:
             self.play_motion(motion)
-    
+
     def set_scale(self, scale: float):
         """设置模型缩放"""
-        # 调用内部控件的缩放方法
-        # 大小变化会通过 size_changed 信号传递
         self.live2d_widget.set_scale(scale)

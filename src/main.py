@@ -99,10 +99,15 @@ def main():
                 core = get_core()
                 logger.info(f"LangChain Agent 已初始化，工具数: {len(core.get_enabled_tool_names())}")
 
-                # 清空对话历史（每次启动重新开始）
                 conversation_manager = get_conversation_manager()
-                conversation_manager.clear()
-                logger.info("对话历史已清空")
+                
+                # 根据配置决定是否启动时清空历史
+                if config.general.keep_conversation_history:
+                    logger.info(f"保留对话历史: {len(conversation_manager.messages)} 条")
+                else:
+                    # ChatWidget 初始化阶段已清空，这里仅做兜底
+                    if conversation_manager.messages:
+                        conversation_manager.clear()
                 
                 # 初始化 MCP 工具
                 async def init_mcp():

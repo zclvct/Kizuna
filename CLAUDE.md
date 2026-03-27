@@ -30,7 +30,7 @@ python src/main.py  # Full integrated version
 src/
 ├── main.py           # Application entry point (full version)
 ├── app/              # UI layer (main_window.py, tray_icon.py, context_menu.py, settings_window.py, tasks_window.py)
-├── live2d/           # Live2D rendering (widget.py, motion_controller.py)
+├── live2d_renderer/   # Live2D rendering via WebEngineView (widget.py, motion_controller.py)
 ├── chat/             # Chat & LLM (llm_client.py, conversation_manager.py, chat_widget.py, message_bubble.py)
 ├── assistant/        # Assistant tools (tool_registry.py, function_calling.py, tools/*)
 ├── scheduler/        # Scheduled tasks (task.py, manager.py, parser.py, storage.py)
@@ -118,7 +118,7 @@ sys.path.insert(0, str(src_path))
 
 1. **Imports**: Always use the absolute import pattern with src_path setup
 2. **Entry Points**: `run.py` is the simplified placeholder entry point; `src/main.py` is the full integrated version
-3. **Live2D**: Placeholder implementation - WebEngineView fallback option documented in design docs
+3. **Live2D**: Uses WebEngineView + pixi-live2d-display (JS libraries in `assets/live2d_web/libs/`)
 4. **Docs**: See `docs/` directory for full design documents (in Chinese)
 5. **No Test Infrastructure**: No tests configured in the project currently
 6. **No Lint/Format Config**: No flake8, black, or other formatting configs present

@@ -218,7 +218,7 @@ def remove_mood(mood_id: str) -> bool:
 
 # ============ 工具执行函数 ============
 
-from PySide6.QtCore import QObject, Signal
+from PySide6.QtCore import QObject, Signal, Qt
 
 # 全局信号发射器，用于跨线程触发表情包
 class EmojiSignalEmitter(QObject):
@@ -233,9 +233,16 @@ _emoji_callback = None
 def set_emoji_callback(callback):
     """设置表情包显示回调"""
     global _emoji_callback
+
+    # 先断开旧回调，避免重复连接或悬空连接导致异常
+    if _emoji_callback is not None:
+        try:
+            _emoji_emitter.emoji_triggered.disconnect(_emoji_callback)
+        except Exception:
+            pass
+
     _emoji_callback = callback
-    # 连接信号到回调
-    _emoji_emitter.emoji_triggered.connect(callback)
+    _emoji_emitter.emoji_triggered.connect(callback, Qt.ConnectionType.QueuedConnection)
     logger.info(f"表情包回调已设置并连接信号: {callback}")
 
 

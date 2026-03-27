@@ -64,12 +64,22 @@ class ConversationManager:
         try:
             data = json.loads(self.file_path.read_text(encoding="utf-8"))
             self.messages = [Message.from_dict(m) for m in data.get("messages", [])]
+
+            # 启动时即限制最大数量，避免历史过多
+            if len(self.messages) > self._max_messages:
+                self.messages = self.messages[-self._max_messages:]
+                self._save()
+
             logger.info(f"已加载 {len(self.messages)} 条对话历史")
         except Exception as e:
             logger.error(f"加载对话历史失败: {e}")
 
     def _save(self):
         """保存对话历史"""
+        # 保存前再次限制数量，保证文件中最多 100 条
+        if len(self.messages) > self._max_messages:
+            self.messages = self.messages[-self._max_messages:]
+
         data = {
             "messages": [m.to_dict() for m in self.messages]
         }

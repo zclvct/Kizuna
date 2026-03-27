@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kizuna Live2D</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: transparent;
+            position: relative;
+        }
+        #live2d_canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #aaa;
+            font-size: 14px;
+            font-family: sans-serif;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="live2d_canvas"></canvas>
+    <div id="loading">Loading Live2D...</div>
+
+    <!-- PixiJS -->
+    <script src="libs/pixi.min.js"></script>
+    <!-- Cubism 4 Core SDK -->
+    <script src="libs/live2dcubismcore.min.js"></script>
+    <!-- pixi-live2d-display (Cubism 4 only) -->
+    <script src="libs/cubism4.min.js"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        let app = null;
+        let currentModel = null;
+        let motionMap = {};       // { motion_name: index }
+        let motionGroups = {};    // { group_name: [file_paths] }
+        let _originalModelW = 0;  // 模型原始宽度（未缩放）
+        let _originalModelH = 0;  // 模型原始高度（未缩放）
+
+        // ---------- helpers ----------
+
+        function notify(event, data) {
+            // QWebChannel is not used; JS->Python communication is done via Python polling.
+            // This function is kept as a no-op for future compatibility.
+            console.log('[notify]', event, data || '');
+        }
+
+        // ---------- init ----------
+
+        let _canvasW = 350;  // 默认尺寸，等待 Python resizeView 设置正确值
+        let _canvasH = 500;
+        let _sizeInitialized = false;
+
+        async function initLive2D(modelUrl) {
+            const canvas = document.getElementById('live2d_canvas');
+            const loading = document.getElementById('loading');
+
+
+
+            // 同步 CSS 尺寸
+            canvas.style.width = _canvasW + 'px';
+            canvas.style.height = _canvasH + 'px';
+
+            // 避免重复初始化
+            if (app) {
+                if (currentModel && currentModel.parent) {
+                    currentModel.parent.removeChild(currentModel);
+                }
+                currentModel = null;
+                motionMap = {};
+                motionGroups = {};
+                _originalModelW = 0;
+                _originalModelH = 0;
+                // 调整 renderer 尺寸
+                app.renderer.resize(_canvasW, _canvasH);
+            } else {
+                // 创建 PIXI Application - 使用当前 canvas 尺寸
+                app = new PIXI.Application({
+                    view: canvas,
+                    width: _canvasW,
+                    height: _canvasH,
+                    transparent: true,
+                    autoStart: true,
+                    backgroundAlpha: 0,
+                    antialias: true
+                });
+            }
+
+            console.log('initLive2D called with:', modelUrl, 'canvas size:', _canvasW, 'x', _canvasH);
+
+            try {
+                currentModel = await PIXI.live2d.Live2DModel.from(modelUrl, {
+                    autoInteract: false,
+                    autoUpdate: true
+                });
+
+                // 保存模型原始尺寸（必须在设置 scale 之前）
+                _originalModelW = currentModel.width;
+                _originalModelH = currentModel.height;
+                console.log('模型原始尺寸:', _originalModelW, 'x', _originalModelH);
+
+                parseModelMotions();
+
+                app.stage.addChild(currentModel);
+
+                // 延迟 fit，等待可能的 resizeView 调用
+                setTimeout(function() {
+                    fitModelToView();
+                }, 100);
+
+                loading.style.display = 'none';
+
+                console.log('Live2D model loaded, model size:', currentModel.width, 'x', currentModel.height);
+                notify('onModelLoaded', JSON.stringify({
+                    motions: Object.keys(motionMap),
+                    width: currentModel.width,
+                    height: currentModel.height
+                }));
+                return true;
+            } catch (e) {
+                console.error('Failed to load model:', e);
+                loading.textContent = 'Load failed: ' + e.message;
+                notify('onModelError', e.message);
+                return false;
+            }
+        }
+
+        function parseModelMotions() {
+            motionMap = {};
+            motionGroups = {};
+            if (!currentModel) return;
+
+            try {
+                const settings = currentModel.internalModel.settings;
+                if (settings && settings.motions) {
+                    for (const [group, list] of Object.entries(settings.motions)) {
+                        motionGroups[group] = list;
+                        for (let i = 0; i < list.length; i++) {
+                            const file = list[i].File || '';
+                            const name = extractMotionName(file);
+                            motionMap[name] = i;
+                        }
+                    }
+                }
+                console.log('Motions parsed:', motionMap);
+            } catch(e) {
+                console.warn('Failed to parse motions:', e);
+            }
+        }
+
+        function extractMotionName(filePath) {
+            if (!filePath) return '';
+            let name = filePath.split('/').pop().split('\\').pop();
+            name = name.replace('.motion3.json', '').replace('.motion3', '');
+            return name;
+        }
+
+        function fitModelToView() {
+            if (!currentModel || !app) return;
+
+            const viewW = _canvasW;
+            const viewH = _canvasH;
+            if (viewW === 0 || viewH === 0) return;
+
+            // 先重置，确保 getLocalBounds 基于原始局部坐标
+            currentModel.scale.set(1, 1);
+            currentModel.position.set(0, 0);
+            if (currentModel.pivot && typeof currentModel.pivot.set === 'function') {
+                currentModel.pivot.set(0, 0);
+            }
+
+            const bounds = currentModel.getLocalBounds ? currentModel.getLocalBounds() : {
+                x: 0,
+                y: 0,
+                width: _originalModelW,
+                height: _originalModelH
+            };
+
+            const baseW = bounds.width || _originalModelW;
+            const baseH = bounds.height || _originalModelH;
+            if (!baseW || !baseH) return;
+
+            // 计算缩放：模型完整显示在窗口内（保留边距）
+            const margin = 0.9;
+            const fitScale = Math.min(
+                (viewW * margin) / baseW,
+                (viewH * margin) / baseH
+            );
+
+            currentModel.scale.set(fitScale, fitScale);
+
+            // 不依赖 anchor，直接按 bounds 几何中心对齐到窗口中心
+            const centerX = bounds.x + bounds.width / 2;
+            const centerY = bounds.y + bounds.height / 2;
+            currentModel.x = viewW / 2 - centerX * fitScale;
+            currentModel.y = viewH / 2 - centerY * fitScale;
+
+            console.log('fitModelToView: view=' + viewW + 'x' + viewH +
+                ', bounds=' + baseW + 'x' + baseH +
+                ', scale=' + fitScale.toFixed(4) +
+                ', pos=(' + currentModel.x.toFixed(0) + ', ' + currentModel.y.toFixed(0) + ')');
+        }
+
+        // ---------- motion control ----------
+
+        function playMotion(motionName, group, priority) {
+            if (!currentModel) return false;
+
+            // Find index by name
+            let idx = motionMap[motionName];
+            if (idx === undefined) {
+                // Try finding the motion in any group by name pattern
+                for (const [g, list] of Object.entries(motionGroups)) {
+                    for (let i = 0; i < list.length; i++) {
+                        const name = extractMotionName(list[i].File || '');
+                        if (name === motionName) {
+                            idx = i;
+                            group = g;
+                            break;
+                        }
+                    }
+                    if (idx !== undefined) break;
+                }
+            }
+
+            if (idx === undefined) {
+                console.warn('Motion not found:', motionName, 'Available:', Object.keys(motionMap));
+                return false;
+            }
+
+            group = group || '';
+            priority = priority !== undefined ? priority : 3;
+
+            try {
+                currentModel.motion(group, idx, priority);
+                console.log('Playing motion:', motionName, 'group:', group, 'index:', idx);
+                return true;
+            } catch(e) {
+                console.error('Failed to play motion:', e);
+                return false;
+            }
+        }
+
+        // ---------- expression ----------
+
+        function playExpression(name) {
+            if (!currentModel) return false;
+            try {
+                currentModel.expression(name);
+                return true;
+            } catch(e) {
+                console.warn('Failed to play expression:', e);
+                return false;
+            }
+        }
+
+        // ---------- eye tracking ----------
+        // 使用 requestAnimationFrame 节流，避免高频调用积压
+        let _eyeX = 0, _eyeY = 0;
+        let _eyeDirty = false;
+
+        function setEyeTracking(x, y) {
+            _eyeX = Math.max(-1, Math.min(1, x));
+            _eyeY = Math.max(-1, Math.min(1, y));
+            _eyeDirty = true;
+        }
+
+        function _focusModel(nx, ny) {
+            if (!currentModel) return;
+
+            // 归一化坐标 -> 画布像素坐标（pixi-live2d-display 的 focus 常用像素坐标）
+            const px = (_canvasW / 2) + nx * (_canvasW * 0.35);
+            const py = (_canvasH / 2) - ny * (_canvasH * 0.35);
+
+            try {
+                if (typeof currentModel.focus === 'function') {
+                    currentModel.focus(px, py);
+                    return;
+                }
+                const fc = currentModel.internalModel && currentModel.internalModel.focusController;
+                if (fc && typeof fc.focus === 'function') {
+                    fc.focus(nx, ny);
+                }
+            } catch(e) {
+                // 忽略，避免打断渲染循环
+            }
+        }
+
+        // 每帧应用眼球追踪
+        function _applyEyeTracking() {
+            if (!currentModel) {
+                requestAnimationFrame(_applyEyeTracking);
+                return;
+            }
+            if (_eyeDirty) {
+                _focusModel(_eyeX, _eyeY);
+                _eyeDirty = false;
+            }
+            requestAnimationFrame(_applyEyeTracking);
+        }
+        // 启动眼球追踪循环
+        requestAnimationFrame(_applyEyeTracking);
+
+        // ---------- mood via parameters ----------
+
+        function setMood(mood) {
+            if (!currentModel) return false;
+            try {
+                const coreModel = currentModel.internalModel.coreModel;
+
+                switch(mood) {
+                    case 'happy':
+                        coreModel.setParameterValueById('ParamEyeLOpen', 1.0, 1.0);
+                        coreModel.setParameterValueById('ParamEyeROpen', 1.0, 1.0);
+                        break;
+                    case 'sad':
+                        coreModel.setParameterValueById('ParamEyeLOpen', 0.5, 1.0);
+                        coreModel.setParameterValueById('ParamEyeROpen', 0.5, 1.0);
+                        break;
+                    case 'surprised':
+                        coreModel.setParameterValueById('ParamEyeLOpen', 1.5, 1.0);
+                        coreModel.setParameterValueById('ParamEyeROpen', 1.5, 1.0);
+                        break;
+                    default:
+                        coreModel.setParameterValueById('ParamEyeLOpen', 1.0, 1.0);
+                        coreModel.setParameterValueById('ParamEyeROpen', 1.0, 1.0);
+                        break;
+                }
+                return true;
+            } catch(e) {
+                console.warn('Failed to set mood:', e);
+                return false;
+            }
+        }
+
+        // ---------- scale ----------
+        // scale 由 Python 端通过改变窗口大小控制，这里保留接口但不使用
+
+        function setScale(scaleFactor) {
+            // 不再使用，模型始终填充窗口
+            console.log('setScale called but ignored, scale controlled by window size');
+            return true;
+        }
+
+        // ---------- tap ----------
+
+        function tapModel(x, y) {
+            if (!currentModel) return false;
+            try {
+                currentModel.tap(x, y);
+                return true;
+            } catch(e) {
+                return false;
+            }
+        }
+
+        // ---------- query ----------
+
+        function getAvailableMotions() {
+            return Object.keys(motionMap);
+        }
+
+        function getMotionGroups() {
+            const result = {};
+            for (const [group, list] of Object.entries(motionGroups)) {
+                result[group] = list.map(m => extractMotionName(m.File || ''));
+            }
+            return result;
+        }
+
+        function getModelInfo() {
+            if (!currentModel) return null;
+            return JSON.stringify({
+                width: _originalModelW,
+                height: _originalModelH
+            });
+        }
+
+        // ---------- resize ----------
+
+        function resizeView(w, h) {
+            console.log('resizeView called:', w, 'x', h);
+            _canvasW = w;
+            _canvasH = h;
+            _sizeInitialized = true;
+
+            const canvas = document.getElementById('live2d_canvas');
+
+            // 同步 CSS 尺寸，确保与像素尺寸一致
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+
+            if (app) {
+                // 重新调整 renderer 像素尺寸
+                app.renderer.resize(w, h);
+            }
+
+            // 立即重新适配模型
+            if (currentModel) {
+                fitModelToView();
+            }
+        }
+
+        // ---------- events ----------
+
+        window.addEventListener('resize', function() {
+            if (currentModel) fitModelToView();
+        });
+
+        // Canvas click is handled by the Python overlay widget via tapModel() JS call
+        // No need for canvas-level click listener here
+
+        // ---------- QWebChannel setup ----------
+        // QWebChannel is optional - Python calls JS via runJavaScript()
+        // JS->Python callback is NOT needed currently, so we skip QWebChannel setup.
+        // If bidirectional communication is needed in the future, uncomment below.
+
+        // function initQWebChannel() {
+        //     if (typeof QWebChannel === 'undefined') return;
+        //     new QWebChannel(qt.webChannelTransport, function(channel) {
+        //         window.pyBridge = channel.objects.pyBridge;
+        //         console.log('QWebChannel connected');
+        //         _pageReady = true;
+        //     });
+        // }
+        //
+        // if (document.readyState === 'loading') {
+        //     document.addEventListener('DOMContentLoaded', initQWebChannel);
+        // } else {
+        //     initQWebChannel();
+        // }
+
+        // ---------- expose global API ----------
+
+        window.initLive2D = initLive2D;
+        window.playMotion = playMotion;
+        window.playExpression = playExpression;
+        window.setEyeTracking = setEyeTracking;
+        window.setMood = setMood;
+        window.setScale = setScale;
+        window.tapModel = tapModel;
+        window.getAvailableMotions = getAvailableMotions;
+        window.getMotionGroups = getMotionGroups;
+        window.getModelInfo = getModelInfo;
+        window.resizeView = resizeView;
+        window.notify = notify;
+
+    })();
+    </script>
+</body>
+</html>

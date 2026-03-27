@@ -65,6 +65,8 @@ class GeneralConfig:
     model_scale: float = 1.0
     # 对话模式: normal(正常模式) / debug(调试模式)
     chat_mode: str = "normal"
+    # 是否保留对话历史（重启后是否恢复上次对话）
+    keep_conversation_history: bool = False
 
 
 @dataclass

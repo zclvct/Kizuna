@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
     QGraphicsDropShadowEffect, QApplication, QPushButton, QLabel,
     QSizeGrip
 )
-from PySide6.QtCore import Qt, QPoint, QTimer, Signal, QRect
+from PySide6.QtCore import Qt, QPoint, QTimer, Signal, QRect, Slot
 from PySide6.QtGui import QCursor, QColor, QPainterPath, QPainter, QPen, QBrush, QFont
 
 import sys
@@ -299,12 +299,8 @@ class MainWindow(QMainWindow):
             QTimer.singleShot(200, self._show_chat_initial)
     
     def showEvent(self, event):
-        """窗口显示事件 - 在此处恢复位置"""
+        """窗口显示事件"""
         super().showEvent(event)
-        # 首次显示时恢复位置
-        if not hasattr(self, '_position_restored'):
-            self._position_restored = True
-            self._restore_window_position()
         # Windows 平台移除 DWM 阴影边框
         _remove_dwm_shadow(self)
 
@@ -409,14 +405,25 @@ class MainWindow(QMainWindow):
         # 表情包气泡 - 独立窗口
         self.emoji_bubble = EmojiBubble()
         
-        # 尝试从配置恢复窗口大小，否则使用默认值
+        # 启动时优先使用上次保存的窗口大小，避免模型加载后明显“弹一下”
         saved_width = self.config.general.window_width
         saved_height = self.config.general.window_height
         if saved_width > 0 and saved_height > 0:
-            self.setFixedSize(saved_width, saved_height)
-            logger.info(f"恢复窗口大小: {saved_width}x{saved_height}")
+            initial_width = saved_width
+            initial_height = saved_height
         else:
-            self.setFixedSize(370, 520)
+            initial_width = 370
+            initial_height = 520
+        
+        # 恢复窗口位置
+        saved_x = self.config.general.window_x
+        saved_y = self.config.general.window_y
+        
+        # 设置初始位置和大小
+        self.setFixedSize(initial_width, initial_height)
+        if saved_x > 0 or saved_y > 0:
+            self.move(saved_x, saved_y)
+        logger.info(f"设置初始窗口: ({saved_x}, {saved_y}) {initial_width}x{initial_height}")
 
     def _on_drag_started(self, global_pos: QPoint):
         """模型区域开始拖拽"""
@@ -439,37 +446,24 @@ class MainWindow(QMainWindow):
         new_width = width + window_margin
         new_height = height + window_margin
         
-        # 设置新窗口大小
+        # 尺寸未变化则不处理，避免启动时视觉抖动
+        if self.width() == new_width and self.height() == new_height:
+            return
+
+        # 使用 setGeometry 一次性设置位置和大小，避免分两步导致的闪烁
+        self.setGeometry(current_pos.x(), current_pos.y(), new_width, new_height)
+
+        # 锁定窗口大小
         self.setFixedSize(new_width, new_height)
         
         # 更新配置中的窗口大小
         self.config.general.window_width = new_width
         self.config.general.window_height = new_height
         
-        # 确保窗口位置在屏幕范围内
-        screen = QApplication.screenAt(current_pos)
-        if screen is None:
-            screen = QApplication.primaryScreen()
-        screen_rect = screen.availableGeometry()
-        
-        # 调整位置，确保窗口不超出屏幕
-        new_x = current_pos.x()
-        new_y = current_pos.y()
-        
-        # 如果窗口右边界超出屏幕，调整位置
-        if new_x + new_width > screen_rect.right():
-            new_x = screen_rect.right() - new_width
-        
-        # 如果窗口下边界超出屏幕，调整位置
-        if new_y + new_height > screen_rect.bottom():
-            new_y = screen_rect.bottom() - new_height
-        
-        # 确保不超出左边界和上边界
-        new_x = max(screen_rect.left(), new_x)
-        new_y = max(screen_rect.top(), new_y)
-        
-        # 移动窗口到新位置
-        self.move(new_x, new_y)
+        # 显示窗口（首次调整大小后）
+        if self.isHidden():
+            self.show()
+            logger.info("模型加载完成，显示窗口")
         
         # 更新聊天气泡位置
         if self._chat_visible:
@@ -615,32 +609,39 @@ class MainWindow(QMainWindow):
             if motion:
                 self.live2d_widget.play_motion(motion, mood=mood)
 
+    @Slot(str)
     def _on_show_emoji(self, mood: str):
         """显示表情包回调"""
-        logger.info(f"_on_show_emoji 被调用: {mood}")
-        entry = get_mood_by_type(mood)
-        
-        if not entry:
-            logger.warning(f"未找到类型 {mood} 的表情包配置，请检查 data/moods.json")
-            return
-        
-        # 计算模型头顶位置（全局坐标）
-        model_rect = self.geometry()
-        
-        # 模型头顶位置：窗口中央偏上
-        # Live2D 模型通常在窗口中央，头顶约在窗口顶部 20-30% 的位置
-        head_x = model_rect.center().x()
-        head_y = model_rect.top() + int(model_rect.height() * 0.15)  # 头顶位置
-        
-        from PySide6.QtCore import QPoint
-        model_head_pos = QPoint(head_x, head_y)
-        
-        logger.info(f"准备显示表情包: {entry.file_path}, 模型头顶位置: {model_head_pos}")
-        self.emoji_bubble.show_emoji(
-            entry.file_path,
-            entry.duration,
-            model_head_pos  # 传入模型头顶位置，气泡会显示在上方
-        )
+        try:
+            logger.info(f"_on_show_emoji 被调用: {mood}")
+            entry = get_mood_by_type(mood)
+
+            if not entry:
+                logger.warning(f"未找到类型 {mood} 的表情包配置，请检查 data/moods.json")
+                return
+
+            # 计算模型头顶位置（全局坐标）
+            model_rect = self.geometry()
+
+            # 模型头顶位置：窗口中央偏上
+            # Live2D 模型通常在窗口中央，头顶约在窗口顶部 20-30% 的位置
+            head_x = model_rect.center().x()
+            head_y = model_rect.top() + int(model_rect.height() * 0.15)  # 头顶位置
+
+            from PySide6.QtCore import QPoint
+            model_head_pos = QPoint(head_x, head_y)
+
+            duration = int(entry.duration) if entry.duration is not None else 3000
+            duration = max(100, duration)
+
+            logger.info(f"准备显示表情包: {entry.file_path}, 模型头顶位置: {model_head_pos}")
+            self.emoji_bubble.show_emoji(
+                entry.file_path,
+                duration,
+                model_head_pos  # 传入模型头顶位置，气泡会显示在上方
+            )
+        except Exception as e:
+            logger.error(f"显示表情包失败: {e}", exc_info=True)
 
     def _on_motion_played(self, motion_id: str):
         """动作播放完成"""
@@ -711,11 +712,11 @@ class MainWindow(QMainWindow):
     def _on_model_changed(self, model_path: str):
         """模型变更处理"""
         logger.info(f"重新加载模型: {model_path}")
-        # 重新加载 Live2D 模型
-        self.live2d_widget.live2d_widget.load_model(model_path)
-        # 清除动作缓存，让 motion_tool 重新读取
+        # 清除动作缓存
         from live2d_renderer.motion_controller import MotionController
         MotionController().clear_motions_cache()
+        # 重新加载 Live2D 模型
+        self.live2d_widget._do_load_model()
         logger.info("模型和动作缓存已更新")
 
     def _view_tasks(self):
