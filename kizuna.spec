@@ -4,6 +4,7 @@
 
 import sys
 from pathlib import Path
+from PyInstaller.utils.hooks import collect_dynamic_libs
 
 block_cipher = None
 
@@ -39,7 +40,8 @@ try:
 except Exception as e:
     print(f"Warning: Error collecting live2d_web assets: {e}")
 
-binaries = []
+# 显式收集 PySide6 动态库，避免 macOS 下 Qt 模块运行时缺失
+binaries = collect_dynamic_libs('PySide6')
 
 # 隐式导入（PyInstaller 无法自动检测的模块）
 hiddenimports = [
@@ -49,6 +51,7 @@ hiddenimports = [
     'PySide6.QtWebEngineWidgets',
     'PySide6.QtWebEngineCore',
     'PySide6.QtWebChannel',
+    'PySide6.QtNetwork',
     'langchain',
     'langchain_core',
     'langchain_community',
@@ -138,7 +141,6 @@ excludes = [
     'PySide6.QtLocation',
     'PySide6.QtMultimedia',
     'PySide6.QtMultimediaWidgets',
-    'PySide6.QtNetwork',
     'PySide6.QtNfc',
     'PySide6.QtPositioning',
     'PySide6.QtQuick',
@@ -154,8 +156,6 @@ excludes = [
     'PySide6.QtTextToSpeech',
     'PySide6.QtWebSockets',
     'PySide6.QtXml',
-    'PySide6.QtOpenGL',
-    'PySide6.QtOpenGLWidgets',
 ]
 
 a = Analysis(
