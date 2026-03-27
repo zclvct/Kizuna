@@ -5,11 +5,13 @@ src_path = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(src_path))
 
 from PySide6.QtWidgets import (
-    QDialog, QVBoxLayout, QHBoxLayout, QTabWidget, QPushButton, QMessageBox
+    QDialog, QVBoxLayout, QHBoxLayout, QTabWidget, QPushButton, QMessageBox,
+    QLabel, QFrame, QLineEdit, QTextEdit, QComboBox, QAbstractSpinBox,
+    QSizePolicy, QFormLayout
 )
 from PySide6.QtCore import Qt, Signal
 
-from .styles import ANIME_STYLE
+from .styles import ANIME_STYLE, CARD_STYLE
 from .llm_page import LLMSettingsPage
 from .live2d_page import Live2DSettingsPage
 from .character_page import CharacterSettingsPage
@@ -39,6 +41,7 @@ class SettingsWindow(QDialog):
         self._setup_window_flags()
         self._setup_ui()
         self._setup_window()
+        self._apply_max_input_width()
     
     def _setup_window_flags(self):
         """设置窗口标志 - 不在任务栏显示"""
@@ -49,14 +52,29 @@ class SettingsWindow(QDialog):
     def _setup_window(self):
         """设置窗口"""
         self.setWindowTitle("⚙️ 设置")
-        self.setMinimumSize(700, 600)
-        self.setStyleSheet(ANIME_STYLE)
+        self.setMinimumSize(760, 620)
+        self.setStyleSheet(ANIME_STYLE + "\n" + CARD_STYLE)
 
     def _setup_ui(self):
         """设置 UI"""
         layout = QVBoxLayout(self)
         layout.setContentsMargins(15, 15, 15, 15)
         layout.setSpacing(10)
+
+        # 顶部提示卡片
+        header_card = QFrame()
+        header_card.setObjectName("card")
+        header_layout = QVBoxLayout(header_card)
+        header_layout.setContentsMargins(14, 10, 14, 10)
+        header_layout.setSpacing(2)
+
+        title_label = QLabel("项目设置")
+        title_label.setStyleSheet("font-size: 16px; font-weight: 700; color: #334; background: transparent;")
+        subtitle_label = QLabel("建议修改后点击“保存”，会立即同步到主窗口行为。")
+        subtitle_label.setStyleSheet("font-size: 12px; color: #6b7893; background: transparent;")
+        header_layout.addWidget(title_label)
+        header_layout.addWidget(subtitle_label)
+        layout.addWidget(header_card)
 
         # 标签页
         self.tabs = QTabWidget()
@@ -96,7 +114,7 @@ class SettingsWindow(QDialog):
         button_layout = QHBoxLayout()
         button_layout.addStretch()
 
-        reset_btn = QPushButton("重置")
+        reset_btn = QPushButton("恢复当前页")
         reset_btn.setObjectName("secondaryBtn")
         reset_btn.clicked.connect(self._reset)
         button_layout.addWidget(reset_btn)
@@ -107,6 +125,24 @@ class SettingsWindow(QDialog):
 
         layout.addLayout(button_layout)
     
+    def _apply_max_input_width(self):
+        """将所有设置页输入控件宽度设置为可用最大"""
+        input_widgets = (
+            self.findChildren(QLineEdit)
+            + self.findChildren(QTextEdit)
+            + self.findChildren(QComboBox)
+            + self.findChildren(QAbstractSpinBox)
+        )
+        for widget in input_widgets:
+            widget.setMinimumWidth(0)
+            widget.setMaximumWidth(16777215)
+            policy = widget.sizePolicy()
+            policy.setHorizontalPolicy(QSizePolicy.Policy.Expanding)
+            widget.setSizePolicy(policy)
+
+        for form in self.findChildren(QFormLayout):
+            form.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
+
     def _on_model_changed(self, model_path: str):
         """模型变更处理"""
         logger.info(f"模型变更: {model_path}")

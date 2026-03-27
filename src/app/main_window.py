@@ -108,7 +108,7 @@ class ChatBubbleWindow(QWidget):
         title_bar.setStyleSheet("""
             QWidget#titleBar {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 #A8D8FF, stop:0.5 #C8E8FF, stop:1 #FFB8D9);
+                    stop:0 #78a9ff, stop:0.55 #93c1ff, stop:1 #adcfff);
                 border-top-left-radius: 18px;
                 border-top-right-radius: 18px;
             }
@@ -119,7 +119,7 @@ class ChatBubbleWindow(QWidget):
         title_layout.setSpacing(8)
         
         # 标题
-        title_label = QLabel("💬 对话")
+        title_label = QLabel("对话")
         title_label.setFont(QFont("Arial", 12, QFont.Weight.Bold))
         title_label.setStyleSheet("""
             color: white;
@@ -138,18 +138,18 @@ class ChatBubbleWindow(QWidget):
         close_btn.clicked.connect(self.hide)
         close_btn.setStyleSheet("""
             QPushButton#closeBtn {
-                background-color: rgba(255, 255, 255, 0.3);
+                background-color: rgba(255, 255, 255, 0.26);
                 color: white;
                 border: none;
                 border-radius: 14px;
                 font-size: 14px;
-                font-weight: bold;
+                font-weight: 600;
             }
             QPushButton#closeBtn:hover {
-                background-color: rgba(255, 100, 100, 0.8);
+                background-color: rgba(255, 124, 124, 0.9);
             }
             QPushButton#closeBtn:pressed {
-                background-color: rgba(255, 80, 80, 1.0);
+                background-color: rgba(255, 98, 98, 1.0);
             }
         """)
         title_layout.addWidget(close_btn)
@@ -159,9 +159,11 @@ class ChatBubbleWindow(QWidget):
         # 聊天内容区域
         chat_container = QWidget()
         chat_container.setStyleSheet("""
-            background-color: rgba(255, 255, 255, 250);
+            background-color: rgba(249, 252, 255, 248);
             border-bottom-left-radius: 18px;
             border-bottom-right-radius: 18px;
+            border: 1px solid rgba(213, 228, 255, 0.9);
+            border-top: none;
         """)
         chat_layout = QVBoxLayout(chat_container)
         chat_layout.setContentsMargins(10, 5, 10, 10)
@@ -180,9 +182,9 @@ class ChatBubbleWindow(QWidget):
         
         # 窗口阴影
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(25)
-        shadow.setColor(QColor(150, 200, 255, 80))
-        shadow.setOffset(0, 5)
+        shadow.setBlurRadius(28)
+        shadow.setColor(QColor(118, 160, 230, 95))
+        shadow.setOffset(0, 6)
         self.setGraphicsEffect(shadow)
     
     def _on_response_received(self):

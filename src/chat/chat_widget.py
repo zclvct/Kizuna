@@ -57,7 +57,7 @@ class ChatWidget(QFrame):
     def _setup_ui(self):
         """设置 UI - 二次元风格"""
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(12, 12, 12, 12)
+        layout.setContentsMargins(12, 10, 12, 12)
         layout.setSpacing(10)
 
         # 标题栏（移除，改为在 ChatBubbleWindow 中统一管理）
@@ -110,21 +110,24 @@ class ChatWidget(QFrame):
         self._setup_scroll_to_bottom_button()
 
         # 输入区
-        input_layout = QHBoxLayout()
+        input_wrap = QFrame()
+        input_wrap.setObjectName("inputWrap")
+        input_layout = QHBoxLayout(input_wrap)
+        input_layout.setContentsMargins(8, 8, 8, 8)
         input_layout.setSpacing(8)
 
         self.input_edit = QLineEdit()
-        self.input_edit.setPlaceholderText("✨ 输入消息... (Enter 发送)")
+        self.input_edit.setPlaceholderText("输入消息…（Enter 发送）")
         self.input_edit.setFont(QFont("Arial", 11))
         self.input_edit.returnPressed.connect(self._on_send)
         input_layout.addWidget(self.input_edit, 1)
 
-        self.send_btn = QPushButton("✈️ 发送")
-        self.send_btn.setMinimumWidth(75)
+        self.send_btn = QPushButton("发送")
+        self.send_btn.setMinimumWidth(82)
         self.send_btn.clicked.connect(self._on_send)
         input_layout.addWidget(self.send_btn)
 
-        layout.addLayout(input_layout)
+        layout.addWidget(input_wrap)
 
         # 二次元风格样式
         self.setStyleSheet("""
@@ -132,12 +135,17 @@ class ChatWidget(QFrame):
                 background-color: transparent;
                 border: none;
             }
+            QFrame#inputWrap {
+                background-color: rgba(255, 255, 255, 0.94);
+                border: 1px solid #dce8ff;
+                border-radius: 14px;
+            }
             QLineEdit {
-                padding: 10px 15px;
-                border: 2px solid #B8D4FF;
-                border-radius: 22px;
+                padding: 9px 13px;
+                border: 1px solid #cfe0ff;
+                border-radius: 18px;
                 background-color: white;
-                color: #555;
+                color: #44506a;
                 font-size: 12px;
             }
             QLineEdit:focus {
@@ -149,12 +157,12 @@ class ChatWidget(QFrame):
             }
             QPushButton#sendBtn {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #A8D8FF, stop:1 #7BB8FF);
+                    stop:0 #84b5ff, stop:1 #5f97ff);
                 color: white;
                 border: none;
-                border-radius: 22px;
-                padding: 10px 18px;
-                font-weight: bold;
+                border-radius: 18px;
+                padding: 9px 16px;
+                font-weight: 600;
                 font-size: 12px;
             }
             QPushButton#sendBtn:hover {

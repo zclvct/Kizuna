@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
     QFrame, QGridLayout, QScrollArea, QMessageBox,
     QMenu, QFileDialog, QListWidget, QListWidgetItem
 )
-from PySide6.QtCore import Qt, Signal
+from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtGui import QPainter, QColor, QPen, QBrush
 
 from .styles import CARD_STYLE, MENU_STYLE
@@ -223,15 +223,15 @@ class Live2DSettingsPage(QWidget):
         layout.addWidget(title)
         
         # 提示
-        hint = QLabel("点击卡片设为默认模型，右键可删除或刷新动作")
-        hint.setStyleSheet("color: #999; font-size: 11px;")
-        layout.addWidget(hint)
+        self._models_meta_label = QLabel()
+        self._models_meta_label.setStyleSheet("color: #999; font-size: 11px;")
+        layout.addWidget(self._models_meta_label)
         
         # 模型卡片区域
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-        scroll.setStyleSheet("QScrollArea { background: transparent; border: none; }")
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self._models_scroll = QScrollArea()
+        self._models_scroll.setWidgetResizable(True)
+        self._models_scroll.setStyleSheet("QScrollArea { background: transparent; border: none; }")
+        self._models_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         
         scroll_content = QWidget()
         scroll_content.setStyleSheet("background: transparent;")
@@ -240,8 +240,8 @@ class Live2DSettingsPage(QWidget):
         self.models_layout.setContentsMargins(5, 5, 5, 5)
         self.models_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         
-        scroll.setWidget(scroll_content)
-        layout.addWidget(scroll, 1)
+        self._models_scroll.setWidget(scroll_content)
+        layout.addWidget(self._models_scroll, 1)
         
         # 动作列表区域
         motions_group = QFrame()
@@ -333,37 +333,74 @@ class Live2DSettingsPage(QWidget):
 
         logger.info(f"扫描到 {len(self._models)} 个模型")
     
+    def _calc_grid_metrics(self) -> tuple[int, int]:
+        """根据可用宽度计算每行卡片数和卡片宽度"""
+        if not hasattr(self, "_models_scroll"):
+            return 1, 180
+
+        available_width = max(1, self._models_scroll.viewport().width() - 10)
+        spacing = self.models_layout.spacing()
+        min_card_width = 150
+        max_card_width = 220
+
+        columns = max(1, (available_width + spacing) // (min_card_width + spacing))
+        total_cards = max(1, len(self._models) + 1)  # +1 为导入卡片
+        columns = min(columns, total_cards, 5)
+
+        card_width = (available_width - (columns - 1) * spacing) // columns
+        card_width = max(min_card_width, min(max_card_width, card_width))
+        return columns, card_width
+
     def _create_model_cards(self):
         """创建模型卡片"""
         # 清理现有卡片
         for card in self._cards:
             card.deleteLater()
         self._cards = []
-        
+
         # 清除布局
         while self.models_layout.count():
             item = self.models_layout.takeAt(0)
             if item.widget():
                 item.widget().deleteLater()
-        
+
+        columns, card_width = self._calc_grid_metrics()
+
         # 添加导入卡片
         add_card = Live2DModelCard({}, is_add_card=True)
+        add_card.setFixedWidth(card_width)
         add_card.clicked.connect(self._import_model)
         self.models_layout.addWidget(add_card, 0, 0)
         self._cards.append(add_card)
-        
+
         # 模型卡片
         for i, model in enumerate(self._models):
             is_default = (i == self._default_model_index)
             card = Live2DModelCard(model, is_default=is_default)
+            card.setFixedWidth(card_width)
             card.clicked.connect(partial(self._set_default_model, i))
             card.delete_requested.connect(partial(self._delete_model, i))
             card.refresh_requested.connect(partial(self._refresh_model, i))
-            row = (i + 1) // 3
-            col = (i + 1) % 3
+            idx = i + 1
+            row = idx // columns
+            col = idx % columns
             self.models_layout.addWidget(card, row, col)
             self._cards.append(card)
-    
+
+        self._models_meta_label.setText(
+            f"点击卡片设为默认模型，右键可删除或刷新动作 · 共 {len(self._models)} 个模型 · 每行 {columns} 个"
+        )
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        if hasattr(self, "models_layout"):
+            QTimer.singleShot(0, self._create_model_cards)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        if hasattr(self, "models_layout") and self._cards:
+            QTimer.singleShot(0, self._create_model_cards)
+
     def _update_motions_list(self):
         """更新动作列表"""
         self._motions_list.clear()

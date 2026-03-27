@@ -9,7 +9,8 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel,
     QListWidget, QListWidgetItem, QPushButton,
     QDialog, QFormLayout, QLineEdit, QComboBox,
-    QTextEdit, QMessageBox, QCheckBox, QScrollArea
+    QTextEdit, QMessageBox, QCheckBox, QScrollArea,
+    QSizePolicy
 )
 from PySide6.QtCore import Qt, QThread, Signal as QSignal
 
@@ -368,6 +369,7 @@ class MCPServerDialog(QDialog):
         # 表单
         form = QFormLayout()
         form.setSpacing(10)
+        form.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
 
         self.id_edit = QLineEdit()
         self.id_edit.setPlaceholderText("唯一标识，如: filesystem")
@@ -438,6 +440,17 @@ class MCPServerDialog(QDialog):
         btn_layout.addWidget(save_btn)
 
         layout.addLayout(btn_layout)
+        self._apply_max_input_width()
+
+    def _apply_max_input_width(self):
+        """输入控件宽度拉满"""
+        input_widgets = self.findChildren(QLineEdit) + self.findChildren(QComboBox)
+        for widget in input_widgets:
+            widget.setMinimumWidth(0)
+            widget.setMaximumWidth(16777215)
+            policy = widget.sizePolicy()
+            policy.setHorizontalPolicy(QSizePolicy.Policy.Expanding)
+            widget.setSizePolicy(policy)
 
     def _on_transport_changed(self, transport: str):
         is_stdio = transport == "stdio"
@@ -599,10 +612,25 @@ class MCPSettingsPage(QWidget):
 
         btn_layout.addStretch()
         layout.addLayout(btn_layout)
+        self._apply_max_input_width()
 
         layout.addStretch()
         scroll.setWidget(content)
         main_layout.addWidget(scroll)
+
+    def _apply_max_input_width(self):
+        """输入控件宽度拉满"""
+        input_widgets = (
+            self.findChildren(QLineEdit)
+            + self.findChildren(QTextEdit)
+            + self.findChildren(QComboBox)
+        )
+        for widget in input_widgets:
+            widget.setMinimumWidth(0)
+            widget.setMaximumWidth(16777215)
+            policy = widget.sizePolicy()
+            policy.setHorizontalPolicy(QSizePolicy.Policy.Expanding)
+            widget.setSizePolicy(policy)
 
     def _load_servers(self):
         self.server_list.clear()

@@ -3,45 +3,50 @@
 # 主样式
 ANIME_STYLE = """
 QDialog {
-    background-color: #f8f9fa;
+    background-color: #f6f9ff;
 }
 QTabWidget::pane {
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: white;
+    border: 1px solid #dce8ff;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.96);
 }
 QTabBar::tab {
-    background-color: #f0f0f0;
-    color: #666;
-    padding: 8px 20px;
-    margin-right: 2px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    font-weight: bold;
+    background-color: #edf3ff;
+    color: #5c6b86;
+    padding: 9px 18px;
+    margin-right: 4px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: 600;
+    min-width: 84px;
 }
 QTabBar::tab:selected {
     background-color: white;
-    color: #5c9eff;
+    color: #4f7dff;
     border-bottom: 2px solid white;
 }
 QTabBar::tab:hover:!selected {
-    background-color: #e8f4ff;
-    color: #5c9eff;
+    background-color: #e4efff;
+    color: #4f7dff;
 }
 QPushButton {
     background-color: #5c9eff;
     color: white;
     border: none;
-    border-radius: 6px;
-    padding: 8px 20px;
-    font-weight: bold;
-    min-width: 60px;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    min-width: 72px;
 }
 QPushButton:hover {
     background-color: #4a8ae5;
 }
 QPushButton:pressed {
     background-color: #3d7ad1;
+}
+QPushButton:disabled {
+    background-color: #cfd9ea;
+    color: #8b97ad;
 }
 QPushButton#secondaryBtn {
     background-color: #f0f0f0;
@@ -51,13 +56,14 @@ QPushButton#secondaryBtn:hover {
     background-color: #e0e0e0;
 }
 QLineEdit, QTextEdit {
-    border: 2px solid #e0e0e0;
-    border-radius: 6px;
-    padding: 6px 10px;
+    border: 1px solid #d6e2f5;
+    border-radius: 8px;
+    padding: 7px 10px;
     background-color: white;
 }
 QLineEdit:focus, QTextEdit:focus {
     border-color: #5c9eff;
+    background-color: #fafdff;
 }
 QSpinBox, QDoubleSpinBox {
     border: 2px solid #e0e0e0;
@@ -222,22 +228,30 @@ QFrame#addCard:hover {
 # 菜单样式
 MENU_STYLE = """
 QMenu {
-    background-color: white;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    background-color: #ffffff;
+    border: 1px solid #dce8ff;
+    border-radius: 10px;
     padding: 6px;
 }
 QMenu::item {
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 8px 18px;
+    border-radius: 6px;
     margin: 2px;
+    color: #44506a;
 }
 QMenu::item:selected {
-    background-color: #e8f4ff;
+    background-color: #e9f2ff;
+    color: #2f5fd8;
+}
+QMenu::item:disabled {
+    color: #a4afc3;
+}
+QMenu::icon {
+    padding-left: 6px;
 }
 QMenu::separator {
     height: 1px;
-    background-color: #e0e0e0;
-    margin: 4px 8px;
+    background-color: #e6eefc;
+    margin: 5px 8px;
 }
 """

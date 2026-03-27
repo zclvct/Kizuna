@@ -10,9 +10,10 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
     QFrame, QGridLayout, QScrollArea, QDialog,
     QFormLayout, QLineEdit, QComboBox, QPushButton,
-    QMessageBox, QMenu, QDoubleSpinBox, QSpinBox, QSlider
+    QMessageBox, QMenu, QDoubleSpinBox, QSpinBox, QSlider,
+    QSizePolicy, QAbstractSpinBox
 )
-from PySide6.QtCore import Qt, Signal
+from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtGui import QPainter, QColor, QPen, QBrush
 
 from .styles import ANIME_STYLE, COMBO_BOX_STYLE, CARD_STYLE, MENU_STYLE
@@ -206,6 +207,7 @@ class LLMProviderDialog(QDialog):
         # 表单
         form_layout = QFormLayout()
         form_layout.setSpacing(10)
+        form_layout.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
         
         # 显示名称
         self.name_edit = QLineEdit()
@@ -311,7 +313,22 @@ class LLMProviderDialog(QDialog):
         btn_layout.addWidget(save_btn)
         
         main_layout.addLayout(btn_layout)
+        self._apply_max_input_width()
     
+    def _apply_max_input_width(self):
+        """输入控件宽度拉满"""
+        input_widgets = (
+            self.findChildren(QLineEdit)
+            + self.findChildren(QComboBox)
+            + self.findChildren(QAbstractSpinBox)
+        )
+        for widget in input_widgets:
+            widget.setMinimumWidth(0)
+            widget.setMaximumWidth(16777215)
+            policy = widget.sizePolicy()
+            policy.setHorizontalPolicy(QSizePolicy.Policy.Expanding)
+            widget.setSizePolicy(policy)
+
     def _on_provider_changed(self, provider: str):
         """提供商类型变更时更新默认 Base URL"""
         default_urls = {
@@ -420,14 +437,14 @@ class LLMSettingsPage(QWidget):
         layout.addWidget(title)
         
         # 提示
-        hint = QLabel("点击卡片设为默认，右键可编辑或删除")
-        hint.setStyleSheet("color: #999; font-size: 11px;")
-        layout.addWidget(hint)
+        self._providers_meta_label = QLabel()
+        self._providers_meta_label.setStyleSheet("color: #999; font-size: 11px;")
+        layout.addWidget(self._providers_meta_label)
         
         # 服务商卡片区域
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-        scroll.setStyleSheet("QScrollArea { background: transparent; border: none; }")
+        self._providers_scroll = QScrollArea()
+        self._providers_scroll.setWidgetResizable(True)
+        self._providers_scroll.setStyleSheet("QScrollArea { background: transparent; border: none; }")
         
         scroll_content = QWidget()
         scroll_content.setStyleSheet("background: transparent;")
@@ -436,8 +453,8 @@ class LLMSettingsPage(QWidget):
         self.providers_layout.setContentsMargins(5, 5, 5, 5)
         self.providers_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         
-        scroll.setWidget(scroll_content)
-        layout.addWidget(scroll)
+        self._providers_scroll.setWidget(scroll_content)
+        layout.addWidget(self._providers_scroll)
         
         # MCP 工具状态区域（简化版）
         mcp_frame = QFrame()
@@ -482,6 +499,24 @@ class LLMSettingsPage(QWidget):
         self._create_provider_cards()
         self._refresh_mcp_status()
     
+    def _calc_grid_metrics(self) -> tuple[int, int]:
+        """根据可用宽度计算每行卡片数和卡片宽度"""
+        if not hasattr(self, "_providers_scroll"):
+            return 1, 140
+
+        available_width = max(1, self._providers_scroll.viewport().width() - 10)
+        spacing = self.providers_layout.spacing()
+        min_card_width = 120
+        max_card_width = 180
+
+        columns = max(1, (available_width + spacing) // (min_card_width + spacing))
+        total_cards = max(1, len(self._providers) + 1)  # +1 为添加卡片
+        columns = min(columns, total_cards, 5)
+
+        card_width = (available_width - (columns - 1) * spacing) // columns
+        card_width = max(min_card_width, min(max_card_width, card_width))
+        return columns, card_width
+
     def _create_provider_cards(self):
         """创建服务商卡片"""
         # 清除现有卡片
@@ -489,24 +524,42 @@ class LLMSettingsPage(QWidget):
             item = self.providers_layout.takeAt(0)
             if item.widget():
                 item.widget().deleteLater()
-        
+
+        columns, card_width = self._calc_grid_metrics()
+
         # 添加卡片
         add_card = LLMProviderCard({}, is_add_card=True)
+        add_card.setFixedWidth(card_width)
         add_card.clicked.connect(self._add_provider)
         self.providers_layout.addWidget(add_card, 0, 0)
-        
+
         # 服务商卡片 - 使用 partial 避免闭包问题
         for i, provider in enumerate(self._providers):
             is_default = (i == self._default_provider_index)
             card = LLMProviderCard(provider, is_default=is_default)
-            # 使用 partial 确保索引正确传递
+            card.setFixedWidth(card_width)
             card.clicked.connect(partial(self._set_default_provider, i))
             card.edit_requested.connect(partial(self._edit_provider, i))
             card.delete_requested.connect(partial(self._delete_provider, i))
-            row = (i + 1) // 4
-            col = (i + 1) % 4
+            idx = i + 1
+            row = idx // columns
+            col = idx % columns
             self.providers_layout.addWidget(card, row, col)
-    
+
+        self._providers_meta_label.setText(
+            f"点击卡片设为默认，右键可编辑或删除 · 共 {len(self._providers)} 个服务商 · 每行 {columns} 个"
+        )
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        if hasattr(self, "providers_layout"):
+            QTimer.singleShot(0, self._create_provider_cards)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        if hasattr(self, "providers_layout") and self.providers_layout.count() > 0:
+            QTimer.singleShot(0, self._create_provider_cards)
+
     def _add_provider(self):
         """添加服务商"""
         dialog = LLMProviderDialog(self)

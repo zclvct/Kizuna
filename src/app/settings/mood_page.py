@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
     QFrame, QGridLayout, QScrollArea, QDialog,
     QFormLayout, QLineEdit, QComboBox, QPushButton,
     QMessageBox, QMenu, QSpinBox, QFileDialog,
-    QGroupBox
+    QGroupBox, QSizePolicy, QAbstractSpinBox
 )
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QPixmap, QMovie
@@ -142,6 +142,7 @@ class AddMoodDialog(QDialog):
         # 表单
         form_layout = QFormLayout()
         form_layout.setSpacing(12)
+        form_layout.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
         
         # 类型分类
         self.category_combo = QComboBox()
@@ -210,7 +211,22 @@ class AddMoodDialog(QDialog):
         btn_layout.addWidget(save_btn)
         
         layout.addLayout(btn_layout)
+        self._apply_max_input_width()
     
+    def _apply_max_input_width(self):
+        """输入控件宽度拉满"""
+        input_widgets = (
+            self.findChildren(QLineEdit)
+            + self.findChildren(QComboBox)
+            + self.findChildren(QAbstractSpinBox)
+        )
+        for widget in input_widgets:
+            widget.setMinimumWidth(0)
+            widget.setMaximumWidth(16777215)
+            policy = widget.sizePolicy()
+            policy.setHorizontalPolicy(QSizePolicy.Policy.Expanding)
+            widget.setSizePolicy(policy)
+
     def _on_category_changed(self):
         """类型分类改变时更新选项"""
         self._update_mood_options()
