@@ -10,12 +10,12 @@ from PySide6.QtCore import Qt, Signal, QTimer, QPoint, QUrl
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtGui import QCursor
 from utils import get_config, get_character_manager, get_logger
-from utils.constants import resolve_path
+from utils.constants import resolve_path, BUILTIN_ASSETS_DIR
 
 logger = get_logger()
 
-# HTML 页面路径
-LIVE2D_HTML_DIR = Path(__file__).parent.parent.parent / "assets" / "live2d_web"
+# HTML 页面路径（优先使用打包环境可用的内置资源目录）
+LIVE2D_HTML_DIR = BUILTIN_ASSETS_DIR / "live2d_web"
 LIVE2D_HTML_PATH = LIVE2D_HTML_DIR / "index.html"
 
 
