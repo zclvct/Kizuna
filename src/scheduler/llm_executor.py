@@ -6,7 +6,7 @@ sys.path.insert(0, str(src_path))
 
 import asyncio
 from typing import TYPE_CHECKING
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QObject, Signal, Slot
 
 from scheduler.task import ScheduledTask
 from utils import get_logger
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 logger = get_logger()
 
 
-class LLMTaskExecutor:
+class LLMTaskExecutor(QObject):
     """LLM 驱动的任务执行器
     
     负责：
@@ -26,6 +26,10 @@ class LLMTaskExecutor:
     2. 在对话中添加任务提示
     3. 触发 LLM 执行任务
     """
+
+    show_chat_requested = Signal()
+    add_task_prompt_requested = Signal(str)
+    trigger_llm_requested = Signal(str)
     
     def __init__(self, chat_widget: "ChatWidget", main_window: "MainWindow"):
         """初始化执行器
@@ -34,8 +38,15 @@ class LLMTaskExecutor:
             chat_widget: 对话窗口组件
             main_window: 主窗口
         """
+        super().__init__(main_window)
         self.chat_widget = chat_widget
         self.main_window = main_window
+
+        # 使用 Qt Signal 保证跨线程调用落到 UI 主线程执行
+        self.show_chat_requested.connect(self._show_chat_on_main_thread)
+        self.add_task_prompt_requested.connect(self._add_task_prompt_on_main_thread)
+        self.trigger_llm_requested.connect(self._call_llm_on_main_thread)
+
         logger.info("LLMTaskExecutor 初始化完成")
     
     async def execute_task(self, task: ScheduledTask) -> bool:
@@ -58,8 +69,7 @@ class LLMTaskExecutor:
             # 1. 确保对话窗口可见
             if not self.main_window._chat_visible:
                 logger.info("对话窗口未打开，正在打开...")
-                # 在主线程中显示对话窗口
-                QTimer.singleShot(0, self.main_window._show_chat)
+                self.show_chat_requested.emit()
                 # 等待窗口显示
                 await asyncio.sleep(0.3)
             
@@ -90,11 +100,9 @@ class LLMTaskExecutor:
             f"正在执行任务..."
         )
         
-        # 在主线程中添加消息气泡
-        QTimer.singleShot(0, lambda: 
-            self.chat_widget._add_message_bubble(system_message, is_user=False)
-        )
-        
+        # 发到主线程添加消息气泡
+        self.add_task_prompt_requested.emit(system_message)
+
         # 等待 UI 更新
         await asyncio.sleep(0.2)
     
@@ -113,26 +121,31 @@ class LLMTaskExecutor:
             f"请执行上述任务。"
         )
         
-        # 在主线程中触发 LLM 处理
-        QTimer.singleShot(0, lambda: 
-            self._call_llm(full_prompt)
-        )
-        
+        # 发到主线程触发 LLM 处理
+        self.trigger_llm_requested.emit(full_prompt)
+
         logger.info(f"已触发 LLM 处理任务: {task_name}")
     
-    def _call_llm(self, prompt: str):
-        """调用 LLM（在主线程中执行）
-        
-        Args:
-            prompt: 提示词
-        """
+    @Slot()
+    def _show_chat_on_main_thread(self):
+        """在 UI 主线程显示聊天窗口"""
+        self.main_window._show_chat()
+
+    @Slot(str)
+    def _add_task_prompt_on_main_thread(self, system_message: str):
+        """在 UI 主线程添加任务提示气泡"""
+        self.chat_widget._add_message_bubble(system_message, is_user=False)
+
+    @Slot(str)
+    def _call_llm_on_main_thread(self, prompt: str):
+        """在 UI 主线程调用 LLM"""
         try:
             # 添加用户消息到对话历史（标记为任务触发）
             self.chat_widget.conversation_manager.add_user_message(prompt)
-            
-            # 直接触发生成回复
-            self.chat_widget._generate_response(prompt)
-            
+
+            # 触发生成回复（任务模式）
+            self.chat_widget._generate_response(prompt, is_task=True)
+
         except Exception as e:
             logger.error(f"调用 LLM 失败: {e}", exc_info=True)
             # 添加错误提示
