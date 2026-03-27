@@ -90,6 +90,7 @@ class Live2DGLWidget(QFrame):
         self._model_loaded = False
         self._pending_model_path = None
         self._motion_map = {}
+        self._expression_names = []
         self._model_config = None
 
         # 模型自然尺寸（将在模型加载后从 JS 查询）
@@ -278,8 +279,10 @@ class Live2DGLWidget(QFrame):
             with open(model_json_path, 'r', encoding='utf-8') as f:
                 self._model_config = json.load(f)
 
-            motions = self._model_config.get("FileReferences", {}).get("Motions", {})
+            file_refs = self._model_config.get("FileReferences", {})
+            motions = file_refs.get("Motions", {})
             self._motion_map = {}
+            self._expression_names = []
 
             for group_name, motion_list in motions.items():
                 for index, motion_entry in enumerate(motion_list):
@@ -291,11 +294,21 @@ class Live2DGLWidget(QFrame):
                         self._motion_map[motion_name] = index
                         logger.debug(f"解析动作: {motion_name} -> 索引 {index} (组: '{group_name}')")
 
+            expressions = file_refs.get("Expressions", [])
+            for exp in expressions:
+                if not isinstance(exp, dict):
+                    continue
+                exp_name = exp.get("Name") or Path(exp.get("File", "")).stem
+                if exp_name and exp_name not in self._expression_names:
+                    self._expression_names.append(exp_name)
+
             logger.info(f"从模型解析到 {len(self._motion_map)} 个动作: {list(self._motion_map.keys())}")
+            logger.info(f"从模型解析到 {len(self._expression_names)} 个表情/换装: {self._expression_names}")
 
         except Exception as e:
             logger.error(f"解析模型动作失败: {e}", exc_info=True)
             self._motion_map = {"idle": 0}
+            self._expression_names = []
 
     def _emit_recommended_size(self):
         """发出推荐的窗口大小"""
@@ -322,6 +335,10 @@ class Live2DGLWidget(QFrame):
     def get_available_motions(self) -> list:
         """获取模型支持的所有动作名称列表"""
         return list(self._motion_map.keys())
+
+    def get_available_expressions(self) -> list:
+        """获取模型支持的表情/换装名称列表"""
+        return list(self._expression_names)
 
     def set_scale(self, scale: float):
         """设置缩放 - 通过改变窗口大小实现"""
@@ -361,6 +378,17 @@ class Live2DGLWidget(QFrame):
             self._run_js(f"setMood('{mood}')")
         except Exception as e:
             logger.error(f"更新心情失败: {e}", exc_info=True)
+
+    def play_expression(self, expression_name: str):
+        """播放表情/换装"""
+        if not self._initialized or not expression_name:
+            return
+        try:
+            safe_name = expression_name.replace("'", "\\'")
+            logger.info(f"播放表情/换装: {expression_name}")
+            self._run_js(f"playExpression('{safe_name}')")
+        except Exception as e:
+            logger.error(f"播放表情/换装失败: {e}", exc_info=True)
 
     def _update_eye_tracking(self):
         """更新眼球追踪"""
@@ -531,3 +559,11 @@ class Live2DWidget(QFrame):
     def set_scale(self, scale: float):
         """设置模型缩放"""
         self.live2d_widget.set_scale(scale)
+
+    def get_available_expressions(self) -> list:
+        """获取模型支持的表情/换装列表"""
+        return self.live2d_widget.get_available_expressions()
+
+    def play_expression(self, expression_name: str):
+        """播放表情/换装"""
+        self.live2d_widget.play_expression(expression_name)

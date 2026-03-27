@@ -6,14 +6,16 @@ from PySide6.QtWidgets import (
     QSizeGrip
 )
 from PySide6.QtCore import Qt, QPoint, QTimer, Signal, QRect, Slot
-from PySide6.QtGui import QCursor, QColor, QPainterPath, QPainter, QPen, QBrush, QFont
+from PySide6.QtGui import QColor, QPainterPath, QPainter, QPen, QBrush, QFont
 
 import sys
+import random
 from pathlib import Path
 src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
 
 from utils import get_config, get_character_manager, get_logger, set_motion_callback
+from utils.constants import resolve_path
 from chat import ChatWidget
 from live2d_renderer import Live2DWidget
 from scheduler import TaskManager, get_task_manager, LLMTaskExecutor
@@ -284,6 +286,7 @@ class MainWindow(QMainWindow):
         self._drag_position = None
         self._chat_visible = False
         self._dragging = False
+        self._outfit_cycle_index = 0
 
         set_motion_callback(self._on_global_motion)
         set_emoji_callback(self._on_show_emoji)
@@ -475,9 +478,22 @@ class MainWindow(QMainWindow):
         """设置右键菜单"""
         self.context_menu = ContextMenu(self)
         self.context_menu.toggle_chat.connect(self._toggle_chat)
+        self.context_menu.draggable_changed.connect(self._on_draggable_changed)
+        self.context_menu.always_on_top_changed.connect(self._on_always_on_top_changed)
+        self.context_menu.model_random_motion.connect(self._play_random_interactive_motion)
+        self.context_menu.model_idle_motion.connect(lambda: self._play_quick_motion("idle"))
+        self.context_menu.model_touch_head_motion.connect(lambda: self._play_quick_motion("touch_head"))
+        self.context_menu.model_touch_body_motion.connect(lambda: self._play_quick_motion("touch_body"))
+        self.context_menu.model_switch_outfit_selected.connect(self._switch_outfit_by_name)
+        self.context_menu.model_switch_random.connect(self._switch_model_random)
+        self.context_menu.model_reload.connect(lambda: self._delayed_model_reload(self.config.live2d.model_path))
         self.context_menu.open_settings.connect(self._open_settings)
         self.context_menu.view_tasks.connect(self._view_tasks)
         self.context_menu.quit_app.connect(self._close_all)
+
+        # 初始化勾选状态
+        self.context_menu.set_draggable(self.config.general.draggable)
+        self.context_menu.set_always_on_top(self.config.general.always_on_top)
 
     def _setup_task_manager(self):
         """设置任务管理器"""
@@ -647,6 +663,96 @@ class MainWindow(QMainWindow):
         """动作播放完成"""
         logger.debug(f"Motion played: {motion_id}")
 
+    def _play_quick_motion(self, motion_id: str):
+        """播放快捷动作"""
+        try:
+            self.live2d_widget.play_motion(motion_id)
+        except Exception as e:
+            logger.warning(f"播放快捷动作失败: {motion_id}, {e}")
+
+    def _play_random_interactive_motion(self):
+        """播放随机互动动作"""
+        motion = random.choice(["touch_head", "touch_body", "main_1"])
+        self._play_quick_motion(motion)
+
+    def _get_available_model_paths(self) -> list[str]:
+        """获取可切换模型路径列表"""
+        paths = []
+
+        # 优先使用配置中已保存的模型列表
+        models_cfg = self.config.live2d_models.get('models', []) if isinstance(self.config.live2d_models, dict) else []
+        for model in models_cfg:
+            p = model.get('path', '') if isinstance(model, dict) else ''
+            if p and resolve_path(p).exists():
+                paths.append(str(resolve_path(p)))
+
+        # 配置为空时，回退扫描当前模型目录同级
+        if not paths:
+            current = resolve_path(self.config.live2d.model_path)
+            base_dir = current.parent if current.exists() else None
+            if base_dir and base_dir.exists():
+                for d in base_dir.iterdir():
+                    if d.is_dir() and list(d.glob('*.model3.json')):
+                        paths.append(str(d.resolve()))
+
+        # 去重并排序，保证顺序稳定
+        unique_paths = sorted(set(paths))
+        return unique_paths
+
+    def _switch_model_to(self, model_path: str):
+        """切换到指定模型"""
+        if not model_path:
+            return
+        self.config.live2d.model_path = model_path
+        self.config.save()
+        self._delayed_model_reload(model_path)
+        logger.info(f"已切换模型: {model_path}")
+
+    def _get_outfit_expression_candidates(self) -> list[str]:
+        """获取换装候选（优先服装相关表达，缺失则回退全部表达）"""
+        expressions = self.live2d_widget.get_available_expressions()
+        if not expressions:
+            return []
+
+        keywords = ["costume", "outfit", "cloth", "dress", "skin", "衣", "装", "换装"]
+        outfit_expressions = [
+            name for name in expressions
+            if any(k in str(name).lower() for k in keywords)
+        ]
+        return outfit_expressions if outfit_expressions else expressions
+
+    def _switch_outfit_by_name(self, outfit_name: str):
+        """按名称切换同模型换装"""
+        if not outfit_name:
+            return
+
+        candidates = self._get_outfit_expression_candidates()
+        if not candidates:
+            logger.warning("当前模型未提供可用换装/表情")
+            return
+
+        if outfit_name in candidates:
+            self._outfit_cycle_index = (candidates.index(outfit_name) + 1) % max(1, len(candidates))
+
+        self.live2d_widget.play_expression(outfit_name)
+        logger.info(f"换装切换: {outfit_name}")
+
+    def _switch_model_random(self):
+        """随机切换模型"""
+        paths = self._get_available_model_paths()
+        if len(paths) < 2:
+            logger.warning("可用模型不足，无法随机切换")
+            return
+
+        current = str(resolve_path(self.config.live2d.model_path))
+        candidates = [p for p in paths if p != current]
+        if not candidates:
+            logger.warning("没有可切换的其他模型")
+            return
+
+        target = random.choice(candidates)
+        self._switch_model_to(target)
+
     def _open_settings(self):
         """打开设置"""
         dialog = SettingsWindow(self)
@@ -669,36 +775,45 @@ class MainWindow(QMainWindow):
     
     def _on_always_on_top_changed(self, always_on_top: bool):
         """窗口置顶状态变化"""
+        # 保存配置
+        self.config.general.always_on_top = always_on_top
+        self.config.save()
+        self.context_menu.set_always_on_top(always_on_top)
+
         # 保存当前窗口位置
         pos = self.pos()
-        
+
         # 重新设置窗口标志
         flags = Qt.WindowType.FramelessWindowHint
         if always_on_top:
             flags |= Qt.WindowType.WindowStaysOnTopHint
-        
+
         # 使用 Tool 标志，使窗口不在任务栏/扩展坞显示
         flags |= Qt.WindowType.Tool
-        
+
         self.setWindowFlags(flags)
-        
+
         # macOS 上设置特殊属性
         if sys.platform == 'darwin':
             self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow, True)
-        
+
         self.show()
         self.move(pos)
         # Windows 平台重新移除 DWM 阴影（setWindowFlags 会重建窗口）
         _remove_dwm_shadow(self)
-        
+
         # 更新聊天气泡位置
         if self._chat_visible:
             self._update_bubble_position()
-        
+
         logger.info(f"窗口置顶状态更新: {always_on_top}")
     
     def _on_draggable_changed(self, draggable: bool):
         """拖动状态变化"""
+        self.config.general.draggable = draggable
+        self.config.save()
+        self.context_menu.set_draggable(draggable)
+
         if not draggable and self._dragging:
             self.releaseMouse()
             self._dragging = False
@@ -712,6 +827,7 @@ class MainWindow(QMainWindow):
     def _on_model_changed(self, model_path: str):
         """模型变更处理"""
         logger.info(f"重新加载模型: {model_path}")
+        self._outfit_cycle_index = 0
         # 清除动作缓存
         from live2d_renderer.motion_controller import MotionController
         MotionController().clear_motions_cache()
@@ -765,7 +881,9 @@ class MainWindow(QMainWindow):
 
     def contextMenuEvent(self, event):
         """右键菜单"""
-        self.context_menu.exec(QCursor.pos())
+        self.context_menu.set_outfit_list(self._get_outfit_expression_candidates())
+        self.context_menu.exec(event.globalPos())
+        event.accept()
 
     def closeEvent(self, event):
         """关闭窗口"""
