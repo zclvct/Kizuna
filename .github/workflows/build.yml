@@ -1,0 +1,186 @@
+# Kizuna - 跨平台自动打包工作流
+# 推送 tag 时自动打包 Mac 和 Windows 版本
+# 使用方法: git tag v1.0.0 && git push --tags
+
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # 推送 v 开头的 tag 时触发，如 v1.0.0
+  workflow_dispatch:  # 支持手动触发
+
+permissions:
+  contents: write  # 创建 Release 需要写权限
+
+jobs:
+  # macOS 打包
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install -r requirements.txt
+
+      - name: Create app icon
+        run: |
+          mkdir -p assets/images/icon.iconset
+          sips -z 16 16     assets/images/AI助手.png --out assets/images/icon.iconset/icon_16x16.png
+          sips -z 32 32     assets/images/AI助手.png --out assets/images/icon.iconset/icon_16x16@2x.png
+          sips -z 32 32     assets/images/AI助手.png --out assets/images/icon.iconset/icon_32x32.png
+          sips -z 64 64     assets/images/AI助手.png --out assets/images/icon.iconset/icon_32x32@2x.png
+          sips -z 128 128   assets/images/AI助手.png --out assets/images/icon.iconset/icon_128x128.png
+          sips -z 256 256   assets/images/AI助手.png --out assets/images/icon.iconset/icon_128x128@2x.png
+          sips -z 256 256   assets/images/AI助手.png --out assets/images/icon.iconset/icon_256x256.png
+          sips -z 512 512   assets/images/AI助手.png --out assets/images/icon.iconset/icon_256x256@2x.png
+          sips -z 512 512   assets/images/AI助手.png --out assets/images/icon.iconset/icon_512x512.png
+          sips -z 1024 1024 assets/images/AI助手.png --out assets/images/icon.iconset/icon_512x512@2x.png
+          iconutil -c icns assets/images/icon.iconset -o assets/images/icon.icns
+
+      - name: Build macOS app
+        run: |
+          # 使用绝对路径设置图标
+          ICON_PATH="$(pwd)/assets/images/icon.icns"
+          sed -i '' "s|icon=None|icon='$ICON_PATH'|g" kizuna.spec
+          pyinstaller kizuna.spec --noconfirm
+
+      - name: Debug - List app contents
+        run: |
+          echo "=== App Contents ==="
+          ls -la dist/Kizuna.app/Contents/
+          echo "=== MacOS ==="
+          ls -la dist/Kizuna.app/Contents/MacOS/
+          echo "=== Resources ==="
+          ls -la dist/Kizuna.app/Contents/Resources/ | head -30
+          echo "=== Frameworks ==="
+          ls -la dist/Kizuna.app/Contents/Frameworks/ 2>/dev/null || echo "No Frameworks"
+          echo "=== Check live2d libs ==="
+          find dist/Kizuna.app -name "*live2d*" -o -name "*.so" -o -name "*.dylib" | head -20
+
+      - name: Test run app (quick check)
+        run: |
+          # 尝试运行应用并捕获输出（5秒超时）
+          timeout 5 ./dist/Kizuna.app/Contents/MacOS/Kizuna 2>&1 || echo "App exited or timed out"
+
+      - name: Create DMG
+        run: |
+          xattr -cr "dist/Kizuna.app"
+          hdiutil create -volname "Kizuna" -srcfolder "dist/Kizuna.app" -ov -format UDZO "dist/Kizuna_macOS.dmg"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kizuna_macOS
+          path: dist/Kizuna_macOS.dmg
+
+  # Windows 打包
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install -r requirements.txt
+
+      - name: Create Windows icon
+        shell: pwsh
+        run: |
+          # 使用 PowerShell 创建简单的 ico（或手动上传 icon.ico）
+          if (Test-Path "assets/images/icon.ico") {
+            Write-Host "Icon already exists"
+          } else {
+            Write-Host "Skipping icon creation (optional)"
+          }
+
+      - name: Build Windows exe
+        run: |
+          pyinstaller kizuna.spec --noconfirm
+
+      - name: Debug - Check build output
+        shell: pwsh
+        run: |
+          echo "=== Build output ==="
+          Get-ChildItem dist
+          echo "=== Check live2d files ==="
+          Get-ChildItem -Path dist -Recurse -Filter "*live2d*" -ErrorAction SilentlyContinue
+          if (-not $?) { echo "No live2d files found" }
+
+      - name: Create ZIP
+        shell: pwsh
+        run: |
+          # Windows 打包生成的是 Kizuna.exe 单文件
+          if (Test-Path "dist/Kizuna.exe") {
+            New-Item -ItemType Directory -Force -Path "dist/Kizuna"
+            Move-Item "dist/Kizuna.exe" "dist/Kizuna/"
+            Compress-Archive -Path "dist/Kizuna" -DestinationPath "dist/Kizuna_Windows.zip"
+          } elseif (Test-Path "dist/Kizuna") {
+            Compress-Archive -Path "dist/Kizuna" -DestinationPath "dist/Kizuna_Windows.zip"
+          } else {
+            Write-Error "Build output not found!"
+            exit 1
+          }
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kizuna_Windows
+          path: dist/Kizuna_Windows.zip
+
+  # 创建 Release
+  create-release:
+    needs: [build-mac, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Kizuna_macOS
+          path: artifacts/
+
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Kizuna_Windows
+          path: artifacts/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/Kizuna_macOS.dmg
+            artifacts/Kizuna_Windows.zip
+          body: |
+            ## Kizuna 发布版本
+            
+            ### 下载
+            - **macOS**: Kizuna_macOS.dmg
+            - **Windows**: Kizuna_Windows.zip
+            
+            ### 安装说明
+            - **macOS**: 双击 DMG 文件，拖拽到应用程序文件夹
+            - **Windows**: 解压 ZIP 文件，运行 Kizuna.exe
+            
+            ### 系统要求
+            - macOS 10.13+
+            - Windows 10+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
