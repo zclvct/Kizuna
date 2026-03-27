@@ -2,258 +2,115 @@
 
 <div align="center">
 
-一个功能完整的 Live2D 二次元桌面助手，具备 AI 对话、角色设定、动态记忆、技能系统、心情驱动动作等功能。
-使用claude code 与 codebuddy 开发
+一个可常驻桌面的 Live2D AI 助手：会聊天、会记忆、可配置角色、可调用工具。 
+
+使用CLaude Code 与 CodeBuddy开发
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-lightgrey.svg)](#)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-lightgrey.svg)](https://github.com)
 
 </div>
 
 ---
 
-## 📸 软件截图
+## 亮点功能
+
+- Live2D 桌宠展示（`model3.json`）
+- 点击/拖拽交互，心情驱动动作
+- AI 对话（支持 `OpenAI / Ollama`）
+- 角色设定、系统提示词可视化配置
+- 内置工具 + MCP 扩展
+- 定时任务、待办与历史记录
+- 系统托盘常驻（macOS 支持隐藏 Dock）
+
+---
+
+## 截图展示
 
 <div align="center">
 
-### 桌面助手主界面
+### 主界面
+<img src="assets/screenshots/settings_live2d.png" width="700" alt="主界面" />
 
-<img src="assets/screenshots/settings_live2d.png" width="600" alt="主界面">
+### AI 对话
+<img src="assets/screenshots/chat.png" width="700" alt="AI 对话" />
 
-*Live2D 模型在桌面展示，支持拖拽移动*
-
-### AI 对话界面
-
-<img src="assets/screenshots/chat.png" width="600" alt="对话界面">
-
-*与 AI 助手进行自然对话，支持流式输出*
-
-### 设置面板
+### 设置页面
 
 | Live2D 模型管理 | 角色设定 |
-|:---:|:---:|
-| <img src="assets/screenshots/settings_live2d.png" width="280" alt="模型管理"> | <img src="assets/screenshots/settings_persona.png" width="280" alt="角色设定"> |
+|:--:|:--:|
+| <img src="assets/screenshots/settings_live2d.png" width="320" alt="Live2D设置" /> | <img src="assets/screenshots/settings_persona.png" width="320" alt="角色设定" /> |
 
 | 技能配置 | MCP 服务器 |
-|:---:|:---:|
-| <img src="assets/screenshots/settings_tools.png" width="280" alt="技能配置"> | <img src="assets/screenshots/settings_mcp.png" width="280" alt="MCP配置"> |
+|:--:|:--:|
+| <img src="assets/screenshots/settings_tools.png" width="320" alt="技能配置" /> | <img src="assets/screenshots/settings_mcp.png" width="320" alt="MCP设置" /> |
 
-### 表情包气泡
-
-<img src="assets/screenshots/emoji_bubble.png" width="400" alt="表情包气泡">
-
-*心情表情包气泡，增添互动趣味*
+### 表情气泡
+<img src="assets/screenshots/emoji_bubble.png" width="420" alt="表情气泡" />
 
 </div>
 
 ---
 
-## ✨ 功能特性
-
-### 🎭 Live2D 模型
-- 支持 Live2D Cubism 3 模型
-- 动态表情和动作播放
-- 心情驱动的动画效果
-- 可切换多个角色模型
-
-### 🤖 AI 对话
-- 支持多种 LLM 提供商（OpenAI、Ollama 等）
-- 流式响应输出
-- 上下文记忆管理
-- 自定义角色设定
-
-### 🧠 智能记忆
-- 长期记忆存储
-- 用户事实记录
-- 语义搜索回忆
-- 重要度评分系统
-
-### 🔧 技能系统
-- 内置工具：天气查询、待办事项、剪贴板、系统信息等
-- MCP (Model Context Protocol) 扩展支持
-- 可视化技能开关管理
-- 定时任务调度
-
-### 🎨 用户界面
-- 现代化动漫风格 UI
-- 系统托盘常驻
-- 表情包气泡显示
-- 多窗口设置面板
-
----
-
-## 📦 安装
-
-### 方式一：下载安装包（推荐）
-
-从 [Releases](https://github.com/zclvct/Kizuna/releases) 页面下载对应平台的安装包：
-
-| 平台 | 文件 | 说明 |
-|------|------|------|
-| macOS | `Kizuna_macOS.dmg` | 双击安装 |
-| Windows | `Kizuna_Windows.zip` | 解压运行 |
-
-### 方式二：从源码运行
+## 快速开始
 
 ```bash
-# 克隆仓库
 git clone https://github.com/zclvct/Kizuna.git
 cd Kizuna
 
-# 创建虚拟环境（推荐）
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate   # Windows
+python -m venv .venv
+source .venv/bin/activate      # macOS/Linux
+# .venv\Scripts\activate      # Windows
 
-# 安装依赖
 pip install -r requirements.txt
-
-# 运行
 python run.py
 ```
 
 ---
 
-## ⚙️ 配置
+## 基本配置
 
-### LLM 配置
+应用首次启动会将运行数据初始化到用户目录：
 
-编辑 `data/config.json`：
+- macOS / Linux：`~/Kizuna`
+- Windows：`%USERPROFILE%\\Kizuna`
+
+常用配置文件：
+
+- `~/Kizuna/data/config.json`（LLM / Live2D / 通用设置）
+- `~/Kizuna/data/character.json`（角色设定）
+- `~/Kizuna/data/tools.json`（工具开关）
+- `~/Kizuna/data/mcp_servers.json`（MCP 服务器）
+
+`config.json` 示例：
 
 ```json
 {
   "llm": {
-    "default_provider": "openai",
-    "providers": {
-      "openai": {
-        "api_key": "your-api-key",
-        "base_url": "https://api.openai.com/v1",
-        "model": "gpt-4o-mini"
-      },
-      "ollama": {
-        "base_url": "http://localhost:11434",
-        "model": "llama3"
-      }
-    }
+    "provider": "ollama",
+    "model": "qwen3.5:4B",
+    "base_url": "http://localhost:11434"
+  },
+  "live2d": {
+    "model_path": "assets/live2d/biaoqiang"
   }
 }
 ```
 
-### MCP 服务器配置
+---
 
-编辑 `data/mcp_servers.json`：
+## 技术栈
 
-```json
-{
-  "servers": [
-    {
-      "id": "bing_search",
-      "name": "Bing 搜索",
-      "transport": "streamable_http",
-      "url": "https://mcpmarket.cn/mcp/xxx",
-      "enabled": true
-    }
-  ]
-}
-```
+- `PySide6`
+- `QWebEngine`
+- `pixi-live2d-display`（本地资源）
+- `LangChain`
+
+> 当前渲染方案为 **WebEngine Live2D**，不依赖 `live2d-py` / `PyOpenGL`。
 
 ---
 
-## 🎮 使用
+## License
 
-### 基本操作
-
-- **双击托盘图标**：显示/隐藏主窗口
-- **右键托盘图标**：打开菜单
-- **设置入口**：右键菜单 → 设置
-
-### 角色设定
-
-在设置页面可以自定义 AI 的：
-- 名字、性别、年龄
-- 性格特点、说话风格
-- 自称、对用户的称呼
-- 与用户的关系
-
-### 技能管理
-
-在设置页面可以：
-- 开启/关闭内置技能
-- 添加/编辑/删除 MCP 服务器
-- 测试 MCP 工具
-
----
-
-## 🏗️ 开发
-
-### 项目结构
-
-```
-Kizuna/
-├── assets/              # 资源文件
-│   ├── images/          # 图片资源
-│   └── live2d/          # Live2D 模型
-├── data/                # 数据文件
-│   ├── config.json      # 应用配置
-│   ├── persona.json     # 角色设定
-│   ├── mcp_servers.json # MCP 配置
-│   └── memory.db        # 记忆数据库
-├── src/                 # 源代码
-│   ├── app/             # GUI 应用
-│   ├── agent/           # AI Agent
-│   │   ├── mcp/         # MCP 集成
-│   │   ├── models/      # LLM 模型
-│   │   ├── tools/       # 内置工具
-│   │   └── memory/      # 记忆系统
-│   └── live2d/          # Live2D 渲染
-├── run.py               # 启动入口
-├── requirements.txt     # Python 依赖
-└── kizuna.spec          # PyInstaller 配置
-```
-
-
----
-
-## 📋 系统要求
-
-| 平台 | 最低版本 |
-|------|----------|
-| macOS | 10.13+ |
-| Windows | 10+ |
-| Python | 3.11+ |
-
----
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-1. Fork 本仓库
-2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
-
----
-
-## 📄 许可证
-
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
-
----
-
-## 🙏 致谢
-
-- [Live2D](https://www.live2d.com/) - 虚拟角色技术
-- [PySide6](https://doc.qt.io/qtforpython/) - GUI 框架
-- [LangChain](https://www.langchain.com/) - LLM 框架
-- [live2d-py](https://github.com/Arkueid/live2d-py) - Live2D Python 绑定
-
----
-
-<div align="center">
-
-**[⬆ 返回顶部](#kizuna---二次元桌面助手)**
-
-</div>
+MIT，详见 `LICENSE`。
