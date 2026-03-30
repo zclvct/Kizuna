@@ -204,6 +204,20 @@ class Live2DGLWidget(QFrame):
         except Exception as e:
             logger.error(f"执行 JS 失败: {e}")
 
+    def _check_live2d_web_assets(self) -> bool:
+        """检查 Web 端 Live2D 依赖文件是否存在"""
+        required_files = [
+            LIVE2D_HTML_PATH,
+            LIVE2D_HTML_DIR / "libs" / "pixi.min.js",
+            LIVE2D_HTML_DIR / "libs" / "live2dcubismcore.min.js",
+            LIVE2D_HTML_DIR / "libs" / "cubism4.min.js",
+        ]
+        missing = [str(p) for p in required_files if not p.exists()]
+        if missing:
+            logger.error("Live2D Web 资源缺失: " + ", ".join(missing))
+            return False
+        return True
+
     def load_model(self, model_path: str):
         """加载 Live2D 模型"""
         if not self._initialized:
@@ -216,17 +230,29 @@ class Live2DGLWidget(QFrame):
         """内部加载模型方法"""
         try:
             logger.info(f"开始加载模型: {model_path}")
+            self._model_loaded = False
+
+            if not self._check_live2d_web_assets():
+                raise FileNotFoundError("Live2D Web 资源缺失，请检查打包文件")
 
             if not model_path:
                 raise ValueError("model_path 为空，请检查配置文件中的 live2d.model_path 设置")
 
             model_path_obj = resolve_path(model_path)
             if not model_path_obj.exists():
-                raise FileNotFoundError(f"模型目录不存在: {model_path} (解析后: {model_path_obj})")
+                fallback_model_path = BUILTIN_ASSETS_DIR / "live2d" / "biaoqiang"
+                if fallback_model_path.exists():
+                    logger.warning(
+                        f"模型目录不存在，自动回退到内置模型: {fallback_model_path} "
+                        f"(原始: {model_path}, 解析后: {model_path_obj})"
+                    )
+                    model_path_obj = fallback_model_path
+                else:
+                    raise FileNotFoundError(f"模型目录不存在: {model_path} (解析后: {model_path_obj})")
 
             model3_files = list(model_path_obj.glob("*.model3.json"))
             if not model3_files:
-                raise FileNotFoundError(f"未找到 .model3.json 文件在: {model_path}")
+                raise FileNotFoundError(f"未找到 .model3.json 文件在: {model_path_obj}")
 
             model_json_path = model3_files[0]
             logger.info(f"找到模型文件: {model_json_path}")
@@ -239,13 +265,12 @@ class Live2DGLWidget(QFrame):
             logger.info(f"模型 URL: {model_url}")
 
             safe_model_url = json.dumps(model_url)
-            js_code = f"initLive2D({safe_model_url})"
-            self._run_js(js_code, lambda result: self._on_model_init_result(result))
-
-            # runJavaScript 对 async 函数返回值不稳定，先进入可缩放状态
-            self._model_loaded = True
-            # 缩短延迟时间，尽快调整窗口大小
-            QTimer.singleShot(300, self._query_model_dimensions)
+            js_code = (
+                f"initLive2D({safe_model_url})"
+                ".then((r) => JSON.stringify(r))"
+                ".catch((e) => JSON.stringify({ok:false,error:(e && e.message) ? e.message : String(e)}))"
+            )
+            self._run_js(js_code, self._on_model_init_result)
 
             return True
 
@@ -255,15 +280,31 @@ class Live2DGLWidget(QFrame):
 
     def _on_model_init_result(self, result):
         """模型初始化结果回调"""
-        if result is True:
-            self._model_loaded = True
-            logger.info("WebEngine Live2D 模型加载完成")
-            # 延迟查询模型实际尺寸（等 PIXI 渲染完成）
-            QTimer.singleShot(500, self._query_model_dimensions)
-        elif result is False:
-            logger.error("WebEngine Live2D 模型加载失败")
-        else:
-            logger.debug(f"模型初始化回调返回异步占位值: {result}")
+        try:
+            payload = result
+            if isinstance(result, str):
+                payload = json.loads(result)
+
+            if isinstance(payload, dict):
+                ok = bool(payload.get("ok", False))
+                if ok:
+                    self._model_loaded = True
+                    logger.info("WebEngine Live2D 模型加载完成")
+                    QTimer.singleShot(500, self._query_model_dimensions)
+                else:
+                    self._model_loaded = False
+                    error = payload.get("error", "未知错误")
+                    logger.error(f"WebEngine Live2D 模型加载失败: {error}")
+            elif payload is True:
+                self._model_loaded = True
+                logger.info("WebEngine Live2D 模型加载完成")
+                QTimer.singleShot(500, self._query_model_dimensions)
+            else:
+                self._model_loaded = False
+                logger.error(f"WebEngine Live2D 模型加载失败，返回值: {payload}")
+        except Exception as e:
+            self._model_loaded = False
+            logger.error(f"处理模型初始化结果失败: {e}, 原始返回: {result}")
 
     def _query_model_dimensions(self):
         """从 JS 查询模型实际像素尺寸"""
@@ -418,8 +459,8 @@ class Live2DGLWidget(QFrame):
             self._eye_current_y += (self._eye_target_y - self._eye_current_y) * self._eye_smoothing
 
             self._run_js(f"setEyeTracking({self._eye_current_x:.4f}, {self._eye_current_y:.4f})")
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"眼球追踪更新失败: {e}")
 
 
 class Live2DWidget(QFrame):
@@ -491,7 +532,9 @@ class Live2DWidget(QFrame):
             if w > 0 and h > 0:
                 self.live2d_widget._run_js(f"resizeView({w}, {h})")
             
-            self.live2d_widget.load_model(model_path)
+            ok = self.live2d_widget.load_model(model_path)
+            if not ok:
+                logger.error(f"Live2D 模型加载启动失败: {model_path}")
         except Exception as e:
             logger.error(f"加载模型时出错: {e}", exc_info=True)
 

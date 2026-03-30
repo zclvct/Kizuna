@@ -67,48 +67,74 @@
         let _canvasH = 500;
         let _sizeInitialized = false;
 
+        async function loadWithTimeout(promise, timeoutMs, timeoutMessage) {
+            let timer = null;
+            try {
+                return await Promise.race([
+                    promise,
+                    new Promise((_, reject) => {
+                        timer = setTimeout(() => reject(new Error(timeoutMessage)), timeoutMs);
+                    })
+                ]);
+            } finally {
+                if (timer) clearTimeout(timer);
+            }
+        }
+
         async function initLive2D(modelUrl) {
             const canvas = document.getElementById('live2d_canvas');
             const loading = document.getElementById('loading');
 
-
+            loading.style.display = 'block';
+            loading.textContent = 'Loading Live2D...';
 
             // 同步 CSS 尺寸
             canvas.style.width = _canvasW + 'px';
             canvas.style.height = _canvasH + 'px';
 
-            // 避免重复初始化
-            if (app) {
-                if (currentModel && currentModel.parent) {
-                    currentModel.parent.removeChild(currentModel);
-                }
-                currentModel = null;
-                motionMap = {};
-                motionGroups = {};
-                _originalModelW = 0;
-                _originalModelH = 0;
-                // 调整 renderer 尺寸
-                app.renderer.resize(_canvasW, _canvasH);
-            } else {
-                // 创建 PIXI Application - 使用当前 canvas 尺寸
-                app = new PIXI.Application({
-                    view: canvas,
-                    width: _canvasW,
-                    height: _canvasH,
-                    transparent: true,
-                    autoStart: true,
-                    backgroundAlpha: 0,
-                    antialias: true
-                });
-            }
-
-            console.log('initLive2D called with:', modelUrl, 'canvas size:', _canvasW, 'x', _canvasH);
-
             try {
-                currentModel = await PIXI.live2d.Live2DModel.from(modelUrl, {
-                    autoInteract: false,
-                    autoUpdate: true
-                });
+                if (!window.PIXI) {
+                    throw new Error('PIXI 未加载，请检查 libs/pixi.min.js');
+                }
+                if (!PIXI.live2d || !PIXI.live2d.Live2DModel) {
+                    throw new Error('Live2D 插件未加载，请检查 libs/cubism4.min.js');
+                }
+
+                // 避免重复初始化
+                if (app) {
+                    if (currentModel && currentModel.parent) {
+                        currentModel.parent.removeChild(currentModel);
+                    }
+                    currentModel = null;
+                    motionMap = {};
+                    motionGroups = {};
+                    _originalModelW = 0;
+                    _originalModelH = 0;
+                    // 调整 renderer 尺寸
+                    app.renderer.resize(_canvasW, _canvasH);
+                } else {
+                    // 创建 PIXI Application - 使用当前 canvas 尺寸
+                    app = new PIXI.Application({
+                        view: canvas,
+                        width: _canvasW,
+                        height: _canvasH,
+                        transparent: true,
+                        autoStart: true,
+                        backgroundAlpha: 0,
+                        antialias: true
+                    });
+                }
+
+                console.log('initLive2D called with:', modelUrl, 'canvas size:', _canvasW, 'x', _canvasH);
+
+                currentModel = await loadWithTimeout(
+                    PIXI.live2d.Live2DModel.from(modelUrl, {
+                        autoInteract: false,
+                        autoUpdate: true
+                    }),
+                    10000,
+                    'Live2D model load timeout (10s)'
+                );
 
                 // 保存模型原始尺寸（必须在设置 scale 之前）
                 _originalModelW = currentModel.width;
@@ -127,17 +153,21 @@
                 loading.style.display = 'none';
 
                 console.log('Live2D model loaded, model size:', currentModel.width, 'x', currentModel.height);
-                notify('onModelLoaded', JSON.stringify({
+                const payload = {
+                    ok: true,
                     motions: Object.keys(motionMap),
-                    width: currentModel.width,
-                    height: currentModel.height
-                }));
-                return true;
+                    width: _originalModelW,
+                    height: _originalModelH
+                };
+                notify('onModelLoaded', JSON.stringify(payload));
+                return payload;
             } catch (e) {
+                const errorMessage = (e && e.message) ? e.message : String(e);
                 console.error('Failed to load model:', e);
-                loading.textContent = 'Load failed: ' + e.message;
-                notify('onModelError', e.message);
-                return false;
+                loading.textContent = 'Load failed: ' + errorMessage;
+                const payload = { ok: false, error: errorMessage };
+                notify('onModelError', errorMessage);
+                return payload;
             }
         }
 
