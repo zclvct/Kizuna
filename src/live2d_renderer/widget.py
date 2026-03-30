@@ -179,6 +179,9 @@ class Live2DGLWidget(QFrame):
             self._initialized = True
             logger.info("Live2D WebEngine 页面加载成功")
 
+            # 检测 WebGL 支持情况
+            self._check_webgl_support()
+
             # 测试 JS 环境是否正常工作
             self._run_js("console.log('JS environment test passed')")
 
@@ -208,6 +211,31 @@ class Live2DGLWidget(QFrame):
                 self._web_view.page().runJavaScript(js_code)
         except Exception as e:
             logger.error(f"执行 JS 失败: {e}")
+
+    def _check_webgl_support(self):
+        """检测 WebGL 支持情况"""
+        def on_webgl_result(result):
+            if result:
+                try:
+                    info = json.loads(result)
+                    logger.info("=" * 50)
+                    logger.info("WebGL 环境检测结果:")
+                    logger.info(f"  WebGL 1.0: {'支持' if info.get('webgl') else '不支持'}")
+                    logger.info(f"  WebGL 2.0: {'支持' if info.get('webgl2') else '不支持'}")
+                    logger.info(f"  GPU 渲染器: {info.get('renderer', 'unknown')}")
+                    logger.info(f"  GPU 供应商: {info.get('vendor', 'unknown')}")
+                    if info.get('errors'):
+                        logger.warning(f"  错误: {', '.join(info['errors'])}")
+                    logger.info("=" * 50)
+
+                    # 如果 WebGL 不支持，记录警告
+                    if not info.get('webgl'):
+                        logger.error("WebGL 不可用！这将导致 Live2D 模型无法显示。")
+                        logger.error("可能的原因：1. 显卡驱动过旧 2. 显卡不支持 WebGL 3. 软件渲染模式")
+                except Exception as e:
+                    logger.warning(f"解析 WebGL 检测结果失败: {e}")
+
+        self._run_js("getWebGLInfo()", on_webgl_result)
 
     def _check_live2d_web_assets(self) -> bool:
         """检查 Web 端 Live2D 依赖文件是否存在"""

@@ -43,6 +43,63 @@
     <script src="libs/cubism4.min.js"></script>
 
     <script>
+    // ========== WebGL 环境检测 ==========
+    function checkWebGL() {
+        const result = {
+            webgl: false,
+            webgl2: false,
+            renderer: 'unknown',
+            vendor: 'unknown',
+            errors: []
+        };
+
+        try {
+            // 检测 WebGL 1.0
+            const testCanvas = document.createElement('canvas');
+            const gl1 = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
+            if (gl1) {
+                result.webgl = true;
+                const debugInfo = gl1.getExtension('WEBGL_debug_renderer_info');
+                if (debugInfo) {
+                    result.renderer = gl1.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                    result.vendor = gl1.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+                }
+            } else {
+                result.errors.push('WebGL 1.0 不可用');
+            }
+
+            // 检测 WebGL 2.0
+            const gl2 = testCanvas.getContext('webgl2');
+            if (gl2) {
+                result.webgl2 = true;
+            } else {
+                result.errors.push('WebGL 2.0 不可用');
+            }
+        } catch (e) {
+            result.errors.push('检测异常: ' + e.message);
+        }
+
+        console.log('========== WebGL 检测结果 ==========');
+        console.log('WebGL 1.0:', result.webgl ? '✓ 支持' : '✗ 不支持');
+        console.log('WebGL 2.0:', result.webgl2 ? '✓ 支持' : '✗ 不支持');
+        console.log('GPU 渲染器:', result.renderer);
+        console.log('GPU 供应商:', result.vendor);
+        if (result.errors.length > 0) {
+            console.log('错误信息:', result.errors.join(', '));
+        }
+        console.log('=====================================');
+
+        return result;
+    }
+
+    // 页面加载时立即检测
+    const webglInfo = checkWebGL();
+    
+    // 暴露给外部调用
+    window.getWebGLInfo = function() {
+        return JSON.stringify(webglInfo);
+    };
+
     (function() {
         'use strict';
 
