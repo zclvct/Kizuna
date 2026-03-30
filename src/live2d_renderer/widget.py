@@ -179,6 +179,9 @@ class Live2DGLWidget(QFrame):
             self._initialized = True
             logger.info("Live2D WebEngine 页面加载成功")
 
+            # 测试 JS 环境是否正常工作
+            self._run_js("console.log('JS environment test passed')")
+
             # 立即初始化 canvas 尺寸（使用当前 widget 尺寸）
             w, h = self.width(), self.height()
             if w > 0 and h > 0:
@@ -241,8 +244,11 @@ class Live2DGLWidget(QFrame):
                 raise ValueError("model_path 为空，请检查配置文件中的 live2d.model_path 设置")
 
             model_path_obj = resolve_path(model_path)
+            logger.info(f"模型路径解析: {model_path_obj}, 存在: {model_path_obj.exists()}")
+
             if not model_path_obj.exists():
                 fallback_model_path = BUILTIN_ASSETS_DIR / "live2d" / "biaoqiang"
+                logger.info(f"尝试回退模型路径: {fallback_model_path}, 存在: {fallback_model_path.exists()}")
                 if fallback_model_path.exists():
                     logger.warning(
                         f"模型目录不存在，自动回退到内置模型: {fallback_model_path} "
@@ -253,11 +259,21 @@ class Live2DGLWidget(QFrame):
                     raise FileNotFoundError(f"模型目录不存在: {model_path} (解析后: {model_path_obj})")
 
             model3_files = list(model_path_obj.glob("*.model3.json"))
+            logger.info(f"在 {model_path_obj} 找到 {len(model3_files)} 个 .model3.json 文件")
+
             if not model3_files:
                 raise FileNotFoundError(f"未找到 .model3.json 文件在: {model_path_obj}")
 
             model_json_path = model3_files[0]
-            logger.info(f"找到模型文件: {model_json_path}")
+            logger.info(f"找到模型文件: {model_json_path}, 绝对路径: {model_json_path.absolute()}")
+
+            # 检查文件是否可读
+            try:
+                with open(model_json_path, 'r', encoding='utf-8') as f:
+                    test_content = f.read(100)
+                    logger.info(f"模型文件可读，前100字符: {test_content[:50]}...")
+            except Exception as file_err:
+                raise FileNotFoundError(f"无法读取模型文件 {model_json_path}: {file_err}")
 
             # 解析动作映射（Python 端保持缓存）
             self._parse_model_motions(model_json_path)
@@ -266,12 +282,31 @@ class Live2DGLWidget(QFrame):
             model_url = QUrl.fromLocalFile(str(model_json_path.absolute())).toString()
             logger.info(f"模型 URL: {model_url}")
 
+            # 验证 URL 格式（Windows 下可能是 file:///C:/ 或 file://C:/）
+            if not model_url.startswith("file:///") and not model_url.startswith("file://"):
+                logger.error(f"模型 URL 格式异常: {model_url}")
+                # 手动构造正确的 file:// URL
+                import urllib.parse
+                abs_path = str(model_json_path.absolute())
+                # 将反斜杠转换为正斜杠
+                abs_path = abs_path.replace('\\', '/')
+                if not abs_path.startswith('/'):
+                    # Windows 盘符路径，添加 /
+                    abs_path = '/' + abs_path
+                model_url = 'file://' + abs_path
+                logger.info(f"手动修正后的模型 URL: {model_url}")
+
             safe_model_url = json.dumps(model_url)
+            logger.info(f"准备执行的 JS 代码: initLive2D({safe_model_url})...")
+
             js_code = (
                 f"initLive2D({safe_model_url})"
                 ".then((r) => JSON.stringify(r))"
                 ".catch((e) => JSON.stringify({ok:false,error:(e && e.message) ? e.message : String(e)}))"
+                ".catch((e) => JSON.stringify({ok:false,error:'Unknown error'}))"
             )
+
+            logger.info("发送 JS 请求到 WebEngine...")
             self._run_js(js_code, self._on_model_init_result)
 
             return True
@@ -283,9 +318,13 @@ class Live2DGLWidget(QFrame):
     def _on_model_init_result(self, result):
         """模型初始化结果回调"""
         try:
-            payload = result
-            if isinstance(result, str):
-                payload = json.loads(result)
+            # 处理空字符串或 None 的情况（Windows 打包环境可能出现）
+            if not result or not isinstance(result, str) or not result.strip():
+                self._model_loaded = False
+                logger.error(f"处理模型初始化结果失败: 收到空响应，原始返回: {repr(result)}")
+                return
+
+            payload = json.loads(result)
 
             if isinstance(payload, dict):
                 ok = bool(payload.get("ok", False))
@@ -304,9 +343,12 @@ class Live2DGLWidget(QFrame):
             else:
                 self._model_loaded = False
                 logger.error(f"WebEngine Live2D 模型加载失败，返回值: {payload}")
+        except json.JSONDecodeError as e:
+            self._model_loaded = False
+            logger.error(f"处理模型初始化结果失败（JSON解析错误）: {e}, 原始返回: {repr(result)}")
         except Exception as e:
             self._model_loaded = False
-            logger.error(f"处理模型初始化结果失败: {e}, 原始返回: {result}")
+            logger.error(f"处理模型初始化结果失败: {e}, 原始返回: {repr(result)}")
 
     def _query_model_dimensions(self):
         """从 JS 查询模型实际像素尺寸"""

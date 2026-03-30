@@ -93,6 +93,10 @@
             canvas.style.height = _canvasH + 'px';
 
             try {
+                console.log('[initLive2D] Starting initialization...');
+                console.log('[initLive2D] Model URL:', modelUrl);
+                console.log('[initLive2D] Canvas size:', _canvasW, 'x', _canvasH);
+
                 if (!window.PIXI) {
                     throw new Error('PIXI 未加载，请检查 libs/pixi.min.js');
                 }
@@ -123,23 +127,30 @@
                         backgroundAlpha: 0,
                         antialias: true
                     });
+                    console.log('[initLive2D] PIXI Application created');
                 }
 
-                console.log('initLive2D called with:', modelUrl, 'canvas size:', _canvasW, 'x', _canvasH);
+                // 加载前检查模型 URL 是否有效
+                if (!modelUrl || typeof modelUrl !== 'string' || modelUrl.trim() === '') {
+                    throw new Error('模型 URL 为空或无效');
+                }
 
+                console.log('[initLive2D] Starting to load model from:', modelUrl);
                 currentModel = await loadWithTimeout(
                     PIXI.live2d.Live2DModel.from(modelUrl, {
                         autoInteract: false,
                         autoUpdate: true
                     }),
-                    10000,
-                    'Live2D model load timeout (10s)'
+                    15000,  // Windows 下适当延长超时时间到 15 秒
+                    'Live2D model load timeout (15s)'
                 );
+
+                console.log('[initLive2D] Model loaded successfully');
 
                 // 保存模型原始尺寸（必须在设置 scale 之前）
                 _originalModelW = currentModel.width;
                 _originalModelH = currentModel.height;
-                console.log('模型原始尺寸:', _originalModelW, 'x', _originalModelH);
+                console.log('[initLive2D] 模型原始尺寸:', _originalModelW, 'x', _originalModelH);
 
                 parseModelMotions();
 
@@ -152,21 +163,24 @@
 
                 loading.style.display = 'none';
 
-                console.log('Live2D model loaded, model size:', currentModel.width, 'x', currentModel.height);
                 const payload = {
                     ok: true,
                     motions: Object.keys(motionMap),
                     width: _originalModelW,
                     height: _originalModelH
                 };
+                console.log('[initLive2D] Returning success payload:', payload);
                 notify('onModelLoaded', JSON.stringify(payload));
                 return payload;
             } catch (e) {
                 const errorMessage = (e && e.message) ? e.message : String(e);
-                console.error('Failed to load model:', e);
+                console.error('[initLive2D] Failed to load model:', e);
+                console.error('[initLive2D] Error stack:', e.stack);
                 loading.textContent = 'Load failed: ' + errorMessage;
-                const payload = { ok: false, error: errorMessage };
+                const payload = { ok: false, error: errorMessage, url: modelUrl };
+                console.log('[initLive2D] Returning error payload:', payload);
                 notify('onModelError', errorMessage);
+                // 确保返回的是有效的 JSON 对象
                 return payload;
             }
         }
