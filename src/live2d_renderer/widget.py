@@ -8,6 +8,7 @@ import json
 from PySide6.QtWidgets import QFrame, QVBoxLayout, QWidget
 from PySide6.QtCore import Qt, Signal, QTimer, QPoint, QUrl
 from PySide6.QtWebEngineWidgets import QWebEngineView
+from PySide6.QtWebEngineCore import QWebEngineSettings
 from PySide6.QtGui import QCursor
 from utils import get_config, get_character_manager, get_logger
 from utils.constants import resolve_path, BUILTIN_ASSETS_DIR
@@ -123,11 +124,17 @@ class Live2DGLWidget(QFrame):
         # 透明鼠标覆盖层（直接子控件，覆盖整个区域）
         self._overlay = _MouseOverlay(self)
 
+        # 允许本地页面访问本地文件（Windows 下更严格，显式开启）
+        settings = self._web_view.settings()
+        settings.setAttribute(QWebEngineSettings.WebAttribute.LocalContentCanAccessFileUrls, True)
+        settings.setAttribute(QWebEngineSettings.WebAttribute.LocalContentCanAccessRemoteUrls, True)
+
         # 加载本地 HTML
         if LIVE2D_HTML_PATH.exists():
             url = QUrl.fromLocalFile(str(LIVE2D_HTML_PATH.absolute()))
-            self._web_view.load(url)
+            # 先连接信号再 load，避免页面秒开导致错过 loadFinished
             self._web_view.loadFinished.connect(self._on_page_loaded)
+            self._web_view.load(url)
         else:
             logger.error(f"Live2D HTML 文件不存在: {LIVE2D_HTML_PATH}")
 
@@ -231,7 +238,8 @@ class Live2DGLWidget(QFrame):
             model_url = QUrl.fromLocalFile(str(model_json_path.absolute())).toString()
             logger.info(f"模型 URL: {model_url}")
 
-            js_code = f"initLive2D('{model_url}')"
+            safe_model_url = json.dumps(model_url)
+            js_code = f"initLive2D({safe_model_url})"
             self._run_js(js_code, lambda result: self._on_model_init_result(result))
 
             # runJavaScript 对 async 函数返回值不稳定，先进入可缩放状态
