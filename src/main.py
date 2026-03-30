@@ -4,6 +4,7 @@ AI Friend - 二次元桌面助手
 主入口文件 - 完整整合版
 """
 import sys
+import os
 import asyncio
 from pathlib import Path
 
@@ -16,8 +17,23 @@ else:
     project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
+# Windows: 强制启用 WebGL 软件后备，避免 QWebEngine 中 Pixi 无法创建 renderer
+if sys.platform == 'win32':
+    os.environ.setdefault('QT_OPENGL', 'software')
+    os.environ.setdefault('QTWEBENGINE_DISABLE_SANDBOX', '1')
+
+    extra_flags = [
+        '--ignore-gpu-blocklist',
+        '--enable-webgl',
+        '--use-angle=swiftshader',
+        '--enable-unsafe-swiftshader',
+    ]
+    existing_flags = os.environ.get('QTWEBENGINE_CHROMIUM_FLAGS', '').strip()
+    merged_flags = ' '.join([existing_flags] + extra_flags).strip() if existing_flags else ' '.join(extra_flags)
+    os.environ['QTWEBENGINE_CHROMIUM_FLAGS'] = merged_flags
+
 from PySide6.QtWidgets import QApplication
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, QCoreApplication
 
 # macOS 上设置应用不在 Dock 中显示（必须在 QApplication 创建之前）
 if sys.platform == 'darwin':
@@ -54,6 +70,8 @@ def main():
         logger.info(f"First run: {is_first_run}")
 
         # 创建应用（先创建 Qt 应用，尽快显示窗口）
+        if sys.platform == 'win32':
+            QCoreApplication.setAttribute(Qt.ApplicationAttribute.AA_UseSoftwareOpenGL, True)
         qt_app = QApplication(sys.argv)
         qt_app.setApplicationName("AI Friend")
         qt_app.setQuitOnLastWindowClosed(False)
