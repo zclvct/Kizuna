@@ -22,6 +22,7 @@ class AppConfig(BaseModel):
     """应用配置（整合所有配置）"""
     llm: LLMConfig
     tools: List[ToolConfigItem] = Field(default_factory=list)
+    agent_mode: str = "langchain"  # "langchain" 或 "pure"
     
     # Live2D 配置
     live2d_model_path: str = "assets/live2d/biaoqiang"
@@ -76,6 +77,7 @@ class AppConfig(BaseModel):
         return cls(
             llm=llm_config,
             tools=tools,
+            agent_mode=config.agent_mode,
             live2d_model_path=config.live2d.model_path,
             live2d_scale=config.live2d.scale,
             live2d_default_motion=config.live2d.default_motion,
@@ -112,3 +114,9 @@ def get_app_config() -> AppConfig:
         _app_config = AppConfig.load()
         logger.info("应用配置已加载")
     return _app_config
+
+
+def reset_app_config():
+    """重置应用配置实例"""
+    global _app_config
+    _app_config = None

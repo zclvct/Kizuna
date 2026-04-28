@@ -39,5 +39,8 @@ python-dotenv>=1.0.0
 # MCP (Model Context Protocol)
 langchain-mcp-adapters>=0.2.2
 
+# litellm - 纯 Python Agent 模式的统一 LLM 调用
+litellm>=1.40.0
+
 # macOS 系统集成（隐藏 Dock 图标）
 pyobjc-framework-Cocoa>=10.0; sys_platform == 'darwin'

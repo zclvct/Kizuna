@@ -104,6 +104,37 @@ class GeneralSettingsPage(QWidget):
         
         layout.addWidget(window_group)
         
+        # ====== Agent 模式设置 ======
+        agent_group = QGroupBox("🤖 Agent 模式")
+        agent_group.setStyleSheet(self._get_group_style())
+        agent_layout = QVBoxLayout(agent_group)
+        agent_layout.setSpacing(12)
+
+        # Agent 模式选择
+        agent_mode_layout = QHBoxLayout()
+        agent_mode_label = QLabel("Agent 引擎:")
+        agent_mode_label.setFixedWidth(80)
+        agent_mode_layout.addWidget(agent_mode_label)
+
+        self.agent_mode = QComboBox()
+        self.agent_mode.addItems(["LangChain Agent", "PurePython Agent"])
+        self.agent_mode.setStyleSheet(COMBO_BOX_STYLE)
+        self.agent_mode.currentIndexChanged.connect(self._on_agent_mode_changed)
+        agent_mode_layout.addWidget(self.agent_mode)
+
+        agent_layout.addLayout(agent_mode_layout)
+
+        # Agent 模式说明
+        self.agent_mode_hint = QLabel(
+            "💡 LangChain Agent: 基于 LangGraph 的智能体，支持自动工具调用和流式输出\n"
+            "   PurePython Agent: 纯 Python 实现，轻量无 LangChain 依赖，重启后生效"
+        )
+        self.agent_mode_hint.setStyleSheet("color: #999; font-size: 11px; background: transparent;")
+        self.agent_mode_hint.setWordWrap(True)
+        agent_layout.addWidget(self.agent_mode_hint)
+
+        layout.addWidget(agent_group)
+
         # ====== 对话设置 ======
         chat_group = QGroupBox("💬 对话设置")
         chat_group.setStyleSheet(self._get_group_style())
@@ -248,6 +279,10 @@ class GeneralSettingsPage(QWidget):
         self.scale_slider.setValue(scale_percent)
         self.scale_value_label.setText(f"{scale_percent}%")
 
+        # 加载 Agent 模式
+        agent_mode = getattr(self.config, 'agent_mode', 'langchain')
+        self.agent_mode.setCurrentIndex(0 if agent_mode == "langchain" else 1)
+
         # 加载对话模式
         chat_mode = self.config.general.chat_mode
         self.chat_mode.setCurrentIndex(0 if chat_mode == "normal" else 1)
@@ -255,6 +290,10 @@ class GeneralSettingsPage(QWidget):
         # 加载对话历史设置
         self.keep_history.setChecked(self.config.general.keep_conversation_history)
     
+    def _on_agent_mode_changed(self, index: int):
+        """Agent 模式变化"""
+        pass
+
     def _on_chat_mode_changed(self, index: int):
         """对话模式变化"""
         # 根据模式显示/隐藏提示
@@ -285,6 +324,9 @@ class GeneralSettingsPage(QWidget):
 
         # 保存对话模式
         self.config.general.chat_mode = "normal" if self.chat_mode.currentIndex() == 0 else "debug"
+
+        # 保存 Agent 模式
+        self.config.agent_mode = "langchain" if self.agent_mode.currentIndex() == 0 else "pure"
 
         # 保存对话历史设置
         self.config.general.keep_conversation_history = self.keep_history.isChecked()

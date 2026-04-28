@@ -9,7 +9,8 @@ from langchain_core.tools import StructuredTool
 from agent.models import LLMConfig, create_chat_model, get_llm_config
 from agent.tools.registry import get_tool_registry
 from agent.memory import get_langchain_memory
-from agent.agent import AIFriendAgent, ChatResponse, get_agent
+from agent.base_agent import BaseAgent, ChatResponse
+from agent.agent import AIFriendAgent, get_agent
 from agent.prompts import build_system_prompt
 from agent.config import get_app_config
 from utils import get_logger
@@ -48,13 +49,24 @@ class AIFriendCore:
         # 获取记忆
         self.memory = get_langchain_memory()
         
-        # 创建 Agent
-        self.agent = AIFriendAgent(
-            llm=self.llm,
-            tools=self.tools,
-        )
+        # 根据 Agent 模式选择实现
+        agent_mode = getattr(self.config, 'agent_mode', 'langchain')
         
-        logger.info("AIFriendCore 初始化完成")
+        if agent_mode == "pure":
+            from agent.pure_agent import PurePythonAgent
+            llm_config = self.config.llm.get_provider_config()
+            self.agent: BaseAgent = PurePythonAgent(
+                llm_config=llm_config,
+                tools=self.tools,
+            )
+        else:
+            # 默认使用 LangChain 模式
+            self.agent: BaseAgent = AIFriendAgent(
+                llm=self.llm,
+                tools=self.tools,
+            )
+        
+        logger.info(f"AIFriendCore 初始化完成，模式: {agent_mode}")
     
     def _create_llm(self) -> BaseChatModel:
         """创建 LLM"""
@@ -114,10 +126,16 @@ class AIFriendCore:
         """
         llm_config = self.config.llm
         provider_config = llm_config.get_provider_config(provider_name)
-        new_llm = create_chat_model(provider_config)
         
+        # LangChain 模式：更新 LangChain LLM
+        new_llm = create_chat_model(provider_config)
         self.llm = new_llm
         self.agent.update_llm(new_llm)
+        
+        # Pure 模式：同时更新 litellm 配置
+        from agent.pure_agent import PurePythonAgent
+        if isinstance(self.agent, PurePythonAgent):
+            self.agent.update_llm_config(provider_config)
         
         logger.info(f"已切换到 LLM 提供商: {provider_name}")
     

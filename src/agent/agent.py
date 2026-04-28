@@ -1,6 +1,5 @@
 # LangChain Agent - 基于 LangGraph 的智能体
 from typing import List, Optional, Dict, AsyncGenerator
-from dataclasses import dataclass, field
 import asyncio
 
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
@@ -8,6 +7,7 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.tools import StructuredTool
 from langgraph.prebuilt import create_react_agent
 
+from agent.base_agent import BaseAgent, ChatResponse
 from agent.models import create_chat_model, get_llm_config
 from agent.tools.registry import get_tool_registry
 from agent.memory import get_langchain_memory
@@ -18,21 +18,7 @@ from utils import get_logger
 logger = get_logger()
 
 
-@dataclass
-class ChatResponse:
-    """对话响应"""
-    content: str
-    role: str = "assistant"
-    tool_calls: List[Dict] = field(default_factory=list)
-    skill_triggered: Optional[str] = None
-    metadata: Dict = field(default_factory=dict)
-    # 调试信息
-    debug_type: Optional[str] = None  # tool_call, tool_result, thought
-    debug_title: Optional[str] = None
-    debug_content: Optional[str] = None
-
-
-class AIFriendAgent:
+class AIFriendAgent(BaseAgent):
     """基于 LangGraph 的智能体
     
     特性：

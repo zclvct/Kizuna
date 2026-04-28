@@ -88,6 +88,7 @@ class Config:
         self.motion = MotionSettings()
         self.llm_providers: Dict[str, Any] = {}  # 多服务商配置
         self.live2d_models: Dict[str, Any] = {}  # 多模型配置
+        self.agent_mode: str = "langchain"  # Agent 模式: "langchain" 或 "pure"
         self._load_from_env()
         self._load_from_file()
 
@@ -149,6 +150,10 @@ class Config:
             if "live2d_models" in data:
                 self.live2d_models = data["live2d_models"]
 
+            # 加载 Agent 模式配置
+            if "agent_mode" in data:
+                self.agent_mode = data["agent_mode"]
+
             logger.info("配置已从文件加载")
         except Exception as e:
             logger.error(f"加载配置文件失败: {e}")
@@ -162,7 +167,8 @@ class Config:
             "general": asdict(self.general),
             "motion": asdict(self.motion),
             "llm_providers": self.llm_providers,
-            "live2d_models": self.live2d_models
+            "live2d_models": self.live2d_models,
+            "agent_mode": self.agent_mode,
         }
 
         try:

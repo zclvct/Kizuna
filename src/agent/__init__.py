@@ -8,9 +8,11 @@ from .prompts import (
     get_agent_prompt, get_simple_prompt, build_system_prompt,
     build_system_prompt_with_context, get_prompt_manager, PromptManager,
 )
-from .agent import AIFriendAgent, ChatResponse, get_agent, reset_agent
+from .base_agent import BaseAgent, ChatResponse
+from .agent import AIFriendAgent, get_agent, reset_agent
+from .pure_agent import PurePythonAgent
 from .core import AIFriendCore, get_core, reset_core
-from .config import AppConfig, get_app_config
+from .config import AppConfig, get_app_config, reset_app_config
 
 __all__ = [
     # Models
@@ -22,9 +24,9 @@ __all__ = [
     'get_agent_prompt', 'get_simple_prompt', 'build_system_prompt',
     'build_system_prompt_with_context', 'get_prompt_manager', 'PromptManager',
     # Agent
-    'AIFriendAgent', 'ChatResponse', 'get_agent', 'reset_agent',
+    'BaseAgent', 'AIFriendAgent', 'PurePythonAgent', 'ChatResponse', 'get_agent', 'reset_agent',
     # Core
     'AIFriendCore', 'get_core', 'reset_core',
     # Config
-    'AppConfig', 'get_app_config',
+    'AppConfig', 'get_app_config', 'reset_app_config',
 ]
