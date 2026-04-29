@@ -126,6 +126,8 @@ MOTIONS_FILE = DATA_DIR / "motions.json"
 CONVERSATIONS_FILE = DATA_DIR / "conversations.json"
 SCHEDULED_TASKS_FILE = DATA_DIR / "scheduled_tasks.json"
 TODO_FILE = DATA_DIR / "todos.json"
+SKILLS_DIR = DATA_DIR / "skills"
+SKILLS_CONFIG_FILE = DATA_DIR / "skills.json"
 
 
 def resolve_path(path: Union[str, Path]) -> Path:
@@ -201,7 +203,7 @@ def get_relative_path(path: Union[str, Path]) -> str:
             return str(path)
 
 # 确保目录存在
-for dir_path in [DATA_DIR, LIVE2D_MODELS_DIR, IMAGES_DIR, EMOJIS_DIR]:
+for dir_path in [DATA_DIR, LIVE2D_MODELS_DIR, IMAGES_DIR, EMOJIS_DIR, SKILLS_DIR]:
     dir_path.mkdir(parents=True, exist_ok=True)
 
 # 默认配置
@@ -241,7 +243,8 @@ DEFAULT_TOOLS = [
     {"id": "launcher", "name": "应用启动", "description": "打开应用和文件", "enabled": False},
     {"id": "scheduler", "name": "定时任务", "description": "创建定时提醒", "enabled": True},
     {"id": "persona_edit", "name": "角色设定编辑", "description": "学习和修改设定", "enabled": True},
-    {"id": "motion_control", "name": "动作控制", "description": "控制 Live2D 动作和表情", "enabled": True}
+    {"id": "motion_control", "name": "动作控制", "description": "控制 Live2D 动作和表情", "enabled": True},
+    {"id": "exec", "name": "命令执行", "description": "执行 shell 命令（Skills 技能执行所需）", "enabled": True},
 ]
 
 # 默认动作配置

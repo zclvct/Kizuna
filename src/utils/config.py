@@ -67,6 +67,9 @@ class GeneralConfig:
     chat_mode: str = "normal"
     # 是否保留对话历史（重启后是否恢复上次对话）
     keep_conversation_history: bool = False
+    # 聊天窗口大小
+    chat_width: int = 380
+    chat_height: int = 450
 
 
 @dataclass

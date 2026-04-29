@@ -1,81 +1,97 @@
-# Debug Bubble Widget - 可折叠的调试信息气泡
+# Debug Bubble Widget - 可折叠的调试信息气泡（支持文本选择复制）
 from PySide6.QtWidgets import (
-    QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
-    QPushButton, QFrame, QGraphicsDropShadowEffect
+    QWidget, QVBoxLayout, QHBoxLayout, QLabel,
+    QPushButton, QFrame, QTextBrowser, QGraphicsDropShadowEffect
 )
-from PySide6.QtCore import Qt, Signal, QPropertyAnimation, QEasingCurve
+from PySide6.QtCore import Qt, QPropertyAnimation, QEasingCurve
 from PySide6.QtGui import QFont, QColor
+
+from chat.markdown_renderer import render_markdown, DEBUG_CSS
 
 
 class DebugBubble(QWidget):
-    """可折叠的调试信息气泡"""
-    
+    """可折叠的调试信息气泡 — 内容可选择复制"""
+
     def __init__(self, debug_type: str, title: str, content: str, parent=None):
-        """
-        Args:
-            debug_type: 调试类型 (tool_call, request, response, thought)
-            title: 标题
-            content: 内容
-        """
         super().__init__(parent)
         self._debug_type = debug_type
         self._title = title
         self._content = content
         self._expanded = False
         self._content_widget = None
-        self._content_label = None
+        self._browser = None
         self._animation = None
         self._setup_ui()
-    
+
     def _setup_ui(self):
         """设置 UI"""
         main_layout = QVBoxLayout(self)
-        main_layout.setContentsMargins(8, 4, 8, 4)
+        main_layout.setContentsMargins(8, 2, 8, 2)
         main_layout.setSpacing(0)
-        
-        # 标题栏（可点击折叠）
+
+        # ── 标题栏（可点击折叠）──
         header = QWidget()
         header.setCursor(Qt.CursorShape.PointingHandCursor)
         header_layout = QHBoxLayout(header)
-        header_layout.setContentsMargins(12, 8, 12, 8)
-        header_layout.setSpacing(8)
-        
-        # 展开/折叠图标
-        self._toggle_btn = QLabel("▶")
-        self._toggle_btn.setFixedWidth(15)
-        self._toggle_btn.setStyleSheet("color: #666; font-size: 10px;")
-        header_layout.addWidget(self._toggle_btn)
-        
-        # 图标和标题
-        icon = self._get_icon()
-        icon_label = QLabel(icon)
-        icon_label.setStyleSheet("font-size: 14px;")
+        header_layout.setContentsMargins(12, 6, 12, 6)
+        header_layout.setSpacing(6)
+
+        # 展开/折叠箭头
+        self._toggle_icon = QLabel("▶")
+        self._toggle_icon.setFixedWidth(12)
+        self._toggle_icon.setStyleSheet("color: #888; font-size: 9px;")
+        header_layout.addWidget(self._toggle_icon)
+
+        # 类型图标
+        icon_label = QLabel(self._get_icon())
+        icon_label.setStyleSheet("font-size: 13px;")
         header_layout.addWidget(icon_label)
-        
+
+        # 标题
         title_label = QLabel(self._title)
         title_label.setFont(QFont("Arial", 10, QFont.Weight.Bold))
         title_label.setStyleSheet(f"color: {self._get_title_color()};")
         header_layout.addWidget(title_label)
-        
+
         header_layout.addStretch()
-        
-        # 设置标题栏样式
+
+        # 复制按钮
+        copy_btn = QPushButton("复制")
+        copy_btn.setFixedSize(40, 22)
+        copy_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        copy_btn.setStyleSheet("""
+            QPushButton {
+                background: rgba(0,0,0,0.05);
+                border: 1px solid rgba(0,0,0,0.1);
+                border-radius: 4px;
+                color: #888;
+                font-size: 10px;
+            }
+            QPushButton:hover {
+                background: rgba(0,0,0,0.1);
+                color: #555;
+            }
+        """)
+        copy_btn.clicked.connect(self._copy_content)
+        header_layout.addWidget(copy_btn)
+
+        # 标题栏样式
         header.setStyleSheet(f"""
             QWidget {{
                 background-color: {self._get_header_bg()};
                 border-top-left-radius: 8px;
                 border-top-right-radius: 8px;
-                border-bottom-left-radius: {0 if self._expanded else 8}px;
-                border-bottom-right-radius: {0 if self._expanded else 8}px;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
             }}
             QWidget:hover {{
                 background-color: {self._get_header_bg(hover=True)};
             }}
         """)
-        
+
         main_layout.addWidget(header)
-        
-        # 内容区域（默认折叠）
+
+        # ── 内容区域（默认折叠）──
         self._content_widget = QFrame()
         self._content_widget.setStyleSheet(f"""
             QFrame {{
@@ -84,34 +100,57 @@ class DebugBubble(QWidget):
                 border-bottom-right-radius: 8px;
             }}
         """)
-        
+
         content_layout = QVBoxLayout(self._content_widget)
-        content_layout.setContentsMargins(12, 8, 12, 8)
-        
-        self._content_label = QLabel(self._content)
-        self._content_label.setWordWrap(True)
-        self._content_label.setTextFormat(Qt.TextFormat.MarkdownText)
-        self._content_label.setFont(QFont("Consolas", 9))
-        self._content_label.setStyleSheet("color: #555; background: transparent;")
-        content_layout.addWidget(self._content_label)
-        
-        # 初始折叠状态
+        content_layout.setContentsMargins(10, 6, 10, 6)
+
+        # 使用 QTextBrowser 替代 QLabel，支持选择/复制
+        self._browser = QTextBrowser()
+        self._browser.setReadOnly(True)
+        self._browser.setOpenExternalLinks(True)
+        self._browser.setFrameShape(QTextBrowser.Shape.NoFrame)
+        self._browser.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self._browser.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self._browser.setMaximumHeight(400)
+        self._browser.setStyleSheet("""
+            QTextBrowser {
+                background: transparent;
+                border: none;
+                padding: 0;
+                selection-background-color: #a8d8ff;
+                selection-color: #333;
+            }
+        """)
+
+        # 渲染内容为 HTML
+        html = render_markdown(self._content)
+        self._browser.setHtml(
+            f"<html><head><style>{DEBUG_CSS}</style></head><body>{html}</body></html>"
+        )
+        content_layout.addWidget(self._browser)
+
+        # 初始折叠
         self._content_widget.setMaximumHeight(0)
         self._content_widget.setVisible(False)
         main_layout.addWidget(self._content_widget)
-        
-        # 点击标题栏切换折叠
+
+        # 点击标题栏切换
         header.mousePressEvent = lambda e: self._toggle_expand()
-        
-        # 添加阴影
+
+        # 阴影
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(6)
-        shadow.setColor(QColor(0, 0, 0, 20))
-        shadow.setOffset(0, 2)
+        shadow.setBlurRadius(4)
+        shadow.setColor(QColor(0, 0, 0, 15))
+        shadow.setOffset(0, 1)
         self.setGraphicsEffect(shadow)
-    
+
+    def _copy_content(self):
+        """复制内容到剪贴板"""
+        from PySide6.QtWidgets import QApplication
+        clipboard = QApplication.clipboard()
+        clipboard.setText(self._content)
+
     def _get_icon(self) -> str:
-        """获取图标"""
         icons = {
             "tool_call": "🔧",
             "request": "📤",
@@ -119,9 +158,8 @@ class DebugBubble(QWidget):
             "thought": "💭",
         }
         return icons.get(self._debug_type, "📋")
-    
+
     def _get_title_color(self) -> str:
-        """获取标题颜色"""
         colors = {
             "tool_call": "#5c9eff",
             "request": "#ff9800",
@@ -129,9 +167,8 @@ class DebugBubble(QWidget):
             "thought": "#9c27b0",
         }
         return colors.get(self._debug_type, "#666")
-    
+
     def _get_header_bg(self, hover: bool = False) -> str:
-        """获取标题栏背景色"""
         colors = {
             "tool_call": "#e3f2fd" if not hover else "#bbdefb",
             "request": "#fff3e0" if not hover else "#ffe0b2",
@@ -139,9 +176,8 @@ class DebugBubble(QWidget):
             "thought": "#f3e5f5" if not hover else "#e1bee7",
         }
         return colors.get(self._debug_type, "#f5f5f5")
-    
+
     def _get_content_bg(self) -> str:
-        """获取内容区背景色"""
         colors = {
             "tool_call": "#fafafa",
             "request": "#fffde7",
@@ -149,28 +185,28 @@ class DebugBubble(QWidget):
             "thought": "#fce4ec",
         }
         return colors.get(self._debug_type, "#fafafa")
-    
+
     def _toggle_expand(self):
         """切换展开/折叠"""
         self._expanded = not self._expanded
-        
+
         if self._expanded:
-            # 展开
-            self._toggle_btn.setText("▼")
+            self._toggle_icon.setText("▼")
             self._content_widget.setVisible(True)
-            
-            # 动画展开
+
+            # 计算展开高度
+            doc_height = self._browser.document().size().height()
+            expand_height = min(doc_height + 20, 420)
+
             self._animation = QPropertyAnimation(self._content_widget, b"maximumHeight")
             self._animation.setDuration(150)
             self._animation.setStartValue(0)
-            self._animation.setEndValue(self._content_label.sizeHint().height() + 20)
+            self._animation.setEndValue(expand_height)
             self._animation.setEasingCurve(QEasingCurve.Type.OutQuad)
             self._animation.start()
         else:
-            # 折叠
-            self._toggle_btn.setText("▶")
-            
-            # 动画折叠
+            self._toggle_icon.setText("▶")
+
             self._animation = QPropertyAnimation(self._content_widget, b"maximumHeight")
             self._animation.setDuration(100)
             self._animation.setStartValue(self._content_widget.height())
@@ -178,7 +214,7 @@ class DebugBubble(QWidget):
             self._animation.setEasingCurve(QEasingCurve.Type.InQuad)
             self._animation.finished.connect(lambda: self._content_widget.setVisible(False))
             self._animation.start()
-    
+
     def set_expanded(self, expanded: bool):
         """设置展开状态"""
         if self._expanded != expanded:
@@ -187,7 +223,7 @@ class DebugBubble(QWidget):
 
 class ToolCallBubble(DebugBubble):
     """工具调用气泡"""
-    
+
     def __init__(self, tool_name: str, arguments: dict, parent=None):
         import json
         title = f"调用工具: {tool_name}"
@@ -197,7 +233,7 @@ class ToolCallBubble(DebugBubble):
 
 class RequestBubble(DebugBubble):
     """请求参数气泡"""
-    
+
     def __init__(self, request_info: str, parent=None):
         title = "请求参数"
         super().__init__("request", title, request_info, parent)
@@ -205,7 +241,7 @@ class RequestBubble(DebugBubble):
 
 class ResponseBubble(DebugBubble):
     """返回结果气泡"""
-    
+
     def __init__(self, response_info: str, parent=None):
         title = "返回结果"
         super().__init__("response", title, response_info, parent)
@@ -213,7 +249,7 @@ class ResponseBubble(DebugBubble):
 
 class ThoughtBubble(DebugBubble):
     """思考过程气泡"""
-    
+
     def __init__(self, thought: str, parent=None):
         title = "思考过程"
         super().__init__("thought", title, thought, parent)

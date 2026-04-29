@@ -31,6 +31,9 @@ from agent.tools.scheduler_tool import (
     create_scheduled_task,
     CreateScheduledTaskArgs,
 )
+from agent.tools.exec_tool import create_exec_tool
+from agent.tools.read_file_tool import create_read_file_tool
+from agent.tools.write_file_tool import create_write_file_tool
 from agent.tools.base import BaseToolArgs
 from utils import get_logger
 
@@ -450,7 +453,13 @@ TOOL_FACTORIES = {
         create_get_facts_tool,
         create_get_memory_stats_tool,
     ],
+    "exec": [create_exec_tool],
+    "read_file": [create_read_file_tool],
+    "write_file": [create_write_file_tool],
 }
+
+# 系统工具 ID — 这些工具始终启用，不受用户设置中开关影响
+SYSTEM_TOOL_GROUP_IDS = {"exec", "read_file", "write_file"}
 
 
 def get_all_tools() -> List[StructuredTool]:

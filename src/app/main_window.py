@@ -86,6 +86,7 @@ class ChatBubbleWindow(QWidget):
         self._resizing = False
         self._resize_start_pos = None
         self._resize_start_geometry = None
+        self._config = get_config()
         self._setup_ui()
         
     def _setup_ui(self):
@@ -176,9 +177,14 @@ class ChatBubbleWindow(QWidget):
         
         main_layout.addWidget(content_widget)
         
-        # 设置最小尺寸和默认尺寸（可调整大小）
+        # 设置最小尺寸和恢复上次尺寸
         self.setMinimumSize(300, 350)
-        self.resize(380, 450)
+        saved_w = self._config.general.chat_width
+        saved_h = self._config.general.chat_height
+        self.resize(
+            max(saved_w, self.minimumWidth()),
+            max(saved_h, self.minimumHeight())
+        )
         
         # 窗口阴影
         shadow = QGraphicsDropShadowEffect()
@@ -225,10 +231,24 @@ class ChatBubbleWindow(QWidget):
         self.move(global_pos)
         self.show()
         self.activateWindow()
-    
+
+    def resizeEvent(self, event):
+        """窗口大小改变时保存尺寸"""
+        super().resizeEvent(event)
+        # 延迟保存，避免频繁写入
+        if hasattr(self, '_resize_save_timer'):
+            self._resize_save_timer.stop()
+        else:
+            self._resize_save_timer = QTimer(self)
+            self._resize_save_timer.setSingleShot(True)
+            self._resize_save_timer.timeout.connect(self._save_size)
+        self._resize_save_timer.start(500)
+
     def hideEvent(self, event):
         """窗口隐藏事件"""
         super().hideEvent(event)
+        # 隐藏时保存大小
+        self._save_size()
         # 发出关闭信号，通知主窗口更新状态
         self.closed.emit()
     
@@ -271,7 +291,16 @@ class ChatBubbleWindow(QWidget):
             self._resize_start_pos = None
             self._resize_start_geometry = None
             self.setCursor(Qt.CursorShape.ArrowCursor)
+            # 保存调整后的窗口大小
+            self._save_size()
         super().mouseReleaseEvent(event)
+
+    def _save_size(self):
+        """保存聊天窗口大小到配置"""
+        self._config.general.chat_width = self.width()
+        self._config.general.chat_height = self.height()
+        self._config.save()
+        logger.info(f"聊天窗口大小已保存: {self.width()}x{self.height()}")
 
 
 class MainWindow(QMainWindow):
@@ -399,6 +428,8 @@ class MainWindow(QMainWindow):
         self.live2d_widget.setObjectName("live2dWidget")
         self.live2d_widget.motion_played.connect(self._on_motion_played)
         self.live2d_widget.drag_started.connect(self._on_drag_started)
+        self.live2d_widget.drag_moved.connect(self._on_drag_moved)
+        self.live2d_widget.drag_ended.connect(self._on_drag_ended)
         self.live2d_widget.size_changed.connect(self._on_live2d_size_changed)
         layout.addWidget(self.live2d_widget)
 
@@ -438,8 +469,23 @@ class MainWindow(QMainWindow):
             return
         self._drag_position = global_pos - self.frameGeometry().topLeft()
         self._dragging = True
-        self.grabMouse()
         logger.debug("开始拖拽窗口")
+
+    def _on_drag_moved(self, global_pos: QPoint):
+        """拖拽中移动窗口"""
+        if self._dragging and self._drag_position:
+            new_pos = global_pos - self._drag_position
+            self.move(new_pos)
+            self._update_bubble_position()
+
+    def _on_drag_ended(self):
+        """拖拽结束"""
+        if self._dragging:
+            logger.debug("结束拖拽窗口")
+            self._save_window_position()
+            self.config.save()
+        self._drag_position = None
+        self._dragging = False
 
     def _on_live2d_size_changed(self, width: int, height: int):
         """处理 Live2D 控件大小变化"""
@@ -816,9 +862,9 @@ class MainWindow(QMainWindow):
         self.config.save()
         self.context_menu.set_draggable(draggable)
 
-        if not draggable and self._dragging:
-            self.releaseMouse()
+        if not draggable:
             self._dragging = False
+            self._drag_position = None
         logger.info(f"拖动状态更新: {draggable}")
 
     def _delayed_model_reload(self, model_path: str):
@@ -853,8 +899,9 @@ class MainWindow(QMainWindow):
         """关闭所有窗口并退出应用"""
         # 保存窗口位置和配置
         self._save_window_position()
+        self.chat_bubble._save_size()
         self.config.save()
-        
+
         self.chat_bubble.close()
         self.emoji_bubble.close()
         self.close()
@@ -863,23 +910,14 @@ class MainWindow(QMainWindow):
         QApplication.instance().quit()
 
     def mouseMoveEvent(self, event):
-        """鼠标移动 - 拖拽窗口"""
-        if self._dragging and self._drag_position:
-            new_pos = event.globalPosition().toPoint() - self._drag_position
-            self.move(new_pos)
-            self._update_bubble_position()
-            event.accept()
+        """鼠标移动"""
+        # 拖拽已通过信号处理，无需在此处理
+        pass
 
     def mouseReleaseEvent(self, event):
         """鼠标释放"""
-        if self._dragging:
-            self.releaseMouse()
-            logger.debug("结束拖拽窗口")
-            # 拖动结束后立即保存位置
-            self._save_window_position()
-            self.config.save()
-        self._drag_position = None
-        self._dragging = False
+        # 拖拽已通过信号处理，无需在此处理
+        pass
 
     def contextMenuEvent(self, event):
         """右键菜单"""
@@ -891,6 +929,7 @@ class MainWindow(QMainWindow):
         """关闭窗口"""
         # 保存窗口位置
         self._save_window_position()
+        self.chat_bubble._save_size()
         self.config.save()
         
         self.chat_bubble.close()

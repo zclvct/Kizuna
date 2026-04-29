@@ -1,0 +1,106 @@
+# Exec Tool - 通用 Shell 命令执行工具
+import asyncio
+import platform
+import re
+
+from pydantic import BaseModel, Field
+from langchain_core.tools import StructuredTool
+
+from utils import get_logger
+
+logger = get_logger()
+
+DANGEROUS_PATTERNS = [
+    r"rm\s+-rf\s+/", r"del\s+/s\s+/q\s+C:", r"format\s+C:",
+    r"mkfs\.", r"dd\s+if=", r":\(\)\{\s*:\|:&\s*\};:",
+    r">\s*/dev/sda",
+]
+
+MAX_OUTPUT_LENGTH = 10 * 1024
+
+
+class ExecToolArgs(BaseModel):
+    command: str = Field(description="要执行的 shell 命令")
+    workdir: str = Field(default="", description="工作目录，默认为用户数据目录")
+    timeout: int = Field(default=30, description="超时时间(秒)，最大120", ge=5, le=120)
+
+
+def _is_dangerous_command(command: str) -> bool:
+    cmd_lower = command.lower().strip()
+    for pattern in DANGEROUS_PATTERNS:
+        if re.search(pattern, cmd_lower):
+            return True
+    return False
+
+
+async def exec_command(command: str, workdir: str = "", timeout: int = 30) -> str:
+    if _is_dangerous_command(command):
+        logger.warning(f"拦截危险命令: {command}")
+        return "Error: 该命令被安全策略拦截（检测到危险操作模式）。"
+
+    if not workdir:
+        from utils.constants import DATA_DIR
+        workdir = str(DATA_DIR)
+
+    # 从 SkillsConfig 获取超时上限
+    try:
+        from agent.skills.config import get_skills_config
+        config = get_skills_config()
+        effective_timeout = min(timeout, config.exec_timeout)
+    except Exception:
+        effective_timeout = min(timeout, 120)
+    logger.info(f"[exec] 执行: {command[:100]} (timeout={effective_timeout}s)")
+
+    try:
+        proc = await asyncio.create_subprocess_shell(
+            command,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            cwd=workdir,
+        )
+
+        try:
+            stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=effective_timeout)
+        except asyncio.TimeoutError:
+            proc.kill()
+            await proc.communicate()
+            return f"Error: 命令执行超时（{effective_timeout}秒），已终止。"
+
+        output_parts = []
+        if stdout:
+            output_parts.append(stdout.decode("utf-8", errors="replace"))
+        if stderr:
+            stderr_str = stderr.decode("utf-8", errors="replace").strip()
+            if stderr_str:
+                output_parts.append(f"[stderr]\n{stderr_str}")
+
+        result = "\n".join(output_parts).strip()
+        if not result:
+            result = "(命令执行成功，无输出)" if proc.returncode == 0 else f"(命令退出码: {proc.returncode})"
+
+        if proc.returncode != 0:
+            result = f"(退出码: {proc.returncode})\n{result}"
+
+        if len(result) > MAX_OUTPUT_LENGTH:
+            result = result[:MAX_OUTPUT_LENGTH] + "\n... (输出已截断)"
+
+        return result
+
+    except FileNotFoundError as e:
+        return f"Error: 命令未找到 - {e}"
+    except Exception as e:
+        logger.error(f"[exec] 执行错误: {e}", exc_info=True)
+        return f"Error: {str(e)}"
+
+
+def create_exec_tool() -> StructuredTool:
+    return StructuredTool(
+        name="exec",
+        description=(
+            "执行 shell 命令并返回输出结果。"
+            "当 skill 中描述了需要执行的命令（如 curl、python3、bash 脚本等）时，使用此工具来执行。"
+            "支持 bash/sh 命令，可设置工作目录和超时时间。"
+        ),
+        args_schema=ExecToolArgs,
+        coroutine=exec_command,
+    )

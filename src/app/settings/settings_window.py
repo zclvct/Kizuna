@@ -16,6 +16,7 @@ from .llm_page import LLMSettingsPage
 from .live2d_page import Live2DSettingsPage
 from .character_page import CharacterSettingsPage
 from .skills_page import SkillsSettingsPage
+from .tools_page import ToolsSettingsPage
 from .general_page import GeneralSettingsPage
 from .prompts_page import PromptsSettingsPage
 from .mood_page import MoodSettingsPage
@@ -84,6 +85,7 @@ class SettingsWindow(QDialog):
         self.live2d_page = Live2DSettingsPage()
         self.character_page = CharacterSettingsPage()
         self.mood_page = MoodSettingsPage()
+        self.tools_page = ToolsSettingsPage()
         self.skills_page = SkillsSettingsPage()
         self.tasks_page = TasksSettingsPage()
         self.prompts_page = PromptsSettingsPage()
@@ -102,7 +104,8 @@ class SettingsWindow(QDialog):
         self.tabs.addTab(self.live2d_page, "🎭 Live2D")
         self.tabs.addTab(self.character_page, "👤 角色")
         self.tabs.addTab(self.mood_page, "😊 心情")
-        self.tabs.addTab(self.skills_page, "🔧 工具")
+        self.tabs.addTab(self.tools_page, "🔧 工具")
+        self.tabs.addTab(self.skills_page, "🎯 技能")
         self.tabs.addTab(self.tasks_page, "⏰ 任务")
         self.tabs.addTab(self.mcp_page, "🔌 MCP")
         self.tabs.addTab(self.prompts_page, "📝 提示词")
@@ -158,6 +161,7 @@ class SettingsWindow(QDialog):
         self.live2d_page.save()
         self.character_page.save()
         self.mood_page.save()
+        self.tools_page.save()
         self.skills_page.save()
         self.tasks_page.save()
         self.prompts_page.save()
@@ -182,6 +186,7 @@ class SettingsWindow(QDialog):
         self.live2d_page._load_config()
         self.character_page._load_config()
         self.mood_page._load_moods()
+        self.tools_page._load_config()
         self.skills_page._load_config()
         self.tasks_page._refresh_all()
         self.prompts_page.reset()

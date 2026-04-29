@@ -144,22 +144,34 @@ class PromptManager:
             if custom and not custom.startswith("# 自定义指令"):
                 parts.append("\n\n" + custom)
         
-        # 6. 添加心情信息
+        # 6. Skills 提示词（新增）
+        try:
+            from agent.skills import get_skill_manager, SkillPromptBuilder
+            skill_manager = get_skill_manager()
+            enabled_skills = skill_manager.get_enabled_skills()
+            if enabled_skills:
+                skills_prompt = SkillPromptBuilder.build_skills_section(enabled_skills)
+                if skills_prompt:
+                    parts.append("\n\n" + skills_prompt)
+        except Exception as e:
+            logger.debug(f"Skills 提示词加载跳过: {e}")
+        
+        # 7. 添加心情信息
         parts.append(f"\n\n你当前的心情是：{state.current_mood}")
         
-        # 7. 添加学习到的事实
+        # 8. 添加学习到的事实
         if persona.learned_facts:
             parts.append("\n\n你知道的关于用户的信息：")
             for key, value in persona.learned_facts.items():
                 parts.append(f"- {key}: {value}")
         
-        # 8. 添加记忆
+        # 9. 添加记忆
         if persona.memories:
             parts.append("\n\n重要记忆：")
             for mem in persona.memories[-5:]:
                 parts.append(f"- {mem.get('content', '')}")
         
-        # 9. 第一次启动引导
+        # 10. 第一次启动引导
         if persona.is_first_run():
             parts.append(self._get_first_run_prompt())
         

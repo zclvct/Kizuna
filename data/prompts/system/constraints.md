@@ -19,5 +19,11 @@
 - 不要编造事实或数据
 
 ## 工具调用
-- 每次回复最多调用 3 个工具
+- 表情包和动作在回复文字前调用
 - 工具调用结果要融入回复中
+
+## Skills 执行纪律（最高优先级）
+- 当用户请求匹配已安装的 Skill 时，**必须**先用 `read` 读取该 Skill 的 SKILL.md
+- 读取 SKILL.md 后，**必须严格按照其中描述的命令执行**，禁止自行编造或猜测命令路径
+- **必须**将 `exec` 的 `workdir` 设为 skill 目录（SKILL.md 的父目录），否则相对路径的脚本将无法找到
+- 如果 SKILL.md 写 `node scripts/foo.js`，你就执行 `exec(command="node scripts/foo.js", workdir="<skill目录>")`，而不是 `/usr/local/bin/foo` 或其他自造路径

@@ -26,6 +26,22 @@ class ToolsConfig:
         self.tools: List[ToolItem] = []
         self._load()
     
+    # 已知的所有用户可配置工具（新增工具时在此添加）
+    # 注意：exec / read_file / write_file 是系统工具，始终启用，不在此列表中
+    KNOWN_TOOLS = [
+        ToolItem(id="time", name="时间工具", description="查询时间、日期、星期", enabled=True),
+        ToolItem(id="weather", name="天气工具", description="查询天气预报", enabled=True),
+        ToolItem(id="todo", name="待办事项", description="管理待办任务", enabled=True),
+        ToolItem(id="clipboard", name="剪贴板助手", description="操作剪贴板内容", enabled=True),
+        ToolItem(id="system", name="系统信息", description="查看电脑状态", enabled=True),
+        ToolItem(id="launcher", name="应用启动", description="打开应用和文件", enabled=True),
+        ToolItem(id="scheduler", name="定时任务", description="创建定时提醒", enabled=True),
+        ToolItem(id="persona_edit", name="角色设定编辑", description="学习和修改设定", enabled=True),
+        ToolItem(id="motion_control", name="动作控制", description="控制 Live2D 动作和表情", enabled=True),
+        ToolItem(id="mood_emoji", name="心情表情", description="显示心情表情包", enabled=True),
+        ToolItem(id="memory", name="记忆管理", description="自动记忆和事实管理", enabled=True),
+    ]
+
     def _load(self):
         """加载配置"""
         if self._config_file.exists():
@@ -37,27 +53,27 @@ class ToolsConfig:
                 tools_data = data.get("skills", data.get("tools", []))
                 self.tools = [ToolItem(**t) for t in tools_data]
                 logger.info(f"已加载 {len(self.tools)} 个工具配置")
+
+                # 自动补全新增的工具条目
+                self._merge_new_tools()
             except Exception as e:
                 logger.error(f"加载工具配置失败: {e}")
                 self._init_default_tools()
         else:
             self._init_default_tools()
+
+    def _merge_new_tools(self):
+        """将已知但配置文件中缺失的工具条目补入（默认启用）"""
+        existing_ids = {t.id for t in self.tools}
+        new_items = [t for t in self.KNOWN_TOOLS if t.id not in existing_ids]
+        if new_items:
+            self.tools.extend(new_items)
+            self.save()
+            logger.info(f"已自动补全 {len(new_items)} 个新增工具: {[t.id for t in new_items]}")
     
     def _init_default_tools(self):
         """初始化默认工具"""
-        self.tools = [
-            ToolItem(id="time", name="时间工具", description="查询时间、日期、星期", enabled=True),
-            ToolItem(id="weather", name="天气工具", description="查询天气预报", enabled=True),
-            ToolItem(id="todo", name="待办事项", description="管理待办任务", enabled=True),
-            ToolItem(id="clipboard", name="剪贴板助手", description="操作剪贴板内容", enabled=True),
-            ToolItem(id="system", name="系统信息", description="查看电脑状态", enabled=True),
-            ToolItem(id="launcher", name="应用启动", description="打开应用和文件", enabled=True),
-            ToolItem(id="scheduler", name="定时任务", description="创建定时提醒", enabled=True),
-            ToolItem(id="persona_edit", name="角色设定编辑", description="学习和修改设定", enabled=True),
-            ToolItem(id="motion_control", name="动作控制", description="控制 Live2D 动作和表情", enabled=True),
-            ToolItem(id="mood_emoji", name="心情表情", description="显示心情表情包", enabled=True),
-            ToolItem(id="memory", name="记忆管理", description="自动记忆和事实管理", enabled=True),
-        ]
+        self.tools = [ToolItem(**t.model_dump()) for t in self.KNOWN_TOOLS]
         self.save()
     
     def save(self):

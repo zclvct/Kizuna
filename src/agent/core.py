@@ -96,6 +96,7 @@ class AIFriendCore:
             if mcp_tools:
                 # 合并内置工具和 MCP 工具
                 all_tools = self.tools + mcp_tools
+                self.tools = all_tools  # 更新 self.tools 以包含 MCP 工具
                 self.agent.update_tools(all_tools)
                 logger.info(f"MCP 工具已加载，总工具数: {len(all_tools)}")
         except Exception as e:
@@ -173,6 +174,25 @@ class AIFriendCore:
         """获取 MCP 工具名称列表"""
         registry = get_tool_registry()
         return registry.get_mcp_tool_names()
+    
+    def reload_skills(self):
+        """重新加载 Skills 并刷新系统提示词"""
+        try:
+            from agent.skills import get_skill_manager
+            manager = get_skill_manager()
+            manager.reload()
+            # 重新获取所有启用的工具（内置 + 已缓存的 MCP）
+            # 不能只用 self.tools，因为 MCP 工具可能已更新
+            registry = get_tool_registry()
+            builtin_tools = registry.get_enabled_tools()
+            mcp_tools = registry.get_mcp_tools_sync()
+            all_tools = builtin_tools + mcp_tools
+            self.tools = all_tools
+            # 重建 Agent 以刷新系统提示词
+            self.agent.update_tools(self.tools)
+            logger.info(f"Skills 已重新加载，Agent 已重建，工具数: {len(self.tools)}")
+        except Exception as e:
+            logger.warning(f"重新加载 Skills 失败: {e}")
 
 
 # 全局实例

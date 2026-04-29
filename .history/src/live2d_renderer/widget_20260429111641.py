@@ -25,8 +25,6 @@ class _MouseOverlay(QWidget):
 
     clicked = Signal()
     drag_started = Signal(QPoint)
-    drag_moved = Signal(QPoint)    # 拖拽中鼠标全局位置
-    drag_ended = Signal()          # 拖拽结束
     tapped = Signal(float, float)  # (x, y) 相对坐标
 
     def __init__(self, parent=None):
@@ -61,20 +59,13 @@ class _MouseOverlay(QWidget):
                 self.drag_started.emit(global_pos)
                 logger.debug("Overlay: 开始拖拽")
             event.accept()
-        elif self._is_dragging:
-            # 拖拽进行中：持续发送鼠标全局位置
-            global_pos = event.globalPosition().toPoint()
-            self.drag_moved.emit(global_pos)
-            event.accept()
         else:
             # 非拖拽时 ignore，让事件传播给父控件
             event.ignore()
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
-            if self._is_dragging:
-                self.drag_ended.emit()
-            elif self._press_pos is not None:
+            if not self._is_dragging and self._press_pos is not None:
                 self.clicked.emit()
                 x = event.position().x()
                 y = event.position().y()
@@ -90,8 +81,6 @@ class Live2DGLWidget(QFrame):
     """Live2D WebEngine 渲染控件 - QFrame 包裹 QWebEngineView + 透明 Overlay"""
     clicked = Signal()
     drag_started = Signal(QPoint)
-    drag_moved = Signal(QPoint)
-    drag_ended = Signal()
     size_changed = Signal(int, int)
 
     def __init__(self, parent=None):
@@ -154,8 +143,6 @@ class Live2DGLWidget(QFrame):
         # Overlay 信号连接
         self._overlay.clicked.connect(self.clicked.emit)
         self._overlay.drag_started.connect(self.drag_started.emit)
-        self._overlay.drag_moved.connect(self.drag_moved.emit)
-        self._overlay.drag_ended.connect(self.drag_ended.emit)
         self._overlay.tapped.connect(self._on_tap)
 
         # 眼球追踪定时器 (15 FPS 足够流畅，避免 JS 调用积压)
@@ -554,8 +541,6 @@ class Live2DWidget(QFrame):
     clicked = Signal()
     motion_played = Signal(str)
     drag_started = Signal(QPoint)
-    drag_moved = Signal(QPoint)
-    drag_ended = Signal()
     size_changed = Signal(int, int)
 
     def __init__(self, parent=None):
@@ -575,8 +560,6 @@ class Live2DWidget(QFrame):
         self.live2d_widget.setMinimumSize(140, 215)
         self.live2d_widget.clicked.connect(self._on_live2d_clicked)
         self.live2d_widget.drag_started.connect(self.drag_started)
-        self.live2d_widget.drag_moved.connect(self.drag_moved)
-        self.live2d_widget.drag_ended.connect(self.drag_ended)
         self.live2d_widget.size_changed.connect(self._on_size_changed)
         layout.addWidget(self.live2d_widget, 1)
         logger.info("使用 Live2D WebEngine 渲染")

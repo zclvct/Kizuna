@@ -13,6 +13,7 @@ from .agent import AIFriendAgent, get_agent, reset_agent
 from .pure_agent import PurePythonAgent
 from .core import AIFriendCore, get_core, reset_core
 from .config import AppConfig, get_app_config, reset_app_config
+from .skills import SkillManager, get_skill_manager, reset_skill_manager
 
 __all__ = [
     # Models
@@ -29,4 +30,6 @@ __all__ = [
     'AIFriendCore', 'get_core', 'reset_core',
     # Config
     'AppConfig', 'get_app_config', 'reset_app_config',
+    # Skills
+    'SkillManager', 'get_skill_manager', 'reset_skill_manager',
 ]

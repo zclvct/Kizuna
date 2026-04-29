@@ -25,6 +25,9 @@ from .scheduler_tool import (
     CreateScheduledTaskArgs,
     SCHEDULER_TOOL,
 )
+from .exec_tool import create_exec_tool, exec_command
+from .read_file_tool import create_read_file_tool, read_file
+from .write_file_tool import create_write_file_tool, write_file
 
 # LangChain 工具支持
 from .base import BaseToolArgs, LangChainTool, create_tool_from_function
@@ -47,8 +50,12 @@ from .langchain_tools import (
     create_search_memory_tool,
     create_get_facts_tool,
     create_get_memory_stats_tool,
+    create_exec_tool,
+    create_read_file_tool,
+    create_write_file_tool,
     get_all_tools,
     get_tools_by_ids,
+    SYSTEM_TOOL_GROUP_IDS,
 )
 from .registry import ToolRegistry, get_tool_registry
 from .memory_tool import (
@@ -127,8 +134,15 @@ __all__ = [
     "create_search_memory_tool",
     "create_get_facts_tool",
     "create_get_memory_stats_tool",
+    "create_exec_tool",
+    "exec_command",
+    "create_read_file_tool",
+    "read_file",
+    "create_write_file_tool",
+    "write_file",
     "get_all_tools",
     "get_tools_by_ids",
+    "SYSTEM_TOOL_GROUP_IDS",
     "ToolRegistry",
     "get_tool_registry",
 ]

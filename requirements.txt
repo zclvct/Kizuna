@@ -42,5 +42,12 @@ langchain-mcp-adapters>=0.2.2
 # litellm - 纯 Python Agent 模式的统一 LLM 调用
 litellm>=1.40.0
 
+# SKILL.md frontmatter 解析
+python-frontmatter>=1.1.0
+
+# Markdown 渲染（对话窗口高质量显示）
+markdown>=3.5.0
+pygments>=2.17.0
+
 # macOS 系统集成（隐藏 Dock 图标）
 pyobjc-framework-Cocoa>=10.0; sys_platform == 'darwin'

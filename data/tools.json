@@ -65,6 +65,12 @@
       "name": "记忆管理",
       "description": "保存和搜索用户信息、记忆",
       "enabled": true
+    },
+    {
+      "id": "exec",
+      "name": "命令执行",
+      "description": "执行 shell 命令（Skills 技能执行所需）",
+      "enabled": true
     }
   ]
 }

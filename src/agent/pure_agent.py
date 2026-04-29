@@ -365,7 +365,9 @@ class PurePythonAgent(BaseAgent):
         self.tools = tools
         self._tool_schemas = structured_tools_to_litellm(tools)
         self._tool_map = {t.name: t for t in tools}
-        logger.info(f"[Pure] 工具已更新，数量: {len(self.tools)}")
+        # 同时刷新系统提示词（Skills 可能已变更）
+        self._system_prompt = build_system_prompt()
+        logger.info(f"[Pure] 工具已更新，数量: {len(self.tools)}，系统提示词已刷新")
 
     def update_llm(self, llm: BaseChatModel):
         """更新 LLM（Pure 模式下忽略 LangChain LLM，使用 litellm）"""

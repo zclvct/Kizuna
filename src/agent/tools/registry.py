@@ -4,8 +4,7 @@ import asyncio
 
 from langchain_core.tools import StructuredTool
 
-from agent.tools.langchain_tools import TOOL_FACTORIES, get_tools_by_ids
-from agent.config import get_app_config
+from agent.tools.langchain_tools import TOOL_FACTORIES, get_tools_by_ids, SYSTEM_TOOL_GROUP_IDS
 from utils import get_logger
 
 logger = get_logger()
@@ -53,15 +52,20 @@ class ToolRegistry:
     def get_enabled_tools(self) -> List[StructuredTool]:
         """获取启用的内置工具列表
         
-        根据应用配置中的工具启用状态过滤
+        系统工具（exec/read/write）始终启用，不受用户设置影响。
+        其他工具根据 ToolsConfig 中的启用状态过滤。
         """
-        config = get_app_config()
-        enabled_group_ids = set(config.get_enabled_tool_ids())
+        from agent.tools.tools_config import get_tools_config
+        tools_config = get_tools_config()
+        enabled_group_ids = set(tools_config.get_enabled_tools())
         
         enabled_tools = []
         for tool_name, tool in self._tools.items():
             group_id = self._tool_to_group.get(tool_name)
-            if group_id in enabled_group_ids:
+            # 系统工具始终启用
+            if group_id in SYSTEM_TOOL_GROUP_IDS:
+                enabled_tools.append(tool)
+            elif group_id in enabled_group_ids:
                 enabled_tools.append(tool)
         
         logger.info(f"启用的内置工具: {len(enabled_tools)}/{len(self._tools)}")
@@ -124,8 +128,13 @@ class ToolRegistry:
         if not group_id:
             return False
         
-        config = get_app_config()
-        return config.is_tool_enabled(group_id)
+        # 系统工具始终启用
+        if group_id in SYSTEM_TOOL_GROUP_IDS:
+            return True
+        
+        from agent.tools.tools_config import get_tools_config
+        tools_config = get_tools_config()
+        return tools_config.is_enabled(group_id)
     
     def get_tool_names(self) -> List[str]:
         """获取所有内置工具名称"""
