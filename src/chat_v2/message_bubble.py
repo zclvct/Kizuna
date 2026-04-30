@@ -97,6 +97,7 @@ class MessageBubble(QWidget):
         self._typing_indicator: TypingIndicator = None
         self._bubble_wrapper: QWidget = None
         self._max_bubble_width = 600
+        self._adjust_pending = False  # 防抖标志，避免 documentSizeChanged 循环
         self._setup_ui()
         self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.customContextMenuRequested.connect(self._show_context_menu)
@@ -199,9 +200,23 @@ class MessageBubble(QWidget):
         return self._timestamp.strftime("%Y-%m-%d %H:%M")
 
     def _adjust_size(self):
-        """统一调整浏览器高度和气泡宽度"""
+        """统一调整浏览器高度和气泡宽度（带防抖，避免 documentSizeChanged 循环）"""
         if not self._browser or not self._browser.isVisible():
             return
+        if self._adjust_pending:
+            return
+        self._adjust_pending = True
+        try:
+            self._do_adjust_size()
+        finally:
+            # 延迟重置防抖标志，防止同一次事件循环内重复调整
+            QTimer.singleShot(0, self._reset_adjust_pending)
+
+    def _reset_adjust_pending(self):
+        self._adjust_pending = False
+
+    def _do_adjust_size(self):
+        """实际执行尺寸调整"""
         # 调整浏览器高度
         doc = self._browser.document()
         doc_height = doc.size().height()
@@ -285,9 +300,9 @@ class MessageBubble(QWidget):
         else:
             self._set_html(self._text)
 
-        # 文档变化时自动调整
+        # 文档变化时自动调整（通过防抖的 _adjust_size 避免循环）
         self._browser.document().documentLayout().documentSizeChanged.connect(
-            lambda: QTimer.singleShot(0, self._adjust_size)
+            self._adjust_size
         )
 
         # 浏览器样式

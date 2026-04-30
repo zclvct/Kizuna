@@ -1,5 +1,7 @@
 # Pure Python Agent - 基于 litellm 的纯 Python ReAct 智能体
 from typing import List, AsyncGenerator, Optional, Dict
+import os
+os.environ.setdefault('LITELLM_LOCAL_MODEL_COST_MAP', 'True')
 
 import litellm
 from langchain_core.tools import StructuredTool

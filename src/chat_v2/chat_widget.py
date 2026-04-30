@@ -948,7 +948,8 @@ class ChatWidget(QFrame):
             btn_x = self._scroll_area.width() - self._scroll_button.width() - 10
             btn_y = self._scroll_area.height() - self._scroll_button.height() - 10
             self._scroll_button.move(btn_x, btn_y)
-        self._update_all_bubble_widths()
+        # 延迟更新气泡宽度，避免 resize 过程中频繁触发布局循环
+        QTimer.singleShot(50, self._update_all_bubble_widths)
 
     def _update_all_bubble_widths(self):
         viewport_width = self._scroll_area.viewport().width()
