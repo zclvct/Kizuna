@@ -215,13 +215,13 @@ if sys.platform == 'darwin':
         name='Kizuna.app',
         icon=str(icon_path) if icon_path else None,
         bundle_identifier='com.kizuna.desktop',
-        version='1.0.0',
+        version='1.0.3',
         info_plist={
             'NSHighResolutionCapable': True,
             'LSMinimumSystemVersion': '10.13',
             'LSUIElement': True,
-            'CFBundleShortVersionString': '1.0.0',
-            'CFBundleVersion': '1.0.0',
+            'CFBundleShortVersionString': '1.0.3',
+            'CFBundleVersion': '1.0.3',
             'NSHumanReadableCopyright': 'Copyright © 2024 Kizuna',
         },
     )

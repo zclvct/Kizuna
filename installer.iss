@@ -3,7 +3,7 @@
 ; 下载 Inno Setup: https://jrsoftware.org/isdl.php
 
 #define MyAppName "Kizuna"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.3"
 #define MyAppPublisher "Kizuna"
 #define MyAppExeName "Kizuna.exe"
 #define MyAppDescription "二次元桌面助手"
