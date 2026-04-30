@@ -17,6 +17,33 @@ else:
     project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
+# ── 修复 macOS .app 打包后 PATH 缺失问题 ──
+# macOS .app 启动时 PATH 非常精简，不包含 /usr/local/bin、/opt/homebrew/bin 等，
+# 导致 exec 工具执行 node、python3 等命令时找不到。这里从登录 shell 获取完整 PATH。
+if sys.platform == 'darwin' and getattr(sys, 'frozen', False):
+    import subprocess as _sp
+    try:
+        shell = os.environ.get('SHELL', '/bin/zsh')
+        # 用登录 shell 输出 PATH（-l 加载 profile，-c 执行命令）
+        result = _sp.run(
+            [shell, '-l', '-c', 'printf "%s" "$PATH"'],
+            capture_output=True, text=True, timeout=5,
+        )
+        shell_path = result.stdout.strip()
+        if result.returncode == 0 and shell_path:
+            current_path = os.environ.get('PATH', '')
+            # 将 shell PATH 合并到当前 PATH（shell PATH 优先，确保能找到 node 等）
+            merged = shell_path + (':' + current_path if current_path else '')
+            os.environ['PATH'] = merged
+    except Exception as _e:
+        # 获取失败时，手动添加常见路径作为兜底
+        _fallback = ['/usr/local/bin', '/opt/homebrew/bin', '/opt/homebrew/sbin']
+        current = os.environ.get('PATH', '')
+        for p in _fallback:
+            if os.path.isdir(p) and p not in current.split(':'):
+                current = current + ':' + p if current else p
+        os.environ['PATH'] = current
+
 # Windows: 强制启用 WebGL 软件后备，避免 QWebEngine 中 Pixi 无法创建 renderer
 if sys.platform == 'win32':
     os.environ.setdefault('QT_OPENGL', 'software')
