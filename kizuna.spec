@@ -3,6 +3,7 @@
 # 使用 --onedir 模式（目录形式），启动更快
 
 import sys
+import os
 from pathlib import Path
 from PyInstaller.utils.hooks import collect_dynamic_libs
 
@@ -23,11 +24,20 @@ if icon_path is not None and not icon_path.exists():
     print(f"Warning: icon file not found: {icon_path}, fallback to default icon")
     icon_path = None
 
+# 收集 litellm 数据文件（远程获取超时时的本地备份）
+import litellm as _litellm
+_litellm_dir = os.path.dirname(_litellm.__file__)
+_litellm_datas = []
+_backup_json = os.path.join(_litellm_dir, 'model_prices_and_context_window_backup.json')
+if os.path.exists(_backup_json):
+    _litellm_datas.append((_backup_json, 'litellm'))
+    print(f"Added litellm data: {_backup_json}")
+
 # 收集所有数据文件
 datas = [
     ('assets', 'assets'),
     ('data', 'data'),
-]
+] + _litellm_datas
 
 # 收集 live2d-web 资源（WebEngine 方案）
 try:
