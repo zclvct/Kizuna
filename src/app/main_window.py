@@ -16,7 +16,7 @@ sys.path.insert(0, str(src_path))
 
 from utils import get_config, get_character_manager, get_logger, set_motion_callback
 from utils.constants import resolve_path
-from chat import ChatWidget
+from chat_v2 import ChatWidget
 from live2d_renderer import Live2DWidget
 from scheduler import TaskManager, get_task_manager, LLMTaskExecutor
 from app.context_menu import ContextMenu

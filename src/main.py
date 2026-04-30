@@ -112,7 +112,7 @@ def main():
             """延迟初始化 Agent"""
             try:
                 from agent import get_core
-                from chat import get_conversation_manager
+                from chat_v2 import get_conversation_manager
                 
                 core = get_core()
                 logger.info(f"LangChain Agent 已初始化，工具数: {len(core.get_enabled_tool_names())}")

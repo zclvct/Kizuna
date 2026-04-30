@@ -12,7 +12,7 @@ from scheduler.task import ScheduledTask
 from utils import get_logger
 
 if TYPE_CHECKING:
-    from chat import ChatWidget
+    from chat_v2 import ChatWidget
     from app.main_window import MainWindow
 
 logger = get_logger()
