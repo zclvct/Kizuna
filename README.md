@@ -4,7 +4,7 @@
 
 一个可常驻桌面的 Live2D AI 助手：会聊天、会记忆、可配置角色、可调用工具。
 
-[![Version](https://img.shields.io/badge/Version-1.0.3-blue.svg)](#)
+[![Version](https://img.shields.io/badge/Version-1.0.4-blue.svg)](#)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-lightgrey.svg)](#)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
