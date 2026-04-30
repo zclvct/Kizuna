@@ -5,7 +5,7 @@
 import sys
 import os
 from pathlib import Path
-from PyInstaller.utils.hooks import collect_dynamic_libs
+from PyInstaller.utils.hooks import collect_dynamic_libs, collect_submodules, collect_data_files
 
 block_cipher = None
 
@@ -24,14 +24,18 @@ if icon_path is not None and not icon_path.exists():
     print(f"Warning: icon file not found: {icon_path}, fallback to default icon")
     icon_path = None
 
-# 收集 litellm 数据文件（远程获取超时时的本地备份）
-import litellm as _litellm
-_litellm_dir = os.path.dirname(_litellm.__file__)
-_litellm_datas = []
-_backup_json = os.path.join(_litellm_dir, 'model_prices_and_context_window_backup.json')
-if os.path.exists(_backup_json):
-    _litellm_datas.append((_backup_json, 'litellm'))
-    print(f"Added litellm data: {_backup_json}")
+# 收集 litellm 所有子模块和数据文件（避免 PyInstaller 遗漏子包和数据）
+_litellm_hiddenimports = collect_submodules('litellm')
+# collect_submodules 会跳过 __init__.py 为空的子包，需手动补充
+_litellm_missing = [
+    'litellm.litellm_core_utils.tokenizers',
+]
+_litellm_hiddenimports.extend(m for m in _litellm_missing if m not in _litellm_hiddenimports)
+_litellm_datas = collect_data_files('litellm')
+print(f"Collected {len(_litellm_hiddenimports)} litellm submodules, {len(_litellm_datas)} data files")
+
+# 收集 tiktoken 动态库（litellm 依赖 tiktoken 的 .so 文件）
+_tiktoken_binaries = collect_dynamic_libs('tiktoken')
 
 # 收集所有数据文件
 datas = [
@@ -51,7 +55,7 @@ except Exception as e:
     print(f"Warning: Error collecting live2d_web assets: {e}")
 
 # 显式收集 PySide6 动态库，避免 macOS 下 Qt 模块运行时缺失
-binaries = collect_dynamic_libs('PySide6')
+binaries = collect_dynamic_libs('PySide6') + _tiktoken_binaries
 
 # 隐式导入（PyInstaller 无法自动检测的模块）
 hiddenimports = [
@@ -78,7 +82,12 @@ hiddenimports = [
     'psutil',
     'pyperclip',
     'dotenv',
-]
+    'tiktoken',
+    'tiktoken_ext',
+    'openai',
+    'httpx',
+    'markdown',
+] + _litellm_hiddenimports
 
 # macOS 特定导入
 if sys.platform == 'darwin':
