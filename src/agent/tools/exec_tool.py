@@ -1,7 +1,9 @@
 # Exec Tool - 通用 Shell 命令执行工具
 import asyncio
+import os
 import platform
 import re
+import sys
 
 from pydantic import BaseModel, Field
 from langchain_core.tools import StructuredTool
@@ -9,6 +11,24 @@ from langchain_core.tools import StructuredTool
 from utils import get_logger
 
 logger = get_logger()
+
+
+def _get_login_shell() -> str:
+    """获取用户登录 shell 路径，用于在打包环境中正确加载 PATH。"""
+    # 1. 优先用 SHELL 环境变量
+    shell = os.environ.get('SHELL', '')
+    if shell and os.path.isfile(shell):
+        return shell
+    # 2. 从 /etc/passwd 读取
+    try:
+        import pwd
+        shell = pwd.getpwuid(os.getuid()).pw_shell
+        if shell and os.path.isfile(shell):
+            return shell
+    except Exception:
+        pass
+    # 3. 兜底
+    return '/bin/zsh' if os.path.isfile('/bin/zsh') else '/bin/bash'
 
 DANGEROUS_PATTERNS = [
     r"rm\s+-rf\s+/", r"del\s+/s\s+/q\s+C:", r"format\s+C:",
@@ -52,12 +72,27 @@ async def exec_command(command: str, workdir: str = "", timeout: int = 30) -> st
     logger.info(f"[exec] 执行: {command[:100]} (timeout={effective_timeout}s)")
 
     try:
-        proc = await asyncio.create_subprocess_shell(
-            command,
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-            cwd=workdir,
-        )
+        # ── 修复打包后 PATH 缺失问题 ──
+        # macOS .app 启动时 PATH 极度精简，/bin/sh 不会加载 .zshrc/.zprofile，
+        # 导致 node 等用户安装的命令找不到。
+        # 解决方案：在打包环境中，用登录 shell (zsh -l -c) 包裹命令，
+        # 这样命令能获得完整的 PATH（包括 nvm/fnm 管理的 node 路径）。
+        if getattr(sys, 'frozen', False):
+            login_shell = _get_login_shell()
+            # 用登录 shell 执行命令，-l 加载 .zprofile/.zshrc，使 PATH 完整
+            proc = await asyncio.create_subprocess_exec(
+                login_shell, '-l', '-c', command,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                cwd=workdir,
+            )
+        else:
+            proc = await asyncio.create_subprocess_shell(
+                command,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                cwd=workdir,
+            )
 
         try:
             stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=effective_timeout)
