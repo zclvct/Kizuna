@@ -79,9 +79,10 @@ async def exec_command(command: str, workdir: str = "", timeout: int = 30) -> st
         # 这样命令能获得完整的 PATH（包括 nvm/fnm 管理的 node 路径）。
         if getattr(sys, 'frozen', False):
             login_shell = _get_login_shell()
-            # 用登录 shell 执行命令，-l 加载 .zprofile/.zshrc，使 PATH 完整
+            # 用交互式登录 shell 执行命令：
+            # -l 加载 .zprofile/.zlogin，-i 强制交互模式加载 .zshrc（nvm/fnm 等在 .zshrc 中初始化）
             proc = await asyncio.create_subprocess_exec(
-                login_shell, '-l', '-c', command,
+                login_shell, '-i', '-l', '-c', command,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
                 cwd=workdir,

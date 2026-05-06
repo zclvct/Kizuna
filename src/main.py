@@ -24,9 +24,9 @@ if sys.platform == 'darwin' and getattr(sys, 'frozen', False):
     import subprocess as _sp
     try:
         shell = os.environ.get('SHELL', '/bin/zsh')
-        # 用登录 shell 输出 PATH（-l 加载 profile，-c 执行命令）
+        # 用交互式登录 shell 输出 PATH（-i -l 加载 .zshrc，nvm/fnm 等在 .zshrc 中初始化）
         result = _sp.run(
-            [shell, '-l', '-c', 'printf "%s" "$PATH"'],
+            [shell, '-i', '-l', '-c', 'printf "%s" "$PATH"'],
             capture_output=True, text=True, timeout=5,
         )
         shell_path = result.stdout.strip()
